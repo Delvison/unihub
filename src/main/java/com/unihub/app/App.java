@@ -1,13 +1,20 @@
 package com.unihub.app;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+//@WebServlet("/")
+public class App extends HttpServlet
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
-}
+    public void doGet(HttpServletRequest req, 
+    	HttpServletResponse res) throws ServletException, IOException {
+
+    	PrintWriter out = res.getWriter();
+    	out.println("Hello Bitches... again");
+
+
+    }//end of method
+
+
+}//end of class
