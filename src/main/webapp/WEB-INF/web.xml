@@ -1,3 +1,16 @@
 <web-app>
+
 <display-name>Hello World</display-name>
+
+<servlet>
+	<servlet-name>AppServ</servlet-name>
+	<servlet-class>com.unihub.app.App</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>AppServ</servlet-name>
+	<url-pattern>/</url-pattern>
+</servlet-mapping>
+
+
+
 </web-app>
