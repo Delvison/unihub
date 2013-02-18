@@ -8,7 +8,7 @@
 </servlet>
 <servlet-mapping>
 	<servlet-name>AppServ</servlet-name>
-	<url-pattern>/</url-pattern>
+	<url-pattern>/unihub</url-pattern>
 </servlet-mapping>
 
 <servlet>
@@ -54,6 +54,33 @@
 <servlet-mapping>
 <servlet-name>home</servlet-name>
 <url-pattern>/home</url-pattern>
+</servlet-mapping>
+
+<servlet>
+<servlet-name>createform</servlet-name>
+<jsp-file>delvison/createpost.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+<servlet-name>createform</servlet-name>
+<url-pattern>/createpost.jsp</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>ListingsServlet</servlet-name>
+  <servlet-class>com.unihub.app.ListingsServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>ListingsServlet</servlet-name>
+  <url-pattern>/createlistingservlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>ViewListingsServlet</servlet-name>
+  <servlet-class>com.unihub.app.ViewAllServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>ViewListingsServlet</servlet-name>
+  <url-pattern>/viewalllistings</url-pattern>
 </servlet-mapping>
 
 </web-app>

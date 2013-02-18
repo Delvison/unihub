@@ -22,22 +22,26 @@ st = vals[1];
 }
 %>
 
-
-
 <html>
 <body>
 <p>
+<b>UniHub</b>      
+<div align="right">
 <a href="google.jsp">Search</a> |
 <% if (myCookie == null) { %>
-<a href="cookieform.jsp">Set School</a>
+<a href="cookieform.jsp">Set school</a>
 <% } else { %> 
-<a href="cookieform.jsp">Change School</a>
+<a href="cookieform.jsp">Change school</a>
 <% } %>
-<a href="login.jsp">login</a>
+| <a href="createpost.jsp">Post a listing</a>
+| <a href="viewalllistings">View all listings</a>
+| <a href="login.jsp">Login</a>
+</div
 <br>
 <% if (myCookie == null) { %>
 <li>No School set yet.
 <% } else { %> 
+<hr>
 <li>Your current university is <%=sc%>
 <li>Your current location is <%=st%>.<br>
 <% } %>

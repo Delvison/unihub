@@ -24,25 +24,23 @@ st = vals[1];
 
 <html>
 <body>
-<p>
-<b>UniHub</b>      
-<div align="right">
-<a href="google.jsp">Search</a> |
+
+<form action="createlisting" method="GET">
+Name of item:<input type="text" name="name" ><br>
+Price of item:<input type="text" name="price" ><br>
 <% if (myCookie == null) { %>
-<a href="cookieform.jsp">Set school</a>
+Location:<input type="text" name="location" ><br>
 <% } else { %> 
-<a href="cookieform.jsp">Change school</a>
+Location: <%=sc%><br>
+<input type="hidden" name="location" value="<%=st%>">
 <% } %>
-| <a href="createpost.jsp">Post a listing</a>
-| <a href="viewalllistings">View all listings</a>
-| <a href="login.jsp">Login</a>
-</div
+<input type="hidden" name="university" value="<%=sc%>">
+<input type="submit" value="Submit">
+</form>
+
+
 <br>
-<% if (myCookie == null) { %>
-<li>No School set yet.
-<% } else { %> 
-<hr>
-<li>Your current university is <%=sc%>
-<li>Your current location is <%=st%>.<br>
-<% } %>
+<a href="home"> home</a>
 </body>
+
+
