@@ -21,57 +21,57 @@
 </servlet-mapping>
 
 <servlet>
-<servlet-name>google</servlet-name>
-<jsp-file>delvison/google.jsp</jsp-file>
+  <servlet-name>google</servlet-name>
+  <jsp-file>delvison/google.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>google</servlet-name>
-<url-pattern>/google</url-pattern>
+  <servlet-name>google</servlet-name>
+  <url-pattern>/google</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>cookieform</servlet-name>
-<jsp-file>delvison/cookieform.jsp</jsp-file>
+  <servlet-name>cookieform</servlet-name>
+  <jsp-file>delvison/cookieform.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>cookieform</servlet-name>
-<url-pattern>/cookieform</url-pattern>
+  <servlet-name>cookieform</servlet-name>
+  <url-pattern>/cookieform</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>setcookie</servlet-name>
-<jsp-file>delvison/setcookie.jsp</jsp-file>
+  <servlet-name>setcookie</servlet-name>
+  <jsp-file>delvison/setcookie.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>setcookie</servlet-name>
-<url-pattern>/setcookie</url-pattern>
+  <servlet-name>setcookie</servlet-name>
+  <url-pattern>/setcookie</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>showcookievalue</servlet-name>
-<jsp-file>delvison/showcookievalue.jsp</jsp-file>
+  <servlet-name>showcookievalue</servlet-name>
+  <jsp-file>delvison/showcookievalue.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>showcookievalue</servlet-name>
-<url-pattern>/showcookievalue</url-pattern>
+  <servlet-name>showcookievalue</servlet-name>
+  <url-pattern>/showcookievalue</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>home</servlet-name>
-<jsp-file>delvison/home.jsp</jsp-file>
+  <servlet-name>home</servlet-name>
+  <jsp-file>delvison/home.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>home</servlet-name>
-<url-pattern>/home</url-pattern>
+  <servlet-name>home</servlet-name>
+  <url-pattern>/home</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>createform</servlet-name>
-<jsp-file>delvison/createpost.jsp</jsp-file>
+  <servlet-name>createform</servlet-name>
+  <jsp-file>delvison/createpost.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>createform</servlet-name>
-<url-pattern>/createpost</url-pattern>
+  <servlet-name>createform</servlet-name>
+  <url-pattern>/createpost</url-pattern>
 </servlet-mapping>
 
 <servlet>

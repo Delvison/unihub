@@ -20,9 +20,9 @@ public class Auth extends HttpServlet {
 		String password = req.getParameter("password");
 
 		if(AuthUtilities.authenticate(userName, password)) {
-			res.sendRedirect("index.jsp");
 			//successfully logged in so create cookie or session
 			req.getSession().setAttribute("username", userName);
+			res.sendRedirect("index.jsp");
 		}
 		else
 			res.sendRedirect("login.jsp");
