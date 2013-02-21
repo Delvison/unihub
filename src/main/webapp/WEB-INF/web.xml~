@@ -26,7 +26,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>google</servlet-name>
-  <url-pattern>/google</url-pattern>
+  <url-pattern>/google.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>

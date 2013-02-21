@@ -26,10 +26,6 @@ st = vals[1];
 <%!
 public String isLoggedIn(HttpSession session) {
 	String userName = (String)session.getAttribute("username");
-	if(userName != null)
-	  userName = userName;
-	else
-	  userName = null;
 	  return userName;	}
 %>
 
