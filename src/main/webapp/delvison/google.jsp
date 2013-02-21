@@ -18,6 +18,7 @@
 
 </FORM>
 </CENTER>
+<a href="amazon">Search Amazon</a>
 
 </body>
 
