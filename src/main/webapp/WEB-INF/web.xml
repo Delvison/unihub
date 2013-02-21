@@ -35,7 +35,16 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>google</servlet-name>
-  <url-pattern>/google</url-pattern>
+  <url-pattern>/google.jsp</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>amazon</servlet-name>
+  <servlet-class>com.unihub.app.Amazon</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>amazon</servlet-name>
+  <url-pattern>/amazon</url-pattern>
 </servlet-mapping>
 
 <servlet>
@@ -44,7 +53,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>cookieform</servlet-name>
-  <url-pattern>/cookieform</url-pattern>
+  <url-pattern>/cookieform.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>
@@ -53,7 +62,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>setcookie</servlet-name>
-  <url-pattern>/setcookie</url-pattern>
+  <url-pattern>/setcookie.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>
@@ -62,7 +71,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>showcookievalue</servlet-name>
-  <url-pattern>/showcookievalue</url-pattern>
+  <url-pattern>/showcookievalue.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>
