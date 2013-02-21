@@ -22,6 +22,14 @@ st = vals[1];
 }
 %>
 
+
+<%!
+public String isLoggedIn(HttpSession session) {
+	String userName = (String)session.getAttribute("username");
+	  return userName;	}
+%>
+
+
 <html>
 <body>
 <p>
@@ -33,9 +41,15 @@ st = vals[1];
 <% } else { %> 
 <a href="cookieform.jsp">Change school</a>
 <% } %>
-| <a href="createpost.jsp">Post a listing</a>
+| <a href="createpost">Post a listing</a>
 | <a href="viewalllistings">View all listings</a>
-| <a href="login.jsp">Login</a>
+| 
+<% String user = isLoggedIn(session);  %>
+<% if (user == null) { %>
+<a href="login.jsp">Login</a>
+<% }else{ %>
+<a href="profile.jsp">Logged in as <%=user%></a> 
+<%}%>
 </div
 <br>
 <% if (myCookie == null) { %>
@@ -45,4 +59,5 @@ st = vals[1];
 <li>Your current university is <%=sc%>
 <li>Your current location is <%=st%>.<br>
 <% } %>
+
 </body>
