@@ -35,7 +35,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>cookieform</servlet-name>
-  <url-pattern>/cookieform</url-pattern>
+  <url-pattern>/cookieform.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>
@@ -44,7 +44,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>setcookie</servlet-name>
-  <url-pattern>/setcookie</url-pattern>
+  <url-pattern>/setcookie.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>
@@ -53,7 +53,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>showcookievalue</servlet-name>
-  <url-pattern>/showcookievalue</url-pattern>
+  <url-pattern>/showcookievalue.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>

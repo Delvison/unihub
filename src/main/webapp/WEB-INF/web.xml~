@@ -3,66 +3,75 @@
 <display-name>Hello World</display-name>
 
 <servlet>
-	<servlet-name>AppServ</servlet-name>
-	<servlet-class>com.unihub.app.App</servlet-class>
+  <servlet-name>login</servlet-name>
+  <jsp-file>login.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-	<servlet-name>AppServ</servlet-name>
-	<url-pattern>/unihub</url-pattern>
+  <servlet-name>login</servlet-name>
+  <url-pattern>/login</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>google</servlet-name>
-<jsp-file>delvison/google.jsp</jsp-file>
+  <servlet-name>Auth</servlet-name>
+  <servlet-class>com.unihub.app.Auth</servlet-class>
 </servlet>
 <servlet-mapping>
-<servlet-name>google</servlet-name>
-<url-pattern>/google.jsp</url-pattern>
+  <servlet-name>Auth</servlet-name>
+  <url-pattern>/authenticate</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>cookieform</servlet-name>
-<jsp-file>delvison/cookieform.jsp</jsp-file>
+  <servlet-name>google</servlet-name>
+  <jsp-file>delvison/google.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>cookieform</servlet-name>
-<url-pattern>/cookieform.jsp</url-pattern>
+  <servlet-name>google</servlet-name>
+  <url-pattern>/google</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>setcookie</servlet-name>
-<jsp-file>delvison/setcookie.jsp</jsp-file>
+  <servlet-name>cookieform</servlet-name>
+  <jsp-file>delvison/cookieform.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>setcookie</servlet-name>
-<url-pattern>/setcookie.jsp</url-pattern>
+  <servlet-name>cookieform</servlet-name>
+  <url-pattern>/cookieform.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>showcookievalue</servlet-name>
-<jsp-file>delvison/showcookievalue.jsp</jsp-file>
+  <servlet-name>setcookie</servlet-name>
+  <jsp-file>delvison/setcookie.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>showcookievalue</servlet-name>
-<url-pattern>/showcookievalue.jsp</url-pattern>
+  <servlet-name>setcookie</servlet-name>
+  <url-pattern>/setcookie.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>home</servlet-name>
-<jsp-file>delvison/home.jsp</jsp-file>
+  <servlet-name>showcookievalue</servlet-name>
+  <jsp-file>delvison/showcookievalue.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>home</servlet-name>
-<url-pattern>/home</url-pattern>
+  <servlet-name>showcookievalue</servlet-name>
+  <url-pattern>/showcookievalue.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>
-<servlet-name>createform</servlet-name>
-<jsp-file>delvison/createpost.jsp</jsp-file>
+  <servlet-name>home</servlet-name>
+  <jsp-file>delvison/home.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
-<servlet-name>createform</servlet-name>
-<url-pattern>/createpost.jsp</url-pattern>
+  <servlet-name>home</servlet-name>
+  <url-pattern>/home</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>createform</servlet-name>
+  <jsp-file>delvison/createpost.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>createform</servlet-name>
+  <url-pattern>/createpost</url-pattern>
 </servlet-mapping>
 
 <servlet>
@@ -71,7 +80,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>ListingsServlet</servlet-name>
-  <url-pattern>/createlistingservlet</url-pattern>
+  <url-pattern>/createlisting</url-pattern>
 </servlet-mapping>
 
 <servlet>

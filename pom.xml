@@ -39,20 +39,24 @@
       <!-- Set the name of the war, used as the context root when the app 
          is deployed -->
       <finalName>unihub</finalName>
-      <plugins>
-               <plugin>
+   
+   <plugins>
+      <!--plugin that allows maven to deploy straight to jboss-->
+         <plugin>
             <groupId>org.jboss.as.plugins</groupId>
             <artifactId>jboss-as-maven-plugin</artifactId>
             <version>7.3.Final</version>
          </plugin>
+        
+      <!-- plugin that allows use of java generics -->
         <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>2.3.1</version>
-          <configuration>
-            <source>1.6</source>
-            <target>1.6</target>
-          </configuration>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.3.1</version>
+            <configuration>
+               <source>1.6</source>
+               <target>1.6</target>
+            </configuration>
         </plugin>
-       </plugins>
+   </plugins>
    </build>
 </project>
