@@ -64,18 +64,20 @@ public class Amazon extends HttpServlet {
                 System.out.println("Signed Request is \"" + requestUrl + "\"");
 
                 title = fetchTitle(requestUrl);
-                out.println("Signed Title is \"" + title + "\"");
-                price = fetchPrice(requestUrl);
-                out.println("New Price from \"" + price + "\"");
                 detailUrl = fetchDetailPage(requestUrl);
-                out.println("Detail Page: \"" + detailUrl + "\"");
+                out.println("Found on Amazon: \"<a href="+detailUrl+">" + title + "\"</a>");
+                price = fetchPrice(requestUrl);
+                out.println();
+                out.println("New from: \"" + price + "\"");
+                //out.println("Detail Page: \"" + detailUrl + "\"");
+                
                 out.println();
             }catch (RuntimeException e){
                 out.println("book not found");
             }
 	}//end of doGet method
 
-    private static String fetchPrice(String requestUrl) throws NullPointerException {
+    private static String fetchPrice(String requestUrl){
         String title = null;
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -94,7 +96,7 @@ public class Amazon extends HttpServlet {
      * Utility function to fetch the response from the service and extract the
      * title from the XML.
      */
-    private static String fetchTitle(String requestUrl) throws NullPointerException {
+    private static String fetchTitle(String requestUrl){
         String title = null;
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -112,7 +114,7 @@ public class Amazon extends HttpServlet {
      * Utility function to fetch the response from the service and extract the
      * detail page URL from the XML.
      */
-    private static String fetchDetailPage(String requestUrl) throws NullPointerException{
+    private static String fetchDetailPage(String requestUrl){
         String title = null;
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
