@@ -5,6 +5,7 @@ package com.unihub.app;
 
 import java.io.*;
 import javax.servlet.*;
+import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.net.URL;
@@ -16,7 +17,7 @@ public class Response extends HttpServlet {
 Purpose of this class is to take the user search
 and put it through google search to get a hold 
 of the JSON then parse and show to user*/
-
+	@Override
 	public void doGet(HttpServletRequest req, 
 		HttpServletResponse res) throws ServletException, IOException {
 
