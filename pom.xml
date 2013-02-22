@@ -33,7 +33,7 @@
          <scope>provided</scope>
       </dependency>
 
-      <!-- Import the Common Annotations API (JSR-250), we use provided scope 
+      <!-- Import the Common Annotations API (JSR-250), we use provided scope
          as the API is included in JBoss AS 7 -->
       <dependency>
          <groupId>org.jboss.spec.javax.annotation</groupId>

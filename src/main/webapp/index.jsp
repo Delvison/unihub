@@ -12,6 +12,7 @@
 			return userName;
 		}
 	%>
+
 	<title>Home</title>
 </head>
 <body>
@@ -19,16 +20,13 @@
 	<CENTER>
 	<h2>Welcome to UniHub!</h2>
 
-	<FORM ACTION="URL HERE" METHOD="GET" >
-	<INPUT TYPE="hidden" name="" value="">
-	<INPUT TYPE="text" name="q" >
-
-	<INPUT TYPE="SUBMIT"><BR>
-
-	</FORM>
+	<form ACTION="le_test" METHOD="POST">
+		<input TYPE="text" name="query">
+		<input TYPE="submit" value="Search"><br>
+	</form>
 	</CENTER>
-        <hr>
-        <a href = "home">home</a>
+    <hr>
+    <a href = "home">home</a>
 </body>
 
 </html>
