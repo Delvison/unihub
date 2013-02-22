@@ -48,11 +48,13 @@ public String isLoggedIn(HttpSession session) {
 <% if (user == null) { %>
 <a href="login.jsp">Login</a>
 <% }else{ %>
-<a href="profile.jsp">Logged in as <%=user%></a> 
+<a href="profile.jsp">View profile</a>
+| <a href="logout.jsp">Log out(<%=user%>)</a>
 <%}%>
 </div
 <br>
 <% if (myCookie == null) { %>
+<hr>
 <li>No School set yet.
 <% } else { %> 
 <hr>

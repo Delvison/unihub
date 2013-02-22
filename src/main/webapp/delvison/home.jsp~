@@ -41,19 +41,21 @@ public String isLoggedIn(HttpSession session) {
 <% } else { %> 
 <a href="cookieform.jsp">Change school</a>
 <% } %>
-| <a href="createpost.jsp">Post a listing</a>
+| <a href="createpost">Post a listing</a>
 | <a href="viewalllistings">View all listings</a>
 | 
 <% String user = isLoggedIn(session);  %>
 <% if (user == null) { %>
 <a href="login.jsp">Login</a>
 <% }else{ %>
-<a href="profile.jsp">Logged in as <%=user%></a> 
+<a href="profile.jsp">View profile</a>
+| <a href="logout.jsp">Log out(<%=user%>)</a>
 <%}%>
 </div
 <br>
 <% if (myCookie == null) { %>
 <li>No School set yet.
+<hr>
 <% } else { %> 
 <hr>
 <li>Your current university is <%=sc%>
