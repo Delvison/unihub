@@ -20,14 +20,7 @@
   <url-pattern>/authenticate</url-pattern>
 </servlet-mapping>
 
-<servlet>
-  <servlet-name>Response</servlet-name>
-  <servlet-class>com.unihub.app.Response</servlet-class>
-</servlet>
-<servlet-mapping>
-  <servlet-name>Response</servlet-name>
-  <url-pattern>/le_test</url-pattern>
-</servlet-mapping>
+
 
 <servlet>
   <servlet-name>google</servlet-name>

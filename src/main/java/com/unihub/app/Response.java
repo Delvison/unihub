@@ -6,10 +6,11 @@ package com.unihub.app;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.net.URL;
 import java.util.Scanner;
 
-
+@WebServlet("/le_test")
 public class Response extends HttpServlet {
 /*
 Purpose of this class is to take the user search
