@@ -43,7 +43,7 @@ String myAppId = "MarkWill-00a1-4cb0-b23d-5d85d0c939f1";
 out.println(
   "<html>\n" +
   "<body>\n" +
-  "The response should be here: " +
+  "The eBay response should be here: " +
   "<a href=http://open.api.ebay.com/shopping?callname=FindHalfProducts&appid=" +
   myAppId +
   "&version=527&QueryKeywords=" +
