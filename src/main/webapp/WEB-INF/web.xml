@@ -58,7 +58,7 @@
 
 <servlet>
   <servlet-name>setcookie</servlet-name>
-  <jsp-file>delvison/setcookie.jsp</jsp-file>
+  <servlet-class>com.unihub.app.LocationServlet</servlet-class>
 </servlet>
 <servlet-mapping>
   <servlet-name>setcookie</servlet-name>

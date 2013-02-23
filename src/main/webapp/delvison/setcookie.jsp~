@@ -19,7 +19,7 @@ response.addCookie(cookie);
 </head>
 <body>
 <p><a href="showcookievalue.jsp">Next Page to view the cookie value</a><p>
-<hl>
+<hr>
 <a href="home">Home</a>
 
 </body>

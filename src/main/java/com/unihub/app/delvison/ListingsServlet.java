@@ -25,9 +25,6 @@ public class ListingsServlet extends HttpServlet {
 
     res.sendRedirect("viewalllistings");
  
-    PrintWriter out = res.getWriter();	
-    out.println("<h1>doing stuff</h1>");
-
   }
 }
 
