@@ -113,6 +113,16 @@
 </servlet-mapping>
 
 <servlet>
+  <servlet-name>header</servlet-name>
+  <jsp-file>delvison/header.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>header</servlet-name>
+  <url-pattern>/header</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
   <servlet-name>ListingsServlet</servlet-name>
   <servlet-class>com.unihub.app.ListingsServlet</servlet-class>
 </servlet>
@@ -138,6 +148,8 @@
   <servlet-name>ValidateUserServlet</servlet-name>
   <url-pattern>/validate</url-pattern>
 </servlet-mapping>
+
+
 <!-- End of Delvison's Mappings ########################################## -->
 
 </web-app>

@@ -1,8 +1,7 @@
 /* Delvison ################################################################# */
 
 /*
-This servlet takes the info passed in from createpost.jsp and 'creates' the a 
-listing object
+This servlet takes the info passed in from createpost.jsp and 'creates' a listing object
 */
 
 package com.unihub.app;
@@ -33,9 +32,7 @@ public class ListingsServlet extends HttpServlet {
     String price = req.getParameter("price");
     String university = req.getParameter("university");
     String loc = req.getParameter("location");
-    
-
-    Listings lis = Listings.create();
+    ListingsObj lis = ListingsObj.create();
     lis.addStuff(userName,name,price,university,loc);
    
 
