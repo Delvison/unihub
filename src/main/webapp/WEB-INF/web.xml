@@ -4,7 +4,7 @@
 
 <servlet>
   <servlet-name>login</servlet-name>
-  <jsp-file>login.jsp</jsp-file>
+  <jsp-file>andy/login.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
   <servlet-name>login</servlet-name>
@@ -18,6 +18,15 @@
 <servlet-mapping>
   <servlet-name>Auth</servlet-name>
   <url-pattern>/authenticate</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>response_result</servlet-name>
+  <jsp-file>andy/response_output.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>response_result</servlet-name>
+  <url-pattern>/response</url-pattern>
 </servlet-mapping>
 
 <!-- was my old url mapping for Response.java

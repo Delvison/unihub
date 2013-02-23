@@ -42,7 +42,6 @@ of the JSON then parse and show to user*/
 
 		/*This be a test to see if XML works
 		with the way Yulle found*/
-		out.println(htmlHeadOutput());
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder build = dbf.newDocumentBuilder();
@@ -50,24 +49,25 @@ of the JSON then parse and show to user*/
 			NodeList linkNodeList = doc.getElementsByTagName("s:link");
 			NodeList nameNodeList = doc.getElementsByTagName("name");
 
-			if(linkNodeList == null || linkNodeList.getLength() == 0)
-				out.println("<h2>No results. Sorry. You probably just suck too much :)</h2>");
-			else
-				out.println("<h2>Your results are:</h2>");
+			String[] linkArray = null;
+
+			if(linkNodeList.getLength() > 0)
+				linkArray = new String[linkNodeList.getLength()];
 
 			for(int i = 0; i < linkNodeList.getLength(); i++) {
 				String store = linkNodeList.item(i).getTextContent();
 				String name = nameNodeList.item(i).getTextContent();
-				out.println(htmlLinkOutput(store, name));
+				linkArray[i] = htmlLinkOutput(store, name);
 			}
+
+			req.setAttribute("links", linkArray);
 
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 
-		out.println("<h3>Your link was</h3>");
-		out.println("<h4>"+requestUrl+"</h4>");
-		out.println(htmlFooterOutput());
+		RequestDispatcher dispatcher = req.getRequestDispatcher("response");
+		dispatcher.forward(req, res);
 
 	}//end of doPost method
 
@@ -84,19 +84,7 @@ of the JSON then parse and show to user*/
 
 	}//end htmlLinkOut
 
-	public String htmlHeadOutput(){
-		return "<!doctype html>"+
-				"<html>"+
-				"<head></head>"+
-				"<body>"+
-				"<ul>";
-	}//end of htmlHeadOutput
-
-	public String htmlFooterOutput(){
-		return "</ul>"+
-				"</body>" +
-				"</html>";
-	}//end of htmlHeadOutput
+	
 
 	public String formatSearch(String userSearch){
 		String[] holder = userSearch.split(" ");
