@@ -1,5 +1,6 @@
 <html>
   <head>
+  	<!-- content="2;login" waits two seconds then redirects -->
     <meta http-equiv="refresh" content="2;login">
   </head>
   <body>

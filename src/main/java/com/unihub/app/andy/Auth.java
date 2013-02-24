@@ -32,7 +32,7 @@ public class Auth extends HttpServlet {
 			res.sendRedirect(servletPath);
 		}
 		else
-			res.sendRedirect("login.jsp");
+			res.sendRedirect("login");
 
 
 	}//end of doPost method
