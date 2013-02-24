@@ -28,7 +28,9 @@ public class ValidateUserServlet extends HttpServlet {
     /* get the intended location */	 
     String whereTo = req.getParameter("where");
     
-    session = req.getSession(); /* get current session */	 
+    session = req.getSession(); /* get current session */	
+    session.setAttribute("path_for_login", whereTo);
+
     /* Use Andy's validation to ensure user is logged in */
     String userName;
     try{
@@ -44,7 +46,7 @@ public class ValidateUserServlet extends HttpServlet {
 
     if(login == true) {
       /* if logged in, send user to intended location */
-      res.sendRedirect(whereTo);
+      res.sendRedirect(whereTo.replaceFirst("/", ""));
     } else{
       /* if not logged in, send to login page */
 /* ############## need some sort of error msg here */

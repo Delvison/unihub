@@ -43,7 +43,7 @@ public String isLoggedIn(HttpSession session) {
     <% } else { %> 
        <a href="cookieform.jsp">Change school</a>
     <% } %>
-      | <a href="validate?where=createpost">Post a listing</a>
+      | <a href="validate?where=/createpost">Post a listing</a>
       | <a href="viewalllistings">View all listings</a>
       | <% String user = isLoggedIn(session);  %>
       <% if (user == null) { %>

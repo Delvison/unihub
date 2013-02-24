@@ -1,4 +1,7 @@
 <%
+session.setAttribute("path_for_login", request.getServletPath());
+%>
+<%
   String cookieName = "school&state";
   String sc = " "; 
   String st= " ";
@@ -19,6 +22,8 @@
     sc = vals[0];
     st = vals[1];
   }
+
+
 %>
 <%!
 public String isLoggedIn(HttpSession session) {
@@ -38,14 +43,14 @@ public String isLoggedIn(HttpSession session) {
     <% } else { %> 
        <a href="cookieform.jsp">Change school</a>
     <% } %>
-      | <a href="validate?where=createpost">Post a listing</a>
+      | <a href="validate?where=/createpost">Post a listing</a>
       | <a href="viewalllistings">View all listings</a>
       | <% String user = isLoggedIn(session);  %>
       <% if (user == null) { %>
         <a href="login">Login</a>
       <% }else{ %>
         <a href="profile.jsp">View profile</a>
-        | <a href="logout.jsp">Log out(<%=user%>)</a>
+        | <a href="logout">Log out(<%=user%>)</a>
       <%}%>
     </div>
     <br>
