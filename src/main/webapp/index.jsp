@@ -1,24 +1,15 @@
+<%@ page import="com.unihub.app.AuthUtilities" %>
+<% session.setAttribute("path_for_login", request.getServletPath()); %>
+
 <html>
 <head>
-	<%!
-		public String isLoggedIn(HttpSession session) {
-			String userName = (String)session.getAttribute("username");
-			if(userName != null)
-				userName = "You are logged in as "+userName+ " "+
-				"<a href='logout'>Logout :(</a>";
-			else
-				userName = "<a href=\"login\">Login</a>";
-
-			return userName;
-		}
-	%>
 
 	<title>Home</title>
 </head>
 <body>
-	<h3><%= isLoggedIn(session) %></h3>
+	<h3><%= AuthUtilities.isLoggedIn(session) %></h3>
 	<CENTER>
-	<h2>Welcome to UniHub!</h2>
+	<h2>Welcome to UniHub! <%= request.getServletPath() %></h2>
 
 	<form ACTION="le_test" METHOD="POST">
 		<input TYPE="text" name="query">

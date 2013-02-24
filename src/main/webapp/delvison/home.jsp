@@ -1,3 +1,4 @@
+<% session.setAttribute("path_for_login", request.getServletPath()); %>
 <html>
 <head>
 <%
@@ -49,7 +50,7 @@ public String isLoggedIn(HttpSession session) {
         <a href="login">Login</a>
       <% }else{ %>
         <a href="profile.jsp">View profile</a>
-        | <a href="logout.jsp">Log out(<%=user%>)</a>
+        | <a href="logout">Log out(<%=user%>)</a>
       <%}%>
     </div>
     <br>

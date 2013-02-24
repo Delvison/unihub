@@ -12,14 +12,6 @@
   <url-pattern>/login</url-pattern>
 </servlet-mapping>
 
-<servlet>
-  <servlet-name>Auth</servlet-name>
-  <servlet-class>com.unihub.app.Auth</servlet-class>
-</servlet>
-<servlet-mapping>
-  <servlet-name>Auth</servlet-name>
-  <url-pattern>/authenticate</url-pattern>
-</servlet-mapping>
 
 <servlet>
   <servlet-name>response_result</servlet-name>

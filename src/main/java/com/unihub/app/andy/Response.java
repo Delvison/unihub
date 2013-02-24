@@ -7,7 +7,6 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
-import javax.servlet.annotation.*;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -36,13 +35,11 @@ of the JSON then parse and show to user*/
 		((userQuery == null || userQuery.equals(""))?"fwiceubfnuire":formatSearch(userQuery))+
 		"&alt=atom";
 
-		/*URL googleRequest = new URL(requestUrl);
-		Scanner scan = new Scanner(googleRequest.openStream());*/
-
 
 		/*This be a test to see if XML works
 		with the way Yulle found*/
 		try {
+			/*Create DocumentBuilder which calls the URL and parses it*/
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder build = dbf.newDocumentBuilder();
 			Document doc = build.parse(requestUrl);
@@ -59,8 +56,8 @@ of the JSON then parse and show to user*/
 				String name = nameNodeList.item(i).getTextContent();
 				linkArray[i] = htmlLinkOutput(store, name);
 			}
-
-			req.setAttribute("links", linkArray);
+			
+				req.setAttribute("links", linkArray);
 
 		} catch (Exception e) {
 			throw new RuntimeException(e);

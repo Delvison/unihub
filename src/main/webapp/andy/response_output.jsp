@@ -1,4 +1,9 @@
-<% String[] linkArray = (String[])request.getAttribute("links"); %>
+<% 
+String[] linkArray = (String[])request.getAttribute("links"); 
+if(linkArray == null)
+	linkArray = new String[0];
+%>
+
 <!doctype html>
 <html>
 
@@ -8,7 +13,7 @@
 
 <body>
 
-	<h1>Your List!</h1>
+	<h1><%= (linkArray.length == 0)? "Oh No!":"Your List!" %></h1>
 
 	<ul>
 		<% for(String link : linkArray) { %>
