@@ -12,8 +12,8 @@ public class ViewAllServlet extends HttpServlet {
       
   public void doGet(HttpServletRequest req, 
     	 HttpServletResponse res) throws ServletException, IOException {
-    
-    Listings lis = Listings.create();
+    	     
+    ListingsObj lis = ListingsObj.create();
     int amount = lis.stuffs.size();
     
     PrintWriter out = res.getWriter();	
@@ -22,8 +22,10 @@ public class ViewAllServlet extends HttpServlet {
     
     for (int i = 0; i < amount; i++){
       Stuff a = lis.stuffs.get(i);
-      String contents = a.getContent();
-      out.println("<li>"+contents);
+      String[] c = a.getContentArray();
+      int id = a.getId();
+      out.print("<li><a href=\"item?id="+id+"\">"+c[0]+"- "+c[1]+"</a>"+
+      " - "+c[3]+", "+c[4]+"</li>");
     }
     out.println("<hr>");
     String h = "<a href="+"home"+">home</a>";

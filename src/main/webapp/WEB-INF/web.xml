@@ -1,7 +1,8 @@
 <web-app>
 
-<display-name>Hello World</display-name>
+<display-name>Unihub</display-name>
 
+<!-- Andy's Mappings ################################################### -->
 <servlet>
   <servlet-name>login</servlet-name>
   <jsp-file>andy/login.jsp</jsp-file>
@@ -39,15 +40,9 @@
   <url-pattern>/le_test</url-pattern>
 </servlet-mapping>
 -->
+<!-- End of Andy's Mappings ############################################## -->
 
-<servlet>
-  <servlet-name>google</servlet-name>
-  <jsp-file>delvison/google.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-  <servlet-name>google</servlet-name>
-  <url-pattern>/google.jsp</url-pattern>
-</servlet-mapping>
+<!-- Yulle's Mappings #################################################### -->
 
 <servlet>
   <servlet-name>amazon</servlet-name>
@@ -56,6 +51,29 @@
 <servlet-mapping>
   <servlet-name>amazon</servlet-name>
   <url-pattern>/amazon</url-pattern>
+</servlet-mapping>
+<!-- End of Yulle's Mappings ############################################# -->
+
+<!-- Mark's Mappings ######################################################-->
+
+
+
+<!-- End of Mark's Mappings ###############################################-->
+
+
+<!-- Delvison's Mappings ##################################################-->
+<servlet>
+  <servlet-name>HomeServlet</servlet-name>
+  <servlet-class>com.unihub.app.HomeServlet</servlet-class>
+</servlet>
+
+<servlet>
+  <servlet-name>google</servlet-name>
+  <jsp-file>delvison/google.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>google</servlet-name>
+  <url-pattern>/google.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>
@@ -69,20 +87,11 @@
 
 <servlet>
   <servlet-name>setcookie</servlet-name>
-  <jsp-file>delvison/setcookie.jsp</jsp-file>
+  <servlet-class>com.unihub.app.LocationServlet</servlet-class>
 </servlet>
 <servlet-mapping>
   <servlet-name>setcookie</servlet-name>
   <url-pattern>/setcookie.jsp</url-pattern>
-</servlet-mapping>
-
-<servlet>
-  <servlet-name>showcookievalue</servlet-name>
-  <jsp-file>delvison/showcookievalue.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-  <servlet-name>showcookievalue</servlet-name>
-  <url-pattern>/showcookievalue.jsp</url-pattern>
 </servlet-mapping>
 
 <servlet>
@@ -104,6 +113,16 @@
 </servlet-mapping>
 
 <servlet>
+  <servlet-name>header</servlet-name>
+  <jsp-file>delvison/header.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>header</servlet-name>
+  <url-pattern>/header</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
   <servlet-name>ListingsServlet</servlet-name>
   <servlet-class>com.unihub.app.ListingsServlet</servlet-class>
 </servlet>
@@ -120,5 +139,17 @@
   <servlet-name>ViewListingsServlet</servlet-name>
   <url-pattern>/viewalllistings</url-pattern>
 </servlet-mapping>
+
+<servlet>
+  <servlet-name>ValidateUserServlet</servlet-name>
+  <servlet-class>com.unihub.app.ValidateUserServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>ValidateUserServlet</servlet-name>
+  <url-pattern>/validate</url-pattern>
+</servlet-mapping>
+
+
+<!-- End of Delvison's Mappings ########################################## -->
 
 </web-app>

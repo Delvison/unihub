@@ -1,4 +1,3 @@
-<%@ page language="java" %>
 <%
   String cookieName = "school&state";
   String sc = " "; 
@@ -21,20 +20,18 @@
     st = vals[1];
   }
 %>
-
 <%!
 public String isLoggedIn(HttpSession session) {
 	String userName = (String)session.getAttribute("username");
 	  return userName;	}
 %>
 
-<html>
-<body>
   <p>	
   <div style="float:left; text-align:left;">
     <b>UniHub</b>
   </div>      
   <div align="right" style="float:right; text-align:right;">
+    <a href="home">Home</a> |
     <a href="google.jsp">Search</a> |
     <% if (myCookie == null) { %>
        <a href="cookieform.jsp">Set school</a>
@@ -52,12 +49,5 @@ public String isLoggedIn(HttpSession session) {
       <%}%>
     </div>
     <br>
-    <% if (myCookie == null) { %>
     <hr>
-    <li>No School set yet.
-    <% } else { %> 
-       <hr>
-       <li>Your current university is <%=sc%>
-       <li>Your current location is <%=st%>.<br>
-    <% } %>
-</body>
+
