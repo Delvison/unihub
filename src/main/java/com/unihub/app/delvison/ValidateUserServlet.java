@@ -48,7 +48,7 @@ public class ValidateUserServlet extends HttpServlet {
     } else{
       /* if not logged in, send to login page */
 /* ############## need some sort of error msg here */
-      res.sendRedirect("login");
+      res.sendRedirect("sorry");
     } 
   }
 }

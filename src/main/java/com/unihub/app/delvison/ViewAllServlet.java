@@ -29,7 +29,7 @@ public class ViewAllServlet extends HttpServlet {
     }
     out.println("<hr>");
     String h = "<a href="+"home"+">home</a>";
-    String a = "<a href="+"createpost"+">Create a listing</a>";
+    String a = "<a href=\"validate?where=createpost\">Post a listing</a>";
     out.print(h+" | ");
     out.print(a);
     out.println(PAGE_FOOTER); 

@@ -30,5 +30,14 @@ public class ListingsObj{
     }
     return listings;
   }
+  
+  public Stuff getStuff(int passedId) {
+    Stuff stuff = stuffs.get(0); 
+    for (Stuff s: stuffs){
+      if (s.id == passedId)
+        stuff = s;
+    }
+    return stuff;
+  }
 
 }
