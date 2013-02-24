@@ -113,7 +113,6 @@
   <url-pattern>/header</url-pattern>
 </servlet-mapping>
 
-
 <servlet>
   <servlet-name>ListingsServlet</servlet-name>
   <servlet-class>com.unihub.app.ListingsServlet</servlet-class>
@@ -141,6 +140,23 @@
   <url-pattern>/validate</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>notloggedin</servlet-name>
+  <jsp-file>delvison/notloggedin.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>notloggedin</servlet-name>
+  <url-pattern>/sorry</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>ItemServlet</servlet-name>
+  <servlet-class>com.unihub.app.ItemServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>ItemServlet</servlet-name>
+  <url-pattern>/item</url-pattern>
+</servlet-mapping>
 
 <!-- End of Delvison's Mappings ########################################## -->
 
