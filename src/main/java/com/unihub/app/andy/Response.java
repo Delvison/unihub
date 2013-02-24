@@ -80,7 +80,7 @@ of the JSON then parse and show to user*/
 
 	public String htmlLinkOutput(String url, String name) {
 
-		return "<li><a href=\""+url+"\">"+name+"</a></li>";
+		return "<a href=\""+url+"\">"+name+"</a>";
 
 	}//end htmlLinkOut
 
