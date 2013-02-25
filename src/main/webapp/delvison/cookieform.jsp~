@@ -3,7 +3,8 @@
 
 <html>
 <head>
-<title>Cookie Test</title>
+<%@include file="header.jsp" %>
+<title>Set Locationt</title>
 </head>
 
 <body>

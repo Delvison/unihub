@@ -32,12 +32,15 @@ public class ListingsServlet extends HttpServlet {
     String price = req.getParameter("price");
     String university = req.getParameter("university");
     String loc = req.getParameter("location");
+    //String timeNow = new java.util.Date().toString();
     ListingsObj lis = ListingsObj.create();
-    lis.addStuff(userName,name,price,university,loc);
-   
-
-    res.sendRedirect("viewalllistings");
- 
+    if(name == null || university == null || loc ==null){
+      /* for now. need an error message for future though */
+      res.sendRedirect("sorry");
+    }else{
+      lis.addStuff(userName,name,price,university,loc);
+      res.sendRedirect("viewalllistings");
+    }
   }
 }
 

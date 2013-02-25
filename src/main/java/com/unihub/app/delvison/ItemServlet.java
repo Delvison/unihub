@@ -1,6 +1,8 @@
 /* 
 this servlet is meant for retrieving data on an item that was clicked in 
 the listings page
+
+##THIS WILL BE A JSP IN FUTURE!
 */
 
 package com.unihub.app;
@@ -29,7 +31,7 @@ public class ItemServlet extends HttpServlet {
     out.println(PAGE_HEADER);
     out.print("Name: "+stuf.name);
     out.println("- "+stuf.price);
-    out.println("<br>Owner:"+stuf.user);
+    out.println("<br>Owner: "+stuf.user);
     out.println("<br>University: "+stuf.university+ ", "+stuf.location);
     out.println(PAGE_FOOTER);
   }  

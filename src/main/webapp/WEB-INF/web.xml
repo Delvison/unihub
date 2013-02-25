@@ -158,6 +158,15 @@
   <url-pattern>/item</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>item</servlet-name>
+  <jsp-file>delvison/item.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>item</servlet-name>
+  <url-pattern>/i</url-pattern>
+</servlet-mapping>
+
 <!-- End of Delvison's Mappings ########################################## -->
 
 </web-app>
