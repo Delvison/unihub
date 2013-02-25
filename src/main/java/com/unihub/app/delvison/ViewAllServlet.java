@@ -24,7 +24,7 @@ public class ViewAllServlet extends HttpServlet {
       Stuff a = lis.stuffs.get(i);
       String[] c = a.getContentArray();
       int id = a.getId();
-      out.print("<li><a href=\"item?id="+id+"\">"+c[0]+"- "+c[1]+"</a>"+
+      out.print("<li><a href=\"i?id="+id+"\">"+c[0]+"- "+c[1]+"</a>"+
       " - "+c[3]+", "+c[4]+"</li>");
     }
     out.println("<hr>");

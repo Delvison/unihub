@@ -1,12 +1,12 @@
 package com.unihub.app;
 
 public class Stuff{
-  String name;
-  String price;
-  String user;
-  String university;
-  String location;
-  int id;
+  public String name;
+  public String price;
+  public String user;
+  public String university;
+  public String location;
+  public int id;
   
   public Stuff(int id, String user, String name, String price, String university,
   String location){
