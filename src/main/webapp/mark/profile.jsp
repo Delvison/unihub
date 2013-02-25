@@ -4,6 +4,9 @@
     Author     : Grifafa
 --%>
 
+<!-- Not Currently Used
+See ProfileServlet in java/mark -->
+
 <%@ page language="java" import="com.unihub.app.User,
                                 javax.servlet.*,
                                 javax.servlet.http.*" %>

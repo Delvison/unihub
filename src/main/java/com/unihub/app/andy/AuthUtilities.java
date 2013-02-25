@@ -34,7 +34,7 @@ public class AuthUtilities {
 	public static String isLoggedIn(HttpSession session) {
 		String userName = (String)session.getAttribute("username");
 			if(userName != null)
-				userName = "You are logged in as <a href='mark/profile.jsp'>"+
+				userName = "You are logged in as <a href='profile'>"+
 					userName + "</a> | " +
 					"<a href='logout'>Logout :(</a>";
 			else
