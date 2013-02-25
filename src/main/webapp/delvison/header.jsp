@@ -49,7 +49,7 @@ public String isLoggedIn(HttpSession session) {
       <% if (user == null) { %>
         <a href="login">Login</a>
       <% }else{ %>
-        <a href="mark/profile.jsp">View profile</a>
+        <a href="profile">View profile</a>
         | <a href="logout">Log out(<%=user%>)</a>
       <%}%>
     </div>
