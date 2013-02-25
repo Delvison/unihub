@@ -20,6 +20,7 @@
     </FORM>
     </CENTER>
     <a href="amazon">Search Amazon</a>
+    <a href="google.html">Search Ebay</a>
 
   </body>
 
