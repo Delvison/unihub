@@ -14,7 +14,7 @@ See ProfileServlet in java/mark -->
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@ include file="../delvison/header.jsp"%>
         <title>User Profile</title>
     </head>
     <body>

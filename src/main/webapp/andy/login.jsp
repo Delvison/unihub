@@ -22,6 +22,7 @@
 		<input type="password" name="password"><br>
 		<input type="submit" value="login">
 	</form>
+        <p>Not a member? <a href="signup">Sign Up Now</a></p>
 
 	<p><%= request.getServletPath() %></p>
 </body>

@@ -56,3 +56,8 @@ public String isLoggedIn(HttpSession session) {
     <br>
     <hr>
 
+    <p>
+      <%= // Mark's silly database thing
+      session.getAttribute("dbase").toString() %>
+    </p>
+

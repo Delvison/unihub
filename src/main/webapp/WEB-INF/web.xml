@@ -48,7 +48,36 @@
 
 <!-- Mark's Mappings ######################################################-->
 
+<servlet>
+  <servlet-name>profile</servlet-name>
+  <jsp-file>mark/profile.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>profile</servlet-name>
+  <url-pattern>/profile</url-pattern>
+</servlet-mapping>
 
+<<<<<<< HEAD
+=======
+<servlet>
+  <servlet-name>signup</servlet-name>
+  <jsp-file>mark/signup.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>signup</servlet-name>
+  <url-pattern>/signup</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>CreateUserServlet</servlet-name>
+  <servlet-class>com.unihub.app.CreateUserServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>CreateUserServlet</servlet-name>
+  <url-pattern>/createuser</url-pattern>
+</servlet-mapping>
+
+>>>>>>> b23cf0b250663bda79b3937d39047d885b90be4f
 <!-- End of Mark's Mappings ###############################################-->
 
 

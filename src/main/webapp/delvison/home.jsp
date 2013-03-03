@@ -1,4 +1,5 @@
 <% session.setAttribute("path_for_login", request.getServletPath()); %>
+
 <html>
 <head>
 <%

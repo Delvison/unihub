@@ -11,8 +11,10 @@ import javax.servlet.http.*;
 public class User implements javax.servlet.http.HttpSessionBindingListener {
     
     private String name, school, email, password;
-    
+    private int id;
+ 
     public User(String n, String p, String e, String s) {
+        id = -1;
         name = n;
         password = p;
         email = e;
@@ -22,6 +24,14 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     public boolean isLoggedIn(HttpSession session) {
         String foundName = (String)session.getAttribute("username");
         return (foundName.equals(this.name));	
+    }
+
+    public int getId() {
+      return id;
+    }
+
+    public void setId(int id) {
+      this.id = id;
     }
 
     /**
