@@ -39,9 +39,9 @@ public String isLoggedIn(HttpSession session) {
     <a href="home">Home</a> |
     <a href="google.jsp">Search</a> |
     <% if (myCookie == null) { %>
-       <a href="cookieform.jsp">Set school</a>
+       <a href="populateUniversities">Set school</a>
     <% } else { %> 
-       <a href="cookieform.jsp">Change school</a>
+       <a href="populateUniversities">Change school</a>
     <% } %>
       | <a href="validate?where=/createpost">Post a listing</a>
       | <a href="viewalllistings">View all listings</a>

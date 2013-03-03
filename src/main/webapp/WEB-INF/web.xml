@@ -12,7 +12,6 @@
   <url-pattern>/login</url-pattern>
 </servlet-mapping>
 
-
 <servlet>
   <servlet-name>response_result</servlet-name>
   <jsp-file>andy/response_output.jsp</jsp-file>
@@ -44,10 +43,10 @@
   <servlet-name>amazon</servlet-name>
   <url-pattern>/amazon</url-pattern>
 </servlet-mapping>
+
 <!-- End of Yulle's Mappings ############################################# -->
 
 <!-- Mark's Mappings ######################################################-->
-
 
 
 <!-- End of Mark's Mappings ###############################################-->
@@ -55,7 +54,8 @@
 
 <!-- Delvison's Mappings ##################################################-->
 <servlet>
-  <servlet-name>HomeServlet</servlet-name>
+  <servlet-name>
+  HomeServlet</servlet-name>
   <servlet-class>com.unihub.app.HomeServlet</servlet-class>
 </servlet>
 
@@ -165,6 +165,24 @@
 <servlet-mapping>
   <servlet-name>item</servlet-name>
   <url-pattern>/i</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>PopUni</servlet-name>
+  <servlet-class>com.unihub.app.GetUniServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>PopUni</servlet-name>
+  <url-pattern>/populateUniversities</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>viewlistings</servlet-name>
+  <jsp-file>delvison/viewall.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>viewlistings</servlet-name>
+  <url-pattern>/view</url-pattern>
 </servlet-mapping>
 
 <!-- End of Delvison's Mappings ########################################## -->

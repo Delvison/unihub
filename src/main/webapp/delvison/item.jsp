@@ -33,11 +33,12 @@
     <div id="addcomment">
       <!--add form here -->
       <!--upon submit, forward to a controller java class
-          that will process the comment posted -->
+          that will first validate user and 
+          process the comment posted -->
     </div>
     
     <div id="displaycomments">
-      <!-- java controller will feed in the date. display 
+      <!-- java controller will feed in the data. display 
            comments here-->
     </div>
       

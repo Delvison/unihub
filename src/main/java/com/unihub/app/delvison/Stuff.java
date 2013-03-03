@@ -1,3 +1,7 @@
+/*
+temporary model class for invidual items posted
+*/
+
 package com.unihub.app;
 
 public class Stuff{

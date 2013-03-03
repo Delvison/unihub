@@ -2,6 +2,11 @@
   <head>
     <%@include file="header.jsp" %>
     <title>Set Locationt</title>
+       <%@ page import="com.unihub.app.UniDefaults, java.util.*" %>
+       <%
+       UniDefaults uni = UniDefaults.create();
+       ArrayList<String> univers = uni.universities;
+       %>
   </head>
 
   <body>
@@ -20,6 +25,14 @@
         <option>Washington</option>
       </select>
       <br>
+      
+      <select name = "university">
+        <%
+          for (String u:univers){
+        %>
+            <option><%=u%></option>
+        <%}%>
+       
 
       <input type="submit" value="Submit">
     </form>

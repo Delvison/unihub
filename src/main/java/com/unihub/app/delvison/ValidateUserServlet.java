@@ -1,13 +1,10 @@
 /*
 **INFO:
-**This servlet can be used to validate whether or **not the user is logged in.
-**To use, direct a link to this servlet and append **your intended location to the
-**where parameter.
+**This servlet can be used to validate whether or 
+**not the user is logged in.
+**To use, direct a link to this servlet and append **your intended location to the where parameter.
 **
 **Example -- localhost:8080/unihub/validate?where=home
-
-####NOTE: we need a "sorry you are not logged in" page or something to inform the
-user that they are not logged in before redirecting to login.jsp
 */
 
 package com.unihub.app;
@@ -49,7 +46,6 @@ public class ValidateUserServlet extends HttpServlet {
       res.sendRedirect(whereTo.replaceFirst("/", ""));
     } else{
       /* if not logged in, send to login page */
-/* ############## need some sort of error msg here */
       res.sendRedirect("sorry");
     } 
   }

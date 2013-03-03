@@ -4,7 +4,7 @@ package com.unihub.app;
 import java.util.ArrayList;
 
 public class ListingsObj{
-  ArrayList<Stuff> stuffs;
+  public ArrayList<Stuff> stuffs;
   int id;
   
   private ListingsObj(){

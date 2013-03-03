@@ -39,8 +39,6 @@ public class Auth extends HttpServlet {
 		else
 			res.sendRedirect("login");
 
-
 	}//end of doPost method
-
 
 }//end class
