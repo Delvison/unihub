@@ -150,7 +150,7 @@
 
 <servlet>
   <servlet-name>ViewListingsServlet</servlet-name>
-  <servlet-class>com.unihub.app.ViewAllServlet</servlet-class>
+  <jsp-file>delvison/viewall.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
   <servlet-name>ViewListingsServlet</servlet-name>
@@ -200,15 +200,6 @@
 <servlet-mapping>
   <servlet-name>PopUni</servlet-name>
   <url-pattern>/populateUniversities</url-pattern>
-</servlet-mapping>
-
-<servlet>
-  <servlet-name>viewlistings</servlet-name>
-  <jsp-file>delvison/viewall.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-  <servlet-name>viewlistings</servlet-name>
-  <url-pattern>/view</url-pattern>
 </servlet-mapping>
 
 <!-- End of Delvison's Mappings ########################################## -->

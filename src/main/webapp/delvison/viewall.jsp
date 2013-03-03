@@ -9,11 +9,27 @@
 </head>
 
 <body>
-  <div name="searchbar">
+  <div name="searchbar" style="background-color:LightGray">
     <!--search bar goes here -->
-    <FORM ACTION="search" METHOD="GET" >
-    <input type="text" name="q">
-    <INPUT TYPE="SUBMIT">
+    <center>
+
+      <FORM ACTION="search" METHOD="GET" >
+        <div>
+          <select name = "school">
+        <option>All</option>
+        <option>Art Supplies</option>
+        <option>Books</option>
+        <option>Bicycles</option>
+        <option>Electronics</option>
+        <option>Cell Phones</option>
+        <option>Furniture</option>
+        <option>Musical Instruments</option>
+        <option>Misc.</option>
+      </select>
+        <input type="text" name="q">
+        <INPUT TYPE="SUBMIT" value="Search">
+        </div>
+    </center>
   </div>
 
   <div name="allListings">
