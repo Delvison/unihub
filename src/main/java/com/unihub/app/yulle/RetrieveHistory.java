@@ -6,6 +6,7 @@ import javax.servlet.http.*;
 
 import javax.servlet.annotation.*;
 
+import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
@@ -16,12 +17,13 @@ import org.w3c.dom.Node;
 @WebServlet("/retrieveHistory")
 public class RetrieveHistory extends HttpServlet {
     
+    HttpSession session;
+
     public void doGet(HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException {
         
         PrintWriter out = res.getWriter();
         out.println("<HTML><HEAD> </HEAD> <BODY>");
-        
-        
+        /*
         Cookie cookies[] = req.getCookies();
         Cookie mycookie = null;
         if (cookies != null){
@@ -45,7 +47,22 @@ public class RetrieveHistory extends HttpServlet {
             }
             out.println("</UL>");
         }
-        out.println("<DIV><a href=/unihub/amazon>Back to seach </a> </DIV>");
+        */
+
+        session = req.getSession();
+        List<String> klist = new ArrayList();
+        klist = (List<String>) session.getAttribute("keywords");
+
+        out.println("<UL>");
+        ListIterator it = klist.listIterator();
+        while(it.hasNext()){
+            String key = (String) it.next();
+            String link = key.replace(" ","%20");
+            out.println("<li><a href=/unihub/amazon?search="+link+">"+key+"</a> </li>");
+        }
+        out.println("</UL>");
+
+        out.println("<DIV><a href=/unihub/amazonSearch>Back to search </a> </DIV>");
         out.println("</BODY> </HTML>");
     }
 }
