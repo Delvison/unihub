@@ -65,11 +65,7 @@ public class Amazon extends HttpServlet {
                              "&description="+detailUrl+
                              "&price="+price);
         }catch (RuntimeException e){
-            out.println("<html>");
-            out.println("<head><meta http-equiv=\"refresh\" content=\"2;/unihub/amazonSearch\"></head>");//in this case, title = null
-            out.println("<center><h1>Book Not Found</h1>");
-            out.println("redirecting...</center>");
-            out.println("</html>");
+            res.sendRedirect("/unihub/bookNotFound");//in this case title equals null
         }
 	}//end of doGet method
 

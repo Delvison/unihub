@@ -62,6 +62,15 @@
   <url-pattern>/searchHistory</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>bookNotFound</servlet-name>
+  <jsp-file>yulle/bookNotFound.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>bookNotFound</servlet-name>
+  <url-pattern>/bookNotFound</url-pattern>
+</servlet-mapping>
+
 
 <!-- End of Yulle's Mappings ############################################# -->
 
