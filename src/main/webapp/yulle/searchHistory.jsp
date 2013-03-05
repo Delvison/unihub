@@ -10,7 +10,7 @@
   		<% 
   		  session = request.getSession();
   		  List<String> klist = new ArrayList();
-          klist = (List<String>) session.getAttribute("keywords");
+        klist = (List<String>) session.getAttribute("keywords");
         %>
         <% if(session.getAttribute("keywords") != null){ %>	
           <% ListIterator it = klist.listIterator(); %>

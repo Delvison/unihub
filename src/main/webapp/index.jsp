@@ -1,9 +1,6 @@
 <%@ page import="com.unihub.app.AuthUtilities, com.unihub.app.Dbase" %>
 <% session.setAttribute("path_for_login", request.getServletPath()); %>
 
-<% // Mark's silly database object (remove when actual db is implemented)
-session.setAttribute("dbase", new Dbase()); %>
-
 <html>
 <head>
 
