@@ -1,4 +1,4 @@
-<% session.setAttribute("path_for_login", request.getServletPath()); %>
+<%@include file="/andy/auth_headers.jsp" %>
 
 <html>
 <head>

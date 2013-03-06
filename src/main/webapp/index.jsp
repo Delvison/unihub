@@ -1,5 +1,5 @@
 <%@ page import="com.unihub.app.AuthUtilities, com.unihub.app.Dbase" %>
-<% session.setAttribute("path_for_login", request.getServletPath()); %>
+<%@include file="/andy/auth_headers.jsp" %>
 
 <html>
 <head>
