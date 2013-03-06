@@ -1,3 +1,10 @@
+  <!--import twitter bootstrap css and js-->
+  <link rel="stylesheet" type="text/css" href="http://localhost:8080/unihub/design/bootstrap/css/bootstrap.css" ></link>
+  <script language="JavaScript" type="text/JavaScript" src="http://localhost:8080/unihub/design/bootstrap/js/bootstrap.js"></script>
+  <script src="http://localhost:8080/unihub/design/jquery-1.9.1.js"></script>
+  <script src="http://localhost:8080/unihub/design/bootstrap/js/bootstrap-dropdown.js"></script>
+  
+<!---##############JAVA PORTION###############################-->
 <%
 session.setAttribute("path_for_login", request.getServletPath());
 %>
@@ -22,36 +29,50 @@ session.setAttribute("path_for_login", request.getServletPath());
     sc = vals[0];
     st = vals[1];
   }
-
-
 %>
 <%!
 public String isLoggedIn(HttpSession session) {
 	String userName = (String)session.getAttribute("username");
 	  return userName;	}
 %>
-
-  <p>	
-  <div style="float:left; text-align:left;">
-    <b>UniHub</b>
-  </div>      
-  <div align="right" style="float:right; text-align:right;">
-    <a href="home">Home</a> |
-    <a href="google.jsp">Search</a> |
-    <% if (myCookie == null) { %>
-       <a href="populateUniversities">Set school</a>
-    <% } else { %> 
-       <a href="populateUniversities">Change school</a>
-    <% } %>
-      | <a href="validate?where=/createpost">Post a listing</a>
-      | <a href="viewalllistings">View all listings</a>
-      | <% String user = isLoggedIn(session);  %>
-      <% if (user == null) { %>
-        <a href="login">Login</a>
-      <% }else{ %>
-        <a href="profile">View profile</a>
-        | <a href="logout">Log out(<%=user%>)</a>
-      <%}%>
+<% String user = isLoggedIn(session);%>
+<!---##############JAVA PORTION END###############################-->
+  
+<div class="navbar">
+  <div class="navbar-inner">
+    <div style="float:left; text-align:left;">
+      <a class="brand" href="home">UniHub</a>
     </div>
-    <br>
-    <hr>
+    <div align="right" style="float:right; text-align:right;" >
+      <table>
+      <tr><td>
+        <a href="google.jsp">Search</a> |
+         <% if (myCookie == null) { %>
+               <a href="populateUniversities">Set school</a> |
+             <% } else { %> 
+               <a href="populateUniversities">Change school</a> |
+             <% } %>
+               <a href="validate?where=/createpost">Post a listing</a> |
+               <a href="viewalllistings">View all listings</a>  
+             <% if (user == null) { %>
+               <a href="login" class="btn">Login</a> 
+               </td>
+             <% }else{ %>
+             <td>
+             <div class="btn-group pull-right">
+               <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                 <i class="icon-user"></i><%=user%>
+                 <span class="caret"></span>
+               </a>
+               <ul class="dropdown-menu">
+                 <li><a href="profile">View profile</a></li>  
+                 <li class="divider"></li>
+                 <li><a href="logout">Log out</a></li>
+               </ul>
+             </div><%}%>
+             </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

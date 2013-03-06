@@ -20,6 +20,7 @@ public class ListingsServlet extends HttpServlet {
     	 
     session = req.getSession(); /* get current session */	
 
+    /* get the username */
     String userName="";
     try{
       userName = (String)session.getAttribute("username");
@@ -27,14 +28,24 @@ public class ListingsServlet extends HttpServlet {
       res.sendRedirect("login");
     }
     
-    //String user = req.getParameter("user");
-    String name = req.getParameter("name");
-    String price = req.getParameter("price");
-    String university = req.getParameter("university");
-    String loc = req.getParameter("location");
+    String name = req.getParameter("name"); /* get name of item */
+    String price = req.getParameter("price"); /* get price */
+    String university = req.getParameter("university"); /* get university */
+    String loc = req.getParameter("location"); /* get location */
+    String cat = req.getParameter("category"); /* get category */
+    String desc = req.getParameter("description"); /* get description */
+    boolean bid; 
+    
+    /* determine whether or not bid mode was selected */
+    if (req.getParameter("bid") != null){
+      bid = true;
+    }else{
+      bid = false;
+    }
+    
     //String timeNow = new java.util.Date().toString();
     ListingsObj lis = ListingsObj.create();
-    if(name == null || university == null || loc ==null){
+    if(name == null || university == null || loc ==null ||userName==null){
       /* for now. need an error message for future though */
       res.sendRedirect("sorry");
     }else{
@@ -43,5 +54,3 @@ public class ListingsServlet extends HttpServlet {
     }
   }
 }
-
-
