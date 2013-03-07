@@ -19,12 +19,13 @@ See ProfileServlet in java/mark -->
     </head>
     <body>
         <% User user = (User)session.getAttribute("user");  %>
-        <% if (user == null) { %>
-        <a href="../login.jsp">Login</a>
-        <% }else{ %>
-        <h3><%=user.getName()%></h3>
+        <%  try {
+            String gravatar = user.gravatar(); 
+            } catch(NoSuchAlgorithmException e) {
+              out.println("No Such Algorithm Exception");
+            } %>
+        <img src=<%=gravatar%>></img><br/>
+        <h3><%=user.getName()%></h3><br/>
         <h4><%=user.getSchool()%></h4>
-        <a href="../index.jsp"> My Listings </a>
-        <%}%>
     </body>
 </html>

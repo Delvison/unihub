@@ -1,38 +1,49 @@
-// Mock database for app prototype
-// Currently only houses a array list of users.
+// Mock users database for app prototype
+// Currently houses an arraylist of users and a static instance of itself.
 package com.unihub.app;
 
 import java.util.ArrayList;
 
 public class Dbase {
 
-  private ArrayList<User> users;
+  public ArrayList<User> userslist;
 
   /**
    * Empty constructor initializes a new arraylist
    */
-  public Dbase() {
-    users = new ArrayList<User>();
+  private Dbase() {
+    userslist = new ArrayList<User>();
   }
+  
+  private static Dbase users;
 
   /**
    * Add a user to the array list and return the index
    * it was added at (for id purposes)
    */
   public void addUser(User user) {
-    users.add(user);
-    user.setId(users.indexOf(user));
+    userslist.add(user);
+    user.setId(userslist.indexOf(user));
+  }
+
+  private static Dbase getInstance() {
+    return users;
+  }
+
+  public static Dbase create() {
+    if(users == null) users = new Dbase();
+    return users;
   }
 
   /**
    * Returns user at a specific index in the arraylist
    */
   public User getUser(int index) {
-    return users.get(index);
+    return userslist.get(index);
   }  
 
   public String toString() {
-    return users.toString();
+    return userslist.toString();
   }
 
 }

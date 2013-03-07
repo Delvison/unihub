@@ -22,13 +22,16 @@ public void doPost(HttpServletRequest req,
     throws ServletException, IOException {
 
   session = req.getSession();
-  Dbase usersbase = (Dbase)session.getAttribute("dbase");
+  Dbase usersbase = Dbase.create();
   res.setContentType("text/html");
   PrintWriter out = res.getWriter();
-  usersbase.addUser(new User(req.getParameter("name"),
-                             req.getParameter("password"),
-                             req.getParameter("email")+".edu",
-                             "Oswego"));
+  User newbie = new User(req.getParameter("name"),
+                         req.getParameter("password"),
+                         req.getParameter("email")+".edu",
+                         "Oswego");
+  usersbase.addUser(newbie);
+  //not yet implemented
+  //sendConfirmationEmail(newbie);
   out.println( "A User was Created" );
   res.sendRedirect("home");
 
