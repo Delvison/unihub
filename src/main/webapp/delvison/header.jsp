@@ -44,23 +44,21 @@ public String isLoggedIn(HttpSession session) {
       <a href="home"><img style="width:165px;height:45px"src="http://localhost:8080/unihub/design/images/logo.png"></a>
     </div>
     <div align="right" style="float:right; text-align:right;" >
-      <table border="0" cellpadding="2" cellspacing="2">
-      <tr><td valign="baseline">
-        <a href="google.jsp">Search</a> |
-         <% if (myCookie == null) { %>
-               <a href="populateUniversities">Set school</a> |
+      <ul class="nav">
+        <li><a href="google.jsp">Search</a></li> 
+             <% if (myCookie == null) { %>
+               <li><a href="populateUniversities">Set school</a></li>
              <% } else { %> 
-               <a href="populateUniversities">Change school</a> |
+               <li><a href="populateUniversities">Change school</a></li>
              <% } %>
-               <a href="validate?where=/createpost">Post a listing</a> |
-               <a href="viewalllistings">View all listings</a>  
+               <li><a href="validate?where=/createpost">Post a listing</a></li>
+               <li><a href="viewalllistings">View all listings</a></li>  
              <% if (user == null) { %>
-               <a href="login" class="btn">Login</a> 
-               </td>
+               <li><a href="login">Login</a></li>
              <% }else{ %>
-             <td>
-             <div class="btn-group pull-right">
-               <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+             <li>
+               <li class="dropdown">
+               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                  <i class="icon-user"></i><%=user%>
                  <span class="caret"></span>
                </a>
@@ -68,12 +66,10 @@ public String isLoggedIn(HttpSession session) {
                  <li><a href="profile">View profile</a></li>  
                  <li class="divider"></li>
                  <li><a href="logout">Log out</a></li>
-               </ul>
-             </div>
+             </li>
+           </ul>
              <%}%>
-             </td>
-        </tr>
-      </table>
+        </ul>
     </div>
   </div>
 </div>
