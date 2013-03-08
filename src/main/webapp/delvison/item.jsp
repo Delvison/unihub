@@ -65,7 +65,7 @@
             <!-- java controller will feed in the data. display 
                  comments here-->
             <i class="icon-user"></i><a href="#">sketchyBuyer1:</a><i> sell for $2?</i><hr>
-            <i class="icon-user"></i><a href="#">Seller:</a><i> gtfo -___-</i><hr>
+            <i class="icon-user"></i><a href="#">Seller:</a><i> no. -___-</i><hr>
               <% for (Comment c: cmt.comments){
                    String[] co = c.getContentArray(); %>
                    <p><i class="icon-user"></i><a href="profile"><%=co[0]%>:</a>

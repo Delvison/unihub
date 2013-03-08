@@ -2045,6 +2045,11 @@ table {
   padding: 4px 5px;
 }
 
+.table-fluid {
+   width: auto;
+   margin-bottom: 20px;
+}
+
 .table-bordered {
   border: 1px solid #dddddd;
   border-collapse: separate;

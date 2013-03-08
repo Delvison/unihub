@@ -8,25 +8,23 @@
   
     <style type='text/css'>
     body {
-      background-color: #CCC;
+      background-color: #ccc;
     }
   </style>
 
 </head>
 
 <body>
+<center>
+<div class="row">
 <div id='content' class='row-fluid'>
       <!--Search Pane-->
-      <div class='span3 sidebar' style="background-color:White">
+      <div class='span3 sidebar offset1' data-spy="scroll" style="background-color:White">
         <h2>Search</h2>
         <FORM ACTION="search" METHOD="GET" >
-          <div class="input-prepend">
-            <span class="add-on"><i class="icon-search"></i></span>
-            <input class="span2" type="text" name="q"
-                   style="width:180px">
-          </div>
+          <input class="span11" type="text" name="q" placeholder="Search">   
           <br>
-          <select name = "school" style="width:208px">
+          <select name = "category" class="span11">
             <option>All</option>
             <option>Art Supplies</option>
             <option>Books</option>
@@ -43,23 +41,25 @@
       </div>
       
       <!--Listings Pane -->
-      <div class='span9 main' style="background-color:White">
+      <div class='span7 main' style="background-color:White">
         <h2>Listings</h2>
+        <p><i><%=sc%></i></p>
           <% if (lis.stuffs.size() == 0) {%>
             <p><i>No listings exist.</i></p>
           <%}%>
-        <table>
+        <table class="table table-striped">
             <% for (Stuff s: lis.stuffs){
                    String[] c = s.getContentArray();
                    int id = s.getId(); %>
           <tr>
-            <td><p><a href="i?id=<%=id%>"><%=c[0]+"- "+c[1]%></a>
+            <td valign="center">
+              <p><a href="i?id=<%=id%>"><%=c[0]+"- "+c[1]%> </a>
               <%=c[3]+", "+c[4]%></p>
             </td>
           </tr>
              <%}%>
         </table>
-      </div>
+      </div></div></center>
 </div>
 </body>
 </html>

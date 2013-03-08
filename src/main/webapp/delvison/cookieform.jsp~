@@ -2,7 +2,7 @@
   <head>
     <%@include file="header.jsp" %>
     <title>Set Locationt</title>
-       <%@ page import="com.unihub.app.UniDefaults, java.util.*" %>
+       <%@ page import="com.unihub.app.UniDefaults,com.unihub.app.DummyData, java.util.*" %>
        <%
        UniDefaults uni = UniDefaults.create();
        ArrayList<String> univers = uni.universities;
@@ -33,7 +33,7 @@
         <%}%>
       </select>
       <br>
-      <input type="submit" class="btn btn-primary btn-large" value="Submit">
+      <input type="submit" class="btn btn-primary" value="Submit">
     </form>
   </body>
 </html>

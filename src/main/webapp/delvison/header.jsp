@@ -1,8 +1,8 @@
   <!--import twitter bootstrap css and js-->
-  <link rel="stylesheet" type="text/css" href="http://localhost:8080/unihub/design/bootstrap/css/bootstrap.min.css" ></link>
-  <script language="JavaScript" type="text/JavaScript" src="http://localhost:8080/unihub/design/bootstrap/js/bootstrap.js"></script>
-  <script src="http://localhost:8080/unihub/design/jquery-1.9.1.js"></script>
-  <script src="http://localhost:8080/unihub/design/bootstrap/js/bootstrap-dropdown.js"></script>
+  <link rel="stylesheet" type="text/css" href="design/bootstrap/css/bootstrap.min.css" ></link>
+  <script language="JavaScript" type="text/JavaScript" src="design/bootstrap/js/bootstrap.js"></script>
+  <script src="design/jquery-1.9.1.js"></script>
+  <script src="design/bootstrap/js/bootstrap-dropdown.js"></script>
   
 <!---##############JAVA PORTION###############################-->
 <%
@@ -41,7 +41,7 @@ public String isLoggedIn(HttpSession session) {
 <div class="navbar">
   <div class="navbar-inner">
     <div style="float:left; text-align:left;">
-      <a href="home"><img style="width:165px;height:45px"src="http://localhost:8080/unihub/design/images/logo.png"></a>
+      <a href="home"><img style="width:165px;height:45px"src="design/images/logo.png"></a>
     </div>
     <div align="right" style="float:right; text-align:right;" >
       <ul class="nav">
@@ -59,7 +59,7 @@ public String isLoggedIn(HttpSession session) {
              <li>
                <li class="dropdown">
                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                 <i class="icon-user"></i><%=user%>
+                 <i class="icon-user"></i> <%=user%>
                  <span class="caret"></span>
                </a>
                <ul class="dropdown-menu">
