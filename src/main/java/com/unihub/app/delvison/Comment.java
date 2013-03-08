@@ -14,4 +14,13 @@ public class Comment{
     this.comment = comment;
     this.commentId = commentId;
   }
+  
+    //function to return all content
+  public String[] getContentArray(){
+    String[] a = new String[2];
+    a[0] = this.user;
+    a[1] = this.comment;
+    return a;       
+  }
+  
 }

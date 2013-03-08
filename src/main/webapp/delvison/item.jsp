@@ -1,7 +1,8 @@
 <html>
 <head>
-    <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.Stuff, java.util.*" %>
+    <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.CommentObj, com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*" %>
     <%
+      CommentObj cmt = CommentObj.create();
       /* get id from url */
       String id = (String)request.getParameter("id");
       int x = Integer.valueOf(id);
@@ -65,6 +66,11 @@
                  comments here-->
             <i class="icon-user"></i><a href="#">sketchyBuyer1:</a><i> sell for $2?</i><hr>
             <i class="icon-user"></i><a href="#">Seller:</a><i> gtfo -___-</i><hr>
+              <% for (Comment c: cmt.comments){
+                   String[] co = c.getContentArray(); %>
+                   <p><i class="icon-user"></i><a href="profile"><%=co[0]%>:</a>
+                   <i><%=co[1]%></i></p><hr>
+             <%}%>
             
           </div>
           <!--section where a comment can be posted -->
