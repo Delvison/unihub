@@ -1,8 +1,11 @@
+<!--jsp for individual items-->
 <html>
 <head>
     <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.CommentObj, com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*" %>
+    <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp" %>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
     <%
-      CommentObj cmt = CommentObj.create();
       /* get id from url */
       String id = (String)request.getParameter("id");
       int x = Integer.valueOf(id);
@@ -66,12 +69,7 @@
                  comments here-->
             <i class="icon-user"></i><a href="#">sketchyBuyer1:</a><i> sell for $2?</i><hr>
             <i class="icon-user"></i><a href="#">Seller:</a><i> no. -___-</i><hr>
-              <% for (Comment c: cmt.comments){
-                   String[] co = c.getContentArray(); %>
-                   <p><i class="icon-user"></i><a href="profile"><%=co[0]%>:</a>
-                   <i><%=co[1]%></i></p><hr>
-             <%}%>
-            
+            <devjsp:printComment itemId="<%=id%>" /> <!-- prints out comments -->
           </div>
           <!--section where a comment can be posted -->
           <div name="postComments">
@@ -84,13 +82,13 @@
                 <input type="hidden" name="user" value="<%=user%>">
                 <input type="hidden" name="itemId" value="<%=id%>">
                   <%if (user != null){%>
-                    <p style="font-size:xx-small;color:Green">
+                         <p style="font-size:xx-small;color:Green">
                       Logged in as <%=user%>
-                    </p>
+                         </p>
                   <%}else{%>
-                     <p style="font-size:xx-small;color:Red">
-                      Please login to post a comment.
-                    </p>
+                          <p style="font-size:xx-small;color:Red">
+                            Please login to post a comment.
+                          </p>
                   <%}%>
                 <input type="submit" value="Add Comment" class="btn btn-primary">
               </center>

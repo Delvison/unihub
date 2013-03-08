@@ -19,9 +19,9 @@ public class CommentObj{
     return comment;
   }
   
-  public void addComment(String user, String comment){
+  public void addComment(String user, String comment, int itemId){
     id = id+1;
-    Comment a = new Comment(user,comment,id);
+    Comment a = new Comment(user,comment,id, itemId);
     comments.add(a);
   }
   

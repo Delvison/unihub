@@ -22,11 +22,11 @@ public class CommentServlet extends HttpServlet{
     }
     String comment = req.getParameter("comment"); 
     String currentItem = req.getParameter("itemId"); 
-    if (comment == null){
+    if (comment == null || userName.equals("")){
       res.sendRedirect("sorry");
     }else{
-      cmt.addComment(userName,comment);
-      res.sendRedirect("i?id="+currentItem);
+      cmt.addComment(userName,comment,Integer.parseInt(currentItem));
+      res.sendRedirect("item?id="+currentItem);
     }
     
   }

@@ -7,12 +7,14 @@ package com.unihub.app;
 public class Comment{
   String user;
   int commentId;
+  public int itemId;
   String comment;
   
-  public Comment(String user, String comment, int commentId){
+  public Comment(String user, String comment, int commentId, int itemId){
     this.user = user;
     this.comment = comment;
     this.commentId = commentId;
+    this.itemId = itemId;
   }
   
     //function to return all content

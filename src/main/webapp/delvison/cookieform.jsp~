@@ -6,6 +6,7 @@
        <%
        UniDefaults uni = UniDefaults.create();
        ArrayList<String> univers = uni.universities;
+       DummyData.generate();
        %>
   </head>
 

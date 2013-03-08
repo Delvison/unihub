@@ -1,3 +1,4 @@
+<!-- jsp to create a listing -->
 <html>
 <head>
   <%@include file="header.jsp" %>
@@ -79,11 +80,10 @@
           <input type="hidden" name="university" value="<%=sc%>">
           <tr>
             <td colspan="2"><center><input type="submit" value="Sell"
-                            class="btn btn-primary btn-large"><center></td>
+                            class="btn btn-primary btn-large"></center></td>
           </tr>
-      </table>
-      </center>
-      </form>
+        </table>
+       </form>
       </div>
       
       <!--Search Pane-->
@@ -91,6 +91,8 @@
         <h2>sidebar maybe?</h2>
           <p><i>Maybe put a form to upload pics here or move
                 the description here..</i></p>
+          <img data-src="holder.js/300x200" alt="">
+          <input type="file" name="somefile" class="span9" >
       </div>
 </div>
 </center>

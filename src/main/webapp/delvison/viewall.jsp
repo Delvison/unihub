@@ -1,3 +1,4 @@
+<!--view all listings jsp-->
 <html>
 <head>
   <%@include file="header.jsp" %>
@@ -53,7 +54,7 @@
                    int id = s.getId(); %>
           <tr>
             <td valign="center">
-              <p><a href="i?id=<%=id%>"><%=c[0]+"- "+c[1]%> </a>
+              <p><a href="item?id=<%=id%>"><%=c[0]+"- "+c[1]%> </a>
               <%=c[3]+", "+c[4]%></p>
             </td>
           </tr>

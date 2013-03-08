@@ -41,7 +41,7 @@ public String isLoggedIn(HttpSession session) {
 <div class="navbar">
   <div class="navbar-inner">
     <div style="float:left; text-align:left;">
-      <a href="home"><img style="width:165px;height:45px"src="design/images/logo.png"></a>
+      <a href="home"><img style="width:140px;height:35px"src="design/images/logo.png"></a>
     </div>
     <div align="right" style="float:right; text-align:right;" >
       <ul class="nav">

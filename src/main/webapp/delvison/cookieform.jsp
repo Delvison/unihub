@@ -1,3 +1,4 @@
+<!--jsp to set location cookie-->
 <html>
   <head>
     <%@include file="header.jsp" %>

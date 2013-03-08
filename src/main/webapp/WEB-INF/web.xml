@@ -178,21 +178,12 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>ItemServlet</servlet-name>
-    <servlet-class>com.unihub.app.ItemServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ItemServlet</servlet-name>
-    <url-pattern>/item</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
     <servlet-name>item</servlet-name>
     <jsp-file>delvison/item.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>item</servlet-name>
-    <url-pattern>/i</url-pattern>
+    <url-pattern>/item</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -423,7 +414,7 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>item</servlet-name>
-  <url-pattern>/i</url-pattern>
+  <url-pattern>/item</url-pattern>
 </servlet-mapping>
 
 <servlet>

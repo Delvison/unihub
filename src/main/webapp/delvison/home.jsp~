@@ -1,4 +1,6 @@
 <%@include file="/andy/auth_headers.jsp" %>
+<%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld"
+prefix="devjsp" %>
 
 <html>
 <head>
@@ -7,7 +9,7 @@
 
 <body>
     <% if (myCookie == null) { %>
-    <div class="well">
+    <div class="well well-large">
     <li>No School set yet.
     <% } else { %> 
        <li>Your current university is <%=sc%>
