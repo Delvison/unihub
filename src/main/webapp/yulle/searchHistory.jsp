@@ -25,7 +25,8 @@
 		  <BR><I>No History Found!</I>
         <% } %>
         <DIV ALIGN="right" STYLE="float:right; text-align:right;">
-          <A HREF="/unihub/amazonSearch">Back to Search</A> |	
+          <A HREF="/unihub/amazonSearch">Back to Search</A> |
+          <A HREF="/unihub/clearHistory">Clear History</A>
         </DIV>  
     </DIV>
   </BODY>
