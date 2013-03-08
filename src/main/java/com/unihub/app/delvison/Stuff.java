@@ -14,19 +14,27 @@ public class Stuff{
   public int id;
   // have to add these
   public String description;
-  public boolean wantBid; //if true, item to be sold in bidding mode
+  public String bidMode; //if true, item to be sold in bidding mode
   public String highBidder; //holds value of the user who ahs the highest bid
   public String category;
   public Date timePosted;
   
   public Stuff(int id, String user, String name, String price, String university,
-  String location){
-  this.user = user;
-  this.name = name;
-  this.price = price;
-  this.university = university;
-  this.location = location;
-  this.id = id;
+  String location, String category, String description, Date now, boolean bid){
+    this.user = user;
+    this.name = name;
+    this.price = price;
+    this.university = university;
+    this.location = location;
+    this.id = id;
+    this.category = category;
+    this.description = description;
+    this.timePosted = now;
+    if (bid){
+      bidMode="yes"; 
+    }else{
+      bidMode="no";
+    }
   }
   
   public String getContent(){

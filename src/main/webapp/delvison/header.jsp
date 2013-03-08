@@ -1,5 +1,5 @@
   <!--import twitter bootstrap css and js-->
-  <link rel="stylesheet" type="text/css" href="http://localhost:8080/unihub/design/bootstrap/css/bootstrap.css" ></link>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8080/unihub/design/bootstrap/css/bootstrap.min.css" ></link>
   <script language="JavaScript" type="text/JavaScript" src="http://localhost:8080/unihub/design/bootstrap/js/bootstrap.js"></script>
   <script src="http://localhost:8080/unihub/design/jquery-1.9.1.js"></script>
   <script src="http://localhost:8080/unihub/design/bootstrap/js/bootstrap-dropdown.js"></script>
@@ -41,26 +41,24 @@ public String isLoggedIn(HttpSession session) {
 <div class="navbar">
   <div class="navbar-inner">
     <div style="float:left; text-align:left;">
-      <a class="brand" href="home">UniHub</a>
+      <a href="home"><img style="width:165px;height:45px"src="http://localhost:8080/unihub/design/images/logo.png"></a>
     </div>
     <div align="right" style="float:right; text-align:right;" >
-      <table>
-      <tr><td>
-        <a href="google.jsp">Search</a> |
-         <% if (myCookie == null) { %>
-               <a href="populateUniversities">Set school</a> |
+      <ul class="nav">
+        <li><a href="google.jsp">Search</a></li> 
+             <% if (myCookie == null) { %>
+               <li><a href="populateUniversities">Set school</a></li>
              <% } else { %> 
-               <a href="populateUniversities">Change school</a> |
+               <li><a href="populateUniversities">Change school</a></li>
              <% } %>
-               <a href="validate?where=/createpost">Post a listing</a> |
-               <a href="viewalllistings">View all listings</a>  
+               <li><a href="validate?where=/createpost">Post a listing</a></li>
+               <li><a href="viewalllistings">View all listings</a></li>  
              <% if (user == null) { %>
-               <a href="login" class="btn">Login</a> 
-               </td>
+               <li><a href="login">Login</a></li>
              <% }else{ %>
-             <td>
-             <div class="btn-group pull-right">
-               <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+             <li>
+               <li class="dropdown">
+               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                  <i class="icon-user"></i><%=user%>
                  <span class="caret"></span>
                </a>
@@ -68,11 +66,10 @@ public String isLoggedIn(HttpSession session) {
                  <li><a href="profile">View profile</a></li>  
                  <li class="divider"></li>
                  <li><a href="logout">Log out</a></li>
-               </ul>
-             </div><%}%>
-             </td>
-        </tr>
-      </table>
+             </li>
+           </ul>
+             <%}%>
+        </ul>
     </div>
   </div>
 </div>

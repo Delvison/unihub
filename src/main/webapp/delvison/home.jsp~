@@ -1,4 +1,4 @@
-<% session.setAttribute("path_for_login", request.getServletPath()); %>
+<%@include file="/andy/auth_headers.jsp" %>
 
 <html>
 <head>
@@ -7,11 +7,11 @@
 
 <body>
     <% if (myCookie == null) { %>
-    <hr>
+    <div class="well">
     <li>No School set yet.
     <% } else { %> 
-       <hr>
        <li>Your current university is <%=sc%>
        <li>Your current location is <%=st%>.<br>
     <% } %>
+    <div>
 </body>
