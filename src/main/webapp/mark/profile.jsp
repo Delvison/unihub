@@ -8,6 +8,7 @@
 See ProfileServlet in java/mark -->
 
 <%@ page language="java" import="com.unihub.app.User,
+                                java.security.*,
                                 javax.servlet.*,
                                 javax.servlet.http.*" %>
 <!DOCTYPE html>
@@ -18,13 +19,15 @@ See ProfileServlet in java/mark -->
         <title>User Profile</title>
     </head>
     <body>
-        <% User user = (User)session.getAttribute("user");  %>
-        <% if (user == null) { %>
-        <a href="../login.jsp">Login</a>
-        <% }else{ %>
-        <h3><%=user.getName()%></h3>
-        <h4><%=user.getSchool()%></h4>
-        <a href="../index.jsp"> My Listings </a>
-        <%}%>
+        <% User currentuser = (User)session.getAttribute("user"); %>
+        <%  String gravatar = "";
+            try {
+              gravatar = currentuser.gravatar(); 
+            } catch(NoSuchAlgorithmException e) {
+              out.println("No Such Algorithm Exception");
+            } %>
+        <img src=<%=gravatar%>></img><br/>
+        <h3><%=currentuser.getName()%></h3><br/>
+        <h4><%=currentuser.getSchool()%></h4>
     </body>
 </html>

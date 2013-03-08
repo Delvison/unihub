@@ -1,4 +1,8 @@
 package com.unihub.app;
+
+import java.math.BigInteger;
+import java.io.*;
+import java.security.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -24,6 +28,21 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     public boolean isLoggedIn(HttpSession session) {
         String foundName = (String)session.getAttribute("username");
         return (foundName.equals(this.name));	
+    }
+
+    public String gravatar() throws NoSuchAlgorithmException {
+      String plaintext = email;
+      MessageDigest m = MessageDigest.getInstance("MD5");
+      m.reset();
+      m.update(plaintext.getBytes());
+      byte[] digest = m.digest();
+      BigInteger bigInt = new BigInteger(1,digest);
+      String hashtext = bigInt.toString(16);
+      // Now we need to zero pad it if you actually want the full 32 chars.
+      while(hashtext.length() < 32 ){
+        hashtext = "0"+hashtext;
+      }
+      return "http://www.gravatar.com/avatar/" + hashtext;  
     }
 
     public int getId() {

@@ -2,6 +2,7 @@
 
 <html>
     <head>
+      <%@ include file="../delvison/header.jsp" %>
       <title>Sign Up</title>
     </head>
     <body>

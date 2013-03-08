@@ -290,7 +290,6 @@
   <url-pattern>/profile</url-pattern>
 </servlet-mapping>
 
-
 <servlet>
   <servlet-name>signup</servlet-name>
   <jsp-file>mark/signup.jsp</jsp-file>
