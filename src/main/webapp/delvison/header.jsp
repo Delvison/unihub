@@ -1,5 +1,5 @@
   <!--import twitter bootstrap css and js-->
-  <link rel="stylesheet" type="text/css" href="http://localhost:8080/unihub/design/bootstrap/css/bootstrap.css" ></link>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8080/unihub/design/bootstrap/css/bootstrap.min.css" ></link>
   <script language="JavaScript" type="text/JavaScript" src="http://localhost:8080/unihub/design/bootstrap/js/bootstrap.js"></script>
   <script src="http://localhost:8080/unihub/design/jquery-1.9.1.js"></script>
   <script src="http://localhost:8080/unihub/design/bootstrap/js/bootstrap-dropdown.js"></script>
@@ -41,11 +41,11 @@ public String isLoggedIn(HttpSession session) {
 <div class="navbar">
   <div class="navbar-inner">
     <div style="float:left; text-align:left;">
-      <a class="brand" href="home">UniHub</a>
+      <a href="home"><img style="width:150px;height:45px"src="http://localhost:8080/unihub/design/images/logo.png"></a>
     </div>
     <div align="right" style="float:right; text-align:right;" >
-      <table>
-      <tr><td>
+      <table border="0" cellpadding="2" cellspacing="2">
+      <tr><td valign="baseline">
         <a href="google.jsp">Search</a> |
          <% if (myCookie == null) { %>
                <a href="populateUniversities">Set school</a> |
@@ -69,7 +69,8 @@ public String isLoggedIn(HttpSession session) {
                  <li class="divider"></li>
                  <li><a href="logout">Log out</a></li>
                </ul>
-             </div><%}%>
+             </div>
+             <%}%>
              </td>
         </tr>
       </table>

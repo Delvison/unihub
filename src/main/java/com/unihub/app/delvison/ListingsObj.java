@@ -2,6 +2,7 @@
 package com.unihub.app;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ListingsObj{
   public ArrayList<Stuff> stuffs;
@@ -14,9 +15,10 @@ public class ListingsObj{
   private static ListingsObj listings;
   
  public void addStuff(String user, String name, String price, String university,
-  String location){
+  String location, String category, String description, Date now, boolean bid){
     id = id+1;
-    Stuff a = new Stuff(id, user, name, price, university, location);
+    Stuff a = new Stuff(id, user, name, price, university, location, category,
+                         description, now, bid);
     stuffs.add(a);
   }
   

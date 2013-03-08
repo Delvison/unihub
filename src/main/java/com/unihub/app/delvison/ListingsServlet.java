@@ -9,6 +9,7 @@ package com.unihub.app;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import java.util.Date;
 
 
 public class ListingsServlet extends HttpServlet {
@@ -49,7 +50,8 @@ public class ListingsServlet extends HttpServlet {
       /* for now. need an error message for future though */
       res.sendRedirect("sorry");
     }else{
-      lis.addStuff(userName,name,price,university,loc);
+      Date now = new Date();
+      lis.addStuff(userName,name,price,university,loc,cat,desc,now,bid);
       res.sendRedirect("viewalllistings");
     }
   }

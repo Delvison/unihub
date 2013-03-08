@@ -436,6 +436,15 @@
   <url-pattern>/populateUniversities</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>Addcomment</servlet-name>
+  <servlet-class>com.unihub.app.CommentServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>Addcomment</servlet-name>
+  <url-pattern>/addcomment</url-pattern>
+</servlet-mapping>
+
 <!-- End of Delvison's Mappings ########################################## -->
 
 </web-app>
