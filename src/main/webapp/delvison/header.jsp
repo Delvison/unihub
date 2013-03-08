@@ -43,8 +43,6 @@ public String isLoggedIn(HttpSession session) {
     <div style="float:left; text-align:left;">
       <a href="home"><img style="width:165px;height:45px"src="design/images/logo.png"></a>
     </div>
-    <br>
-    <hr>
     <div align="right" style="float:right; text-align:right;" >
       <ul class="nav">
         <li><a href="google.jsp">Search</a></li> 
