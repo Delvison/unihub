@@ -14,6 +14,7 @@ public class Logout extends HttpServlet {
 		HttpSession session = req.getSession();
 		String servletPath = 
 			((String)session.getAttribute("path_for_login")).replaceFirst("/","");
+			
 		session.invalidate();
 
 		res.sendRedirect(servletPath);

@@ -28,9 +28,9 @@ public void doGet(HttpServletRequest req,
   String address;
   
   if( user == null ) {
-    address = "authenticate?url=profile";
+    address = "/login?url=/profile";
   }else {
-    address = "/WEB-INF/profile.jsp";
+    address = "mark/profile.jsp";
   }
 
   RequestDispatcher dispatcher = req.getRequestDispatcher(address);

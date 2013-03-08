@@ -18,18 +18,20 @@ public class Auth extends HttpServlet {
 	public void doPost(HttpServletRequest req, 
 		HttpServletResponse res) throws ServletException, IOException {
 
+		HttpSession session = req.getSession();
 		String userName = req.getParameter("username");
 		String password = req.getParameter("password");
 
-		String servletPath = 
-			((String)req.getSession().getAttribute("path_for_login")).replaceFirst("/", "");
+		String servletPath = (session.getAttribute("path_for_login") != null) ?
+			((String)session.getAttribute("path_for_login")).replaceFirst("/", "") : "home";
 
 		if(AuthUtilities.authenticate(userName, password)) {
 			//successfully logged in so create cookie or session
 			//also remove calling path since it served its purpose
-			req.getSession().removeAttribute("path_for_login");
-			req.getSession().setAttribute("username", userName);
-                	req.getSession().setAttribute("user", 
+			session.setAttribute("", new Boolean(true));
+			session.removeAttribute("path_for_login");
+			session.setAttribute("username", userName);
+                	session.setAttribute("user", 
                                               new User(userName, 
                                                        password,
                                                        "test@example.edu",
@@ -40,5 +42,17 @@ public class Auth extends HttpServlet {
 			res.sendRedirect("login");
 
 	}//end of doPost method
+
+	/*
+	I decided to actually implement a get request for authenticate
+	which is only used for making login appear and passing it the right stuff
+	like what the previous
+	*/
+	public void doGet(HttpServletRequest req,
+		HttpServletResponse res) throws ServletException, IOException {
+
+		res.sendRedirect("login");
+
+	}//end of doGet method
 
 }//end class

@@ -14,12 +14,17 @@
 </head>
 
 <body>
-	<%= AuthUtilities.isLoggedInForLogin(session) %>
+	
 	<form action="authenticate" method="POST">
 		<label for="username">Username</label>
 		<input type="text" name="username"><br>
 		<label for="password">Password</label>
 		<input type="password" name="password"><br>
+
+		<% if(request.getAttribute("url") != null) { %>
+			<input type="hidden" value="<%= request.getAttribute("url") %>" name="url"><br>
+		<% } %>
+
 		<input type="submit" value="login">
 	</form>
         <p>Not a member? <a href="signup">Sign Up Now</a></p>
