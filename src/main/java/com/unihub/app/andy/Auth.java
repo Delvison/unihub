@@ -8,7 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet("/authenticate")
+@WebServlet("/login")
 public class Auth extends HttpServlet {
 	/*
 	Purpose of this class is to get the request from a users login
@@ -28,7 +28,6 @@ public class Auth extends HttpServlet {
 		if(AuthUtilities.authenticate(userName, password)) {
 			//successfully logged in so create cookie or session
 			//also remove calling path since it served its purpose
-			session.setAttribute("", new Boolean(true));
 			session.removeAttribute("path_for_login");
 			session.setAttribute("username", userName);
                 	session.setAttribute("user", 
@@ -51,7 +50,19 @@ public class Auth extends HttpServlet {
 	public void doGet(HttpServletRequest req,
 		HttpServletResponse res) throws ServletException, IOException {
 
-		res.sendRedirect("login");
+		String path = (String)req.getSession().getAttribute("path_for_login");
+
+
+		if(req.getSession().getAttribute("user") == null) {
+			RequestDispatcher dis = req.getRequestDispatcher("login-form");
+			dis.forward(req, res);
+		} else {
+			if(path == null)
+				res.sendRedirect("home");
+			else
+				res.sendRedirect(path.replaceFirst("/", ""));
+		}
+
 
 	}//end of doGet method
 
