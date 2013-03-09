@@ -1,6 +1,5 @@
 <!--jsp for individual items-->
-<html>
-<head>
+
     <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.CommentObj, com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*" %>
     <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp" %>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
@@ -23,17 +22,11 @@
       String description = stuff.description;
       Date now = stuff.timePosted;
       String bid = stuff.bidMode;
+
+      String user = (String)session.getAttribute("username");
     %>
     
     <%@include file="header.jsp" %>
-  
-    <style type='text/css'>
-    body {
-      background-color: #CCC;
-    }
-    </style>
-
-</head>
 
 <body>
 <div id='content' class='row-fluid'>
