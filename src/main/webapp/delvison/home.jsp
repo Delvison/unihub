@@ -1,9 +1,5 @@
-<%@include file="/andy/auth_headers.jsp" %>
+<%@include file="header.jsp" %>
 
-<html>
-<head>
-    <%@include file="header.jsp" %>
-</head>
 
 <body>
     <% if (myCookie == null) { %>

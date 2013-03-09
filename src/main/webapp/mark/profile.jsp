@@ -11,13 +11,9 @@ See ProfileServlet in java/mark -->
                                 java.security.*,
                                 javax.servlet.*,
                                 javax.servlet.http.*" %>
-<!DOCTYPE html>
 
-<html>
-    <head>
-        <%@ include file="../delvison/header.jsp"%>
-        <title>User Profile</title>
-    </head>
+<%@ include file="../delvison/header.jsp"%>
+
     <body>
         <% User currentuser = (User)session.getAttribute("user"); %>
         <%  String gravatar = "";

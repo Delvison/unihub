@@ -1,15 +1,11 @@
 <!--jsp to set location cookie-->
-<html>
-  <head>
-    <%@include file="header.jsp" %>
-    <title>Set Locationt</title>
-       <%@ page import="com.unihub.app.UniDefaults,com.unihub.app.DummyData, java.util.*" %>
-       <%
-       UniDefaults uni = UniDefaults.create();
-       ArrayList<String> univers = uni.universities;
-       DummyData.generate();
-       %>
-  </head>
+<%@include file="header.jsp" %>
+<%@ page import="com.unihub.app.UniDefaults,com.unihub.app.DummyData, java.util.*" %>
+<%
+  UniDefaults uni = UniDefaults.create();
+  ArrayList<String> univers = uni.universities;
+  DummyData.generate();
+%>
 
   <body>
     <form method="post" action="setcookie.jsp">

@@ -1,19 +1,9 @@
 <!--view all listings jsp-->
-<html>
-<head>
-  <%@include file="header.jsp" %>
-  <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.Stuff, java.util.*" %>
-  <%
-    ListingsObj lis = ListingsObj.create();
-  %>
-  
-    <style type='text/css'>
-    body {
-      background-color: #ccc;
-    }
-  </style>
-
-</head>
+<%@include file="header.jsp" %>
+<%@ page import="com.unihub.app.ListingsObj, com.unihub.app.Stuff, java.util.*" %>
+<%
+  ListingsObj lis = ListingsObj.create();
+%>
 
 <body>
 <center>

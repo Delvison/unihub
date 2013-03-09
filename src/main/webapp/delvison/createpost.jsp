@@ -1,18 +1,6 @@
 <!-- jsp to create a listing -->
-<html>
-<head>
-  <%@include file="header.jsp" %>
-  
-  <!--import twitter bootstrap css and js-->
-  <link rel="stylesheet" type="text/css" href="http://localhost:8080/unihub/design/bootstrap/css/bootstrap.css" ></link>
-  <script language="JavaScript" type="text/JavaScript" src="http://localhost:8080/unihub/design/bootstrap/js/bootstrap.js"></script>
-    
-  <style type='text/css'>
-    body {
-      background-color: #CCC;
-    }
-  </style>
-</head>
+
+<%@include file="header.jsp" %>
 
 <body>
 <center>
