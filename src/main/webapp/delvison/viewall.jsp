@@ -1,11 +1,10 @@
 <!--view all listings jsp-->
-<head>
   <%@include file="header.jsp" %>
   <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.Stuff, java.util.*" %>
   <%@ page isELIgnored="false" %>
   <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
   <%ListingsObj lis = ListingsObj.create();%>
-</head>
+
 
 <body>
 

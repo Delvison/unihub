@@ -70,14 +70,37 @@
                     <input type="hidden" name="user" value="<%=user%>">
                     <input type="hidden" name="itemId" value="<%=id%>">
                     <devjsp:cmntUser user="<%=user%>" />
-                    <input type="submit" value="Add Comment"
-                           class="btn btn-primary">
+                    <a href="#processComment" role="button" class="btn btn-primary" 
+                      data-toggle="modal">Comment</a>
                   </center>
-                </FORM>
+              <!-- popup that confirms comment -->
+              <div id="processComment" class="modal hide fade" role="dialog"
+                   aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                  <h3 id="myModalLabel">Post Comment</h3>
+                </div>
+                <div class="modal-body">
+                  <%if (user != null) {%>
+                    <p>Are you sure you want to post this comment?</p>
+                  <%}else{%>
+                    <p>Sorry, but you are not logged in :(</p>
+                  <%}%>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">
+                        Cancel</button>
+                    <%if (user != null) {%>
+                      <input type="submit" class="btn btn-primary" value="Comment">
+                    <%}else{%>
+                      <a class="btn btn-primary" href="login">Login</a>
+                    <%}%>
+                  </FORM>
+                </div>
               </div>      
         </div> <!--COMMENT PANE DIV-->
-      
       <!--</div> <!--WHOLE SIDE PANE DIV-->
   </div>
+  
+  <div>
 </body>
 </html>
