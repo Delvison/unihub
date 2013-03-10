@@ -20,28 +20,62 @@
       
       <!--ITEM INFO PANE -->
       <div class='span8 main' style="background-color:White">
-       <table class="span9">
-         <tr>
-           <td>
               <devjsp:itemInfo itemId="<%=id%>">
-                <p>
-                  <h2>${itemName}</h2><br>
-                  Price: $${itemPrice}<br>
-                  Owner: ${itemUser}<br>
-                  Category: ${itemCategory}<br>
-                  Time Posted: ${itemTime}<br>
-                  University: ${itemUniversity}, ${itemLocation}<br>
-                  Bid Mode?: ${itemBidMode}<br>
-                  Description: ${itemDescription}<br>
-                </p>
+                <center><p>
+                  <h2>${itemName} - $${itemPrice} (${itemUniversity},
+                   ${itemLocation})</h2><br>
+                </center><p>
+                <i>Category:</i> ${itemCategory}<br>
+                <i>Posted ${itemTime} by</i> <a href="profile">${itemUser}</a>
               </devjsp:itemInfo >
-           </td>
-           <td align="right">
-             <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRkY31DVjEblSBHJnqrxLCWO3U4PRXcUPmKwTqTD-k3MNG9SGAdUQ">
-           </td>
-         </tr>
-       </table>
-      </div>
+              
+              <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                         Images
+                    </a>
+                  </div>
+                  <div id="collapseOne" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <!-- PLACE IMAGE THuMBNAILS IN HERE -->
+                      <ul class="thumbnails">
+                        <li class="span4">
+                          <a href="#" class="thumbnail">
+                            <img data-src="holder.js/260x180" alt="">
+                          </a>
+                        </li>
+                        <li class="span4">
+                          <a href="#" class="thumbnail">
+                            <img data-src="holder.js/260x180" alt="">
+                          </a>
+                        </li>
+                        <li class="span4">
+                          <a href="#" class="thumbnail">
+                            <img data-src="holder.js/260x180" alt="">
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse"
+                       data-parent="#accordion2" href="#collapseTwo">
+                       Description
+                    </a>
+                  </div>
+                  <div id="collapseTwo" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                      <devjsp:itemInfo itemId="<%=id%>">
+                        <p>${itemDescription}</p>
+                      </devjsp:itemInfo >
+                    </div>
+                  </div>
+                </div>
+              </div>               
+        </div>
       
       <!--<div name="side-panel">-->
         <!--BID DIV GOES HERE -->  
@@ -73,29 +107,29 @@
                     <a href="#processComment" role="button" class="btn btn-primary" 
                       data-toggle="modal">Comment</a>
                   </center>
-              <!-- popup that confirms comment -->
-              <div id="processComment" class="modal hide fade" role="dialog"
-                   aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-header">
-                  <h3 id="myModalLabel">Post Comment</h3>
-                </div>
-                <div class="modal-body">
-                  <%if (user != null) {%>
-                    <p>Are you sure you want to post this comment?</p>
-                  <%}else{%>
-                    <p>Sorry, but you are not logged in :(</p>
-                  <%}%>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">
+                  <!-- popup that confirms comment -->
+                  <div id="processComment" class="modal hide fade" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                      <h3 id="myModalLabel">Post Comment</h3>
+                    </div>
+                    <div class="modal-body">
+                      <%if (user != null) {%>
+                        <p>Are you sure you want to post this comment?</p>
+                      <%}else{%>
+                        <p>Sorry, but you are not logged in :(</p>
+                      <%}%>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn" data-dismiss="modal" aria-hidden="true">
                         Cancel</button>
-                    <%if (user != null) {%>
-                      <input type="submit" class="btn btn-primary" value="Comment">
-                    <%}else{%>
-                      <a class="btn btn-primary" href="login">Login</a>
-                    <%}%>
-                  </FORM>
-                </div>
+                      <%if (user != null) {%>
+                        <input type="submit" class="btn btn-primary" value="Comment">
+                      <%}else{%>
+                        <a class="btn btn-primary" href="login">Login</a>
+                      <%}%>
+                      </FORM>
+                    </div>
               </div>      
         </div> <!--COMMENT PANE DIV-->
       <!--</div> <!--WHOLE SIDE PANE DIV-->
