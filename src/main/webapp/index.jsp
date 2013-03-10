@@ -10,7 +10,7 @@
 <%@ include file="/delvison/header.jsp" %>
 
 <body>
-	<div class="container-fluid">
+	<div class="container-fluid span10">
 
 
 
