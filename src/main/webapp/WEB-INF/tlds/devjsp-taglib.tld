@@ -7,11 +7,12 @@ version="2.0">
 <tlib-version>1.0</tlib-version>
 <short-name>devjsp-taglib</short-name>
 
+
 <tag>
-  <description>Outputs comments</description>
-  <name>printComment</name>
-  <tag-class>com.unihub.app.ShowCommentTag</tag-class>
-  <body-content>empty</body-content>
+  <description>Outputs Comments</description>
+  <name>forEachComment</name>
+  <tag-class>com.unihub.app.PrintCommentsTag</tag-class>
+  <body-content>scriptless</body-content>
   
   <attribute>
     <name>itemId</name>
@@ -19,5 +20,39 @@ version="2.0">
     <rtexprvalue>true</rtexprvalue>
   </attribute>
 </tag>
+
+<tag>
+  <description>Outputs Listings</description>
+  <name>forEachListing</name>
+  <tag-class>com.unihub.app.PrintListingsTag</tag-class>
+  <body-content>scriptless</body-content>
+</tag>
+
+<tag>
+  <description>Outputs item info</description>
+  <name>itemInfo</name>
+  <tag-class>com.unihub.app.IndividualListingTag</tag-class>
+  <body-content>scriptless</body-content>
+  
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>prints whether user on comment is logged in</description>
+  <name>cmntUser</name>
+  <tag-class>com.unihub.app.CommentUserTag</tag-class>
+  <body-content>empty</body-content>
+  
+  <attribute>
+    <name>user</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
 
 </taglib>

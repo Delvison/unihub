@@ -52,7 +52,12 @@
           </tr>
           <tr>
             <td>Price</td>
-            <td><input type="text" name="price" class="span12" placeholder="$$$"></td>
+            <td>
+            <div class="input-prepend input-append span12">
+              <span class="add-on">$</span>
+                <input class="span10" id="appendedPrependedInput" type="text">
+            </div>
+            </td>  
           </tr>
           <tr>
             <td></td>
@@ -62,7 +67,7 @@
           </tr>
           <tr>
             <td>Description</td>
-            <td><TEXTAREA name="description" class="span12" placeholder="Description"></TEXTAREA></td>
+            <td><TEXTAREA name="description" rows="7" placeholder="Description"></TEXTAREA></td>
           </tr>
           <input type="hidden" name="location" value="<%=st%>">
           <input type="hidden" name="university" value="<%=sc%>">

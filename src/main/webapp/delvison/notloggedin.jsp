@@ -14,6 +14,6 @@
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <strong>Warning!</strong> You are not logged in. Redirecting to login page.
     </div>
-    </center>
+    </center>    
   </body>
 </html>
