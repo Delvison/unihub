@@ -15,14 +15,15 @@ import javax.servlet.http.*;
 public class User implements javax.servlet.http.HttpSessionBindingListener {
     
     private String name, school, email, password;
-    private int id;
- 
+    private int id, reputation;
+
     public User(String n, String p, String e, String s) {
         id = -1;
         name = n;
         password = p;
         email = e;
         school = s;
+        reputation = 0;
     }
 
     public boolean isLoggedIn(HttpSession session) {
@@ -51,6 +52,14 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
 
     public void setId(int id) {
       this.id = id;
+    }
+
+    public int getReputation() {
+      return reputation;
+    }
+
+    public void setReputation(int rep) {
+      reputation = rep;
     }
 
     /**

@@ -8,31 +8,27 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 
-@WebServlet("/profile")
-public class ProfileServlet extends HttpServlet {
-
-HttpSession session;
+@WebServlet("/user")
+public class UserServlet extends HttpServlet {
 
 @Override
 public void doGet(HttpServletRequest req,
                   HttpServletResponse res)
     throws ServletException, IOException {
 
-  session = req.getSession();
-  User user = (User)session.getAttribute("user");
+  String u_id = req.getParameter("u_id");
 
   res.setContentType("text/html");
-  PrintWriter out = res.getWriter();
   String address;
-  
-  if( user == null ) {
-    address = "/login?url=/profile";
+
+  if( u_id.equals("all") ) {
+    address = "mark/allusers.jsp";
   }else {
-    address = "mark/profile.jsp";
+    address = "mark/user.jsp";
   }
 
   RequestDispatcher dispatcher = req.getRequestDispatcher(address);
   dispatcher.forward(req, res);
-} 
+}
 
 }
