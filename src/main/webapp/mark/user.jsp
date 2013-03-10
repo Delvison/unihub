@@ -24,7 +24,9 @@
               gravatar = currentuser.gravatar(); 
             } catch(NoSuchAlgorithmException e) {
               out.println("No Such Algorithm Exception");
-            } %>
+            } 
+            request.getSession().setAttribute("path_for_login", null);
+        %>
         <div class="row">
         <div class="span8 main" style="background-color:white">
             <table>

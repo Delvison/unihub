@@ -17,14 +17,13 @@ public void doGet(HttpServletRequest req,
     throws ServletException, IOException {
 
   String u_id = req.getParameter("u_id");
-
   res.setContentType("text/html");
   String address;
 
   if( u_id.equals("all") ) {
     address = "mark/allusers.jsp";
   }else {
-    address = "mark/user.jsp";
+      address = "mark/user.jsp";
   }
 
   RequestDispatcher dispatcher = req.getRequestDispatcher(address);
