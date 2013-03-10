@@ -8,6 +8,9 @@
 %>
 
   <body>
+         <div class='span4 sidebar' data-spy="scroll" style="background-color:White">
+    <center>
+      <h2>Choose Location</h2>
     <form method="post" action="setcookie.jsp">
       <select name = "school">
         <option>SUNY Oswego</option>
@@ -33,5 +36,7 @@
       <br>
       <input type="submit" class="btn btn-primary" value="Submit">
     </form>
+    </center>
+    </div>
   </body>
 </html>

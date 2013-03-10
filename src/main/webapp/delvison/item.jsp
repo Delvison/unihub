@@ -1,93 +1,140 @@
 <!--jsp for individual items-->
-
-    <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.CommentObj, com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*" %>
+<head>
+   <!--IMPORTS-->
+    <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.CommentObj,
+             com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*" %>
     <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp" %>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
-    <%
-      /* get id from url */
-      String id = (String)request.getParameter("id");
-      int x = Integer.valueOf(id);
-      /* get listingobj */
-      ListingsObj lis = ListingsObj.create();
-      /* find 'Stuff' by id */
-      Stuff stuff = lis.getStuff(x);
-    
-      String name = stuff.name;
-      String price = stuff.price;
-      String usr = stuff.user;
-      String university = stuff.university;
-      String location = stuff.location;
-      String category = stuff.category;
-      String description = stuff.description;
-      Date now = stuff.timePosted;
-      String bid = stuff.bidMode;
-
-      String user = (String)session.getAttribute("username");
-    %>
-    
     <%@include file="header.jsp" %>
+    <%@ page isELIgnored="false" %>
+    
+   <!--GET VARIABLES NEEDED-->
+    <% 
+    String user = (String)session.getAttribute("username");
+    String id = (String)request.getParameter("id");
+     %>
+</head>    
 
 <body>
-<div id='content' class='row-fluid'>
+  <div id='content' class='row-fluid'>
       
-      <!--Item Pane -->
+      <!--ITEM INFO PANE -->
       <div class='span8 main' style="background-color:White">
-       <table>
-       <tr>
-        <td>
-        <h2>(Item For Sale)</h2>
-          <p>Name: <%=name%> - <%=price%>
-          <br>Owner: <%=usr%>
-          <br>University: <%=university%>, <%=location%>
-          <br>Category: <%=category%>
-          <br>Description: <%=description%>
-          <br>Time Posted: <%=now%>
-          <br>Bid Mode?: <%=bid%>
-          </p>
-          </td>
-          <td align="right">
-          <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRkY31DVjEblSBHJnqrxLCWO3U4PRXcUPmKwTqTD-k3MNG9SGAdUQ">
-          </td>
-          </tr>
-          </table>
-      </div>
+              <devjsp:itemInfo itemId="<%=id%>">
+                <center><p>
+                  <h2>${itemName} - $${itemPrice} (${itemUniversity},
+                   ${itemLocation})</h2><br>
+                </center><p>
+                <i>Category:</i> ${itemCategory}<br>
+                <i>Posted ${itemTime} by</i> <a href="profile">${itemUser}</a>
+              </devjsp:itemInfo >
+              
+              <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                         Images
+                    </a>
+                  </div>
+                  <div id="collapseOne" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <!-- PLACE IMAGE THuMBNAILS IN HERE -->
+                      <ul class="thumbnails">
+                        <li class="span4">
+                          <a href="#" class="thumbnail">
+                            <img data-src="holder.js/260x180" alt="">
+                          </a>
+                        </li>
+                        <li class="span4">
+                          <a href="#" class="thumbnail">
+                            <img data-src="holder.js/260x180" alt="">
+                          </a>
+                        </li>
+                        <li class="span4">
+                          <a href="#" class="thumbnail">
+                            <img data-src="holder.js/260x180" alt="">
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse"
+                       data-parent="#accordion2" href="#collapseTwo">
+                       Description
+                    </a>
+                  </div>
+                  <div id="collapseTwo" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                      <devjsp:itemInfo itemId="<%=id%>">
+                        <p>${itemDescription}</p>
+                      </devjsp:itemInfo >
+                    </div>
+                  </div>
+                </div>
+              </div>               
+        </div>
       
-      <!--Comment Pane-->
-      <div class='span4 sidebar' style="background-color:White">
-        <center><h2>Comments</h2></center>
-          <!--section that displays comments posted-->
-          <div name="displayComments">
-            <!-- java controller will feed in the data. display 
-                 comments here-->
-            <i class="icon-user"></i><a href="#">sketchyBuyer1:</a><i> sell for $2?</i><hr>
-            <i class="icon-user"></i><a href="#">Seller:</a><i> no. -___-</i><hr>
-            <devjsp:printComment itemId="<%=id%>" /> <!-- prints out comments -->
-          </div>
-          <!--section where a comment can be posted -->
-          <div name="postComments">
-                <!--upon submit, forward to a controller java class
-                    that will first validate user and 
-                    process the comment posted -->
-            <FORM ACTION="addcomment" METHOD="get">
-              <center>
-                <textarea name="comment" style="width:260px;height:70px"></textarea>
-                <input type="hidden" name="user" value="<%=user%>">
-                <input type="hidden" name="itemId" value="<%=id%>">
-                  <%if (user != null){%>
-                         <p style="font-size:xx-small;color:Green">
-                      Logged in as <%=user%>
-                         </p>
-                  <%}else{%>
-                          <p style="font-size:xx-small;color:Red">
-                            Please login to post a comment.
-                          </p>
-                  <%}%>
-                <input type="submit" value="Add Comment" class="btn btn-primary">
-              </center>
-            </FORM>
-          </div> 
-      </div>
-</div>
+      <!--<div name="side-panel">-->
+        <!--BID DIV GOES HERE -->  
+        <!--COMMENTS PANE-->
+        <div class='span4 sidebar' style="background-color:White">
+            <center><h2>Comments</h2></center>
+              <!--section that displays comments posted-->
+              <div name="displayComments">
+                  <i class="icon-user"></i><a href="#">sketchyBuyer1:</a> 
+                     <i> sell for $2?</i><hr>
+                  <devjsp:forEachComment itemId="<%=id%>" >
+                     <p>
+                      <i class="icon-user"></i><a href="#">${commentsUser}:</a> 
+                      <i>${theComment}</i>
+                     </p>
+                     <hr>
+                  </devjsp:forEachComment>
+              </div>
+            
+              <!--section where a comment can be posted -->
+              <div name="postComments">
+                <FORM ACTION="addcomment" METHOD="get">
+                  <center>
+                    <textarea name="comment" style="width:260px;height:70px" 
+                               placeholder="Post Comment"></textarea>
+                    <input type="hidden" name="user" value="<%=user%>">
+                    <input type="hidden" name="itemId" value="<%=id%>">
+                    <devjsp:cmntUser user="<%=user%>" />
+                    <a href="#processComment" role="button" class="btn btn-primary" 
+                      data-toggle="modal">Comment</a>
+                  </center>
+                  <!-- popup that confirms comment -->
+                  <div id="processComment" class="modal hide fade" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                      <h3 id="myModalLabel">Post Comment</h3>
+                    </div>
+                    <div class="modal-body">
+                      <%if (user != null) {%>
+                        <p>Are you sure you want to post this comment?</p>
+                      <%}else{%>
+                        <p>Sorry, but you are not logged in :(</p>
+                      <%}%>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn" data-dismiss="modal" aria-hidden="true">
+                        Cancel</button>
+                      <%if (user != null) {%>
+                        <input type="submit" class="btn btn-primary" value="Comment">
+                      <%}else{%>
+                        <a class="btn btn-primary" href="login">Login</a>
+                      <%}%>
+                      </FORM>
+                    </div>
+              </div>      
+        </div> <!--COMMENT PANE DIV-->
+      <!--</div> <!--WHOLE SIDE PANE DIV-->
+  </div>
+  
+  <div>
 </body>
 </html>
