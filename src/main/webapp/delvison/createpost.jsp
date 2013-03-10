@@ -55,7 +55,7 @@
             <td>
             <div class="input-prepend input-append span12">
               <span class="add-on">$</span>
-                <input class="span10" id="appendedPrependedInput" type="text">
+                <input class="span10" id="appendedPrependedInput" type="text" name="price">
             </div>
             </td>  
           </tr>
