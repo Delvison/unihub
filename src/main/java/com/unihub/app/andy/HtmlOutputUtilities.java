@@ -8,13 +8,15 @@ public class HtmlOutputUtilities {
 
 	public static String bootStrapRow(String mario, String luigi) {
 
-		return "<div class=\"row-fluid\">"+
-					"<div class=\"span4\" style=\"background-color:White\">" +
-						"<h3>"+mario+"</h3>"+
+		return "<div class=\"container-fluid\" >"+
+					"<div class=\"span5 top-buffer\" style=\"background-color:White\">" +
+						"<h4 class=\"cat-title\">"+mario+"</h3>"+
+					"</div>" + (luigi != null ? 
+
+					"<div class=\"span5 top-buffer\" style=\"background-color:White\">" +
+						"<h4 class=\"cat-title\">"+luigi+"</h3>" : "") +
 					"</div>"+
-					"<div class=\"span4\" style=\"background-color:White\">" +
-						"<h3>"+luigi+"</h3>"+
-					"</div>"+
+
 				"</div>";
 
 	}//end of bootStrapRow

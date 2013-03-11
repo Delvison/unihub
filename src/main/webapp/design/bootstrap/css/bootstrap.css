@@ -8,6 +8,15 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+/*
+*Andy added the top-buffer class for margins since twitter bootstrap
+*does not offer this
+*/
+
+.top-buffer { margin-top:20px; height:150px;}
+
+.cat-title { background-color:gray; margin-top:0px; }
+
 .clearfix {
   *zoom: 1;
 }
