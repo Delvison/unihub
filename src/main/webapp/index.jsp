@@ -21,7 +21,9 @@
 		</div>
 
 
-		
+		<div class="container-fluid" style="background-color:#1E90FF">
+			<h2>Classifieds</h2>
+		</div>
 
 			<% for(int i = 0; i < cats.length; i++) {
 				if(i % 2 == 0) { %>
