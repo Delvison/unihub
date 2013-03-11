@@ -6,16 +6,20 @@ import java.util.ArrayList;
 
 public class Dbase {
 
-  public ArrayList<User> userslist;
+  private ArrayList<User> userslist;
+  private static Dbase users;
 
   /**
    * Empty constructor initializes a new arraylist
    */
   private Dbase() {
     userslist = new ArrayList<User>();
+    populate();
+  } 
+
+  public ArrayList<User> getUsersList() {
+    return userslist;
   }
-  
-  private static Dbase users;
 
   /**
    * Add a user to the array list and return the index
@@ -41,6 +45,15 @@ public class Dbase {
   public User getUser(int index) {
     return userslist.get(index);
   }  
+
+  /**
+   * populates the arraylist with some dummy data
+   */
+  public void populate() {
+    for(int i = 0; i < 10; i++) {
+      addUser(new User("User"+i, "pass", "mwillson@oswego.edu", "Oswego"));
+    }
+  }
 
   public String toString() {
     return userslist.toString();

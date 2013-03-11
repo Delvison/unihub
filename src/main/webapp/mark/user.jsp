@@ -1,27 +1,32 @@
 <%-- 
-    Document   : profile.jsp
-    Created on : Feb 23, 2013, 8:08:10 PM
+    Document   : user.jsp
+    Created on : Mar 10, 2013, 3:08:10 PM
     Author     : Mark
 --%>
 
-<!-- Not Currently Used
-See ProfileServlet in java/mark -->
-
 <%@ page language="java" import="com.unihub.app.User,
+                                 com.unihub.app.Dbase,
                                 java.security.*,
                                 javax.servlet.*,
                                 javax.servlet.http.*" %>
+<!DOCTYPE html>
 
-<%@ include file="../delvison/header.jsp"%>
-
-    <body>
-        <% User currentuser = (User)session.getAttribute("user"); %>
+  <html>
+  <head>
+    <%@ include file="../delvison/header.jsp"%>
+    <title>User Profile</title>
+  </head>
+    <body style="background-color:#CCC">
+        <% Dbase ubase = Dbase.create(); %>
+        <% User currentuser = ubase.getUser(Integer.parseInt(request.getParameter("u_id"))); %>
         <%  String gravatar = "";
             try {
               gravatar = currentuser.gravatar(); 
             } catch(NoSuchAlgorithmException e) {
               out.println("No Such Algorithm Exception");
-            } %>
+            } 
+            request.getSession().setAttribute("path_for_login", null);
+        %>
         <div class="row">
         <div class="span8 main" style="background-color:white">
             <table>
