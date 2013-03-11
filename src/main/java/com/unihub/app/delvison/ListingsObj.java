@@ -41,5 +41,15 @@ public class ListingsObj{
     }
     return stuff;
   }
-
+  
+  public ArrayList<Stuff> userSearch(String userSearched){
+    ArrayList<Stuff> listingsByTheUser = new ArrayList<Stuff>();
+    
+    for (Stuff s: stuffs){
+      if(s.user.equals(userSearched)){
+        listingsByTheUser.add(s);
+      }
+    }
+    return listingsByTheUser; 
+  }
 }
