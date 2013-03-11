@@ -32,7 +32,8 @@
               <div class="accordion" id="accordion2">
                 <div class="accordion-group">
                   <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                    <a class="accordion-toggle" data-toggle="collapse" 
+                       data-parent="#accordion2" href="#collapseOne">
                          Images
                     </a>
                   </div>
@@ -59,10 +60,12 @@
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="accordion" id="accordion3">
                 <div class="accordion-group">
                   <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse"
-                       data-parent="#accordion2" href="#collapseTwo">
+                       data-parent="#accordion3" href="#collapseTwo">
                        Description
                     </a>
                   </div>
