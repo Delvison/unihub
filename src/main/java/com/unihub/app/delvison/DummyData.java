@@ -5,7 +5,7 @@ import java.util.Date;
 public class DummyData{
   public static void generate(){
     ListingsObj lis = ListingsObj.create();
-    String user = "user1";
+    String user = "User1";
     String university = "SUNY Oswego";
     String location = "NY";    
     String category = "Misc.";
