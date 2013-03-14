@@ -14,6 +14,9 @@ public class DummyData{
     Date now = new Date();
     boolean bid = false;
     
+    String description1="Cervelo Soloist Carbon SL bike for sale SIZE: 54. Person 5'8\" to 6 SRAM Red components throughout except Ultegra Deraileur and Cassette (works better with Q-Rings) Mavic Cosmic Carbon Ultimate Wheels (MSRP $5000). Look Pedals. Brand New Chain. John Cobb V-Flow Max Seat, Deda Zero 100 Stem, Deda Newton Handlebars. Comes with HED Aerobars. I have this bike built for power. It weighs in at a tad under 15lbs. You could easily drop it below 14 if you wanted. I think it performs better like this, plus it is race legal. CASH only";
+    String item1="Cervelo SLC-SL Carbon Racing";
+    lis.addStuff(user, item1, "1500", university, location, category, description1, now, bid);
     lis.addStuff(user, "PS3", price, university, location, category, description, now, bid);
     lis.addStuff(user, "Thinkpad", price, university, location, category, description, now, bid);
     lis.addStuff(user, "Nexus 4", price, university, location, category, description, now, bid);  

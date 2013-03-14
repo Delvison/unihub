@@ -81,9 +81,14 @@
       
       <!--Search Pane-->
       <div class='span4 sidebar' style="background-color:White">
-        <h2>sidebar maybe?</h2>
-          <p><i>Maybe put a form to upload pics here or move
-                the description here..</i></p>
+        <h2>Photos</h2>
+          <div class="alert alert-block span10 offset1">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <p><i>Pictures are a great way for sellers to know exactly what you're
+                selling. They reassure the buyer of what it is you're actually selling
+                and they may even help for a quicker sale! So go ahead, snap one or two
+                and watch your stuff sell like hotcakes! </i></p>
+          </div>
           <img data-src="holder.js/300x200" alt="">
           <input type="file" name="somefile" class="span9" >
       </div>

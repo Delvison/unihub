@@ -26,6 +26,12 @@ version="2.0">
   <name>forEachListing</name>
   <tag-class>com.unihub.app.PrintListingsTag</tag-class>
   <body-content>scriptless</body-content>
+  
+<attribute>
+  <name>user</name>
+  <required>false</required>
+  <rtexprvalue>true</rtexprvalue>
+</attribute>
 </tag>
 
 <tag>
@@ -54,5 +60,39 @@ version="2.0">
   </attribute>
 </tag>
 
+<tag>
+  <description>Outputs picture info</description>
+  <name>picInfo</name>
+  <tag-class>com.unihub.app.PicturesTag</tag-class>
+  <body-content>scriptless</body-content>
+  
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
 
+<tag>
+  <description>Outputs picture info</description>
+  <name>picUrl</name>
+  <tag-class>com.unihub.app.PicExistTag</tag-class>
+  <body-content>empty</body-content>
+  
+  <attribute>
+    <name>picId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+    <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+      <attribute>
+    <name>path</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
 </taglib>
