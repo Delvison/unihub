@@ -46,13 +46,13 @@ public class ListingsServlet extends HttpServlet {
     
     //String timeNow = new java.util.Date().toString();
     ListingsObj lis = ListingsObj.create();
-    if(name == null || university == null || loc ==null ||userName==null){
+    if (name == null || university == null ||userName==null||desc==null){
       /* for now. need an error message for future though */
       res.sendRedirect("sorry");
     }else{
       Date now = new Date();
       lis.addStuff(userName,name,price,university,loc,cat,desc,now,bid);
-      res.sendRedirect("viewalllistings");
+      res.sendRedirect("viewalllistings?cat=All");
     }
   }
 }

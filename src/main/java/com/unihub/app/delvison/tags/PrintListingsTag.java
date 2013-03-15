@@ -7,6 +7,11 @@ package com.unihub.app;
 import javax.servlet.jsp.*;
 import javax.servlet.jsp.tagext.*;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class PrintListingsTag extends SimpleTagSupport{
   String user;
@@ -34,6 +39,10 @@ public class PrintListingsTag extends SimpleTagSupport{
           getJspContext().setAttribute("listingUniversity",c[3]); 
           getJspContext().setAttribute("listingLocation",c[4]);   
           getJspContext().setAttribute("listingId",c[5]);
+          getJspContext().setAttribute("listingCategory",c[6]);
+          DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+          String datePosted = formatter.format(s.timePosted);
+          getJspContext().setAttribute("listingDate",datePosted);
           getJspBody().invoke(null);
         }
       }
@@ -48,6 +57,10 @@ public class PrintListingsTag extends SimpleTagSupport{
           getJspContext().setAttribute("listingUniversity",c[3]); 
           getJspContext().setAttribute("listingLocation",c[4]);   
           getJspContext().setAttribute("listingId",c[5]);
+          getJspContext().setAttribute("listingCategory",c[6]);
+          DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+          String datePosted = formatter.format(s.timePosted);
+          getJspContext().setAttribute("listingDate",datePosted);
           getJspBody().invoke(null);
         }
       }
@@ -60,6 +73,10 @@ public class PrintListingsTag extends SimpleTagSupport{
           getJspContext().setAttribute("listingUniversity",c[3]); 
           getJspContext().setAttribute("listingLocation",c[4]);   
           getJspContext().setAttribute("listingId",c[5]);
+          getJspContext().setAttribute("listingCategory",c[6]);  
+          DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+          String datePosted = formatter.format(s.timePosted);
+          getJspContext().setAttribute("listingDate",datePosted);        
           getJspBody().invoke(null);
       }
     }  

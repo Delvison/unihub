@@ -5,81 +5,86 @@
 <body>
 <center>
 <div class="row-fluid">
-      
-      <!--Listings Pane -->
-      <div class='span7 main' style="background-color:White">
-       <h2>Sell Your Stuff!</h2>
-       <form action="createlisting" method="GET">
-        <center>
-        <div class="alert alert-block span10 offset1">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong>Hey!</strong> Before you make a sale, here are some guidelines.
-          Please be advised that UniHub does not encourage nor endorse any online
-           transactions. For your convenience and security, it is recommended that
-            all exchanges be done in person and in a public setting. Be sure to agree
-            on a solid meeting time and place and always bring a friend. Watch out
-            for lowballers and study hard!
-        </div>
-        <table class="table span9 offset1">
-          <tr>
-            <td>Location</td>
-            <td>
+  <div class='span12'>
+    
+    <!--Listings Pane -->
+    <div style="background-color:White" class="span6">
+      <h2>Sell Your Stuff!</h2>
+      <div class="span10">
+        <form class="form-horizontal" action="createlisting" method="GET">
+          <center>
+          <div class="alert alert-block span11 offset1">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Hey!</strong> Before you make a sale, here are some guidelines.
+              Please be advised that UniHub does not encourage nor endorse any online
+              transactions. For your convenience and security, it is recommended that
+              all exchanges be done in person and in a public setting. Be sure to agree
+              on a solid meeting time and place and always bring a friend. Watch out
+              for lowballers and study hard!
+          </div>
+          </center>
+          <div class="control-group">
+            <label class="control-label" for="location">Location</label>
+            <div class="controls">        
               <% if (myCookie == null) { %>
-                <a href="cookieform.jsp">Location not set</a><br>
+                <a class="span9" href="cookieform.jsp" id="location">Location not set</a><br>
               <% } else { %> 
-                <%=sc%>
+                <input id="location" class="span9" type="text" placeholder="<%=sc%>" disabled>
               <% } %>
-            </td>
-          </tr>
-          <tr>
-            <td>Category</td>
-            <td>
-               <select name = "category" class="span12">
-                 <option>Art Supplies</option>
-                 <option>Books</option>
-                 <option>Bicycles</option>
-                 <option>Cell Phones</option>
-                 <option>Electronics</option>
-                 <option>Furniture</option>
-                 <option>Musical Instruments</option>
-                 <option>Misc.</option>
-               </select>
-            </td>   
-          </tr>          
-          <tr>
-            <td>Name</td>
-            <td><input type="text" name="name" class="span12" placeholder="Name"></td>
-          </tr>
-          <tr>
-            <td>Price</td>
-            <td>
-            <div class="input-prepend input-append span12">
-              <span class="add-on">$</span>
-                <input class="span10" id="appendedPrependedInput" type="text" name="price">
             </div>
-            </td>  
-          </tr>
-          <tr>
-            <td></td>
-            <td><input type="checkbox" name="bid" value="yes">
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="category">Category</label>
+            <div class="controls">
+              <select name = "category" id="category" class="span9">
+                <option>Art Supplies</option>
+                <option>Books</option>
+                <option>Bicycles</option>
+                <option>Cell Phones</option>
+                <option>Electronics</option>
+                <option>Furniture</option>
+                <option>Musical Instruments</option>
+                <option>Misc.</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="name">Name</label>
+            <div class="controls">
+              <input type="text" id="name" placeholder="Name" class="span9" name="name">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="prependedInput">Price</label>
+            <div class="controls">
+              <div class="input-prepend span10 offset1">
+                <span class="add-on">$</span>
+                <input id="prependedInput" type="text" class="span10" name="price">
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="bid">Bid Mode</label>
+            <div class="controls">
+              <input type="checkbox" name="bid" value="yes" id="bid">
                 Bid Mode <p style="font-size:xx-small">
-                <i>Bid starts at price mentioned above</i></p></td>
-          </tr>
-          <tr>
-            <td>Description</td>
-            <td><TEXTAREA name="description" rows="7" placeholder="Description"></TEXTAREA></td>
-          </tr>
+                <i>Bid starts at price mentioned above</i></p>
+              </div>
+            </div>
+          <div class="control-group">
+            <label class="control-label" for="description">Description</label>
+            <div class="controls">
+              <TEXTAREA id="description" rows="7" class="span9" placeholder="Description" name="description"></TEXTAREA>
+            </div>
+          </div>
           <input type="hidden" name="location" value="<%=st%>">
           <input type="hidden" name="university" value="<%=sc%>">
-          <tr>
-            <td colspan="2"><center><input type="submit" value="Sell"
-                            class="btn btn-primary btn-large"></center></td>
-          </tr>
-        </table>
+          <center><input type="submit" value="Sell" class="btn btn-primary btn-large"></center>
        </form>
+     </div>
       </div>
       
-      <!--Search Pane-->
+      <!--Image Pane-->
       <div class='span4 sidebar' style="background-color:White">
         <h2>Photos</h2>
           <div class="alert alert-block span10 offset1">
@@ -92,6 +97,7 @@
           <img data-src="holder.js/300x200" alt="">
           <input type="file" name="somefile" class="span9" >
       </div>
+  </div>
 </div>
 </center>
 </body>
