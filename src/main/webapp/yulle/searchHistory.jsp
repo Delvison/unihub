@@ -18,14 +18,14 @@
             <% while(it.hasNext()){ %>
           	  <% String key = (String) it.next(); %>
               <% String link = key.replace(" ","%20"); %>
-              <LI><A href="/unihub/amazon?search=<%=link%>"><%=key%></A></LI>      
+              <LI><A href="/unihub/searchServlet?search=<%=link%>"><%=key%></A></LI>      
             <% } %>
           </UL> 
         <% }else { %>
 		  <BR><I>No History Found!</I>
         <% } %>
         <DIV ALIGN="right" STYLE="float:right; text-align:right;">
-          <A HREF="/unihub/amazonSearch">Back to Search</A> |
+          <A HREF="/unihub/gsearch">Back to Search</A> |
           <A HREF="/unihub/clearHistory">Clear History</A>
         </DIV>  
     </DIV>
