@@ -24,6 +24,7 @@
 
 		<div class="hero-unit" style="background-color:White">
 			<img src="design/images/y_u_no.jpg">
+			<%= request.getQueryString() %>
 		</div>
 
 

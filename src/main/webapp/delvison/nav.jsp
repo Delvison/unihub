@@ -15,7 +15,7 @@
                <li><a href="viewalllistings">View all listings</a></li>
                <li><a href="user?u_id=all">Browse users</a></li>
         <li>
-             <%= AuthUtilities.isLoggedIn(session) %>
+             <%= AuthUtilities.isLoggedIn(session, request) %>
         </ul>
     </div>
   </div>

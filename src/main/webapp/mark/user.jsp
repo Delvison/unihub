@@ -11,13 +11,9 @@
                                 java.security.*,
                                 javax.servlet.*,
                                 javax.servlet.http.*" %>
-<!DOCTYPE html>
 
-  <html>
-  <head>
     <%@ include file="../delvison/header.jsp"%>
-    <title>User Profile</title>
-  </head>
+
     <body style="background-color:#CCC">
         <% Dbase ubase = Dbase.create(); %>
         <% ListingsObj lis = ListingsObj.create(); %>
@@ -28,7 +24,6 @@
             } catch(NoSuchAlgorithmException e) {
               out.println("No Such Algorithm Exception");
             } 
-            request.getSession().setAttribute("path_for_login", null);
         %>
         <div class="row">
         <div class="span8 offset2 main" style="background-color:white">
