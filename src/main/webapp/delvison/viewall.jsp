@@ -15,9 +15,10 @@
       <!--Search Pane-->
       <div class='span3 sidebar offset1' data-spy="scroll" style="background-color:White">
         <h2>Search</h2>
-        <FORM ACTION="search" METHOD="GET" >
-          <input class="span11" type="text" name="q" placeholder="Search"><br>
-          <select name = "category" class="span11">
+        <FORM ACTION="searchServlet" METHOD="GET" >
+          <INPUT CLASS="span11" TYPE="text" name="search">
+            <!--<input class="span11" type="text" name="q" placeholder="Search"><br>-->
+            <select name = "category" class="span11">        
             <option>All</option>
             <option>Art Supplies</option>
             <option>Books</option>
