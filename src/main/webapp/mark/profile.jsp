@@ -10,8 +10,9 @@ See ProfileServlet in java/mark -->
 <%@ page language="java" import="com.unihub.app.User,
                                 java.security.*,
                                 javax.servlet.*,
-                                javax.servlet.http.*" %>
-
+                                javax.servlet.http.*" 
+          isELIgnored="false"%>
+<%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
 <%@ include file="../delvison/header.jsp"%>
 
     <body>
@@ -23,15 +24,14 @@ See ProfileServlet in java/mark -->
               out.println("No Such Algorithm Exception");
             } %>
         <div class="row">
-        <div class="span8 main" style="background-color:white">
-            <table>
+        <div class="span8 offset2 main" style="background-color:white">
+            <table style="margin:10px">
              <tr>
               <td>
                <img src=<%=gravatar%> style="float:top"></img>
               </td>
-              <td>
-               <div class="span1 offset1"><h3><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)</h3>
-               </div>
+              <td style="padding:10px">
+               <center><h3><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)</h3></center>
               </td>
              </tr>
              <tr>
@@ -46,6 +46,19 @@ See ProfileServlet in java/mark -->
         </div>
         <div class="span4 sidebar" style="background-color:white">
           <center><h3>Listings</h3></center>
+          <table class="table table-striped">
+            <devjsp:forEachListing user="<%=currentuser.getName()%>">
+            <tr>
+              <td valign="center">
+                <p>
+                  <a href="item?id=${listingId}">
+                     ${listingName} - $${listingPrice} </a>
+                  ${listingUniversity}, ${listingLocation}
+              </p>
+              </td>
+            </tr>
+            </devjsp:forEachListing>
+          </table>
         </div>
         </div>
     </body>

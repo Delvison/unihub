@@ -25,10 +25,10 @@ public void doPost(HttpServletRequest req,
   Dbase usersbase = Dbase.create();
   res.setContentType("text/html");
   PrintWriter out = res.getWriter();
-  User newbie = new User(req.getParameter("name"),
+  User newbie = new User(req.getParameter("username"),
                          req.getParameter("password"),
                          req.getParameter("email")+".edu",
-                         "Oswego");
+                         req.getParameter("school"));
   usersbase.addUser(newbie);
   //not yet implemented
   //sendConfirmationEmail(newbie);

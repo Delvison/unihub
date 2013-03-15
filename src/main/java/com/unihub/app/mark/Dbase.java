@@ -46,6 +46,16 @@ public class Dbase {
     return userslist.get(index);
   }  
 
+  // find user object by username
+  public User getUser(String name) {
+    for (int i = 0; i < userslist.size(); i++) {
+      if(userslist.get(i).getName().equals(name)) {
+        return userslist.get(i);
+      }
+    }
+    return null;
+  }
+
   /**
    * populates the arraylist with some dummy data
    */

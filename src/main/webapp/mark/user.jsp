@@ -10,7 +10,10 @@
                                  com.unihub.app.Stuff,
                                 java.security.*,
                                 javax.servlet.*,
-                                javax.servlet.http.*" %>
+                                javax.servlet.http.*"
+    isELIgnored="false"%>
+<%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
+
 <!DOCTYPE html>
 
   <html>
@@ -28,7 +31,6 @@
             } catch(NoSuchAlgorithmException e) {
               out.println("No Such Algorithm Exception");
             } 
-            request.getSession().setAttribute("path_for_login", null);
         %>
         <div class="row">
         <div class="span8 offset2 main" style="background-color:white">
@@ -37,10 +39,10 @@
               <td>
                <img src=<%=gravatar%> style="float:top"></img>
               </td>
-              <td>
+              <td style="padding:10px">
                <center><h3><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)</h3></center>
               </td>
-              <td>
+              <td style="padding:10px">
 		<center><a href="" role="button" class="btn btn-small">Message</a>
                         <a href="" role="button" class="btn btn-small">Watch</a>
                 </center>
@@ -48,7 +50,7 @@
              </tr>
              <tr>
                <td>
-               <a href="http://gravatar.com">Need a Gravatar?</a><br/>
+               <br/>
                <p><%=currentuser.getSchool()%>
                <br><%=currentuser.getEmail()%>
                </p>
@@ -58,19 +60,19 @@
         </div>
         <div class="span4 sidebar" style="background-color:white">
           <center><h3>Listings</h3></center>
-          <table class="table table-striped">
-                <% for (Stuff s: lis.userSearch(currentuser.getName())) {
-                   String[] c = s.getContentArray(); %>
-                <tr>
-                  <td valign="center">
-                  <p>
-                  <a href="item?id=<%=c[5]%>"><%=c[0]%> - $<%=c[1]%></a>
-                  <%=c[3]%> , <%=c[4]%>
-                  </p>
-                  </td>
-                </tr>
-                <% } %>
-          </table>
+          <table class="table table-striped">                      
+            <devjsp:forEachListing user="<%=currentuser.getName()%>"> 
+            <tr>                                                     
+              <td valign="center">                                 
+                <p>                                                
+                  <a href="item?id=${listingId}">                 
+                     ${listingName} - $${listingPrice} </a>        
+                  ${listingUniversity}, ${listingLocation}          
+              </p>                                                 
+              </td>                                               
+            </tr>                                                   
+            </devjsp:forEachListing>                                 
+          </table> 
         </div>
         </div>
     </body>

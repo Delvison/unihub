@@ -20,7 +20,7 @@ import javax.xml.ws.handler.Handler;
 //import ebay.apis.eblbasecomponents.ProductIDCodeType;
 //import ebay.apis.eblbasecomponents.ProductIDType;
 
-@WebServlet("/search")
+@WebServlet("/searchebay")
 public class EbayServlet extends HttpServlet {
 
     private static final String APPID = "MarkWill-00a1-4cb0-b23d-5d85d0c939f1";
@@ -44,7 +44,7 @@ out.println(
   "<html>\n" +
   "<body>\n" +
   "The eBay response should be here: " +
-  "<a href=http://open.api.ebay.com/shopping?callname=FindHalfProducts&appid=" +
+  "<a href=http://open.api.ebay.com/shopping?callname=FindHalfItems&appid=" +
   myAppId +
   "&version=527&QueryKeywords=" +
   keywords +
