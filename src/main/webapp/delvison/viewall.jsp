@@ -4,6 +4,7 @@
   <%@ page isELIgnored="false" %>
   <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
   <%ListingsObj lis = ListingsObj.create();%>
+  <%String cat = (String)request.getParameter("cat");%>
 
 
 <body>
@@ -29,17 +30,31 @@
           </select><br>
           <input type="submit" class="btn btn-primary" value="Search">
         </FORM>
+        <br><hr>
+        <h3>Filter by:</h3>
+          <ul class="nav">
+            <li><a href="viewalllistings?cat=All">All</a></li>
+            <li><a href="viewalllistings?cat=Art">Art Supplies</a></li>
+            <li><a href="viewalllistings?cat=Books">Books</a></li>
+            <li><a href="viewalllistings?cat=Bicycles">Bicycles</a></li>
+            <li><a href="viewalllistings?cat=Phones">Cell Phones</a></li>
+            <li><a href="viewalllistings?cat=Electronics">Electronics</a></li>
+            <li><a href="viewalllistings?cat=Furniture">Furniture</a></li>
+            <li><a href="viewalllistings?cat=Musical">Musical Instruments</a></li>
+            <li><a href="viewalllistings?cat=Misc.">Misc.</a></li>
+            <ul>
       </div>
       
       <!--Listings Pane -->
       <div class='span7 main' style="background-color:White">
         <h2>Listings</h2>
+        <h4><i><%=cat%></i></h4>
         <p><i><%=sc%></i></p>
           <% if (lis.stuffs.size() == 0) {%>
             <p><i>No listings exist.</i></p>
           <%}%>
         <table class="table table-striped">
-          <devjsp:forEachListing >
+          <devjsp:forEachListing category="<%=cat%>" >
             <tr>
               <td valign="center">
                 <p>
