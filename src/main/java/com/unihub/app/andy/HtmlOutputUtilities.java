@@ -8,11 +8,11 @@ public class HtmlOutputUtilities {
 
 	public static String bootStrapRow(String mario, String luigi) {
 
-		return "<div class=\"span3 top-buffer\" style=\"background-color:#EEE8CD\">" +
+		return "<div class=\"span3 top-buffer\" style=\"background-color:#DBDBDB\">" +
 						"<h4 class=\"cat-title\">"+mario+"</h3>"+
 					"</div>" + (luigi != null ? 
 
-					"<div class=\"span3 top-buffer\" style=\"background-color:#EEE8CD\">" +
+					"<div class=\"span3 top-buffer\" style=\"background-color:#DBDBDB\">" +
 						"<h4 class=\"cat-title\">"+luigi+"</h3> </div>" : "");
 
 	}//end of bootStrapRow
