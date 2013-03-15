@@ -4,6 +4,7 @@ temporary model class for invidual items posted
 
 package com.unihub.app;
 import java.util.Date;
+import java.io.File;
 
 public class Stuff{
   public String name;
@@ -18,6 +19,7 @@ public class Stuff{
   public String highBidder; //holds value of the user who ahs the highest bid
   public String category;
   public Date timePosted;
+  public String dir = "listings/"+Integer.toString(id);
   
   public Stuff(int id, String user, String name, String price, String university,
   String location, String category, String description, Date now, boolean bid){

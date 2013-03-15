@@ -1,7 +1,7 @@
 <html>
 <%@include file="header.jsp" %>
-
-
+<script type="text/javascript" src="design/bootstrap/js/lightbox.js"></script>
+<link rel="stylesheet" type="text/css" href="design/bootstrap/css/lightbox.css" ></link>
 <body>
     <% if (myCookie == null) { %>
     <div class="well well-large">
@@ -38,6 +38,9 @@
         </form>
     </div>
 </div>
+
+
+<a href="listings/1/1.jpg" rel="lightbox" >image #1</a>
     
 </body>
 </html>

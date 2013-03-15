@@ -29,7 +29,7 @@ public class IndividualListingTag extends SimpleTagSupport{
     getJspContext().setAttribute("itemDescription",stuff.description);
     getJspContext().setAttribute("itemTime",stuff.timePosted);
     getJspContext().setAttribute("itemBidMode",stuff.bidMode);
-   
+    
     getJspBody().invoke(null);
   }
 }
