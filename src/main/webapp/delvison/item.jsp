@@ -1,5 +1,4 @@
 <!--jsp for individual items-->
-<head>
     <script type="text/javascript" src="design/bootstrap/js/lightbox.js"></script>
     <link rel="stylesheet" type="text/css" href="design/bootstrap/css/lightbox.css" ></link>
     <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.CommentObj,
@@ -14,8 +13,7 @@
     String user = (String)session.getAttribute("username");
     String id = (String)request.getParameter("id");
     String path = application.getRealPath("/");
-     %>
-</head>    
+     %>   
 
 <body>
   <div id='content' class='row-fluid'>

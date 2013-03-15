@@ -15,7 +15,7 @@ public class Logout extends HttpServlet {
 		String servletPath = 
 			((String)session.getAttribute("path_for_login")).replaceFirst("/","");
 
-		servletPath += req.getQueryString() == null  ? "" : "?"+req.getQueryString();
+		//servletPath += req.getQueryString() == null  ? "" : "?"+req.getQueryString();
 			
 		session.invalidate();
 
