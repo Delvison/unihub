@@ -16,11 +16,8 @@
 
 <!DOCTYPE html>
 
-  <html>
-  <head>
     <%@ include file="../delvison/header.jsp"%>
-    <title>User Profile</title>
-  </head>
+
     <body style="background-color:#CCC">
         <% Dbase ubase = Dbase.create(); %>
         <% ListingsObj lis = ListingsObj.create(); %>

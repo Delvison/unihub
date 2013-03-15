@@ -1,6 +1,6 @@
 <HTML>
   <HEAD>
-  	<meta http-equiv="refresh" content="2;/unihub/amazonSearch">
+  	<meta http-equiv="refresh" content="2;/unihub/gsearch">
   </HEAD>
   <BODY>
   	<CENTER>

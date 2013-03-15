@@ -6,9 +6,9 @@
 	the database when its set up*/
 	String[] cats = new String[] {"Textbooks", "Jobs", "Electronics", "Cars", "Your mom"};
 
-	Event[] events = new Event[] {new Event("Fuck Bitches", "9:00PM", "Pimp Pad", "Come join us to fuck da bitches!"), 
-				new Event("Resume Builder", "9:00AM", "OLS", "Cum so we can help you build your resume!"), 
-				new Event("Pizza Party", "12:00PM", "Lounge", "After fucking the bitches for hours, come eat to refuel!") };
+	Event[] events = new Event[] {new Event("Unihub Release Party", "8:00PM", "Pimp Pad", "Come join as we celebrate our beta release!"), 
+				new Event("Resume Builder", "9:00AM", "OLS", "Come so we can help you build your resume!"), 
+				new Event("Pizza Party", "12:00PM", "Lounge", "After a long morning in classes stop by to get a bite to eat!") };
 
 
 %>
@@ -23,6 +23,8 @@
 
 
 		<div class="hero-unit" style="background-color:White">
+			<h1>WELCOME TO UNIHUB!</h1>
+			<p>Want a less sketchy classified directory tailored for the college student? Sign-Up!</p>
 			<img src="design/images/y_u_no.jpg">
 		</div>
 
@@ -53,6 +55,7 @@
 							<td>
 								<h3><%= events[i].getTitle() %></h3>
 								<p><%= events[i].getDes() %></p>
+								<a href="#">Attending</a>
 							</td>
 						</tr>
 

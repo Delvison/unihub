@@ -46,13 +46,14 @@ public class Stuff{
   
   //function to return all content
   public String[] getContentArray(){
-    String[] a = new String[6];
+    String[] a = new String[7];
     a[0] = this.name;
     a[1] = this.price;
     a[2] = this.user;
     a[3] = this.university;
     a[4] = this.location;
     a[5] = Integer.toString(this.id); 
+    a[6] = this.category;
     return a;       
   }
   

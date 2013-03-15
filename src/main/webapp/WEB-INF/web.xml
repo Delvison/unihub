@@ -267,6 +267,23 @@
   <url-pattern>/bookNotFound</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>gsearch</servlet-name>
+  <jsp-file>yulle/search.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>gsearch</servlet-name>
+  <url-pattern>/gsearch</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>searchServlet</servlet-name>
+  <servlet-class>com.unihub.app.SearchServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>searchServlet</servlet-name>
+  <url-pattern>/searchServlet</url-pattern>
+</servlet-mapping>
 
 <!-- End of Yulle's Mappings ############################################# -->
 

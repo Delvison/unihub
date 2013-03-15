@@ -4,19 +4,22 @@
   <%@ page isELIgnored="false" %>
   <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
   <%ListingsObj lis = ListingsObj.create();%>
+  <%String cat = (String)request.getParameter("cat");%>
 
 
-<body>
+<body data-spy="scroll" data-target="#sidebar">
 
  <center>
   <div id='content' class='row-fluid'>
+    <div class='span12'>
 
       <!--Search Pane-->
-      <div class='span3 sidebar offset1' data-spy="scroll" style="background-color:White">
+      <div class="sidebar span3" id="sidebar" style="background-color:White">
         <h2>Search</h2>
-        <FORM ACTION="search" METHOD="GET" >
-          <input class="span11" type="text" name="q" placeholder="Search"><br>
-          <select name = "category" class="span11">
+        <FORM ACTION="searchServlet" METHOD="GET" >
+          <INPUT CLASS="span11" TYPE="text" name="search" placeholder="Search">
+            <!--<input class="span11" type="text" name="q" placeholder="Search"><br>-->
+            <select name = "category" class="span11">        
             <option>All</option>
             <option>Art Supplies</option>
             <option>Books</option>
@@ -29,29 +32,47 @@
           </select><br>
           <input type="submit" class="btn btn-primary" value="Search">
         </FORM>
+        <br><hr>
+        <h3>Filter by:</h3>
+          <ul class="nav nav-tabs nav-stacked">
+            <li><a href="viewalllistings?cat=All">All</a></li>
+            <li><a href="viewalllistings?cat=Art">Art Supplies</a></li>
+            <li><a href="viewalllistings?cat=Books">Books</a></li>
+            <li><a href="viewalllistings?cat=Bicycles">Bicycles</a></li>
+            <li><a href="viewalllistings?cat=Phones">Cell Phones</a></li>
+            <li><a href="viewalllistings?cat=Electronics">Electronics</a></li>
+            <li><a href="viewalllistings?cat=Furniture">Furniture</a></li>
+            <li><a href="viewalllistings?cat=Musical">Musical Instruments</a></li>
+            <li><a href="viewalllistings?cat=Misc.">Misc.</a></li>
+            <ul>
       </div>
       
       <!--Listings Pane -->
-      <div class='span7 main' style="background-color:White">
+      <div class='span8 main' style="background-color:White">
         <h2>Listings</h2>
-        <p><i><%=sc%></i></p>
+        <h4><i><%=cat%></i> - <%=sc%></h4>
           <% if (lis.stuffs.size() == 0) {%>
             <p><i>No listings exist.</i></p>
           <%}%>
         <table class="table table-striped">
-          <devjsp:forEachListing >
+          <devjsp:forEachListing category="<%=cat%>" >
             <tr>
               <td valign="center">
-                <p>
-                  <a href="item?id=${listingId}"> 
-                     ${listingName} - $${listingPrice} </a>
-                  ${listingUniversity}, ${listingLocation}
-              </p>
+                <ul class="inline">
+                  <li><a href="item?id=${listingId}" style="font-size:16px;"> 
+                    ${listingName} - $${listingPrice} </a> - ${listingUniversity}, ${listingLocation}</li>
+                  <li class="pull-right"><p><i>${listingCategory}</i></p></li>
+                </ul>
+                <ul class="inline">
+                  <li><i>Posted by <a href="profile">${listingUser}</a></i></li>
+                  <li class="pull-right"><i>${listingDate}</i></li>
+                </ul>
               </td>
             </tr>
           </devjsp:forEachListing>
         </table>
       </div>
+    </div>
   </div>
  </center>
 </body>
