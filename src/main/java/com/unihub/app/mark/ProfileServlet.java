@@ -20,7 +20,6 @@ public void doGet(HttpServletRequest req,
 
   session = req.getSession();
   User user = (User)session.getAttribute("user");
-
   res.setContentType("text/html");
   PrintWriter out = res.getWriter();
   String address;
@@ -32,7 +31,7 @@ public void doGet(HttpServletRequest req,
   }
 
   RequestDispatcher dispatcher = req.getRequestDispatcher(address);
-  dispatcher.forward(req, res);
+  dispatcher.include(req, res);
 } 
 
 }

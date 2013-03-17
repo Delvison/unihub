@@ -51,11 +51,11 @@
   <!-- Mark's Mappings ######################################################-->
 
   <servlet>
-    <servlet-name>profile</servlet-name>
+    <servlet-name>ProfileServlet</servlet-name>
     <jsp-file>mark/profile.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>profile</servlet-name>
+    <servlet-name>ProfileServlet</servlet-name>
     <url-pattern>/profile</url-pattern>
   </servlet-mapping>
 
@@ -66,6 +66,24 @@
   <servlet-mapping>
     <servlet-name>signup</servlet-name>
     <url-pattern>/signup</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>allusers</servlet-name>
+    <jsp-file>mark/allusers.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>allusers</servlet-name>
+    <url-pattern>/allusers</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>auser</servlet-name>
+    <jsp-file>mark/user.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>auser</servlet-name>
+    <url-pattern>/auser</url-pattern>
   </servlet-mapping>
 
   <servlet>

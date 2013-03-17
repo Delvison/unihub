@@ -1,16 +1,12 @@
-<html>
-<head>
+
   <%@include file="../delvison/header.jsp" %>
   <%@ page import="com.unihub.app.Dbase, com.unihub.app.User, java.util.*" %>
   <% Dbase ubase = Dbase.create(); %>
-  <% request.getSession().setAttribute("path_for_login", null); %>
   <style type='text/css'>
     body {
       background-color: #ccc;
     }
   </style>
-
-</head>
 
 <body>
 <center>

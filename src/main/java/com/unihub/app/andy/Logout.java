@@ -12,8 +12,7 @@ public class Logout extends HttpServlet {
 		HttpServletResponse res) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-		String servletPath = 
-			((String)session.getAttribute("path_for_login")).replaceFirst("/","");
+		String servletPath = ((String)session.getAttribute("path_for_login")).replaceFirst("/","");
 
 		//servletPath += req.getQueryString() == null  ? "" : "?"+req.getQueryString();
 			

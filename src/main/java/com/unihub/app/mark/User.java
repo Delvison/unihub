@@ -26,6 +26,15 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
         reputation = 0;
     }
 
+    public User() {
+      id = -1;
+      name = "bob";
+      password = "bob";
+      email = "bob@bob.com";
+      school = "bobU";
+      reputation = 9000;
+    }
+
     public boolean isLoggedIn(HttpSession session) {
         String foundName = (String)session.getAttribute("username");
         return (foundName.equals(this.name));	
