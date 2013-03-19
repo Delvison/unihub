@@ -33,6 +33,9 @@ See ProfileServlet in java/mark -->
               <td style="padding:10px">
                <center><h3><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)</h3></center>
               </td>
+              <td>
+               <a href="usermessages">Messages</a>
+              </td>
              </tr>
              <tr>
                <td>

@@ -40,7 +40,6 @@ public void doGet(HttpServletRequest req,
 
   RequestDispatcher dispatcher = req.getRequestDispatcher(address);
   dispatcher.include(req, res);
-  //res.sendRedirect(address);
 }
 
 }

@@ -2,6 +2,7 @@ package com.unihub.app;
 
 import java.math.BigInteger;
 import java.io.*;
+import java.util.ArrayList;
 import java.security.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -16,6 +17,7 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     
     private String name, school, email, password;
     private int id, reputation;
+    private ArrayList<Message> sentMessages, recievedMessages;
 
     public User(String n, String p, String e, String s) {
         id = -1;
@@ -24,6 +26,8 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
         email = e;
         school = s;
         reputation = 0;
+        sentMessages = new ArrayList<Message>();
+        recievedMessages = new ArrayList<Message>();
     }
 
     public User() {
@@ -32,7 +36,9 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
       password = "bob";
       email = "bob@bob.com";
       school = "bobU";
-      reputation = 9000;
+      reputation = 9001;
+      sentMessages = new ArrayList<Message>();
+      recievedMessages = new ArrayList<Message>();
     }
 
     public boolean isLoggedIn(HttpSession session) {
@@ -69,6 +75,10 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
 
     public void setReputation(int rep) {
       reputation = rep;
+    }
+
+    protected void incRep() {
+      reputation += 1;
     }
 
     /**
@@ -125,6 +135,22 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void addToSent(Message m) {
+      sentMessages.add(m);
+    }
+
+    public void addToRecieved(Message m) {
+      recievedMessages.add(m);
+    }
+
+    public ArrayList<Message> getSentMessages() {
+      return sentMessages;
+    }
+    
+    public ArrayList<Message> getRecievedMessages() {
+      return recievedMessages;
     }
 
     @Override

@@ -67,6 +67,24 @@
     <servlet-name>signup</servlet-name>
     <url-pattern>/signup</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>pmessage</servlet-name>
+    <jsp-file>mark/pmessage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pmessage</servlet-name>
+    <url-pattern>/pmessage</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>usermessages</servlet-name>
+    <jsp-file>mark/usermessages.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>usermessages</servlet-name>
+    <url-pattern>/usermessages</url-pattern>
+  </servlet-mapping>
  
   <servlet>
     <servlet-name>allusers</servlet-name>

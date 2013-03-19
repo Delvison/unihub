@@ -8,6 +8,7 @@
                                  com.unihub.app.Dbase,
                                  com.unihub.app.ListingsObj,
                                  com.unihub.app.Stuff,
+                                 com.unihub.app.Message,
                                 java.security.*,
                                 javax.servlet.*,
                                 javax.servlet.http.*"
@@ -40,7 +41,8 @@
                <center><h3><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)</h3></center>
               </td>
               <td style="padding:10px">
-		<center><a href="" role="button" class="btn btn-small">Message</a>
+		<center><a href="validate?where=/pmessage?name=<%=currentuser.getName()%>"
+                           role="button" class="btn btn-small">Message</a>
                         <a href="" role="button" class="btn btn-small">Watch</a>
                 </center>
               </td>
@@ -52,11 +54,12 @@
                <br><%=currentuser.getEmail()%>
                </p>
                </td>
+               <hr>
              </tr>
             </table>
         </div>
         <div class="span4 sidebar" style="background-color:white">
-          <center><h3>Listings</h3></center>
+          <center><h4>Listings by this User</h4></center>
           <table class="table table-striped">                      
             <devjsp:forEachListing user="<%=currentuser.getName()%>"> 
             <tr>                                                     
