@@ -32,19 +32,39 @@
           </select><br>
           <input type="submit" class="btn btn-primary" value="Search">
         </FORM>
-        <br><hr>
-        <h3>Filter by:</h3>
-          <ul class="nav nav-tabs nav-stacked">
-            <li><a href="viewalllistings?cat=All">All</a></li>
-            <li><a href="viewalllistings?cat=Art">Art Supplies</a></li>
-            <li><a href="viewalllistings?cat=Books">Books</a></li>
-            <li><a href="viewalllistings?cat=Bicycles">Bicycles</a></li>
-            <li><a href="viewalllistings?cat=Phones">Cell Phones</a></li>
-            <li><a href="viewalllistings?cat=Electronics">Electronics</a></li>
-            <li><a href="viewalllistings?cat=Furniture">Furniture</a></li>
-            <li><a href="viewalllistings?cat=Musical">Musical Instruments</a></li>
-            <li><a href="viewalllistings?cat=Misc.">Misc.</a></li>
-            <ul>
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#filterTab" data-toggle="tab">Filter</a>
+            </li>
+            <li><a href="#searchHistoryTab" data-toggle="tab">
+              Search History</a></li>
+          </ul>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane" id="searchHistoryTab">
+            <!--Yulle's search history here-->
+            <ul class="nav nav-tabs nav-stacked">
+              <devjsp:searchHistory>
+                <li>${searchHistory}</li>
+              </devjsp:searchHistory>
+            </ul>
+          </div>
+          <div class="tab-pane active" id="filterTab">
+            <h3>Filter by:</h3>
+              <ul class="nav nav-tabs nav-stacked">
+                <li><a href="viewalllistings?cat=All">All</a></li>
+                <li><a href="viewalllistings?cat=Art">Art Supplies</a></li>
+                <li><a href="viewalllistings?cat=Books">Books</a></li>
+                <li><a href="viewalllistings?cat=Bicycles">Bicycles</a></li>
+                <li><a href="viewalllistings?cat=Phones">Cell Phones</a></li>
+                <li><a href="viewalllistings?cat=Electronics">Electronics</a></li>
+                <li><a href="viewalllistings?cat=Furniture">Furniture</a></li>
+                <li><a href="viewalllistings?cat=Musical">Musical Instruments</a></li>
+                <li><a href="viewalllistings?cat=Misc.">Misc.</a></li>
+              <ul>
+          </div>
+        </div>
       </div>
       
       <!--Listings Pane -->

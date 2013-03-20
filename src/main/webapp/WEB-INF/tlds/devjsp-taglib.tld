@@ -101,4 +101,11 @@ version="2.0">
     <rtexprvalue>true</rtexprvalue>
   </attribute>
 </tag>
+
+<tag>
+  <description>prints out search history</description>
+  <name>searchHistory</name>
+  <tag-class>com.unihub.app.SearchHistoryTag</tag-class>
+  <body-content>scriptless</body-content>
+</tag>
 </taglib>
