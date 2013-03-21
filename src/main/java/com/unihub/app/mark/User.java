@@ -169,7 +169,6 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     }
 
     public boolean isWatching (String n) {
-     // Dbase ubase = Dbase.create();
       if (watched.contains(n)) return true;
       return false;
     }
