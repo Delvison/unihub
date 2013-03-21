@@ -18,6 +18,7 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     private String name, school, email, password;
     private int id, reputation;
     private ArrayList<Message> sentMessages, recievedMessages;
+    
 
     public User(String n, String p, String e, String s) {
         id = -1;

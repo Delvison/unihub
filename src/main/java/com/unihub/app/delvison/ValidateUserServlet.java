@@ -14,13 +14,16 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 
 public class ValidateUserServlet extends HttpServlet {
 
   HttpSession session;
  
-  public void doGet(HttpServletRequest req, 
-    	 HttpServletResponse res) throws ServletException, IOException {
+  public void doGet(HttpServletRequest req, HttpServletResponse res) 
+  throws ServletException, IOException {
    
     /* get the intended location */	 
     String whereTo = req.getParameter("where");
@@ -38,8 +41,15 @@ public class ValidateUserServlet extends HttpServlet {
     /* the request only has the username so i set a dummy password
     to pass validation granted that a user is logged in */
     String password = "dummyPass";
-    /* call Andy's method */
-    Boolean login = AuthUtilities.authenticate(userName, password);
+
+    Boolean login = false;
+
+    try {
+      /* call Andy's method */
+      login = AuthUtilities.authenticate(userName, password);
+    }
+    catch(NoSuchAlgorithmException e) {}
+    catch(InvalidKeySpecException e) {}
 
     if(login == true) {
       /* if logged in, send user to intended location */
