@@ -1,26 +1,55 @@
 <div class='span4 sidebar'>
  <!--BID PANE-->
         <div class='row-fluid' style="background-color:White">
-            <center><h2>Bidding</h2></center>
+            <center><h2>Bidding</h2>
             <devjsp:itemInfo itemId="<%=id%>">
-            <p>
-              Current Bid: $${itemPrice}<br>
-              Bidder: ${itemHighBidder}
+              <h2><p style="color:green">$${itemPrice}</p></h2>
+              <p style="font-size:xx-small">
+                <i>set by <a href="profile">${itemHighBidder}</a></i>
+              </p>
             </devjsp:itemInfo>
             <FORM ACTION="addbid" METHOD="get">
               <input type="hidden" name="userName" value="<%=user%>">
               <input type="hidden" name="itemId" value="<%=id%>">
-                <center>
                   <div class="input-prepend span10 offset1">
                     <span class="add-on">$</span>
                     <input id="prependedInput" type="text" class="span4" name="bidPrice">
+                    <br>
                   </div>
                 </center>
               <center>
-                <input type="submit" class="btn btn-primary" value="Bid">
+                <a href="#processBid" role="button" class="btn btn-primary" 
+                      data-toggle="modal">Place Bid</a>
               </center>
+                <!-- popup that confirms bid -->
+                  <div id="processBid" class="modal hide fade" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                      <h3 id="myModalLabel">Place Bid</h3>
+                    </div>
+                    <div class="modal-body">
+                      <%if (user != null) {%>
+                        <p>Are you sure you want to bid on this item?</p>
+                      <%}else{%>
+                        <p>Sorry, but you are not logged in :( You must be logged in
+                          in order to bid on this item.</p>
+                      <%}%>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn" data-dismiss="modal" aria-hidden="true">
+                        Cancel</button>
+                      <%if (user != null) {%>
+                        <input type="submit" class="btn btn-primary" value="Place Bid">
+                      <%}else{%>
+                        <a class="btn btn-primary" href="login">Login</a>
+                      <%}%>
+                      </FORM>
+                      <br>
+                    </div>
+                  </div>  
         </div>
          <br>
+
 
  <!--COMMENTS PANE-->
         <div class='row-fluid' style="background-color:White">
@@ -74,6 +103,6 @@
                       </FORM>
                       <br>
                     </div>
-              </div>      
+                  </div>      
         </div> <!--COMMENT PANE DIV-->
 <div>
