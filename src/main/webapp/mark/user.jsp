@@ -40,12 +40,9 @@
               <td style="padding:10px">
                <center><h3><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)</h3></center>
               </td>
-              <td style="padding:10px">
-		<center><a href="validate?where=/pmessage?name=<%=currentuser.getName()%>"
-                           role="button" class="btn btn-small">Message</a>
-                        <a href="" role="button" class="btn btn-small">Watch</a>
-                </center>
-              </td>
+                <% if(session.getAttribute("user") != null) { %>
+                <%@ include file="logged_in_user_page_actions.jsp" %>
+                <% } %>
              </tr>
              <tr>
                <td>
@@ -54,7 +51,6 @@
                <br><%=currentuser.getEmail()%>
                </p>
                </td>
-               <hr>
              </tr>
             </table>
         </div>
@@ -75,5 +71,34 @@
           </table> 
         </div>
         </div>
+
+    <!--PM Modal -->
+    <% User sessionuser = new User();
+       if ((User)session.getAttribute("user") != null) {
+         sessionuser = (User)session.getAttribute("user");
+       } %>
+    <div id="messageModal" class="modal hide fade" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Private Message</h3>
+      </div>
+      <div class="modal-body">
+        <form action="validate?where=message" method="GET">
+           <input type="hidden" name="fromName" value="<%=sessionuser.getName()%>">
+           To: <%=currentuser.getName()%><br>
+           <input type="hidden" name="toName" value="<%=currentuser.getName()%>">
+           Message: <textarea name="contents"></textarea><br>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">
+           Close</button>
+        <input type="submit" class="btn btn-primary" value="Send">
+        </form>
+    </div>
+</div>
+
+
     </body>
 </html>

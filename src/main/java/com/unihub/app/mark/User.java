@@ -18,7 +18,7 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     private String name, school, email, password;
     private int id, reputation;
     private ArrayList<Message> sentMessages, recievedMessages;
-    
+    private ArrayList<String> watched;
 
     public User(String n, String p, String e, String s) {
         id = -1;
@@ -29,6 +29,7 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
         reputation = 0;
         sentMessages = new ArrayList<Message>();
         recievedMessages = new ArrayList<Message>();
+        watched = new ArrayList<String>();
     }
 
     public User() {
@@ -40,6 +41,7 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
       reputation = 9001;
       sentMessages = new ArrayList<Message>();
       recievedMessages = new ArrayList<Message>();
+      watched = new ArrayList<String>();
     }
 
     public boolean isLoggedIn(HttpSession session) {
@@ -152,6 +154,23 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     
     public ArrayList<Message> getRecievedMessages() {
       return recievedMessages;
+    }
+ 
+    public ArrayList<String> getWatched() {
+      return watched;
+    }
+    
+    public void watch (String uname) {
+      watched.add(uname);
+    }
+
+    public void unwatch (String uname) {
+      watched.remove(uname);
+    }
+
+    public boolean isWatching (String n) {
+      if (watched.contains(n)) return true;
+      return false;
     }
 
     @Override

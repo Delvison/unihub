@@ -8,6 +8,7 @@
 See ProfileServlet in java/mark -->
 
 <%@ page language="java" import="com.unihub.app.User,
+                                 com.unihub.app.Dbase,
                                 java.security.*,
                                 javax.servlet.*,
                                 javax.servlet.http.*" 
@@ -16,8 +17,9 @@ See ProfileServlet in java/mark -->
 <%@ include file="../delvison/header.jsp"%>
 
     <body>
-        <% User currentuser = (User)session.getAttribute("user"); %>
-        <%  String gravatar = "";
+        <% User currentuser = (User)session.getAttribute("user");
+           Dbase ubase = Dbase.create();
+           String gravatar = "";
             try {
               gravatar = currentuser.gravatar(); 
             } catch(NoSuchAlgorithmException e) {
@@ -25,30 +27,28 @@ See ProfileServlet in java/mark -->
             } %>
         <div class="row">
         <div class="span8 offset2 main" style="background-color:white">
-            <table style="margin:10px">
+            <table style="margin:10px" width="100%">
              <tr>
-              <td>
-               <img src=<%=gravatar%> style="float:top"></img>
-              </td>
               <td style="padding:10px">
-               <center><h3><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)</h3></center>
-              </td>
-              <td>
-               <a href="usermessages">Messages</a>
-              </td>
-             </tr>
-             <tr>
-               <td>
-               <a href="http://gravatar.com">Need a Gravatar?</a><br/>
+               <h4><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)
+               <a href="usermessages"/><img width="25px" height="20px" src="design/images/mail.png"></a>
+               </h4>
                <p><%=currentuser.getSchool()%>
                <br><%=currentuser.getEmail()%>
                </p>
-               </td>
+              </td>
+              <td valign="center" colspan="3">
+              <img src="<%=gravatar%>" style="float:top"></img><br/>
+              <a href="http://gravatar.com">Need a Gravatar?</a>
+              <td>
+             </tr>
+             <tr>
+              <td>Watched Users: <%= ubase.getUser(currentuser.getName()).getWatched() %></td>
              </tr>
             </table>
         </div>
         <div class="span4 sidebar" style="background-color:white">
-          <center><h3>Listings</h3></center>
+          <center><h4>My Listings</h4></center>
           <table class="table table-striped">
             <devjsp:forEachListing user="<%=currentuser.getName()%>">
             <tr>
