@@ -34,6 +34,11 @@ public class AuthUtilities {
 			byte[] salt = generateSalt();
 			byte[] encryptedPassword = getEncryptedPassword("devisabitchassnigga", salt);
 
+			/*looks like whatever is in bytes can be casted to a String
+			with no loss of bits and back*/
+			String temp = new String(encryptedPassword);
+			encryptedPassword = temp.getBytes();
+
 
 
 

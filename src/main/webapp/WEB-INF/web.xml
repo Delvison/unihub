@@ -33,6 +33,15 @@
     <welcome-file>index</welcome-file>
   </welcome-file-list>
 
+  <servlet>
+    <servlet-name>events</servlet-name>
+    <jsp-file>andy/events.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>events</servlet-name>
+    <url-pattern>/events</url-pattern>
+  </servlet-mapping>
+
   <!-- End of Andy's Mappings ############################################## -->
 
   <!-- Yulle's Mappings #################################################### -->
