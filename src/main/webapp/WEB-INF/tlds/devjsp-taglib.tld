@@ -108,4 +108,49 @@ version="2.0">
   <tag-class>com.unihub.app.SearchHistoryTag</tag-class>
   <body-content>scriptless</body-content>
 </tag>
+
+<tag>
+  <description>Outputs Category options for a html select</description>
+  <name>catOptions</name>
+  <tag-class>com.unihub.app.CategoryListTag</tag-class>
+  <body-content>empty</body-content>
+  
+  <attribute>
+    <name>category</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>Outputs bid options for a html select</description>
+  <name>bidOptions</name>
+  <tag-class>com.unihub.app.BidListTag</tag-class>
+  <body-content>empty</body-content>
+  
+  <attribute>
+    <name>option</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>checks if listing belongs to a user</description>
+  <name>belongsToUser</name>
+  <tag-class>com.unihub.app.BelongsToUserTag</tag-class>
+  <body-content>empty</body-content>
+  
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+
+  <attribute>
+    <name>user</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
 </taglib>

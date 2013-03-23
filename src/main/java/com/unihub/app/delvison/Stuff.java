@@ -15,14 +15,14 @@ public class Stuff{
   public int id;
   // have to add these
   public String description;
-  public String bidMode; //if true, item to be sold in bidding mode
+  public String bidMode; //if true, item to be sold in bidding mode (yes or no)
   public String highBidder; //holds value of the user who ahs the highest bid
   public String category;
   public Date timePosted;
   public String dir = "listings/"+Integer.toString(id);
   
   public Stuff(int id, String user, String name, String price, String university,
-  String location, String category, String description, Date now, boolean bid){
+  String location, String category, String description, Date now, String bid){
     this.user = user;
     this.name = name;
     this.price = price;
@@ -32,11 +32,18 @@ public class Stuff{
     this.category = category;
     this.description = description;
     this.timePosted = now;
-    if (bid){
-      bidMode="yes"; 
-    }else{
-      bidMode="no";
-    }
+    this.bidMode = bid;
+  }
+
+  public void updateContent(String name, String price, String university,
+  String location, String category, String description, String bid){
+    this.name = name;
+    this.price = price;
+    this.university = university;
+    this.location = location;
+    this.category = category;
+    this.description = description;
+    this.bidMode = bid;
   }
   
   public String getContent(){
@@ -71,5 +78,49 @@ public class Stuff{
   public void bid(String bidder, String newPrice){
     this.updatePrice(newPrice);
     this.highBidder = bidder;
+  }
+  
+  public String getName(){
+    return this.name;
+  }
+  
+  public String getPrice(){
+    return this.price;
+  }
+  
+  public String getUniversity(){
+    return this.university;
+  }
+  
+  public String getLocation(){
+    return this.location;
+  }
+  
+  public String getDescription(){
+    return this.description;
+  }
+  
+  public String getBidMode(){
+    return this.bidMode;
+  }
+  
+  public String getHighBidder(){
+    return this.highBidder;
+  }
+  
+  public String getCategory(){
+    return this.category;
+  }
+  
+  public Date getTimePosted(){
+    return this.timePosted;
+  }
+  
+  public String getDir(){
+    return this.dir;
+  }
+  
+  public String getUser(){
+    return this.user;
   }
 }

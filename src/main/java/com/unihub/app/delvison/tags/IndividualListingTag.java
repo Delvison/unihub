@@ -20,6 +20,7 @@ public class IndividualListingTag extends SimpleTagSupport{
     /* find 'Stuff' by id */
     Stuff stuff = lis.getStuff(itemId);
     
+    getJspContext().setAttribute("itemId",Integer.toString(stuff.id)); 
     getJspContext().setAttribute("itemName",stuff.name); 
     getJspContext().setAttribute("itemPrice",stuff.price); 
     getJspContext().setAttribute("itemUser",stuff.user);
@@ -29,7 +30,8 @@ public class IndividualListingTag extends SimpleTagSupport{
     getJspContext().setAttribute("itemDescription",stuff.description);
     getJspContext().setAttribute("itemTime",stuff.timePosted);
     getJspContext().setAttribute("itemBidMode",stuff.bidMode);
-    
+    getJspContext().setAttribute("itemHighBidder",stuff.getHighBidder());
+
     getJspBody().invoke(null);
   }
 }

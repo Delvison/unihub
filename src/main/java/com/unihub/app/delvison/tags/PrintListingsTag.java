@@ -28,7 +28,7 @@ public class PrintListingsTag extends SimpleTagSupport{
   public void doTag() throws JspException, IOException{
     ListingsObj lis = ListingsObj.create();
     
-    if (category != null && (!(category.equals("All")))){
+    if (category != null && (!(category.equals("All"))) && (!(category.equals("search"))) ){
       String cat = this.filter(category);
       for (Stuff s: lis.stuffs){
         if (s.category.equals(cat)){
@@ -47,7 +47,7 @@ public class PrintListingsTag extends SimpleTagSupport{
         }
       }
     }else if (user != null){
-    //do marks stuff
+      /* print all listings belonging to user passed in */
       for (Stuff s: lis.stuffs){
         if (s.user.equals(this.user)){
           String[] c = s.getContentArray();
@@ -64,7 +64,11 @@ public class PrintListingsTag extends SimpleTagSupport{
           getJspBody().invoke(null);
         }
       }
+    }else if(this.category.equals("search")){
+      /* print listings from search query result */
+    
     }else{
+      /* print all listings */
       for (Stuff s: lis.stuffs){
           String[] c = s.getContentArray();
           getJspContext().setAttribute("listingName",c[0]); 
