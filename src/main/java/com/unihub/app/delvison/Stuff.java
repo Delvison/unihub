@@ -20,6 +20,7 @@ public class Stuff{
   public String category;
   public Date timePosted;
   public String dir = "listings/"+Integer.toString(id);
+  private ItemActivityObj activityLog;
   
   public Stuff(int id, String user, String name, String price, String university,
   String location, String category, String description, Date now, String bid){
@@ -33,6 +34,7 @@ public class Stuff{
     this.description = description;
     this.timePosted = now;
     this.bidMode = bid;
+    this.activityLog = new ItemActivityObj(this.id);
   }
 
   public void updateContent(String name, String price, String university,
@@ -78,6 +80,16 @@ public class Stuff{
   public void bid(String bidder, String newPrice){
     this.updatePrice(newPrice);
     this.highBidder = bidder;
+    String activity = bidder+" has placed a bid of $"+newPrice;
+    this.addActivity(activity);
+  }
+
+  public void addActivity(String someActivity){
+    activityLog.addActivity(someActivity);
+  }
+
+  public ItemActivityObj getActivityObj(){
+    return this.activityLog;
   }
   
   public String getName(){

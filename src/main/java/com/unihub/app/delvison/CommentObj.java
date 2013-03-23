@@ -23,6 +23,10 @@ public class CommentObj{
     id = id+1;
     Comment a = new Comment(user,comment,id, itemId);
     comments.add(a);
+    /* ADD THE COMMENT TO THE ACTIVITY LOG */
+    String activity = user+" has posted a comment";
+    ListingsObj lis = ListingsObj.create();
+    lis.getStuff(itemId).addActivity(activity);
   }
   
   public Comment getComment(int passedId) {
