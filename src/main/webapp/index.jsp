@@ -1,15 +1,15 @@
 <!--This shall be our main home screen -->
-<%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event" %>
+<%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
+				com.unihub.app.EventListHolder" %>
 <%
 	/*
 	This will temporarily be here since I will get this info from
 	the database when its set up*/
-	String[] cats = new String[] {"Textbooks", "Jobs", "Electronics", "Cars", "Your mom"};
+	String[] cats = new String[] {"Art Supplies", "Books", "Bicycles", "Jobs", 
+									"Electronics", "Cars", "Cell Phones", "Furniture", 
+									"Musical Instruments", "Misc."};
 
-	Event[] events = new Event[] {new Event("Unihub Release Party", "8:00PM", "Pimp Pad", "Come join as we celebrate our beta release!"), 
-				new Event("Resume Builder", "9:00AM", "OLS", "Come so we can help you build your resume!"), 
-				new Event("Pizza Party", "12:00PM", "Lounge", "After a long morning in classes stop by to get a bite to eat!") };
-
+	EventListHolder holder = EventListHolder.getInstance();
 
 %>
 
@@ -24,7 +24,9 @@
 
 		<div class="hero-unit" style="background-color:White">
 			<h1>WELCOME TO UNIHUB!</h1>
-			<p>Want a less sketchy classified directory tailored for the college student? Sign-Up!</p>
+			<p>Want a less sketchy classified directory tailored for the college student? 
+				<a href="signup">Sign Up!</a>
+			</p>
 			<img src="design/images/y_u_no.jpg">
 		</div>
 
@@ -44,22 +46,30 @@
 					}
 
 				} %>
+
 			</div>
 
 			<div class="span4" style="background-color:white">
 				<h2>Events</h2>
 				<table class="table">
-					<% for(int i = 0; i < events.length; i++){ %>
+
+					<% for(int i = 0; i < holder.numOfEvents(); i++){ %>
 
 						<tr>
 							<td>
-								<h3><%= events[i].getTitle() %></h3>
-								<p><%= events[i].getDes() %></p>
-								<a href="#">Attending</a>
+								<h3><%= holder.getEvent(i).getTitle() %></h3>
+								<p><%= holder.getEvent(i).getDes() %></p>
+								<a href="#">Attending</a> | <a href="#">More Info</a>
 							</td>
 						</tr>
 
 					<% } %>
+					<!--This bottom part is only for linking to viewing all events -->
+					<tr>
+						<td>
+							<h4><a href="events">View All</a></h3>
+						</td>
+					</tr>	
 
 				</table>
 			</div>

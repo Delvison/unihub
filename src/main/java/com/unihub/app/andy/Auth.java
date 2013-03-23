@@ -8,6 +8,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 @WebServlet("/login")
 public class Auth extends HttpServlet {
 	/*
@@ -25,20 +28,25 @@ public class Auth extends HttpServlet {
 		String servletPath = (session.getAttribute("path_for_login") != null) ?
 			((String)session.getAttribute("path_for_login")).replaceFirst("/", "") : "home";
 
-		if(AuthUtilities.authenticate(userName, password)) {
-			//successfully logged in so create cookie or session
-			//also remove calling path since it served its purpose
-			session.removeAttribute("path_for_login");
-			session.setAttribute("username", userName);
-                	session.setAttribute("user", 
-                                              new User(userName, 
-                                                       password,
-                                                       "test@example.edu",
-                                                       "oswego"));
-			res.sendRedirect(servletPath);
+		try 
+		{
+			if(AuthUtilities.authenticate(userName, password)) {
+				//successfully logged in so create cookie or session
+				//also remove calling path since it served its purpose
+				session.removeAttribute("path_for_login");
+				session.setAttribute("username", userName);
+	            session.setAttribute("user", new User(userName, password,
+	                                                       "test@example.edu",
+	                                                       "oswego"));
+
+
+				res.sendRedirect(servletPath);
+			}
+			else
+				res.sendRedirect("login");
 		}
-		else
-			res.sendRedirect("login");
+		catch(NoSuchAlgorithmException e) {}
+		catch(InvalidKeySpecException e) {}
 
 	}//end of doPost method
 
