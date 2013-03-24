@@ -48,7 +48,6 @@ public class AuthUtilities {
 			return false;
 		}
 		else {
-
 			byte[] passwordAttempt = getEncryptedPassword(password, salt);
 			return Arrays.equals(encryptedPassword, passwordAttempt);
 		}
