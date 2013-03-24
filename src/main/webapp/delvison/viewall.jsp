@@ -38,13 +38,14 @@
               <a href="#filterTab" data-toggle="tab">Filter</a>
             </li>
             <li><a href="#searchHistoryTab" data-toggle="tab">
-              Search History</a></li>
+              Search History</a>
+            </li>
           </ul>
         </div>
         <div class="tab-content">
           <div class="tab-pane" id="searchHistoryTab">
             <!--Yulle's search history here-->
-            <ul class="nav nav-tabs nav-stacked">
+            <ul class="unstyled">
               <devjsp:searchHistory>
                 <li>${searchHistory}</li>
               </devjsp:searchHistory>

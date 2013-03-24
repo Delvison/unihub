@@ -1,6 +1,8 @@
 <!-- jsp to create a listing -->
 
 <%@include file="header.jsp" %>
+<%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <body>
 <center>
@@ -37,14 +39,7 @@
             <label class="control-label" for="category">Category</label>
             <div class="controls">
               <select name = "category" id="category" class="span9">
-                <option>Art Supplies</option>
-                <option>Books</option>
-                <option>Bicycles</option>
-                <option>Cell Phones</option>
-                <option>Electronics</option>
-                <option>Furniture</option>
-                <option>Musical Instruments</option>
-                <option>Misc.</option>
+                <devjsp:catOptions />
               </select>
             </div>
           </div>
@@ -66,8 +61,10 @@
           <div class="control-group">
             <label class="control-label" for="bid">Bid Mode</label>
             <div class="controls">
-              <input type="checkbox" name="bid" value="yes" id="bid">
-                Bid Mode <p style="font-size:xx-small">
+              <select name = "bid" id="bid" class="span9">
+                <devjsp:bidOptions />
+              </select>
+               <p style="font-size:xx-small">
                 <i>Bid starts at price mentioned above</i></p>
               </div>
             </div>
@@ -95,7 +92,10 @@
                 and watch your stuff sell like hotcakes! </i></p>
           </div>
           <img data-src="holder.js/300x200" alt="">
-          <input type="file" name="somefile" class="span9" >
+          <form id="picForm" action="FileUploadServlet" enctype="multipart/form-data" method="post">
+            <input type="file" id="FileUploadId" name="upload" class="span9" >
+            <input type="submit" id="uploadButtonId" value="Upload Now" />
+          </form>
       </div>
   </div>
 </div>
