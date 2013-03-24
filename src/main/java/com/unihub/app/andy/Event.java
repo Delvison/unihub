@@ -8,6 +8,7 @@ import java.util.Calendar;
 
 public class Event {
 
+	int id;
 	String title;
 	String time;
 	String location;
@@ -18,12 +19,17 @@ public class Event {
 	since I am not sure how he does this*/
 	ArrayList<Integer> followers = new ArrayList<Integer>();
 
-	public Event(String title, String time, String location, String description) {
+	public Event(int id, String title, String time, String location, String description) {
+		this.id = id;
 		this.title = title;
 		this.time = time;
 		this.location = location;
 		this.description = description;
 	}//end of constructor
+
+	public int getId() {
+		return id;
+	}
 
 	public String getTitle(){
 
@@ -44,5 +50,11 @@ public class Event {
 
 		return description;
 	}//end of getDes()
+
+	public void addFollower(int id) {
+		followers.add(id);
+	}//end of addFollower()
+
+
 
 }//end of class

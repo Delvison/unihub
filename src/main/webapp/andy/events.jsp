@@ -49,8 +49,12 @@ EventListHolder holder = EventListHolder.getInstance();
 							<input type="text" name="title" placeholder="Title">
 						</div>
 
+						<div>
+							<input type="text" name="location" placeholder="Location">
+						</div>
+
 						<div class="clearfix">
-							<input type="text" name="time" placeholder="When(03/18/90)">
+							<input type="text" name="time" placeholder="When(03/18/90)?">
 						</div>
 
 						<div class="clearfix">
