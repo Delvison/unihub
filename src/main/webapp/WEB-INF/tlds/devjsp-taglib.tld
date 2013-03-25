@@ -165,4 +165,24 @@ version="2.0">
     <rtexprvalue>true</rtexprvalue>
   </attribute>
 </tag>
+
+<tag>
+  <description>displays upvote button if applicable</description>
+  <name>upvote</name>
+  <tag-class>com.unihub.app.UpvoteTag</tag-class>
+  <body-content>empty</body-content>
+
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+
+  <attribute>
+    <name>user</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
 </taglib>

@@ -27,6 +27,7 @@
                 </p>
                 </center>
               </devjsp:itemInfo>
+              <devjsp:upvote itemId="<%=id%>" user="<%=user%>" />
               <devjsp:belongsToUser itemId="<%=id%>" user="<%=user%>" />
               <devjsp:itemInfo itemId="<%=id%>">
                 <br>

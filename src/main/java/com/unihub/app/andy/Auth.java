@@ -35,9 +35,6 @@ public class Auth extends HttpServlet {
 				//also remove calling path since it served its purpose
 				session.removeAttribute("path_for_login");
 				session.setAttribute("username", userName);
-	            session.setAttribute("user", new User(userName, password,
-	                                                       "test@example.edu",
-	                                                       "oswego"));
 
 
 				res.sendRedirect(servletPath);

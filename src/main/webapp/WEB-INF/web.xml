@@ -327,15 +327,6 @@
 </servlet-mapping>
 
 <servlet>
-  <servlet-name>ValidateUserServlet</servlet-name>
-  <servlet-class>com.unihub.app.ValidateUserServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-  <servlet-name>ValidateUserServlet</servlet-name>
-  <url-pattern>/validate</url-pattern>
-</servlet-mapping>
-
-<servlet>
   <servlet-name>notloggedin</servlet-name>
   <jsp-file>delvison/notloggedin.jsp</jsp-file>
 </servlet>
