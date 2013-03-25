@@ -32,7 +32,6 @@ public class Attending extends HttpServlet {
 
 
 
-
 	}//end of doGet()
 
 

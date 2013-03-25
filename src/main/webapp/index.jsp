@@ -68,7 +68,7 @@
 								<h3><%= holder.getEvent(i).getTitle() %></h3>
 								<p><%= holder.getEvent(i).getDes() %></p>
 								<p> Following=<%= holder.getEvent(i).printFollowers() %></p>
-								<a href="#">Attending</a> | <a href="#">More Info</a>
+								<a href="attend?id=<%=holder.getEvent(i).getId() %> ">Attending</a> | <a href="#">More Info</a>
 							</td>
 						</tr>
 
