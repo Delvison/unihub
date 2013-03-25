@@ -1,6 +1,6 @@
 /*
 Checks if a listing belongs to a user.
-If it does, this will display the edit listing link.
+If it does, this will display an edit listing link.
 */
 
 package com.unihub.app;
