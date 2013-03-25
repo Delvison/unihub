@@ -20,6 +20,34 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     private ArrayList<Message> sentMessages, recievedMessages;
     private ArrayList<String> watched;
 
+    /*
+    The byte[] array will be the hashed password
+    */
+    byte[] encryptedPassword;
+    byte[] salt;
+
+    /*
+    My version for byte[] password incase your code depends on it
+    which I feel it does.*/
+    public User(String n, byte[] p, String e, String s, byte[] sal) {
+        //id = -1;
+        name = n;
+        encryptedPassword = p;
+        salt = sal;
+        email = e;
+        school = s;
+        reputation = 0;
+        sentMessages = new ArrayList<Message>();
+        recievedMessages = new ArrayList<Message>();
+        watched = new ArrayList<String>();
+        password = "";
+    }
+
+    public byte[] getEncryptedPassword() {
+      return encryptedPassword;
+    }//end of getEncryptedPassword()
+
+
     public User(String n, String p, String e, String s) {
         id = -1;
         name = n;
@@ -132,6 +160,10 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     public String getPassword() {
         return password;
     }
+
+    public byte[] getSalt() {
+      return salt;
+    }//end of getSalt()
 
     /**
      * @param password the password to set

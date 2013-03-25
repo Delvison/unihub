@@ -59,7 +59,7 @@
 							<td>
 								<h3><%= holder.getEvent(i).getTitle() %></h3>
 								<p><%= holder.getEvent(i).getDes() %></p>
-								<p> ID=<%= holder.getEvent(i).getId() %></p>
+								<p> Following=<%= holder.getEvent(i).printFollowers() %></p>
 								<a href="#">Attending</a> | <a href="#">More Info</a>
 							</td>
 						</tr>

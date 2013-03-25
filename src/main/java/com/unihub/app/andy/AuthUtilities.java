@@ -26,13 +26,15 @@ public class AuthUtilities {
 	public static boolean authenticate(String userName, String password) 
 		throws NoSuchAlgorithmException, InvalidKeySpecException {
 		
+			Dbase dbase = Dbase.create();
+			User user = dbase.getUser(userName);
 			/*Temporarily keeping encrypted password here locally
 			to not change too much code until it is necessary
 			since ideally I will have that sent from Auth.java
 			after the Model returns the bytes I stored from
 			the encrypted password*/
-			byte[] salt = generateSalt();
-			byte[] encryptedPassword = getEncryptedPassword("devisabitchassnigga", salt);
+			byte[] salt = user.getSalt();
+			byte[] encryptedPassword = user.getEncryptedPassword();
 
 			/*looks like whatever is in bytes can be casted to a String
 			with no loss of bits and back*/

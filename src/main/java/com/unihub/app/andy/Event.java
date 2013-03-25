@@ -55,6 +55,17 @@ public class Event {
 		followers.add(id);
 	}//end of addFollower()
 
+	public String printFollowers() {
+		String total = "";
+		if(followers.size() != 0) {
+			for(Integer le : followers)
+				total = total+ Integer.toString(le) +",";
+		} else {
+			total = "No Followers";
+		}
+		return total;
+	}//end of printFollowers()
+
 
 
 }//end of class

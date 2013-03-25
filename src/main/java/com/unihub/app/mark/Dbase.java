@@ -8,6 +8,7 @@ public class Dbase {
 
   private ArrayList<User> userslist;
   private static Dbase users;
+  private int idCounter = 0;
 
   /**
    * Empty constructor initializes a new arraylist
@@ -26,6 +27,9 @@ public class Dbase {
    * it was added at (for id purposes)
    */
   public void addUser(User user) {
+    idCounter+=1;
+    user.setId(idCounter);
+    
     userslist.add(user);
     user.setId(userslist.indexOf(user));
   }

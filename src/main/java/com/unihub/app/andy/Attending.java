@@ -19,13 +19,19 @@ public class Attending extends HttpServlet {
 	public void doGet(HttpServletRequest req, 
 				HttpServletResponse res) throws ServletException, IOException{
 
+		int id = Integer.parseInt(req.getParameter("id"));
+		Dbase dbase = Dbase.create();
+		User user = dbase.getUser((String)req.getSession().getAttribute("username"));
+
+		EventListHolder holder = EventListHolder.getInstance();
+		Event event = holder.findEventWithId(id);
+		event.addFollower(user.getId());
+
+		res.sendRedirect("index");
 
 
 
 
-
-
-		
 
 	}//end of doGet()
 

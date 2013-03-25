@@ -63,9 +63,9 @@ public class EventListHolder {
 		/*
 		Does the actual work to find a specific Event
 		with the specific id in the parameter*/
-		for(int i = 0; i < numOfEvents(); i++) {
-			if(getEvent(i).getId() == id)
-				return getEvent(i);
+		for(Event event : list) {
+			if(event.getId() == id)
+				return event;
 		}
 
 		return null;
