@@ -34,14 +34,22 @@ public class FileUploadServlet extends HttpServlet {
 
   /* This method Retrieves destination and file part from request. Then create a 
      FileOutputStream to copy the file into desired directory. */          
-  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
 
     // Create path components to save the file
-    final String path = request.getParameter("destination");
+    String path = request.getSession().getServletContext().getRealPath("/listings");
+    String itemId = request.getParameter("id");
+    path = path+"/"+itemId;
     final Part filePart = request.getPart("file");
     final String fileName = getFileName(filePart);
+
+    File chkDir = new File(path);
+
+    if (!chkDir.exists()){
+        chkDir.mkdir();
+    }
 
     OutputStream out = null;
     InputStream filecontent = null;
@@ -58,7 +66,9 @@ public class FileUploadServlet extends HttpServlet {
         while ((read = filecontent.read(bytes)) != -1) {
             out.write(bytes, 0, read);
         }
-        writer.println("New file " + fileName + " created at " + path);
+        writer.println("DEBUG MSG:::\n New file " + fileName + " created at " + path+"\n");
+        writer.println("\n\n\nFile was successfully uploaded. Just have to decide how to manage the files once they are on the server.");
+
         LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", 
                 new Object[]{fileName, path});
     } catch (FileNotFoundException fne) {

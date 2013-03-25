@@ -14,12 +14,13 @@ public class ListingsObj{
   }
   private static ListingsObj listings;
   
- public void addStuff(String user, String name, String price, String university,
+ public int addStuff(String user, String name, String price, String university,
   String location, String category, String description, Date now, String bid){
     id = id+1;
     Stuff a = new Stuff(id, user, name, price, university, location, category,
                          description, now, bid);
     stuffs.add(a);
+    return id;
   }
   
   private static ListingsObj getInstance(){

@@ -407,6 +407,16 @@
   <url-pattern>/addbid</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>uploadPhoto</servlet-name>
+  <jsp-file>delvison/uploadPhoto.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+  <servlet-name>uploadPhoto</servlet-name>
+  <url-pattern>/uploadPhoto</url-pattern>
+</servlet-mapping>
+
+
 <!-- End of Delvison's Mappings ########################################## -->
 
 </web-app>

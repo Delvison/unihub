@@ -50,8 +50,8 @@ public class ListingsServlet extends HttpServlet {
         res.sendRedirect("sorry");
       }else{
         Date now = new Date();
-        lis.addStuff(userName,name,price,university,loc,cat,desc,now,bid);
-        res.sendRedirect("viewalllistings?cat=All");
+        int currentId = lis.addStuff(userName,name,price,university,loc,cat,desc,now,bid);
+        res.sendRedirect("uploadPhoto?id="+Integer.toString(currentId));
       }
     }else{
       /*EDIT THE LISTING */

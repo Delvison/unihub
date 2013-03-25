@@ -82,7 +82,10 @@
                     </div>
                   </div>
                 </div>
-              </div>               
+              </div> 
+            <devjsp:printActivities itemId="<%=id%>">
+              <li>${itemActivity}
+            </devjsp:printActivities>
         </div>
       
         <!--SIDEBAR-->
