@@ -41,6 +41,7 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
         sentMessages = new ArrayList<Message>();
         recievedMessages = new ArrayList<Message>();
         watched = new ArrayList<String>();
+        voted = new ArrayList<Integer>();
         password = "";
     }
 
