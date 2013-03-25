@@ -1,9 +1,6 @@
 <HTML>
-  
-  <HEAD>
-    <%@ page import="java.util.*" %>
-  </HEAD>
- 
+<%@include file="../delvison/header.jsp" %>
+  <%@ page import="java.util.*" %> 
   <BODY>
   	<CENTER>
       <H1>Search:</H1>

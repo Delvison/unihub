@@ -53,7 +53,7 @@ public class SearchServlet extends HttpServlet {
         	params.put("AssociateTag", "uni00d-20"); // Added Mark's Associate Tag
         	params.put("IdType","ASIN");
         	params.put("ResponseGroup","Offers, Small");
-        	params.put("SearchIndex","Books");
+        	params.put("SearchIndex","All");//Books
         	params.put("Keywords", keywords);
         	try{
             	arequestUrl = helper.sign(params);

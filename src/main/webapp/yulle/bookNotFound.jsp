@@ -1,10 +1,9 @@
 <HTML>
-  <HEAD>
-  	<meta http-equiv="refresh" content="2;/unihub/gsearch">
-  </HEAD>
+  <%@include file="../delvison/header.jsp" %>
+  <meta http-equiv="refresh" content="2;/unihub/gsearch">
   <BODY>
   	<CENTER>
- 		<H1>Book Not Found!</H1>
+ 		<H1>Item Not Found!</H1>
  		<I>redirecting...</I>
  	</CENTER>
   </BODY>

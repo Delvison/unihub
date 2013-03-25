@@ -1,8 +1,6 @@
 <HTML>
-  <HEAD>
-  	<%@ page import="java.util.*" %>
-  </HEAD>
- 
+  <%@include file="../delvison/header.jsp" %>
+  <%@ page import="java.util.*" %>
   <BODY>
   	<%! HttpSession session; %>
   	<DIV ALIGN="left">
