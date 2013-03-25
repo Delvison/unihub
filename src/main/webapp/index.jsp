@@ -23,11 +23,19 @@
 
 
 		<div class="hero-unit" style="background-color:White">
-			<h1>WELCOME TO UNIHUB!</h1>
-			<p>Want a less sketchy classified directory tailored for the college student? 
-				<a href="signup">Sign Up!</a>
-			</p>
-			<img src="design/images/y_u_no.jpg">
+                        <table width="100%">
+                          <tr>
+                            <td>
+			    <img src="design/images/y_u_no.jpg">
+                            </td>
+                            <td style="padding:30px">
+			    <h1>WELCOME TO UNIHUB</h1>
+			    <p>Want a less sketchy classified directory tailored for the college student? 
+			    	    <a href="signup">Sign Up!</a>
+			    </p>
+                            </td>
+                          </tr>
+                        </table>
 		</div>
 
 
