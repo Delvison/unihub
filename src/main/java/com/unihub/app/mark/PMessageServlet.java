@@ -21,14 +21,10 @@ public void doPost(HttpServletRequest req,
   session = req.getSession();
   String toName = req.getParameter("toName");
   String contents = req.getParameter("contents");
-  String address = "", fromName = "";
-  User curruser  = (User)session.getAttribute("user");
+  String address = "";
+  String fromName  = (String)session.getAttribute("username");
   Dbase ubase = Dbase.create();
   res.setContentType("text/html");
-
-  if( session.getAttribute("user") != null ) {
-    fromName = curruser.getName();
-  }
 
   Message m = new Message(fromName, toName, contents);
   ubase.getUser(toName).addToRecieved(m);
