@@ -20,7 +20,7 @@ public void doPost(HttpServletRequest req,
   Dbase ubase = Dbase.create();
   res.setContentType("text/html");
   String watchedname = req.getParameter("watchname");
-  User loggedin = ubase.getUser(((User)session.getAttribute("user")).getName());
+  User loggedin = ubase.getUser((String)session.getAttribute("username"));
   if( loggedin.isWatching(watchedname) ) {
     loggedin.unwatch(watchedname);
   } else {

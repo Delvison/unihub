@@ -20,7 +20,7 @@ public void doGet(HttpServletRequest req,
   String address = "";
   res.setContentType("text/html");
 
-  if( session.getAttribute("user") == null ) {
+  if( session.getAttribute("username") == null ) {
     res.sendRedirect("home");
   }else {
     address = "mark/usermessages.jsp";

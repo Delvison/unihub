@@ -1,10 +1,10 @@
 <td style="padding:10px">
 <center>
    <% User currentUser = ubase.getUser(Integer.parseInt(request.getParameter("u_id"))); %>
-   <% User sessUser = (User)session.getAttribute("user"); %>
+   <% String sessUser = (String)session.getAttribute("username"); %>
    <a href="pmessage?name=<%=currentuser.getName()%>" role="button" class="btn btn-small">Message</a>                   
    <% String val = "";
-      User sessUserDBase = ubase.getUser(sessUser.getName());
+      User sessUserDBase = ubase.getUser(sessUser);
       String curruname = currentUser.getName();
       boolean doeswatch = sessUserDBase.isWatching(curruname);
       if(doeswatch == true) val = "unwatch";

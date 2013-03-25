@@ -40,7 +40,7 @@
               <td style="padding:10px">
                <center><h3><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)</h3></center>
               </td>
-                <% if(session.getAttribute("user") != null) { %>
+                <% if(session.getAttribute("username") != null) { %>
                 <%@ include file="logged_in_user_page_actions.jsp" %>
                 <% } %>
              </tr>

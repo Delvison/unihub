@@ -17,8 +17,8 @@ See ProfileServlet in java/mark -->
 <%@ include file="../delvison/header.jsp"%>
 
     <body>
-        <% User currentuser = (User)session.getAttribute("user");
-           Dbase ubase = Dbase.create();
+          <% Dbase ubase = Dbase.create();
+           User currentuser = ubase.getUser((String)session.getAttribute("username"));
            String gravatar = "";
             try {
               gravatar = currentuser.gravatar(); 
