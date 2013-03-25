@@ -19,6 +19,7 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     private int id, reputation;
     private ArrayList<Message> sentMessages, recievedMessages;
     private ArrayList<String> watched;
+    private ArrayList<Integer> voted;
 
     public User(String n, String p, String e, String s) {
         id = -1;
@@ -30,6 +31,7 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
         sentMessages = new ArrayList<Message>();
         recievedMessages = new ArrayList<Message>();
         watched = new ArrayList<String>();
+        voted = new ArrayList<Integer>();
     }
 
     public User() {
@@ -42,6 +44,7 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
       sentMessages = new ArrayList<Message>();
       recievedMessages = new ArrayList<Message>();
       watched = new ArrayList<String>();
+      voted = new ArrayList<Integer>();
     }
 
     public boolean isLoggedIn(HttpSession session) {
@@ -80,7 +83,7 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
       reputation = rep;
     }
 
-    protected void incRep() {
+    public void incRep() {
       reputation += 1;
     }
 
@@ -171,6 +174,14 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     public boolean isWatching (String n) {
       if (watched.contains(n)) return true;
       return false;
+    }
+
+    public void addToVoted(Integer i) {
+      voted.add(i);
+    }
+
+    public boolean hasVoted(Integer i) {
+      return voted.contains(i);
     }
 
     @Override
