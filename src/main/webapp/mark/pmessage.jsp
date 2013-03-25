@@ -4,7 +4,8 @@
       <%@ include file="../delvison/header.jsp" %>
       <title>Message for <%= toName %></title>
     <body>
-        <% User curruser = (User)session.getAttribute("user"); %>
+        <% Dbase ubase = Dbase.create();
+           User curruser = ubase.getUser((String)session.getAttribute("username")); %>
         <div style="valign:center" class="span6 offset3 hero-unit">
         <form action="message" method="POST" style="valign:center">
           From: <%=curruser.getName()%><br>

@@ -16,7 +16,7 @@
 <body style="background-color:#CCC">
   <% Dbase ubase = Dbase.create(); %>
   <% //get the user from the database that matches the current session's user
-     User currentuser = ubase.getUser(((User)session.getAttribute("user")).getName()); %>
+     User currentuser = ubase.getUser((String)session.getAttribute("username")); %>
   <table>
   <tr>
     <td>

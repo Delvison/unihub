@@ -19,7 +19,12 @@ public void doGet(HttpServletRequest req,
     throws ServletException, IOException {
 
   session = req.getSession();
-  User user = (User)session.getAttribute("user");
+  Dbase ubase = Dbase.create();
+  String uname = "";
+  if( session.getAttribute("username") != null ) {
+     uname = (String)session.getAttribute("username");
+  }
+  User user = ubase.getUser(uname);
   res.setContentType("text/html");
   PrintWriter out = res.getWriter();
   String address;

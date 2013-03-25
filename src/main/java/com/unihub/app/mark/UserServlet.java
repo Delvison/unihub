@@ -23,8 +23,9 @@ public void doGet(HttpServletRequest req,
   Dbase ubase = Dbase.create();
   res.setContentType("text/html");
   u_id = req.getParameter("u_id");
-  if( session.getAttribute("user") != null ) {
-    curruname = ((User)session.getAttribute("user")).getName();
+
+  if( (String)session.getAttribute("username") != null ) {
+    curruname = (String)session.getAttribute("username");
   }
 
   if( u_id == null ) {
