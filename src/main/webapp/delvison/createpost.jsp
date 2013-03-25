@@ -92,9 +92,9 @@
                 and watch your stuff sell like hotcakes! </i></p>
           </div>
           <img data-src="holder.js/300x200" alt="">
-          <form id="picForm" action="FileUploadServlet" enctype="multipart/form-data" method="post">
-            <input type="file" id="FileUploadId" name="upload" class="span9" >
-            <input type="submit" id="uploadButtonId" value="Upload Now" />
+          <form action="upload" enctype="multipart/form-data" method="post">
+            <input type="file" id="file" name="file" class="span9" >
+            <input type="submit" id="upload" value="Upload Now" />
           </form>
       </div>
   </div>
