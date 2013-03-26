@@ -10,7 +10,7 @@
   <div class='span12'>
     
     <!--Listings Pane -->
-    <div style="background-color:White" class="span6">
+    <div style="background-color:White" class="span8 offset2">
       <h2>Sell Your Stuff!</h2>
       <div class="span10">
         <form class="form-horizontal" action="createlisting" method="GET">
@@ -79,23 +79,6 @@
           <center><input type="submit" value="Sell" class="btn btn-primary btn-large"></center>
        </form>
      </div>
-      </div>
-      
-      <!--Image Pane-->
-      <div class='span4 sidebar' style="background-color:White">
-        <h2>Photos</h2>
-          <div class="alert alert-block span10 offset1">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <p><i>Pictures are a great way for sellers to know exactly what you're
-                selling. They reassure the buyer of what it is you're actually selling
-                and they may even help for a quicker sale! So go ahead, snap one or two
-                and watch your stuff sell like hotcakes! </i></p>
-          </div>
-          <img data-src="holder.js/300x200" alt="">
-          <form action="upload" enctype="multipart/form-data" method="post">
-            <input type="file" id="file" name="file" class="span9" >
-            <input type="submit" id="upload" value="Upload Now" />
-          </form>
       </div>
   </div>
 </div>

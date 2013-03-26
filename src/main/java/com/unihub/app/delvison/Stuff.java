@@ -19,8 +19,9 @@ public class Stuff{
   public String highBidder; //holds value of the user who ahs the highest bid
   public String category;
   public Date timePosted;
-  public String dir = "listings/"+Integer.toString(id);
+  private String dir;
   private ItemActivityObj activityLog;
+  private int picAmount; //amount of pictures uploaded for the item
   
   public Stuff(int id, String user, String name, String price, String university,
   String location, String category, String description, Date now, String bid){
@@ -35,6 +36,7 @@ public class Stuff{
     this.timePosted = now;
     this.bidMode = bid;
     this.activityLog = new ItemActivityObj(this.id);
+    this.picAmount = 0;
   }
 
   public void updateContent(String name, String price, String university,
@@ -95,33 +97,65 @@ public class Stuff{
   public String getName(){
     return this.name;
   }
+
+  public void setName(String n){
+    this.name = n;
+  }
   
   public String getPrice(){
     return this.price;
+  }
+
+  public void setPrice(String p){
+    this.price = p;
   }
   
   public String getUniversity(){
     return this.university;
   }
+
+  public void setUniversity(String u){
+    this.university = u;
+  }
   
   public String getLocation(){
     return this.location;
+  }
+
+  public void setLocation(String l){
+    this.location = l;
   }
   
   public String getDescription(){
     return this.description;
   }
+
+  public void setDescriptiom(String d){
+    this.description = d;
+  }
   
   public String getBidMode(){
     return this.bidMode;
+  }
+
+  public void setBidMode(String b){
+    this.bidMode = b;
   }
   
   public String getHighBidder(){
     return this.highBidder;
   }
+
+  public void setHighBidder(String h){
+    this.highBidder = h;
+  }
   
   public String getCategory(){
     return this.category;
+  }
+
+  public void setCategory(String c){
+    this.category = c;
   }
   
   public Date getTimePosted(){
@@ -131,8 +165,20 @@ public class Stuff{
   public String getDir(){
     return this.dir;
   }
+
+  public void setDir(String d){
+    this.dir = d;
+  }
   
   public String getUser(){
     return this.user;
+  }
+
+  public int getPicAmount(){
+    return this.picAmount;
+  }
+
+  public void setPicAmount(){
+    this.picAmount = picAmount +1;
   }
 }

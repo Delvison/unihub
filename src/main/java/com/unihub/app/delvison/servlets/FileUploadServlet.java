@@ -23,6 +23,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 @WebServlet(name = "FileUploadServlet", urlPatterns = { "/upload" })
 @MultipartConfig /* tells servlet to expect requests made up of 
@@ -31,64 +33,84 @@ public class FileUploadServlet extends HttpServlet {
 
   private final static Logger LOGGER = 
             Logger.getLogger(FileUploadServlet.class.getCanonicalName());
+  private String image_url;
+  HttpSession session;
 
-  /* This method Retrieves destination and file part from request. Then create a 
-     FileOutputStream to copy the file into desired directory. */          
+     
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
 
-    // Create path components to save the file
-    String path = request.getSession().getServletContext().getRealPath("/listings");
+    session = request.getSession(); /* get current session */ 
     String itemId = request.getParameter("id");
-    path = path+"/"+itemId;
+
+    /* get the username */
+    String userName="";
+    try{
+        userName = (String)session.getAttribute("username");
+    }catch(NullPointerException e){
+        response.sendRedirect("login");
+    }
+/*
+    if (userName == null || 
+        !userName.equals(ListingsObj.create().getStuff(Integer.parseInt(itemId)).getUser())){
+      response.sendRedirect("uploadPhoto?id="+itemId+"&msg=error");
+    }
+*/
+    // Create path 
+    image_url = "/listings/"+itemId;
+    String path = request.getSession().getServletContext().getRealPath(image_url);
     final Part filePart = request.getPart("file");
     final String fileName = getFileName(filePart);
+    
+    if (ListingsObj.create().getStuff(Integer.parseInt(itemId)).getPicAmount() < 4){
 
-    File chkDir = new File(path);
+      File chkDir = new File(path);
+      ListingsObj.create().getStuff(Integer.parseInt(itemId)).setDir(path);
 
-    if (!chkDir.exists()){
-        chkDir.mkdir();
-    }
+      //check if dir already exists
+      if (!chkDir.exists()){
+          chkDir.mkdir(); //create dir
+      }
 
-    OutputStream out = null;
-    InputStream filecontent = null;
-    final PrintWriter writer = response.getWriter();
+      OutputStream out = null;
+      InputStream filecontent = null;
+      final PrintWriter writer = response.getWriter();
 
-    try {
-        out = new FileOutputStream(new File(path + File.separator
-                + fileName));
-        filecontent = filePart.getInputStream();
+      try {
+          out = new FileOutputStream(new File(path + File.separator + fileName));
+          filecontent = filePart.getInputStream();
 
-        int read = 0;
-        final byte[] bytes = new byte[1024];
+          int read = 0;
+          final byte[] bytes = new byte[1024];
 
-        while ((read = filecontent.read(bytes)) != -1) {
-            out.write(bytes, 0, read);
-        }
-        writer.println("DEBUG MSG:::\n New file " + fileName + " created at " + path+"\n");
-        writer.println("\n\n\nFile was successfully uploaded. Just have to decide how to manage the files once they are on the server.");
-
-        LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", 
-                new Object[]{fileName, path});
-    } catch (FileNotFoundException fne) {
-        writer.println("You either did not specify a file to upload or are "
-                + "trying to upload a file to a protected or nonexistent "
-                + "location.");
-        writer.println("<br/> ERROR: " + fne.getMessage());
-
-        LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}", 
-                new Object[]{fne.getMessage()});
-    } finally {
-        if (out != null) {
-            out.close();
-        }
-        if (filecontent != null) {
-            filecontent.close();
-        }
-        if (writer != null) {
-            writer.close();
-        }
+          while ((read = filecontent.read(bytes)) != -1) {
+              out.write(bytes, 0, read);
+          }
+          /* FILE UPLOAD SUCCESS */
+          // ADD 1 to the item's picture amount upon success
+          ListingsObj.create().getStuff(Integer.parseInt(itemId)).setPicAmount();
+          LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", new Object[]{fileName, path});
+          response.sendRedirect("uploadPhoto?id="+itemId+"&msg=success");
+      } catch (FileNotFoundException fne) {
+          response.sendRedirect("uploadPhoto?id="+itemId+"&msg=error");
+          LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}", 
+                  new Object[]{fne.getMessage()});
+      } finally {
+          if (out != null) {
+              out.close();
+          }
+          if (filecontent != null) {
+              filecontent.close();
+          }
+          if (writer != null) {
+              writer.close();
+          }
+      }
+    } else {
+    /* ELSE, 4 pictures exist aleady for item */
+      final PrintWriter writer = response.getWriter();
+        response.sendRedirect("uploadPhoto?id="+itemId+"&msg=limit");
     }
   }
 

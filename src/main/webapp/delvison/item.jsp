@@ -47,21 +47,13 @@
                     <div class="accordion-inner">
                       <!-- PLACE IMAGE THuMBNAILS IN HERE -->
                         <ul class="thumbnails">
-                          <li class="span3">
-                            <a href="listings/1/1.jpg" rel="lightbox" class="thumbnail">
-                              <img src="listings/1/1.jpg"  rel="lightbox">
-                            </a>
-                          </li>
-                          <li class="span3">
-                            <a href="listings/1/2.jpg" rel="lightbox" class="thumbnail">
-                              <img src="listings/1/2.jpg" rel="lightbox">
-                            </a>
-                          </li>
-                          <li class="span3">
-                            <a href="listings/1/3.jpg" rel="lightbox" class="thumbnail">
-                              <img src="listings/1/3.jpg" rel="lightbox">
-                            </a>
-                          </li>
+                          <devjsp:pic itemId="<%=id%>">
+                            <li class="span3">
+                              <a href="${imagePath}" rel="lightbox" class="thumbnail">
+                                <img src="${imagePath}"  rel="lightbox">
+                              </a>
+                            </li>
+                          </devjsp:pic >
                         </ul>
                     </div>
                   </div>

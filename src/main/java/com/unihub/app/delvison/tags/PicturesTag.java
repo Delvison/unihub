@@ -18,20 +18,20 @@ public class PicturesTag extends SimpleTagSupport{
   
   public void doTag() throws JspException, IOException{
     ListingsObj lis = ListingsObj.create();
-    /* find 'Stuff' by id */
     Stuff stuff = lis.getStuff(itemId);
     
-      /* Find Pictures Algorithm */
-    dir = stuff.dir;
-    for (int i=1; i<4; i++){
-      File pic = new File(dir+"/"+Integer.toString(i)+".jpg");
-      if (!pic.exists()){
-        getJspContext().setAttribute("image"+Integer.toString(i),"#");
-      } else {
-        getJspContext().setAttribute("image"+Integer.toString(i),pic);
-      }     
-    }
-    
-    getJspBody().invoke(null);
+    /* Pictures Algorithm */
+    if (stuff.getPicAmount() != 0){ //if more than 0 pics exist
+      String path = stuff.getDir();
+      File dir = new File(path); 
+      for (File f : dir.listFiles()){ //for each file in the dir
+        String img_url = "listings/"+Integer.toString(itemId)+"/"+f.getName();
+        getJspContext().setAttribute("imagePath",img_url);
+        getJspBody().invoke(null);
+      }
+    }    
   }
 }
+
+//Iterator it = FileUtils.iterateFiles(new File(path),null, false)
+// while it.hasNext()...

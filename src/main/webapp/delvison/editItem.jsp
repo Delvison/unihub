@@ -86,11 +86,21 @@
       <!--Image Pane-->
       <div class='span4 sidebar' style="background-color:White">
         <h2>Photos</h2>
-          <img data-src="holder.js/300x200" alt="">
-          <form id="picForm" action="FileUploadServlet" enctype="multipart/form-data" method="post">
-            <input type="file" id="FileUploadId" name="upload" class="span9" >
-            <input type="submit" id="uploadButtonId" value="Upload Now" />
+        <center>
+          <a href="uploadPhoto?id=<%=id%>">
+            <button class="btn btn-primary">Manage Photos</button>
+          </a>
+          <br><br>
+          <devjsp:pic itemId="<%=id%>">
+            <li class="span3">
+              <a href="${imagePath}" rel="lightbox" class="thumbnail">
+                <img src="${imagePath}"  rel="lightbox">
+              </a>
+            </li>
+          </devjsp:pic >
+          <br>
           </form>
+        </center>
       </div>
 
   </div>
