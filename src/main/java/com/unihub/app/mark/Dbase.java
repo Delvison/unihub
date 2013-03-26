@@ -3,6 +3,8 @@
 package com.unihub.app;
 
 import java.util.ArrayList;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class Dbase {
 
@@ -61,8 +63,21 @@ public class Dbase {
    * populates the arraylist with some dummy data
    */
   public void populate() {
+    byte[] salt = null;
+    byte[] encryptedPassword = null;
+    try {
+      salt = AuthUtilities.generateSalt();
+      encryptedPassword = AuthUtilities.getEncryptedPassword("pass", salt);
+    }
+    catch(NoSuchAlgorithmException e) {}
+    catch(InvalidKeySpecException e) {}
+
     for(int i = 0; i < 10; i++) {
-      addUser(new User("User"+i, "pass", "mwillson@oswego.edu", "Oswego"));
+      addUser( new User("User"+i,
+                         encryptedPassword,
+                         "mwillson@oswego.edu",
+                         "Oswego",
+                         salt) );
     }
   }
 
