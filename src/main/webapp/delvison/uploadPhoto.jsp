@@ -30,6 +30,12 @@
            An error has occurred with your photo.
        </div>
      <%}%>
+     <%if (msg.equals("removed")){%>
+       <div class="alert alert-success span9 offset1">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+           Your photo was successfully removed
+       </div>
+     <%}%>
      <%if (msg.equals("success")){%>
        <div class="alert alert-success span9 offset1">
          <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -59,7 +65,7 @@
                <a href="${imagePath}" rel="lightbox" class="thumbnail">
                 <img src="${imagePath}"  rel="lightbox" style="height:130px">
                </a>
-               <a class="btn btn-danger btn-mini" href="removePhoto?dir=${imagePath}">
+               <a class="btn btn-danger btn-mini" href="removePhoto?dir=${imageDir}">
               <i class="icon-trash icon-white"></i>Remove</a>
            </li>
       </devjsp:pic >

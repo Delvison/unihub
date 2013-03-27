@@ -1,3 +1,4 @@
+// @author Delvison
 /*
 Prints out comments
 */
@@ -28,7 +29,7 @@ public class PrintListingsTag extends SimpleTagSupport{
   public void doTag() throws JspException, IOException{
     ListingsObj lis = ListingsObj.create();
     
-    if (category != null && (!(category.equals("All"))) && (!(category.equals("search"))) ){
+    if (category != null && !category.equals("All") && !category.equals("search") ){
       String cat = this.filter(category);
       for (Stuff s: lis.stuffs){
         if (s.category.equals(cat)){
@@ -77,10 +78,10 @@ public class PrintListingsTag extends SimpleTagSupport{
           getJspContext().setAttribute("listingUniversity",c[3]); 
           getJspContext().setAttribute("listingLocation",c[4]);   
           getJspContext().setAttribute("listingId",c[5]);
-          getJspContext().setAttribute("listingCategory",c[6]);  
+          getJspContext().setAttribute("listingCategory",c[6]);
           DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
           String datePosted = formatter.format(s.timePosted);
-          getJspContext().setAttribute("listingDate",datePosted);        
+          getJspContext().setAttribute("listingDate",datePosted);
           getJspBody().invoke(null);
       }
     }  

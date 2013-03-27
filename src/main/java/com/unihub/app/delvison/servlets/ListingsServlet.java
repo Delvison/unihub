@@ -1,5 +1,4 @@
-/* Delvison ################################################################# */
-
+// @author Delvison
 /*
 This servlet takes the info passed in from createpost.jsp and 'creates' a listing object
 */

@@ -1,3 +1,4 @@
+// @author Delvison
 /*
 allows access to individual 
 */
@@ -27,6 +28,7 @@ public class PicturesTag extends SimpleTagSupport{
       for (File f : dir.listFiles()){ //for each file in the dir
         String img_url = "listings/"+Integer.toString(itemId)+"/"+f.getName();
         getJspContext().setAttribute("imagePath",img_url);
+        getJspContext().setAttribute("imageDir",path+"/"+f.getName());
         getJspBody().invoke(null);
       }
     }    

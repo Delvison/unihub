@@ -407,6 +407,14 @@
   <url-pattern>/uploadPhoto</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>removePhotoServlet</servlet-name>
+  <servlet-class>com.unihub.app.RemovePhotoServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>removePhotoServlet</servlet-name>
+  <url-pattern>/removePhoto</url-pattern>
+</servlet-mapping>
 
 <!-- End of Delvison's Mappings ########################################## -->
 

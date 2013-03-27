@@ -1,3 +1,4 @@
+// @author Delvison
 /*
 this servlet is used to create a cookie that holds the value of 
 location inputted by the user
