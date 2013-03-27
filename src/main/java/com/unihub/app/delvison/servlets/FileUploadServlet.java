@@ -51,66 +51,72 @@ public class FileUploadServlet extends HttpServlet {
     }catch(NullPointerException e){
         response.sendRedirect("login");
     }
-/*
-    if (userName == null || 
-        !userName.equals(ListingsObj.create().getStuff(Integer.parseInt(itemId)).getUser())){
+
+    if (userName == null){
+      response.sendRedirect("sorry");
+    } else if(!userName.equals(ListingsObj.create().getStuff(Integer.parseInt(itemId)).getUser())){
       response.sendRedirect("uploadPhoto?id="+itemId+"&msg=error");
-    }
-*/
-    // Create path 
-    image_url = "/listings/"+itemId;
-    String path = request.getSession().getServletContext().getRealPath(image_url);
-    final Part filePart = request.getPart("file");
-    final String fileName = getFileName(filePart);
-    
-    if (ListingsObj.create().getStuff(Integer.parseInt(itemId)).getPicAmount() < 4){
+    }else{
 
-      File chkDir = new File(path);
-      ListingsObj.create().getStuff(Integer.parseInt(itemId)).setDir(path);
+      // Create path 
+      image_url = "/listings/"+itemId;
+      String path = request.getSession().getServletContext().getRealPath(image_url);
+      final Part filePart = request.getPart("file");
+      final String fileName = getFileName(filePart);
 
-      //check if dir already exists
-      if (!chkDir.exists()){
-          chkDir.mkdir(); //create dir
+      // Check for .jpg or .png extension
+      String extension = "";
+      int i = fileName.lastIndexOf('.');
+      if (i > 0) {
+        extension = fileName.substring(i+1);
       }
 
-      OutputStream out = null;
-      InputStream filecontent = null;
-      final PrintWriter writer = response.getWriter();
+      /* CHECK FOR VALIDITY HERE */
+      if (extension.equals("jpg")||extension.equals("png")){
+        if (ListingsObj.create().getStuff(Integer.parseInt(itemId)).getPicAmount() < 4){
 
-      try {
-          out = new FileOutputStream(new File(path + File.separator + fileName));
-          filecontent = filePart.getInputStream();
+          //check if dir already exists
+          File chkDir = new File(path);
+          ListingsObj.create().getStuff(Integer.parseInt(itemId)).setDir(path);
+          if (!chkDir.exists()){
+            chkDir.mkdir(); //create dir
+          }
 
-          int read = 0;
-          final byte[] bytes = new byte[1024];
-
-          while ((read = filecontent.read(bytes)) != -1) {
+          OutputStream out = null;
+          InputStream filecontent = null;
+          try {
+            out = new FileOutputStream(new File(path + File.separator + fileName));
+            filecontent = filePart.getInputStream();
+            int read = 0;
+            final byte[] bytes = new byte[1024];
+          
+            while ((read = filecontent.read(bytes)) != -1) {
               out.write(bytes, 0, read);
-          }
-          /* FILE UPLOAD SUCCESS */
-          // ADD 1 to the item's picture amount upon success
-          ListingsObj.create().getStuff(Integer.parseInt(itemId)).setPicAmount();
-          LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", new Object[]{fileName, path});
-          response.sendRedirect("uploadPhoto?id="+itemId+"&msg=success");
-      } catch (FileNotFoundException fne) {
-          response.sendRedirect("uploadPhoto?id="+itemId+"&msg=error");
-          LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}", 
-                  new Object[]{fne.getMessage()});
-      } finally {
-          if (out != null) {
+            }
+            /* FILE UPLOAD SUCCESS */
+            // ADD 1 to the item's picture amount upon success
+            ListingsObj.create().getStuff(Integer.parseInt(itemId)).setPicAmount();
+            LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", new Object[]{fileName, path});
+            response.sendRedirect("uploadPhoto?id="+itemId+"&msg=success");
+          } catch (FileNotFoundException fne) {
+            response.sendRedirect("uploadPhoto?id="+itemId+"&msg=error");
+            LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}", 
+            new Object[]{fne.getMessage()});
+          } finally {
+            if (out != null) {
               out.close();
-          }
-          if (filecontent != null) {
+            }
+            if (filecontent != null) {
               filecontent.close();
+            }
           }
-          if (writer != null) {
-              writer.close();
-          }
-      }
-    } else {
-    /* ELSE, 4 pictures exist aleady for item */
-      final PrintWriter writer = response.getWriter();
-        response.sendRedirect("uploadPhoto?id="+itemId+"&msg=limit");
+        } else {
+          /* ELSE, 4 pictures exist aleady for item */
+          response.sendRedirect("uploadPhoto?id="+itemId+"&msg=limit");
+        }
+      }else{            
+        response.sendRedirect("uploadPhoto?id="+itemId+"&msg=error");
+      }  
     }
   }
 

@@ -91,13 +91,15 @@
             <button class="btn btn-primary">Manage Photos</button>
           </a>
           <br><br>
-          <devjsp:pic itemId="<%=id%>">
-            <li class="span3">
-              <a href="${imagePath}" rel="lightbox" class="thumbnail">
-                <img src="${imagePath}"  rel="lightbox">
-              </a>
-            </li>
-          </devjsp:pic >
+            <ul class="thumbnails">
+              <devjsp:pic itemId="<%=id%>">
+                <li class="span3">
+                  <a href="${imagePath}" rel="lightbox" class="thumbnail">
+                    <img src="${imagePath}"  rel="lightbox">
+                  </a>
+                </li>
+              </devjsp:pic >
+            </ul>
           <br>
           </form>
         </center>

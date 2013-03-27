@@ -76,7 +76,7 @@
           </div>
           <input type="hidden" name="location" value="<%=st%>">
           <input type="hidden" name="university" value="<%=sc%>">
-          <center><input type="submit" value="Sell" class="btn btn-primary btn-large"></center>
+          <center><input type="submit" value="Sell my stuff" class="btn btn-primary btn-large"></center>
        </form>
      </div>
       </div>

@@ -14,9 +14,9 @@
 <body>
 <div class='row-fluid'>
   <!--FORM PANE-->
-  <div class='span6 main offset3' style="background-color:White" align="center">
+  <div class='hero-unit span10 offset1' style="background-color:White" align="center">
   <center>
-    <h2>Manage Photos</h2>
+    <h1>Manage Photos</h1>
    <%if (msg != null){%><center>
      <%if (msg.equals("limit")){%>
         <div class="alert alert-error span9 offset1">
@@ -43,6 +43,8 @@
       <input type="file" id="file" name="file" style="border: solid 1px blue" class="span4" >
       <input type="hidden" name="id" value="<%=id%>">
       <input class="btn btn-primary" type="submit" id="upload" value="Upload Now" />
+      <p style="font-size:xx-small">
+                <i>valid files are jpg and png</i></p>
     </form>
          <a href="item?id=<%=id%>">
         <button class="btn btn-success">Done with photos</button>
@@ -50,14 +52,19 @@
    </center>
    <%if (picAmount > 0){ %>
      <center><h2>Current Photos</h2></center>
-     <ul class="thumbnails">
-      <devjsp:pic itemId="<%=id%>">
-        <li class="span3">
-          <a href="${imagePath}" rel="lightbox" class="thumbnail">
-            <img src="${imagePath}"  rel="lightbox">
-          </a>
-        </li>
+     <div class="row-fluid">
+       <ul class="thumbnails">
+         <devjsp:pic itemId="<%=id%>">
+           <li class="span3">
+               <a href="${imagePath}" rel="lightbox" class="thumbnail">
+                <img src="${imagePath}"  rel="lightbox" style="height:130px">
+               </a>
+               <a class="btn btn-danger btn-mini" href="removePhoto?dir=${imagePath}">
+              <i class="icon-trash icon-white"></i>Remove</a>
+           </li>
       </devjsp:pic >
+    </div>
+    </div>
       <%}%>
   </div>
 

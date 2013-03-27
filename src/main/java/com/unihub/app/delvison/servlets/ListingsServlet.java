@@ -58,7 +58,6 @@ public class ListingsServlet extends HttpServlet {
       Stuff found = this.getObj(itemId);
       found.updateContent(name, price, university, loc, cat, desc, bid);
       res.sendRedirect("item?id="+itemId);
-
     }
   }
 

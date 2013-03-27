@@ -7,6 +7,8 @@
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
     <%@include file="header.jsp" %>
     <%@ page isELIgnored="false" %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     
 
     <% 
@@ -46,15 +48,17 @@
                   <div id="collapseOne" class="accordion-body collapse">
                     <div class="accordion-inner">
                       <!-- PLACE IMAGE THuMBNAILS IN HERE -->
-                        <ul class="thumbnails">
-                          <devjsp:pic itemId="<%=id%>">
-                            <li class="span3">
-                              <a href="${imagePath}" rel="lightbox" class="thumbnail">
-                                <img src="${imagePath}"  rel="lightbox">
-                              </a>
-                            </li>
-                          </devjsp:pic >
-                        </ul>
+                      <div class="row-fluid">
+                          <ul class="thumbnails container-fluid">
+                            <devjsp:pic itemId="<%=id%>">
+                              <li class="span3">
+                                  <a href="${imagePath}" rel="lightbox" class="thumbnail">
+                                    <img src="${imagePath}"  rel="lightbox">
+                                  </a>
+                              </li>
+                            </devjsp:pic >
+                          </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
