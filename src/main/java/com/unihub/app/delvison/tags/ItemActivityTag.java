@@ -23,17 +23,21 @@ public class ItemActivityTag extends SimpleTagSupport{
     /* find 'Stuff' by id */
     Stuff stuff = lis.getStuff(Integer.parseInt(itemId));
     String[] activities = stuff.getActivityObj().getActivityArray();
+    getJspContext().setAttribute("itemId",itemId);
 
     if (activities[0] != null){
-      for (int i = 0; i<activities.length; i++){
+      for (int i=0; i<activities.length; i++){
         if (activities[i] != null){
           getJspContext().setAttribute("itemActivity",activities[i]);
+          getJspContext().setAttribute("itemName",stuff.getName());
           getJspBody().invoke(null);
         }
       }
     }else{
-      getJspContext().setAttribute("itemActivity","No activities exist.");
-      getJspBody().invoke(null);
+      //getJspContext().setAttribute("itemActivity","");
+      //getJspContext().setAttribute("itemName","");
+      //getJspBody().invoke(null);
+      out.println();
     }
   }
 }

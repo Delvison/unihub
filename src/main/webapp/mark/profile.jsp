@@ -4,11 +4,10 @@
     Author     : Mark
 --%>
 
-<!-- Not Currently Used
-See ProfileServlet in java/mark -->
+<!-- Profile Page for logged in user -->
 
-<%@ page language="java" import="com.unihub.app.User,
-                                 com.unihub.app.Dbase,
+<%@ page language="java" import="com.unihub.app.*,
+                                java.util.ArrayList,
                                 java.security.*,
                                 javax.servlet.*,
                                 javax.servlet.http.*" 
@@ -18,15 +17,18 @@ See ProfileServlet in java/mark -->
 
     <body>
           <% Dbase ubase = Dbase.create();
-           User currentuser = ubase.getUser((String)session.getAttribute("username"));
+           String curruname = (String)session.getAttribute("username");  
+           User currentuser = ubase.getUser(curruname);
            String gravatar = "";
             try {
               gravatar = currentuser.gravatar(); 
             } catch(NoSuchAlgorithmException e) {
               out.println("No Such Algorithm Exception");
             } %>
-        <div class="row">
-        <div class="span8 offset2 main" style="background-color:white">
+        <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid">
+          <div class="span8 main" style="background-color:white">
             <table style="margin:10px" width="100%">
              <tr>
               <td style="padding:10px">
@@ -46,22 +48,46 @@ See ProfileServlet in java/mark -->
               <td>Watched Users: <%= ubase.getUser(currentuser.getName()).getWatched() %></td>
              </tr>
             </table>
-        </div>
-        <div class="span4 sidebar" style="background-color:white">
-          <center><h4>My Listings</h4></center>
-          <table class="table table-striped">
-            <devjsp:forEachListing user="<%=currentuser.getName()%>">
-            <tr>
-              <td valign="center">
-                <p>
-                  <a href="item?id=${listingId}">
-                     ${listingName} - $${listingPrice} </a>
-                  ${listingUniversity}, ${listingLocation}
-              </p>
-              </td>
-            </tr>
-            </devjsp:forEachListing>
-          </table>
+            <div class="row-fluid">
+              <div class="span6 offset1">
+                <div class="tabbable">
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a href="#myActivityTab" data-toggle="tab">My Activity</a>
+                  </li>
+                  <li>
+                    <a href="#watchedActivityTab" data-toggle="tab">Watched Users</a>
+                  </li>
+                </ul>
+                </div>
+                <div class="tab-content">
+                  <div class="tab-pane" id="myActivityTab">
+                  <%@ include file="myactivity.jsp"%>
+                  </div>
+                  <div class="tab-pane" id="watchedActivityTab">
+                  <%@ include file="watchedactivity.jsp"%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span4 sidebar" style="background-color:white">
+            <center><h4>My Listings</h4></center>
+            <table class="table table-striped">
+              <devjsp:forEachListing user="<%=currentuser.getName()%>">
+              <tr>
+                <td valign="center">
+                  <p>
+                    <a href="item?id=${listingId}">
+                       ${listingName} - $${listingPrice} </a>
+                    ${listingUniversity}, ${listingLocation}
+                  </p>
+                </td>
+              </tr>
+              </devjsp:forEachListing>
+            </table>
+          </div>
+          </div>
         </div>
         </div>
     </body>

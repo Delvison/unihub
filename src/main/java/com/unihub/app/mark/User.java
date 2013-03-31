@@ -217,6 +217,14 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
       return voted.contains(i);
     }
 
+    public boolean owns(int i_id) {
+      ListingsObj listings = ListingsObj.create();
+      Stuff stuff = listings.getStuff(i_id);
+      String stuffuser = stuff.getUser();
+      if(stuffuser.equals(this.name)) return true;
+      return false;
+    }
+
     @Override
     public void valueBound(HttpSessionBindingEvent event) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -226,6 +234,5 @@ public class User implements javax.servlet.http.HttpSessionBindingListener {
     public void valueUnbound(HttpSessionBindingEvent event) {
         System.out.println("Successfully Logged Out");
     }
-    
     
 }

@@ -1,7 +1,8 @@
 /*
 Checks if a listing has already been upvoted by the currently
 logged in user.
-If it has, or if no user is logged in, no arrow will be displayed.
+If it has, or if the logged in user is the owner of the listing,
+or if no user is logged in, no thumbs up will be displayed.
 */
 
 package com.unihub.app;
@@ -28,7 +29,9 @@ public class UpvoteTag extends SimpleTagSupport{
     Dbase ubase = Dbase.create();
     /* find 'Stuff' by id */
     Stuff stuff = lis.getStuff(itemId);
-    if ( userLoggedIn != null && !(ubase.getUser(userLoggedIn).hasVoted((Integer)itemId)) ){
+    if ( userLoggedIn != null &&
+         !(ubase.getUser(userLoggedIn).owns(itemId)) &&
+         !(ubase.getUser(userLoggedIn).hasVoted((Integer)itemId)) ){
       out.print("<a href=\"reputation?itemId="+
          Integer.toString(this.itemId)+"\"><img height=\"20px\" width=\"17px\" src=\"design/images/blue-thumbs-up.png\" title=\"Scholarly!\"></a>");
     }
