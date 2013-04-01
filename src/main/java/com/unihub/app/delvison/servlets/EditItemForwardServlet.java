@@ -1,6 +1,6 @@
 // @author Delvison
-/* this servlet forwards to edit a listing if it belongs
-  to the user that is logged in */
+/* this servlet forwards(through dispatcher) to edit
+ a listing if it belongs to the user that is logged in */
 package com.unihub.app;
 
 import java.io.*;
