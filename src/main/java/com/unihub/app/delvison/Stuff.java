@@ -181,4 +181,10 @@ public class Stuff{
   public void setPicAmount(){
     this.picAmount = picAmount +1;
   }
+
+  public String toString(){
+    String info="Name: "+this.name+"\n Price: "+this.price+"\n Seller: "+this.user+
+      "\n Description"+this.description;
+    return info;
+  }
 }

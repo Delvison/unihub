@@ -1,5 +1,5 @@
 // @author Delvison
-/* this servlet processes comments posted
+/* this servlet processes commen ts posted
 for individual listings */
 
 //comments are currently kept in CommentObj's Arraylist
@@ -28,6 +28,10 @@ public class CommentServlet extends HttpServlet{
       userName = (String)session.getAttribute("username");
       if (userName.equals("")){
         res.sendRedirect("sorry");
+      }
+      if (comment == null||comment.equals("")){
+        //if the comment is null, dont add it.
+        res.sendRedirect("item?id="+currentItem);
       }else{
         //add comment and redirect to same listing
         cmt.addComment(userName,comment,Integer.parseInt(currentItem));
