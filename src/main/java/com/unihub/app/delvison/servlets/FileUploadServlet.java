@@ -1,9 +1,11 @@
 // @author Delvison
 /*
-This servlet is meant for handling File Uploads and was made by following this
-tutorial:
+This servlet is meant for handling File Uploads
+specifically jpg and png
+it was made by following this tutorial:
 http://docs.oracle.com/javaee/6/tutorial/doc/glraq.html
--Delvison
+
+@author Delvison
 */
 
 package com.unihub.app;

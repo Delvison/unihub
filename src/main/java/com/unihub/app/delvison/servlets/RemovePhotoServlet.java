@@ -1,4 +1,8 @@
+/* This servlet takes a photo's filepath from a GET 
+and then removes the photo that is at that path. */
+
 // @author Delvison
+
 package com.unihub.app;
 
 import java.io.*;
