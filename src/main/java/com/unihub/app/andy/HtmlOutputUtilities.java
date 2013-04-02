@@ -9,11 +9,11 @@ public class HtmlOutputUtilities {
 	public static String bootStrapRow(String mario, String luigi) {
 
 		return "<div class=\"span3 top-buffer\" style=\"background-color:#DBDBDB\">" +
-						"<h4 class=\"cat-title\"><a href=\"viewalllistings?cat="+mario+"\">"+mario+"</a></h3>"+
+						"<h4 class=\"cat-title\"><a href=\"viewalllistings?cat="+mario+"\">"+mario+"</a></h4>"+
 					"</div>" + (luigi != null ? 
 
 					"<div class=\"span3 top-buffer\" style=\"background-color:#DBDBDB\">" +
-						"<h4 class=\"cat-title\"><a href=\"viewalllistings?cat="+luigi+"\">"+luigi+"</a></h3> </div>" : "");
+						"<h4 class=\"cat-title\"><a href=\"viewalllistings?cat="+luigi+"\">"+luigi+"</a></h4> </div>" : "");
 
 	}//end of bootStrapRow
 

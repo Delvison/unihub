@@ -57,7 +57,7 @@
 
 			</div>
 
-			<div class="span4" style="background-color:white">
+			<div class="span4 scrollable-table" style="background-color:white">
 				<h2>Events</h2>
 				<table class="table">
 
@@ -66,8 +66,9 @@
 						<tr>
 							<td>
 								<h3><%= holder.getEvent(i).getTitle() %></h3>
+								<p>on <%= holder.getEvent(i).getThingy() %></p>
 								<p><%= holder.getEvent(i).getDes() %></p>
-								<p> Following=<%= holder.getEvent(i).printFollowers() %></p>
+								<p><%= holder.getEvent(i).howManyGoing() %></p>
 								<a href="attend?id=<%=holder.getEvent(i).getId() %> ">Attending</a> | <a href="#">More Info</a>
 							</td>
 						</tr>
@@ -84,9 +85,6 @@
 			</div>
 
 		</div>
-
-
-
 
 	</div>
 

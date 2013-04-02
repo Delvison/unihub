@@ -23,8 +23,10 @@ public class SubmitEvent extends HttpServlet {
 		String title = (String)req.getParameter("title");
 		String location = (String)req.getParameter("location");
 		String description = (String)req.getParameter("description");
+		String time = (String)req.getParameter("time");
+		String date = (String)req.getParameter("date");
 
-		holder.addEvent(title, location, "9:00pm", description);
+		holder.addEvent(title, date.split("/"), time, location, description);
 
 		res.sendRedirect("events");
 

@@ -13,9 +13,15 @@
 *does not offer this
 */
 
+
 .top-buffer { margin-top:20px; height:150px;}
 
 .cat-title { background-color:gray; margin-top:0px; }
+.scrollable-table {  
+    height: 900px;
+    overflow: scroll;
+}​
+
 
 .clearfix {
   *zoom: 1;

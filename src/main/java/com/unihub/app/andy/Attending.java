@@ -19,17 +19,57 @@ public class Attending extends HttpServlet {
 	public void doGet(HttpServletRequest req, 
 				HttpServletResponse res) throws ServletException, IOException{
 
-		int id = Integer.parseInt(req.getParameter("id"));
-		Dbase dbase = Dbase.create();
-		User user = dbase.getUser((String)req.getSession().getAttribute("username"));
+		HttpSession session = req.getSession();
+		String servletPath = (session.getAttribute("path_for_login") != null) ?
+			((String)session.getAttribute("path_for_login")).replaceFirst("/", "") : "index";
 
-		EventListHolder holder = EventListHolder.getInstance();
-		Event event = holder.findEventWithId(id);
-		event.addFollower(user.getId());
+		/*
+		If I never got an event id with it
+		just redirect back to where they came from
+		*/
+		String testId = req.getParameter("id");
+		
+		if(testId == null) {
 
-		res.sendRedirect("index");
+			res.sendRedirect(servletPath);
 
+		}
+		else {
 
+			int id = Integer.parseInt(testId);
+			/*
+			Check if user is logged in
+			if not send to loggin and redirect here as usual*/
+			String userName = (String)req.getSession().getAttribute("username");
+
+			if(userName == null) {
+
+				session.setAttribute("path_for_login", "attend?"+req.getQueryString());
+				res.sendRedirect("login");
+
+			} else {
+				Dbase dbase = Dbase.create();
+				User user = dbase.getUser(userName);
+
+				EventListHolder holder = EventListHolder.getInstance();
+				Event event = holder.findEventWithId(id);
+				if(event.isAlreadyFollowing(user.getId())) {
+					/*
+					Already attending so don't add follower
+					I'll just redirect wherever they came from*/
+					res.sendRedirect(servletPath);
+
+				} else {
+
+					event.addFollower(user.getId());
+
+					res.sendRedirect("index");
+
+				}
+				
+			}
+
+		}
 
 
 	}//end of doGet()

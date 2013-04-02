@@ -10,7 +10,6 @@ public class Event {
 
 	int id;
 	String title;
-	String time;
 	String location;
 	String description;
 	Calendar cal = Calendar.getInstance();
@@ -19,12 +18,18 @@ public class Event {
 	since I am not sure how he does this*/
 	ArrayList<Integer> followers = new ArrayList<Integer>();
 
-	public Event(int id, String title, String time, String location, String description) {
+	public Event(int id, String title, String[] date, String time, String location, String description) {
 		this.id = id;
 		this.title = title;
-		this.time = time;
 		this.location = location;
 		this.description = description;
+
+		String[] splitTime = time.split(":");
+		boolean isAm = splitTime[1].contains("am");
+		splitTime[1] = splitTime[1].replace(isAm ?"am": "pm", "");
+		cal.set(Integer.parseInt(date[2]), Integer.parseInt(date[0])-1, Integer.parseInt(date[1]), 
+					Integer.parseInt(splitTime[0]), Integer.parseInt(splitTime[1]));
+
 	}//end of constructor
 
 	public int getId() {
@@ -36,9 +41,18 @@ public class Event {
 		return title;
 	}//end of getTitle()
 
+	public String getThingy() {
+		return String.format("%tA, %<tB %<td", cal);
+	}
+
+	public String getDate() {
+
+		return null;
+	}
+
 	public String getTime(){
 
-		return time;
+		return null;
 	}//end of getTime()
 
 	public String getLoc(){
@@ -55,15 +69,24 @@ public class Event {
 		followers.add(id);
 	}//end of addFollower()
 
-	public String printFollowers() {
-		String total = "";
-		if(followers.size() != 0) {
-			for(Integer le : followers)
-				total = total+ Integer.toString(le) +",";
-		} else {
-			total = "No Followers";
+	public boolean isAlreadyFollowing(int id) {
+
+		for(Integer attenders : followers) {
+			if(attenders == id)
+				return true;
 		}
-		return total;
+		return false;
+	}
+
+	public String howManyGoing() {
+		int num = followers.size();
+		if(num == 1)
+			return num+" person going!";
+		else
+			if(num > 1)
+				return num+" people going!";
+
+		return "";
 	}//end of printFollowers()
 
 

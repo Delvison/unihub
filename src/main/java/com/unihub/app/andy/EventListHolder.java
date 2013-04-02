@@ -17,12 +17,17 @@ public class EventListHolder {
 	private EventListHolder() {
 		/*Private constructor to keep direct instantiation*/
 		list = new ArrayList<Event>();
-		list.add( new Event(autoIncrement(), "Unihub Release Party", "8:00PM", "Pimp Pad", 
-								"Come join as we celebrate our beta release!"));
-		list.add(new Event(autoIncrement(), "Resume Builder", "9:00AM", "OLS", 
-								"Come so we can help you build your resume!"));
-		list.add(new Event(autoIncrement(), "Pizza Party", "12:00PM", "Lounge", 
-								"After a long morning in classes stop by to get a bite to eat!"));
+		list.add( new Event(autoIncrement(), "Unihub Release Party", 
+				new String[]{"4","12","2013"}, "3:00pm", "Pimp Pad", 
+				"Come join as we celebrate our beta release!"));
+
+		list.add(new Event(autoIncrement(), "Resume Builder", 
+				new String[]{"4","20","2013"}, "9:00am", "OLS", 
+				"Come so we can help you build your resume!"));
+
+		list.add(new Event(autoIncrement(), "Pizza Party", 
+					new String[]{"05","01","2013"}, "12:00pm", "Lounge", 
+					"After a long morning in classes stop by to get a bite to eat!"));
 	}
 
 	public static EventListHolder getInstance() {
@@ -35,9 +40,10 @@ public class EventListHolder {
 		return instance;
 	}
 
-	public void addEvent(String title, String time, String location, String description) {
+	public void addEvent(String title, String[] date, 
+							String time, String location, String description) {
 
-		Event event = new Event(autoIncrement(), title, time, location, description);
+		Event event = new Event(autoIncrement(), title, date, time, location, description);
 		list.add(0, event);
 	}
 
