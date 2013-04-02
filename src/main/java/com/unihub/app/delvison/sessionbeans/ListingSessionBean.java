@@ -1,5 +1,5 @@
 //@author Delvison
-//This sessionbean allows CRUD operations for listings.
+//This sessionbean allows CRUD operations for individual listings.
 
 package com.unihub.app;
 
@@ -13,12 +13,19 @@ public class ListingSessionBean{
   
   /* Allows for the creation of a listing */
   public void createListing(String name, String price, String university, String location,
-	  String category, String description, String bid, String userName){
+	  String category, String description, String bid, String userName) 
+    throws BlankFieldException, NoUserException{
 	  
     ListingsObj lis = ListingsObj.create();
-    if (name == null || university == null ||userName==null||description==null){
+    
+    if (userName == null){
+      throw new NoUserException("User not logged in");
+    }
+
+    if (name == null || price == null || university == null || location == null || category == null
+       ||description==null || bid==null){
         //throw custom exception
-        System.out.println("Error."); //temporary
+        throw new BlankFieldException("A field was left blank.");
     }else{
       Date now = new Date();
       this.currentId = lis.addStuff(userName,name,price,university,location,

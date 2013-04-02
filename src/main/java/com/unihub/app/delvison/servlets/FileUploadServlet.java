@@ -43,8 +43,9 @@ public class FileUploadServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
-
-    session = request.getSession(); /* get current session */ 
+    /* get current session */ 
+    session = request.getSession(); 
+    //get the listings' id
     String itemId = request.getParameter("id");
 
     /* get the username */
@@ -52,19 +53,20 @@ public class FileUploadServlet extends HttpServlet {
     try{
         userName = (String)session.getAttribute("username");
     }catch(NullPointerException e){
-        response.sendRedirect("login");
+        response.sendRedirect("sorry");
     }
-
     if (userName == null){
       response.sendRedirect("sorry");
-    } else if(!userName.equals(ListingsObj.create().getStuff(Integer.parseInt(itemId)).getUser())){
+    }else if(!userName.equals(ListingsObj.create().getStuff(Integer.parseInt(itemId)).getUser())){
       response.sendRedirect("uploadPhoto?id="+itemId+"&msg=error");
     }else{
-
-      // Create path 
+      //set up image url
       image_url = "/listings/"+itemId;
+      //get relative path
       String path = request.getSession().getServletContext().getRealPath(image_url);
+      //get Part from POST
       final Part filePart = request.getPart("file");
+      //get filename from path (also from POST)
       final String fileName = getFileName(filePart);
 
       // Check for .jpg or .png extension
@@ -75,6 +77,7 @@ public class FileUploadServlet extends HttpServlet {
       }
 
       /* CHECK FOR VALIDITY HERE */
+        //has to be jpg | png && Listing must have < 4 photos
       if (extension.equals("jpg")||extension.equals("png")){
         if (ListingsObj.create().getStuff(Integer.parseInt(itemId)).getPicAmount() < 4){
 
@@ -82,10 +85,12 @@ public class FileUploadServlet extends HttpServlet {
           File chkDir = new File(path);
           ListingsObj.create().getStuff(Integer.parseInt(itemId)).setDir(path);
           if (!chkDir.exists()){
-            chkDir.mkdir(); //create dir
+            //create dir
+            chkDir.mkdir();
           }
-
+          //declare outputstream
           OutputStream out = null;
+          //declare inputstream
           InputStream filecontent = null;
           try {
             out = new FileOutputStream(new File(path + File.separator + fileName));
@@ -96,7 +101,7 @@ public class FileUploadServlet extends HttpServlet {
             while ((read = filecontent.read(bytes)) != -1) {
               out.write(bytes, 0, read);
             }
-            /* FILE UPLOAD SUCCESS */
+            /* ##FILE UPLOAD SUCCESS HERE## */
             // ADD 1 to the item's picture amount upon success
             ListingsObj.create().getStuff(Integer.parseInt(itemId)).setPicAmount();
             LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", new Object[]{fileName, path});
