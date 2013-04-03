@@ -27,6 +27,8 @@ public class Event {
 		String[] splitTime = time.split(":");
 		boolean isAm = splitTime[1].contains("am");
 		splitTime[1] = splitTime[1].replace(isAm ?"am": "pm", "");
+
+		
 		cal.set(Integer.parseInt(date[2]), Integer.parseInt(date[0])-1, Integer.parseInt(date[1]), 
 					Integer.parseInt(splitTime[0]), Integer.parseInt(splitTime[1]));
 
