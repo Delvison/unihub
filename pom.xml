@@ -165,6 +165,42 @@
         </dependencies>
       </plugin>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--Needed for generating a Web Service (JAX-WS) client with maven-->
+
+
+
+        <!--End of generating a Web Service (JAX-WS) client with maven-->
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
       <!-- Don't forget to use endorsed with JAX-WS 2.2 on Java 6 !! -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
