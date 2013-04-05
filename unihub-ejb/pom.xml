@@ -14,15 +14,20 @@
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <name>unihub application</name>
+--><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.unihub.app</groupId>
-    <artifactId>unihub.com</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+
+    <parent>
+        <artifactId>unihub.com</artifactId>
+        <groupId>com.unihub.app</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>unihub-ejb</artifactId>
+    <packaging>ejb</packaging>
+
+    <name>unihub EJB module</name>
 
     <licenses>
         <license>
@@ -32,69 +37,48 @@
         </license>
     </licenses>
 
-    <modules>
-        <module>unihub</module>
-        <module>unihub-ear</module>
-        <module>unihub-ejb</module>
 
-    </modules>
 
-    <dependencyManagement>
-        <dependencies>
+      <!-- Declare the APIs we depend on and need for compilation. All of 
+         them are provided by JBoss AS 7 -->
 
-            <!-- Define the version of the EJB jar so that we don't need 
-                to repeat ourselves in every module -->
+      <!-- Import the EJB API, we use provided scope as the API is included in JBoss AS 7 -->
+      <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xmlrpc</groupId>
+            <artifactId>xmlrpc-common</artifactId>
+            <version>3.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xmlrpc</groupId>
+            <artifactId>xmlrpc-client</artifactId>
+            <version>3.1.3</version>
+        </dependency>
+        
+    </dependencies>
 
-            <!-- Define the version of the WAR so that we don't need to repeat 
-                ourselves in every module -->
-            <dependency>
-                <groupId>com.unihub.app</groupId>
-                <artifactId>unihub</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-                <type>war</type>
-                <scope>compile</scope>
-            </dependency>
-               <dependency>
-            <groupId>com.unihub.app</groupId>
-            <artifactId>unihub-ejb</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <type>ejb</type>
-         </dependency>
 
-        </dependencies>
-    </dependencyManagement>
+
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <!-- Compiler plugin enforces Java 1.6 compatibility and 
-                    activates annotation processors -->
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.3.1</version>
-                    <configuration>
-                        <source>1.6</source>
-                        <target>1.6</target>
-                    </configuration>
-                </plugin>
-                <!-- The JBoss AS plugin deploys your ear to a local JBoss 
-                    AS container -->
-                <!-- Due to Maven's lack of intelligence with EARs we need 
-                    to configure the jboss-as maven plugin to skip deployment for all modules. 
-                    We then enable it specifically in the ear module. -->
-                <plugin>
-                    <groupId>org.jboss.as.plugins</groupId>
-                    <artifactId>jboss-as-maven-plugin</artifactId>
-                    <version>7.3.Final</version>
-                    <inherited>true</inherited>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-                          
-
-            </plugins>
-        </pluginManagement>
+        <finalName>unihub-ejb</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+               <!-- Tell Maven we are using EJB 3.1 -->
+                    <ejbVersion>3.1</ejbVersion>
+                </configuration>
+            </plugin> 
+        </plugins>
     </build>
+
 
 </project>
