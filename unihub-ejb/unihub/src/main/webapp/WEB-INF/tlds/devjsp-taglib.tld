@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+version="2.0">
+<tlib-version>1.0</tlib-version>
+<short-name>devjsp-taglib</short-name>
+
+<tag>
+  <description>prints all activities pertaining to a listing</description>
+  <name>printActivities</name>
+  <tag-class>com.unihub.app.ItemActivityTag</tag-class>
+  <body-content>scriptless</body-content>
+  
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>Outputs Comments</description>
+  <name>forEachComment</name>
+  <tag-class>com.unihub.app.PrintCommentsTag</tag-class>
+  <body-content>scriptless</body-content>
+  
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>Outputs Listings</description>
+  <name>forEachListing</name>
+  <tag-class>com.unihub.app.PrintListingsTag</tag-class>
+  <body-content>scriptless</body-content>
+  
+<attribute>
+  <name>user</name>
+  <required>false</required>
+  <rtexprvalue>true</rtexprvalue>
+</attribute>
+
+<attribute>
+  <name>category</name>
+  <required>false</required>
+  <rtexprvalue>true</rtexprvalue>
+</attribute>
+</tag>
+
+<tag>
+  <description>Outputs item info</description>
+  <name>itemInfo</name>
+  <tag-class>com.unihub.app.IndividualListingTag</tag-class>
+  <body-content>scriptless</body-content>
+  
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>prints whether user on comment is logged in</description>
+  <name>cmntUser</name>
+  <tag-class>com.unihub.app.CommentUserTag</tag-class>
+  <body-content>empty</body-content>
+  
+  <attribute>
+    <name>user</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>Outputs picture info</description>
+  <name>pic</name>
+  <tag-class>com.unihub.app.PicturesTag</tag-class>
+  <body-content>scriptless</body-content>
+  
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>prints out search history</description>
+  <name>searchHistory</name>
+  <tag-class>com.unihub.app.SearchHistoryTag</tag-class>
+  <body-content>scriptless</body-content>
+</tag>
+
+<tag>
+  <description>Outputs Category options for a html select</description>
+  <name>catOptions</name>
+  <tag-class>com.unihub.app.CategoryListTag</tag-class>
+  <body-content>empty</body-content>
+  
+  <attribute>
+    <name>category</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>Outputs bid options for a html select</description>
+  <name>bidOptions</name>
+  <tag-class>com.unihub.app.BidListTag</tag-class>
+  <body-content>empty</body-content>
+  
+  <attribute>
+    <name>option</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>checks if listing belongs to a user</description>
+  <name>belongsToUser</name>
+  <tag-class>com.unihub.app.BelongsToUserTag</tag-class>
+  <body-content>empty</body-content>
+  
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+
+  <attribute>
+    <name>user</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+<tag>
+  <description>displays upvote button if applicable</description>
+  <name>upvote</name>
+  <tag-class>com.unihub.app.UpvoteTag</tag-class>
+  <body-content>empty</body-content>
+
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+
+  <attribute>
+    <name>user</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
+</taglib>
