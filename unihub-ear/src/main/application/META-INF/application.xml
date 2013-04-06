@@ -1,0 +1,13 @@
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" version="6">
+<display-name>unihub-ear</display-name>
+<module>
+<ejb>unihub-ejb.jar</ejb>
+</module>
+<module>
+<web>
+<web-uri>unihub.war</web-uri>
+<context-root>/unihub</context-root>
+</web>
+</module>
+<library-directory>lib</library-directory>
+</application>

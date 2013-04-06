@@ -10,15 +10,20 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.util.Date;
+import javax.naming.*;
+import javax.ejb.*;
 
 
 public class ListingsServlet extends HttpServlet {
 
   HttpSession session;
  
+   
+ 
   public void doGet(HttpServletRequest req, HttpServletResponse res)
     throws ServletException, IOException {
-
+HttpSession session;
+        //CalculatorBean c= (CalculatorBean) InitialContext.lookup("java:global/unihub/CalculatorBean");
       String name = req.getParameter("name"); /* get name of item */
       String price = req.getParameter("price"); /* get price */
       String university = req.getParameter("university"); /* get university */
