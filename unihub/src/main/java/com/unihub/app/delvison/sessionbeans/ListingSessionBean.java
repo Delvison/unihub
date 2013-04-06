@@ -11,16 +11,14 @@ import javax.naming.*;
 
 @Startup
 @Singleton
-public class ListingSessionBean implements ListingObjInterface{
+public class ListingSessionBean implements ListingObjInterfaceLocal, 
+  ListingObjInterfaceRemote {
 
   public ArrayList<Stuff> stuffs;
   int id;
-  
-  
-       
-       
+
  public int addStuff(String user, String name, String price, String university,
-  String location, String category, String description, Date now, String bid){
+  String location, String category, String description, Date now, String bid) {
     if (this.stuffs == null){
       stuffs = new ArrayList<Stuff>();
       this.id = 0;
@@ -28,7 +26,7 @@ public class ListingSessionBean implements ListingObjInterface{
     id = id+1;
     Stuff a = new Stuff(id, user, name, price, university, location, category,
                          description, now, bid);
-    stuffs.add(a);
+    stuffs.add(a);    
     return id;
   }
       

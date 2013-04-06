@@ -6,7 +6,7 @@ import javax.jws.WebService;
 
 @Stateless
 @WebService
-public class HelloServiceBean {
+public class HelloServiceBean implements Hello {
     private String message = "Hello, ";
 
     @WebMethod
