@@ -1,10 +1,15 @@
 package com.unihub.app;
 
 import java.util.Date;
+import javax.ejb.*;
+import javax.naming.*;
 
 public class DummyData{
-  public static void generate(){
-    ListingsObj lis = ListingsObj.create();
+  public static void generate() throws NamingException{
+
+      InitialContext ctx = new InitialContext();
+      ListingSessionBean lis = (ListingSessionBean) ctx.lookup("ejb:unihub/unihub-ejb/ListingSessionBean!com.unihub.app.ListingObjInterfaceRemote");
+
     String user = "User1";
     String university = "SUNY Oswego";
     String location = "NY";    
