@@ -8,7 +8,8 @@
   String id = (String)request.getParameter("id");
   String msg = "";
   msg = (String)request.getParameter("msg");
-  int picAmount = ListingsObj.create().getStuff(Integer.parseInt(id)).getPicAmount();
+  String picAmount = (String)request.getParameter("amnt");
+  int p = Integer.parseInt(picAmount);
 %>
 
 <body>
@@ -56,7 +57,7 @@
         <button class="btn btn-success">Done with photos</button>
       </a>
    </center>
-   <%if (picAmount > 0){ %>
+   <%if (p > 0){ %>
      <center><h2>Current Photos</h2></center>
      <div class="row-fluid">
        <ul class="thumbnails">

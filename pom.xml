@@ -31,12 +31,15 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
         </license>
     </licenses>
+    
+    <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <modules>
         <module>unihub</module>
         <module>unihub-ear</module>
         <module>unihub-ejb</module>
-
     </modules>
 
     <dependencyManagement>
@@ -48,18 +51,18 @@
             <!-- Define the version of the WAR so that we don't need to repeat 
                 ourselves in every module -->
             <dependency>
+              <groupId>com.unihub.app</groupId>
+              <artifactId>unihub-ejb</artifactId>
+              <version>0.0.1-SNAPSHOT</version>
+              <type>ejb</type>
+            </dependency>
+            <dependency>
                 <groupId>com.unihub.app</groupId>
                 <artifactId>unihub</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
                 <type>war</type>
                 <scope>compile</scope>
             </dependency>
-               <dependency>
-            <groupId>com.unihub.app</groupId>
-            <artifactId>unihub-ejb</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <type>ejb</type>
-         </dependency>
 
         </dependencies>
     </dependencyManagement>
@@ -91,8 +94,6 @@
                         <skip>true</skip>
                     </configuration>
                 </plugin>
-                          
-
             </plugins>
         </pluginManagement>
     </build>

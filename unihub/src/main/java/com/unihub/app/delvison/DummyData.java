@@ -4,12 +4,16 @@ import java.util.Date;
 import javax.ejb.*;
 import javax.naming.*;
 
+
 public class DummyData{
+@EJB
+ListingObjEJB ls;
   public static void generate() throws NamingException{
 
-      InitialContext ctx = new InitialContext();
-      ListingSessionBean lis = (ListingSessionBean) ctx.lookup("ejb:unihub/unihub-ejb/ListingSessionBean!com.unihub.app.ListingObjInterfaceRemote");
-
+    InitialContext ctx = new InitialContext();
+    ListingObjEJB lis = (ListingObjEJB) ctx.lookup("ejb:unihub/unihub-ejb/ListingSessionBean!com.unihub.app.ListingObjEJB");
+    //ListingsObj lis = ListingsObj.create();
+    
     String user = "User1";
     String university = "SUNY Oswego";
     String location = "NY";    

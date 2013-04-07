@@ -13,17 +13,18 @@ import java.util.Date;
 import javax.naming.*;
 import javax.ejb.*;
 
-
 public class ListingsServlet extends HttpServlet {
-  
+  @EJB
+  ListingObjEJB lis;
   HttpSession session;
+  
  
   public void doGet(HttpServletRequest req, HttpServletResponse res)
     throws ServletException, IOException {
 
     try{
       InitialContext ctx = new InitialContext();
-      ListingSessionBean lis = (ListingSessionBean) ctx.lookup("ejb:unihub/unihub-ejb/ListingSessionBean!com.unihub.app.ListingObjInterfaceRemote");
+     // ListingObjEJB lis = (ListingObjEJB) ctx.lookup("ejb:unihub/unihub-ejb/ListingSessionBean!com.unihub.app.ListingObjInterfaceRemote");
 
       String name = req.getParameter("name"); /* get name of item */
       String price = req.getParameter("price"); /* get price */
@@ -54,7 +55,9 @@ public class ListingsServlet extends HttpServlet {
         }else{
           Date now = new Date();
           int currentId = lis.addStuff(userName,name,price,university,loc,cat,desc,now,bid);
-          res.sendRedirect("uploadPhoto?id="+Integer.toString(currentId));
+          int picAmount = lis.getPicAmount(currentId);
+          res.sendRedirect("uploadPhoto?id="+Integer.toString(currentId)+
+             "&amnt="+Integer.toString(picAmount));
         }
       }else{
       /*EDIT THE LISTING */
