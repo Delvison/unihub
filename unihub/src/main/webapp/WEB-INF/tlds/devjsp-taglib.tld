@@ -162,4 +162,17 @@ version="2.0">
   </attribute>
 </tag>
 
+<tag>
+  <description>chooses what sidebar to display on item.jsp</description>
+  <name>sidebarSwap</name>
+  <tag-class>com.unihub.app.ItemSidebarSwapTag</tag-class>
+  <body-content>scriptless</body-content>
+  
+  <attribute>
+    <name>itemId</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+</tag>
+
 </taglib>

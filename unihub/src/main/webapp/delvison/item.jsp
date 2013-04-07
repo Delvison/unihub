@@ -2,7 +2,11 @@
     <script type="text/javascript" src="design/bootstrap/js/lightbox.js"></script>
     <link rel="stylesheet" type="text/css" href="design/bootstrap/css/lightbox.css" ></link>
     <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.CommentObj,
-             com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*" %>
+    com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*, javax.ejb.EJB, com.unihub.app.ListingObjEJB" %>
+             
+    <%! @EJB 
+        ListingObjEJB lis; 
+     %> 
     <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp" %>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
     <%@include file="header.jsp" %>
@@ -81,8 +85,8 @@
         </div>
       
         <!--SIDEBAR-->
-        <% ListingsObj lis = ListingsObj.create();
-           if (lis.getStuff(Integer.parseInt(id)).getBidMode().equals("yes")){ %>  
+        <% String bidMode = lis.getBidMode(Integer.parseInt(id));
+           if (bidMode.equals("yes")){ %>  
            <%@include file="commentWithBidInclude.jsp" %>
            <% }else{ %>
            <%@include file="commentNoBidInclude.jsp" %>
