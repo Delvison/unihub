@@ -8,8 +8,11 @@ package com.unihub.app;
 import javax.servlet.jsp.*;
 import javax.servlet.jsp.tagext.*;
 import java.io.*;
+import javax.ejb.*;
 
 public class PicturesTag extends SimpleTagSupport{
+  @EJB
+  ListingObjEJB lis;
   private int itemId;
   String dir;
   
@@ -18,12 +21,11 @@ public class PicturesTag extends SimpleTagSupport{
   }
   
   public void doTag() throws JspException, IOException{
-    ListingsObj lis = ListingsObj.create();
-    Stuff stuff = lis.getStuff(itemId);
+    int picAmount = lis.getPicAmount(this.itemId);
     
     /* Pictures Algorithm */
-    if (stuff.getPicAmount() != 0){ //if more than 0 pics exist
-      String path = stuff.getDir();
+    if (picAmount != 0){ //if more than 0 pics exist
+      String path = lis.getDir(itemId);
       File dir = new File(path); 
       for (File f : dir.listFiles()){ //for each file in the dir
         String img_url = "listings/"+Integer.toString(itemId)+"/"+f.getName();

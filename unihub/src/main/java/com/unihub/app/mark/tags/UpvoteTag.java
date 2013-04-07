@@ -25,10 +25,10 @@ public class UpvoteTag extends SimpleTagSupport{
 
   public void doTag() throws JspException, IOException{
     JspWriter out = getJspContext().getOut();
-    ListingsObj lis = ListingsObj.create();
+    //ListingsObj lis = ListingsObj.create();
     Dbase ubase = Dbase.create();
     /* find 'Stuff' by id */
-    Stuff stuff = lis.getStuff(itemId);
+    //Stuff stuff = lis.getStuff(itemId);
     if ( userLoggedIn != null &&
          !(ubase.getUser(userLoggedIn).owns(itemId)) &&
          !(ubase.getUser(userLoggedIn).hasVoted((Integer)itemId)) ){

@@ -9,10 +9,14 @@ package com.unihub.app;
 import javax.servlet.jsp.*;
 import javax.servlet.jsp.tagext.*;
 import java.io.*;
+import javax.ejb.*;
 
 public class BelongsToUserTag extends SimpleTagSupport{
+  @EJB
+  ListingObjEJB lis;
   private int itemId;
   private String userLoggedIn;
+  
   
   public void setItemId(String itemId){
     this.itemId = Integer.parseInt(itemId);  
@@ -24,10 +28,8 @@ public class BelongsToUserTag extends SimpleTagSupport{
   
   public void doTag() throws JspException, IOException{
     JspWriter out = getJspContext().getOut();
-    ListingsObj lis = ListingsObj.create();
-    /* find 'Stuff' by id */
-    Stuff stuff = lis.getStuff(itemId);
-    if (userLoggedIn != null && userLoggedIn.equals(stuff.getUser())){
+    String user = lis.getUser(this.itemId);
+    if (userLoggedIn != null && userLoggedIn.equals(user)){
       out.print("<i><a href=\"edititem?id="+
          Integer.toString(this.itemId)+"\">Edit Listing</a></i>");
     } 

@@ -17,7 +17,6 @@ public class ListingsServlet extends HttpServlet {
   @EJB
   ListingObjEJB lis;
   HttpSession session;
-  
  
   public void doGet(HttpServletRequest req, HttpServletResponse res)
     throws ServletException, IOException {
@@ -53,8 +52,7 @@ public class ListingsServlet extends HttpServlet {
           /* for now. need an error message for future though */
           res.sendRedirect("sorry");
         }else{
-          Date now = new Date();
-          int currentId = lis.addStuff(userName,name,price,university,loc,cat,desc,now,bid);
+          int currentId = lis.addStuff(userName,name,price,university,loc,cat,desc,bid);
           int picAmount = lis.getPicAmount(currentId);
           res.sendRedirect("uploadPhoto?id="+Integer.toString(currentId)+
              "&amnt="+Integer.toString(picAmount));

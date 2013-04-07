@@ -6,9 +6,11 @@ package com.unihub.app;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.ejb.*;
 
 public class EditItemForwardServlet extends HttpServlet{ 
-  
+  @EJB 
+  ListingObjEJB lis;
   HttpSession session;
   
   protected void doGet(HttpServletRequest req,
@@ -18,9 +20,8 @@ public class EditItemForwardServlet extends HttpServlet{
     String userName="";
     try{
       userName = (String)session.getAttribute("username");
-      ListingsObj lis = ListingsObj.create();
-      Stuff stuff = lis.getStuff(Integer.parseInt(itemId));
-      if (userName.equals(stuff.getUser())){
+      String itemsUser = lis.getUser(Integer.parseInt(itemId));
+      if (userName.equals(itemsUser)){
         req.setAttribute("id", itemId); 
         getServletContext().getRequestDispatcher("/editItemjsp").forward(req,res);
       }else{

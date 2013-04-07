@@ -8,33 +8,35 @@ package com.unihub.app;
 import javax.servlet.jsp.*;
 import javax.servlet.jsp.tagext.*;
 import java.io.*;
+import javax.ejb.*;
+
 
 public class IndividualListingTag extends SimpleTagSupport{
-  private String itemId;
+  @EJB
+  ListingObjEJB lis;
+  private int itemId;
   
   public void setItemId(String itemId){
-    this.itemId = itemId;  
+    this.itemId = Integer.parseInt(itemId);  
   }
   
-  public void doTag() throws JspException, IOException{
-    ListingsObj lis = ListingsObj.create();
-    /* find 'Stuff' by id */
-    Stuff stuff = lis.getStuff(Integer.parseInt(itemId));
-    
-    getJspContext().setAttribute("itemId",Integer.toString(stuff.id)); 
-    getJspContext().setAttribute("itemName",stuff.name); 
-    getJspContext().setAttribute("itemPrice",stuff.price); 
-    getJspContext().setAttribute("itemUser",stuff.user);
-    getJspContext().setAttribute("itemUniversity",stuff.university);
-    getJspContext().setAttribute("itemLocation",stuff.location);   
-    getJspContext().setAttribute("itemCategory",stuff.category);
-    getJspContext().setAttribute("itemDescription",stuff.description);
-    getJspContext().setAttribute("itemTime",stuff.timePosted);
-    getJspContext().setAttribute("itemBidMode",stuff.bidMode);
-    if(stuff.getHighBidder() != null){
-      getJspContext().setAttribute("itemHighBidder",stuff.getHighBidder());
+  public void doTag() throws JspException, IOException{   
+    getJspContext().setAttribute("itemId", Integer.toString(this.itemId)); 
+    getJspContext().setAttribute("itemName",lis.getName(itemId)); 
+    getJspContext().setAttribute("itemPrice",lis.getPrice(itemId)); 
+    getJspContext().setAttribute("itemUser",lis.getUser(itemId));
+    getJspContext().setAttribute("itemUniversity",lis.getUniversity(itemId));
+    getJspContext().setAttribute("itemLocation",lis.getLocation(itemId));   
+    getJspContext().setAttribute("itemCategory",lis.getCategory(itemId));
+    getJspContext().setAttribute("itemDescription",lis.getDescription(itemId));
+    getJspContext().setAttribute("itemTime",lis.getTimePosted(itemId));
+    getJspContext().setAttribute("itemBidMode",lis.getBidMode(itemId));
+    getJspContext().setAttribute("itemPicAmount",lis.getPicAmount(itemId));
+    String bidder = lis.getHighBidder(itemId);
+    if(bidder != null){
+      getJspContext().setAttribute("itemHighBidder",bidder);
     }else{
-      getJspContext().setAttribute("itemHighBidder",stuff.user);
+      getJspContext().setAttribute("itemHighBidder",lis.getUser(itemId));
     }
 
     getJspBody().invoke(null);

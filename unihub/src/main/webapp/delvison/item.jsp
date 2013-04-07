@@ -10,11 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     
-
     <% 
     String user = (String)session.getAttribute("username");
     String id = (String)request.getParameter("id");
-    String path = application.getRealPath("/");
     %>   
 
 <body>
@@ -29,7 +27,7 @@
                 </p>
                 </center>
               </devjsp:itemInfo>
-              <devjsp:upvote itemId="<%=id%>" user="<%=user%>" />
+     <!--         devjsp:upvote itemId="<%=id%>" user="<%=user%>"  -->
               <devjsp:belongsToUser itemId="<%=id%>" user="<%=user%>" />
               <devjsp:itemInfo itemId="<%=id%>">
                 <br>
@@ -90,6 +88,6 @@
            <%@include file="commentNoBidInclude.jsp" %>
            <%}%>
   </div>
-  <div>
+  </div>
 </body>
 </html>
