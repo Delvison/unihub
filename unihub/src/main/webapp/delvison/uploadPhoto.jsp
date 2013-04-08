@@ -7,7 +7,7 @@ javax.ejb.EJB, com.unihub.app.ListingObjEJB, javax.naming.*" %>
 <%! @EJB
     ListingObjEJB lis; %> 
 <%
-Context context = new InitialContext();
+  Context context = new InitialContext();
   lis = (ListingObjEJB) context.lookup("ejb:unihub-ear/unihub-ejb//ListingObjEJB!com.unihub.app.ListingObjEJB?stateful");
   String id = (String)request.getParameter("id");
   String msg = "";
