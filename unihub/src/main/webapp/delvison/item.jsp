@@ -2,12 +2,20 @@
     <script type="text/javascript" src="design/bootstrap/js/lightbox.js"></script>
     <link rel="stylesheet" type="text/css" href="design/bootstrap/css/lightbox.css" ></link>
     <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.CommentObj,
+<<<<<<< HEAD
     com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*, javax.ejb.EJB,
     com.unihub.app.ListingObjEJB, javax.naming.*, com.unihub.app.ListingObjEJB" %>
              
     <%! @EJB 
         ListingObjEJB lis; 
      %> 
+=======
+    com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*, javax.ejb.EJB, javax.naming.*, com.unihub.app.ListingObjEJB" %>
+         
+    <%!@EJB
+        ListingObjEJB lis;
+    %>
+>>>>>>> 8e48fe7dc8b10ef1733d467ad661b359492b4c1e
     <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp" %>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
     <%@include file="header.jsp" %>
