@@ -17,6 +17,7 @@
     <% 
     String user = (String)session.getAttribute("username");
     String id = (String)request.getParameter("id");
+    lis = (ListingObjEJB) context.lookup("ejb:unihub-ear/unihub-ejb//ListingObjEJB!com.unihub.app.ListingObjEJB?stateful");
     %>   
 
 <body>

@@ -27,5 +27,6 @@ public interface ListingObjEJB {
   public String getCategory(int itemId);
   public String getTimePosted(int itemId);
   public String getDir(int itemId);
+  public ArrayList<Stuff> getArrayList();
   //public String getActivityLog();
 }

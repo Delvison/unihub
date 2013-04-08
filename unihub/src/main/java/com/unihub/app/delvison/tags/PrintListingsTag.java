@@ -10,14 +10,13 @@ import javax.servlet.jsp.tagext.*;
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 import javax.ejb.*;
 
 
 public class PrintListingsTag extends SimpleTagSupport{
-  //@EJB
-  //ListingObjEJB lis;
+  @EJB
+  ListingObjEJB lis;
   String user;
   String category;
 
@@ -30,11 +29,11 @@ public class PrintListingsTag extends SimpleTagSupport{
   }
 
   public void doTag() throws JspException, IOException{
-    ListingsObj lis = ListingsObj.create();
+    ArrayList<Stuff> stuffs = lis.getArrayList();
     
     if (category != null && !category.equals("All") && !category.equals("search") ){
       String cat = this.filter(category);
-      for (Stuff s: lis.stuffs){
+      for (Stuff s: stuffs){
         if (s.category.equals(cat)){
           String[] c = s.getContentArray();
           getJspContext().setAttribute("listingName",c[0]); 
@@ -52,7 +51,7 @@ public class PrintListingsTag extends SimpleTagSupport{
       }
     }else if (user != null){
       /* print all listings belonging to user passed in */
-      for (Stuff s: lis.stuffs){
+      for (Stuff s: stuffs){
         if (s.user.equals(this.user)){
           String[] c = s.getContentArray();
           getJspContext().setAttribute("listingName",c[0]); 
@@ -73,7 +72,7 @@ public class PrintListingsTag extends SimpleTagSupport{
     
     }else{
       /* print all listings */
-      for (Stuff s: lis.stuffs){
+      for (Stuff s: stuffs){
           String[] c = s.getContentArray();
           getJspContext().setAttribute("listingName",c[0]); 
           getJspContext().setAttribute("listingPrice",c[1]); 

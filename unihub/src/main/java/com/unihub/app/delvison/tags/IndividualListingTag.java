@@ -1,7 +1,5 @@
 // @author Delvison
-/*
-allows access to individual 
-*/
+/*allows access to individual*/
 
 package com.unihub.app;
 
