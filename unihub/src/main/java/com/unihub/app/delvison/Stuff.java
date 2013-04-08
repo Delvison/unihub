@@ -4,9 +4,9 @@ temporary model class for invidual items posted
 
 package com.unihub.app;
 import java.util.Date;
-import java.io.File;
+import java.io.*;
 
-public class Stuff{
+public class Stuff implements Serializable{
   public String name;
   public String price;
   public String user;

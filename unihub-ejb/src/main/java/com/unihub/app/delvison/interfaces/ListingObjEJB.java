@@ -28,5 +28,7 @@ public interface ListingObjEJB {
   public String getTimePosted(int itemId);
   public String getDir(int itemId);
   public ArrayList<Stuff> getArrayList();
+  public void setDir(int itemId,String dir);
+  public void setPicAmount(int itemId);
   //public String getActivityLog();
 }

@@ -130,4 +130,14 @@ public class ListingSession implements ListingObjEJB {
     Stuff a = lis.getStuff(itemId);
     return a.getDir();
   }
+  @WebMethod      
+  public void setDir(int itemId, String dir){
+    Stuff a = lis.getStuff(itemId);
+    a.setDir(dir);
+  }
+  
+  public void setPicAmount(int itemId){
+    Stuff a =lis.getStuff(itemId);
+    a.setPicAmount();  
+    }
 }
