@@ -13,16 +13,9 @@ import javax.jws.WebService;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 
-
-<<<<<<< HEAD
 @Stateful (name="ListingObjEJB")
 @Remote(ListingObjEJB.class)
-@EJB(name = "java:global/ListingObjEJB", beanInterface = ListingObjEJB.class)
-=======
-@Stateful(name="ListingObjEJB")
-@Remote(ListingObjEJB.class)
 @EJB(name= "java:global/ListingObjEJB", beanInterface = ListingObjEJB.class)
->>>>>>> 8e48fe7dc8b10ef1733d467ad661b359492b4c1e
 @WebService
 public class ListingSession implements ListingObjEJB {
 
