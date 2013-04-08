@@ -14,8 +14,9 @@ import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 
 
-@Stateful
+@Stateful(name="ListingObjEJB")
 @Remote(ListingObjEJB.class)
+@EJB(name= "java:global/ListingObjEJB", beanInterface = ListingObjEJB.class)
 @WebService
 public class ListingSession implements ListingObjEJB {
 

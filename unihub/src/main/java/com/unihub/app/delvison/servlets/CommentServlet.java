@@ -1,5 +1,5 @@
 // @author Delvison
-/* this servlet processes commen ts posted
+/* this servlet processes comments posted
 for individual listings */
 
 //comments are currently kept in CommentObj's Arraylist
@@ -9,17 +9,17 @@ package com.unihub.app;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import java.util.Date;
+import javax.ejb.*;
 
 public class CommentServlet extends HttpServlet{ 
-  
+  @EJB
+  CommentEJB coms;
   HttpSession session;
   
   protected void doGet(HttpServletRequest req,
   HttpServletResponse res) throws ServletException, IOException {
     session = req.getSession(); /* get current session */	
 
-    CommentObj cmt = CommentObj.create();
     String comment = req.getParameter("comment"); 
     String currentItem = req.getParameter("itemId"); 
     /* get the username from session */    
@@ -34,7 +34,7 @@ public class CommentServlet extends HttpServlet{
         res.sendRedirect("item?id="+currentItem);
       }else{
         //add comment and redirect to same listing
-        cmt.addComment(userName,comment,Integer.parseInt(currentItem));
+        coms.addComment(userName,comment,Integer.parseInt(currentItem));
         res.sendRedirect("item?id="+currentItem);
       }
     }catch(NullPointerException e){

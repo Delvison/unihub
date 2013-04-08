@@ -77,11 +77,6 @@
     </dependency>
 
     <!--Yulle uses this for amazon part -->
-    <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
-      <version>1.3</version>
-    </dependency>
     
     <!--upgrades servlet version to allow use of getServletContext()-->    
     <dependency>
