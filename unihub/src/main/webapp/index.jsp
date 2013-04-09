@@ -66,7 +66,7 @@
 						<tr>
 							<td>
 								<h3><%= holder.getEvent(i).getTitle() %></h3>
-								<p>on <%= holder.getEvent(i).getThingy() %></p>
+								<p>on <%= holder.getEvent(i).getThingy() %> @<%= holder.getEvent(i).getTime() %></p>
 								<p><%= holder.getEvent(i).getDes() %></p>
 								<p><%= holder.getEvent(i).howManyGoing() %></p>
 								<a href="attend?id=<%=holder.getEvent(i).getId() %> ">Attending</a> | <a href="#">More Info</a>
