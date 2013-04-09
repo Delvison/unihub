@@ -1,5 +1,5 @@
 <!--import twitter bootstrap css and js-->
-<link rel="stylesheet" type="text/css" href="design/bootstrap/css/bootstrap.min.css" ></link>
+<link rel="stylesheet" type="text/css" href="design/bootstrap/css/bootstrap-responsive.css" ></link>
 <script language="JavaScript" type="text/JavaScript" src="design/bootstrap/js/bootstrap.js">
 </script>
 <script src="design/jquery-1.9.1.js"></script>

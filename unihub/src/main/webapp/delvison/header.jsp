@@ -2,6 +2,7 @@
 <html>
   <head>
   <%@include file="bootstrap.jsp"%>
+  
   <!---##############JAVA PORTION###############################-->
 
   <!--jsp that is needed when directing user from this page

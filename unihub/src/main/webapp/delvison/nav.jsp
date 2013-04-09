@@ -10,6 +10,7 @@
              <% } else { %> 
                <li><a href="populateUniversities">Change school</a></li>
              <% } %>
+               <li><a href="user?u_id=all">Events</a></li>
                <li class="dropdown">
                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Listings
                     <span class="caret"></span>

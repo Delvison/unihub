@@ -12,9 +12,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import javax.naming.*;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 
-@Stateless
-public class FileManagerSessionBean {
+public class FileManagerSession implements FileManagerEJB {
   private int itemId;
   
   /* ALLOWS UPLOADS OF PNG & JPG FOR POST */
@@ -74,12 +76,6 @@ public class FileManagerSessionBean {
       //custom exception
       throw new FileNotSupportedException("File was not a jpg or png");
     }    
-  }
-
-  /* UPLOADS FOR OTHER CLIENTS, NOT THROUGH POST*/
-  public void uploadPhoto(int itemId, String path, String fileName) 
-    throws IOException{
-    this.itemId = itemId;
   }
 
   /* METHOD TO REMOVE PHOTO */

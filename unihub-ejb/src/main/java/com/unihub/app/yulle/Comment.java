@@ -3,8 +3,9 @@ This class is a model for comments
 */
 
 package com.unihub.app;
+import java.io.*;
 
-public class Comment{
+public class Comment implements Serializable{
   String user;
   int commentId;
   public int itemId;
