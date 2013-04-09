@@ -1,10 +1,14 @@
 /* 
 This class is a model for comments
 */
-
 package com.unihub.app;
 import java.io.*;
 
+<<<<<<< HEAD
+=======
+import java.io.*;
+
+>>>>>>> 45097bd0872f80c7e0602de8789669de13c36f0f
 public class Comment implements Serializable{
   String user;
   int commentId;
@@ -25,5 +29,4 @@ public class Comment implements Serializable{
     a[1] = this.comment;
     return a;       
   }
-  
 }

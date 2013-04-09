@@ -32,6 +32,7 @@ public class CommentSession implements CommentEJB {
 		return c.getContentArray();
 	}
 
+	@WebMethod
 	public ArrayList<Comment> getListOfComments(){
 		return coms.getListOfComments();
 	}
