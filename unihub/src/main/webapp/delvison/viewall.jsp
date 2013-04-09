@@ -10,8 +10,8 @@
 <body data-spy="scroll" data-target="#sidebar">
 
  <center>
+  <div class="container-fluid">
   <div id='content' class='row-fluid'>
-    <div class='span12'>
 
       <!--Search Pane-->
       <div class="sidebar span3" id="sidebar" style="background-color:White">
@@ -40,6 +40,7 @@
             <li><a href="#searchHistoryTab" data-toggle="tab">
               Search History</a>
             </li>
+            <li><a href="#sortByTab" data-toggle="tab">Sort by..</a></li>
           </ul>
         </div>
         <div class="tab-content">
@@ -63,6 +64,16 @@
                 <li><a href="viewalllistings?cat=Furniture">Furniture</a></li>
                 <li><a href="viewalllistings?cat=Musical">Musical Instruments</a></li>
                 <li><a href="viewalllistings?cat=Misc.">Misc.</a></li>
+              <ul>
+          </div>
+          <div class="tab-pane" id="sortByTab">
+            <h3>Sort by:</h3>
+              <ul class="nav nav-tabs nav-stacked">
+                <li><a href="">Most recent</a></li>
+                <li><a href="">Least recent</a></li>
+                <li><a href="">Most Expensive</a></li>
+                <li><a href="">Least Expensive</a></li>
+                <li><a href="">University</a></li>
               <ul>
           </div>
         </div>
