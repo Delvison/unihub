@@ -22,26 +22,21 @@
 
 
 
-		<div class="hero-unit" style="background-color:White">
-                        <table width="100%">
-                          <tr>
-                            <td>
-			    <img src="design/images/y_u_no.jpg">
-                            </td>
-                            <td style="padding:30px">
-			    <h1>WELCOME TO UNIHUB</h1>
-			    <p>Want a less sketchy classified directory tailored for the college student? 
-			    	    <a href="signup">Sign Up!</a>
-			    </p>
-                            </td>
-                          </tr>
-                        </table>
-		</div>
-
+ <div id="myCarousel" class="carousel slide" data-pause="remove">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img class="" src="design/images/books.jpg">
+          <div class="container jetstrap-highlighted">
+            <div class="carousel-caption">
+              <h1><p style="color:white">Welcome to UniHub!</p></h1>
+              <p class="lead"> UniHub is an online classified listing service specifically geared towards the college ecosystem. On UniHub, you are able to sell and buy things from fellow members of your university. The stuff you need quick and easy. So go ahead and give it a try!</p>
+              <a class="btn btn-large btn-primary" href="signup">Sign up today</a>
+            </div>
+          </div>
+        </div>
+        <br>
 
 		<div class="container-fluid">
-
-
 			<div class="span8" style="background-color:white">
 				<h2>Classifieds</h2>
 				

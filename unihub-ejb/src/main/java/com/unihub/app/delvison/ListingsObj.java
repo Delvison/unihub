@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.ejb.*;
 
-@Stateful
 public class ListingsObj{
   public ArrayList<Stuff> stuffs;
   int id;

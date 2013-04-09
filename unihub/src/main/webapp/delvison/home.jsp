@@ -1,46 +1,134 @@
-<html>
-<%@include file="header.jsp" %>
-<script type="text/javascript" src="design/bootstrap/js/lightbox.js"></script>
-<link rel="stylesheet" type="text/css" href="design/bootstrap/css/lightbox.css" ></link>
-<body>
-    <% if (myCookie == null) { %>
-    <div class="well well-large">
-    <li>No School set yet.
-    <% } else { %> 
-       <li>Your current university is <%=sc%>
-       <li>Your current location is <%=st%>.<br>
-    <% } %>
-    <div>
-    
-    <a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">
-        Login Popup Demo</a>
- 
-    <!--Login Modal Demo -->
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"
-          aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Login</h3>
-      </div>
-      <div class="modal-body">
-        <form action="login" method="POST">
-		<label for="username">Username</label>
-		<input type="text" name="username"><br>
-		<label for="password">Password</label>
-		<input type="password" name="password"><br>
-        <p>Not a member? <a href="signup">Sign Up Now</a></p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">
-           Close</button>
-        <input type="submit" class="btn btn-primary" value="Login">
-        </form>
-    </div>
-</div>
+<!--This shall be our main home screen -->
+<%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
+        com.unihub.app.EventListHolder" %>
+<%
+  /*
+  This will temporarily be here since I will get this info from
+  the database when its set up*/
+  String[] cats = new String[] {"Art Supplies", "Books", "Bicycles", "Jobs", 
+                  "Electronics", "Cars", "Cell Phones", "Furniture", 
+                  "Musical Instruments", "Misc."};
+
+  EventListHolder holder = EventListHolder.getInstance();
+
+%>
 
 
-<a href="listings/1/1.jpg" rel="lightbox" >image #1</a>
+
+<%@ include file="/delvison/header.jsp" %>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Categories</li>
+              <% for (int i=0; i < cats.length; i++){ %>
+                  <li>
+                    <a href="viewalllistings?cat=<%=cats[i]%>"><%=cats[i]%></a>
+                  </li>
+              <%}%>
+            </ul>
+          </div><!--/.well -->
+          <br>
+                <div class="well sidebar-nav">
+        <h2>Events</h2>
+        <table class="table">
+
+          <% for(int i = 0; i < holder.numOfEvents(); i++){ %>
+
+            <tr>
+              <td>
+                <h3><%= holder.getEvent(i).getTitle() %></h3>
+                <p>on <%= holder.getEvent(i).getThingy() %></p>
+                <p><%= holder.getEvent(i).getDes() %></p>
+                <p><%= holder.getEvent(i).howManyGoing() %></p>
+                <a href="attend?id=<%=holder.getEvent(i).getId() %> ">Attending</a> | <a href="#">More Info</a>
+              </td>
+            </tr>
+
+          <% } %>
+          <!--This bottom part is only for linking to viewing all events -->
+          <tr>
+            <td>
+              <h4><a href="events">View All</a></h3>
+            </td>
+          </tr> 
+
+        </table>
+      </div>
+
+        </div><!--/span-->
+        <div class="span9 jetstrap-highlighted">
+ <div id="myCarousel" class="carousel slide" data-pause="remove">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img class="" src="design/images/books.jpg">
+          <div class="container jetstrap-highlighted">
+            <div class="carousel-caption">
+              <h1><p style="color:white">Welcome to UniHub!</p></h1>
+              <p class="lead"> UniHub is an online classified listing service specifically geared towards the college ecosystem. On UniHub, you are able to sell and buy things from fellow members of your university. The stuff you need quick and easy. So go ahead and give it a try!</p>
+              <a class="btn btn-large btn-primary" href="signup">Sign up today</a>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="row-fluid">
+          <div class="container-fluid">
+        <div style="background-color:white">
+        <center>
+        <h2>Classifieds</h2>
+        
+        <% for(int i = 0; i < cats.length; i++) {
+          if(i % 2 == 0) { %>
+
+            <%= 
+            HtmlOutputUtilities.bootStrapRow(cats[i], i+1 < cats.length ? cats[i+1]: null) %>
+        <%
+          }
+
+        } %>
+       </center>
+      </div>
+      </div><!--/row-->
     
-</body>
+      <hr>
+    
+      <footer>
+        <p>©UniHub 2013</p>
+      </footer>
+    
+    </div><!--/.fluid-container-->
+    
+
+    <style>
+      
+      body {
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+      
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script src="assets/js/bootstrap.js">
+    </script>
+    <script>
+
+    </script>
+  </body>
 </html>
