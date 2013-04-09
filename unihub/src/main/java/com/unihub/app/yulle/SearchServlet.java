@@ -23,14 +23,12 @@ public class SearchServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req,
 		              HttpServletResponse res) throws ServletException, IOException {
-
 		String keywords = req.getParameter("search");
         keepSearchHistory(req, keywords);
 
         if(false){ //verifies if there is any results for the search in the local database.
 
         }else{ //if nothing was found in the local database, search in the "third parties".
-        	
         	/*-------------AmazonSearch----------------*/
         	try{
                 req.setAttribute("amazon", search.amazonSearch(keywords));
@@ -39,11 +37,6 @@ public class SearchServlet extends HttpServlet {
                 dispatcher.forward(req, res);
                 //res.sendRedirect("/unihub/bookNotFound");//in this case title equals null
         	}
-
-        	/*-------------EbaySearch----------------*/
-
-
-
 			/*-------------GoogleSearch----------------*/
 			try{
 				req.setAttribute("google", search.googleSearch(keywords));
@@ -55,7 +48,6 @@ public class SearchServlet extends HttpServlet {
 			dispatcher.forward(req, res);
         }
 	}
-
 
 	private static void keepSearchHistory(HttpServletRequest req, String keywords){
         session = req.getSession();
@@ -70,4 +62,3 @@ public class SearchServlet extends HttpServlet {
         }    
     }
 }
-
