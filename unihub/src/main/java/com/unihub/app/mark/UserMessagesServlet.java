@@ -28,8 +28,6 @@ public void doGet(HttpServletRequest req,
     dispatcher.include(req, res);
   }
 
-//  RequestDispatcher dispatcher = req.getRequestDispatcher(address);
-//  dispatcher.include(req, res);
 } 
 
 }
