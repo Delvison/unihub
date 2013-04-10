@@ -6,9 +6,10 @@ and access when trying to view events on some events page
 package com.unihub.app;
 
 import java.util.ArrayList;
+import java.io.*;
 
 
-public class EventListHolder {
+public class EventListHolder implements Serializable{
 
 	private static EventListHolder instance = null;
 	private ArrayList<Event> list = null;
@@ -77,6 +78,10 @@ public class EventListHolder {
 		return null;
 
 	}//end of findEventWithId()
+
+	public ArrayList<Event> getEventList() {
+		return list;
+	}
 
 
 
