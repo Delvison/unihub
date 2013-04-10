@@ -4,8 +4,10 @@ package com.unihub.app;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.ejb.*;
+import java.io.*;
+import javax.persistence.*;
 
-public class ListingsObj{
+public class ListingsObj implements Serializable{
   public ArrayList<Stuff> stuffs;
   int id;
   

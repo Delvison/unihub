@@ -3,7 +3,8 @@
 
 package com.unihub.app;
 
-import javax.ejb.*;
+import javax.ejb.Remote;
+import javax.ejb.Stateful;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 
 @Stateful (name="ListingObjEJB") //should be stateless
-@Remote(ListingObjEJB.class)
+@Remote
 @WebService
 public class ListingSession implements ListingObjEJB {
   

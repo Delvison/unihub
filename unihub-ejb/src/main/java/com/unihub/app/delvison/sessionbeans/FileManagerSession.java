@@ -16,7 +16,7 @@ import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-public class FileManagerSession implements FileManagerEJB {
+public class FileManagerSession {
   private int itemId;
   
   /* ALLOWS UPLOADS OF PNG & JPG FOR POST */
