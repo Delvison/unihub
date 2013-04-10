@@ -9,7 +9,6 @@ import javax.jws.WebService;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 
-
 @Stateful
 @Remote(CommentEJB.class)
 @WebService
