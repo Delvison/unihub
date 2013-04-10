@@ -14,7 +14,7 @@ import javax.naming.*;
 import javax.ejb.*;
 
 public class ListingsServlet extends HttpServlet {
-  @EJB static ListingObjEJB lis;
+  @EJB static ListingObjEJBStateless lis;
   HttpSession session;
  
   public void doGet(HttpServletRequest req, HttpServletResponse res)

@@ -15,8 +15,7 @@ import javax.ejb.*;
 
 
 public class PrintListingsTag extends SimpleTagSupport{
-  @EJB
-  ListingObjEJB lis;
+  @EJB ListingObjEJBStateful lis;
   String user;
   String category;
 

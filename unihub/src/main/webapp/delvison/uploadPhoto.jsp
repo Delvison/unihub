@@ -3,12 +3,11 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.Stuff,
-javax.ejb.EJB, com.unihub.app.ListingObjEJB, javax.naming.*" %>
-<%! @EJB
-    ListingObjEJB lis; %> 
+javax.ejb.EJB, com.unihub.app.ListingObjEJBStateless, javax.naming.*" %>
+<%! @EJB ListingObjEJBStateless lis; %> 
 <%
   Context context = new InitialContext();
-  lis = (ListingObjEJB) context.lookup("ejb:unihub-ear/unihub-ejb//ListingObjEJB!com.unihub.app.ListingObjEJB?stateful");
+  lis = (ListingObjEJBStateless) context.lookup("ejb:unihub-ear/unihub-ejb//ListingSessionStateless!com.unihub.app.ListingObjEJBStateless");
   String id = (String)request.getParameter("id");
   String msg = "";
   msg = (String)request.getParameter("msg");
