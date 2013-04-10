@@ -3,10 +3,11 @@ My class that holds Event info for the index and View all
 events
 */
 package com.unihub.app;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Event {
+public class Event implements Serializable{
 
 	int id;
 	String title;
