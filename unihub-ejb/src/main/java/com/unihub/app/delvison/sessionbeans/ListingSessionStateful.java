@@ -16,10 +16,8 @@ import java.text.DateFormat;
 
 @Stateful (name="ListingObjEJBStateful") //should be stateless
 @Remote
-@WebService
 public class ListingSessionStateful implements ListingObjEJBStateful {
 
-  @WebMethod
   public ArrayList<Stuff> userSearch(String userSearched){
     ListingsObj lis = ListingsObj.create();
     ArrayList<Stuff> listingsByTheUser = new ArrayList<Stuff>();
