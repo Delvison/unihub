@@ -13,9 +13,9 @@ import javax.servlet.http.*;
  * 
  * A user model.
  */
-public class User implements javax.servlet.http.HttpSessionBindingListener, Serializable {
+public class User implements Serializable {
     
-    private String name, school, email, password;
+    private String name, school, email;
     private int id, reputation;
     private ArrayList<Message> sentMessages, receivedMessages;
     private ArrayList<String> watched;
@@ -42,7 +42,6 @@ public class User implements javax.servlet.http.HttpSessionBindingListener, Seri
         receivedMessages = new ArrayList<Message>();
         watched = new ArrayList<String>();
         voted = new ArrayList<Integer>();
-        password = "";
     }
 
     public byte[] getEncryptedPassword() {
@@ -50,10 +49,9 @@ public class User implements javax.servlet.http.HttpSessionBindingListener, Seri
     }//end of getEncryptedPassword()
 
 
-    public User(String n, String p, String e, String s) {
+    public User(String n, String e, String s) {
         id = -1;
         name = n;
-        password = p;
         email = e;
         school = s;
         reputation = 0;
@@ -66,7 +64,6 @@ public class User implements javax.servlet.http.HttpSessionBindingListener, Seri
     public User() {
       id = -1;
       name = "bob";
-      password = "bob";
       email = "bob@bob.com";
       school = "bobU";
       reputation = 9001;
@@ -158,23 +155,9 @@ public class User implements javax.servlet.http.HttpSessionBindingListener, Seri
         this.email = email;
     }
 
-    /**
-     * @return the password
-     */
-    public String getPassword() {
-        return password;
-    }
-
     public byte[] getSalt() {
       return salt;
     }//end of getSalt()
-
-    /**
-     * @param password the password to set
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public void addToSent(Message m) {
       sentMessages.add(m);
@@ -225,14 +208,11 @@ public class User implements javax.servlet.http.HttpSessionBindingListener, Seri
       return false;
     }
 
-    @Override
-    public void valueBound(HttpSessionBindingEvent event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(String name, String email, byte[] pass, String school) {
+      this.name = name;
+      this.email = email;
+      this.encryptedPassword = pass;
+      this.school = school;
     }
 
-    @Override
-    public void valueUnbound(HttpSessionBindingEvent event) {
-        System.out.println("Successfully Logged Out");
-    }
-    
 }
