@@ -10,9 +10,13 @@ import javax.servlet.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import javax.ejb.*;
 
 @WebServlet("/login")
 public class Auth extends HttpServlet {
+	@EJB 
+	Authenticate bean;
+
 	/*
 	Purpose of this class is to get the request from a users login
 	and authenticate it, then redirect the user to where they were last
@@ -63,7 +67,7 @@ public class Auth extends HttpServlet {
 			dis.forward(req, res);
 		} else {
 			if(path == null)
-				res.sendRedirect("home");
+				res.sendRedirect("index");
 			else
 				res.sendRedirect(path.replaceFirst("/", ""));
 		}

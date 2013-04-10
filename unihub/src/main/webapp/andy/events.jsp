@@ -1,10 +1,14 @@
-<%@ page import="com.unihub.app.EventListHolder" %>
+<%@ page import="com.unihub.app.Events, com.unihub.app.Event, com.unihub.app.EventsBean,
+					javax.ejb.*, javax.naming.InitialContext, java.util.ArrayList" %>
 
+<%! @EJB Events bean; %>
 <%
 /*Just gonna initialize my list of events here to output
 it nicely*/
-
-EventListHolder holder = EventListHolder.getInstance();
+InitialContext context = new InitialContext();
+bean = (Events)context.lookup("ejb:unihub-ear/unihub-ejb//EventsBean!com.unihub.app.Events");
+ArrayList<Event> holder = bean.getEvents();
+//EventListHolder holder = EventListHolder.getInstance();
 
 %>
 
@@ -22,12 +26,12 @@ EventListHolder holder = EventListHolder.getInstance();
 
 				<table class="table">
 
-					<% for(int i = 0; i < holder.numOfEvents(); i++) {%>
+					<% for(Event event : holder) {%>
 
 					<tr>
 						<td>
-							<h3><%= holder.getEvent(i).getTitle() %></h3>
-							<p><%= holder.getEvent(i).getDes() %></p>
+							<h3><%= event.getTitle() %></h3>
+							<p><%= event.getDes() %></p>
 							<a href="#">Attending</a> | <a href="#">More Info</a>
 						</td>
 					</tr>
