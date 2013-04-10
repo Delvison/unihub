@@ -18,6 +18,9 @@ import java.text.DateFormat;
 @Remote
 @WebService
 public class ListingSessionStateless implements ListingObjEJBStateless {
+
+  @WebMethod
+  public void ListingObjEJBStateless(){}
   
  @WebMethod
  public int addStuff(String user, String name, String price, String university,
