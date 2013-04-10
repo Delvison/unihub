@@ -4,7 +4,7 @@
 package com.unihub.app;
 
 import javax.ejb.Remote;
-import javax.ejb.Stateful;
+import javax.ejb.*;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.ArrayList;
@@ -14,10 +14,10 @@ import javax.jws.WebService;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 
-@Stateful (name="ListingObjEJB") //should be stateless
-@Remote(ListingObjEJB.class)
+@Stateless
+@Remote
 @WebService
-public class ListingSession implements ListingObjEJB {
+public class ListingSessionStateless implements ListingObjEJBStateless {
   
  @WebMethod
  public int addStuff(String user, String name, String price, String university,
@@ -29,8 +29,7 @@ public class ListingSession implements ListingObjEJB {
     return i;
   }
       
-  @WebMethod    
-  public Stuff getStuff(int passedId) {
+  private Stuff getStuff(int passedId) {
     ListingsObj lis = ListingsObj.create();
     Stuff stuff = lis.stuffs.get(0);
     for (Stuff s: lis.stuffs){
@@ -38,23 +37,6 @@ public class ListingSession implements ListingObjEJB {
         stuff = s;
     }
     return stuff;
-  }
-  
-  @WebMethod
-  public ArrayList<Stuff> userSearch(String userSearched){
-    ListingsObj lis = ListingsObj.create();
-    ArrayList<Stuff> listingsByTheUser = new ArrayList<Stuff>();
-    for (Stuff s: lis.stuffs){
-      if(s.getUser().equals(userSearched)){
-        listingsByTheUser.add(s);
-      }
-    }
-    return listingsByTheUser; 
-  }
-  
-  public ArrayList<Stuff> getArrayList(){
-    ListingsObj lis = ListingsObj.create();
-    return lis.stuffs;
   }
   
   @WebMethod       

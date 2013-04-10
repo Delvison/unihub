@@ -17,11 +17,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@Stateful
-@Remote(SearchEJB.class)
+@Stateless
+@Remote
 @WebService
 public class SearchSession implements SearchEJB {
-	@WebMethod
+	
+    @WebMethod
 	public ArrayList<String> amazonSearch(String keywords) throws RuntimeException{
 		final String AWS_ACCESS_KEY_ID = "AKIAIZI2VON3T5UUKTZQ";            
         final String AWS_SECRET_KEY = "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";            

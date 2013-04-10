@@ -8,13 +8,11 @@ import javax.naming.directory.*;
 import javax.jws.WebService;
 
 @Remote
-public interface ListingObjEJB {
+public interface ListingObjEJBStateless {
 
   public int addStuff(String user, String name, String price, String university,
   String location, String category, String description, String bid);
   public void updateContent(int id, String name, String price, String university, String location, String category, String description, String bid);
-  public Stuff getStuff(int passedId);
-  public ArrayList<Stuff> userSearch(String userSearched);
   public int getPicAmount(int itemId);
   public String getName(int itemId);
   public String getPrice(int itemId);
@@ -28,7 +26,6 @@ public interface ListingObjEJB {
   public String getCategory(int itemId);
   public String getTimePosted(int itemId);
   public String getDir(int itemId);
-  public ArrayList<Stuff> getArrayList();
   public void setDir(int itemId,String dir);
   public void setPicAmount(int itemId);
   //public String getActivityLog();

@@ -5,7 +5,9 @@ temporary model class for invidual items posted
 package com.unihub.app;
 import java.util.Date;
 import java.io.*;
+import javax.persistence.*;
 
+@Entity
 public class Stuff implements Serializable{
   static final long serialVersionUID = 1;
   public String name;

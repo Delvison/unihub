@@ -9,7 +9,7 @@ public class DummyData{
   public static void generate() throws NamingException{
 
     Context context = new InitialContext();
-    ListingObjEJB lis = (ListingObjEJB) context.lookup("ejb:unihub-ear/unihub-ejb//ListingObjEJB!com.unihub.app.ListingObjEJB?stateful");
+    ListingObjEJBStateless lis = (ListingObjEJBStateless) context.lookup("ejb:unihub-ear/unihub-ejb//ListingSessionStateless!com.unihub.app.ListingObjEJBStateless");
     
     String user = "User1";
     String university = "SUNY Oswego";

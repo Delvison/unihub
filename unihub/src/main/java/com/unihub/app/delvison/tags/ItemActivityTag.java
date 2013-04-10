@@ -11,8 +11,6 @@ import java.io.*;
 import javax.ejb.*;
 
 public class ItemActivityTag extends SimpleTagSupport{
-  //@EJB
-  //ListingObjEJB lis;
   private String itemId;
   
   public void setItemId(String itemId){

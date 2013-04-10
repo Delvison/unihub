@@ -11,8 +11,7 @@ import java.io.*;
 import javax.ejb.*;
 
 public class PicturesTag extends SimpleTagSupport{
-  @EJB
-  ListingObjEJB lis;
+  @EJB ListingObjEJBStateless lis;
   private int itemId;
   String dir;
   

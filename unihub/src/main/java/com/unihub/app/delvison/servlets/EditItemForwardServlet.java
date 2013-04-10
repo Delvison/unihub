@@ -9,8 +9,7 @@ import javax.servlet.http.*;
 import javax.ejb.*;
 
 public class EditItemForwardServlet extends HttpServlet{ 
-  @EJB 
-  ListingObjEJB lis;
+  @EJB ListingObjEJBStateless lis;
   HttpSession session;
   
   protected void doGet(HttpServletRequest req,

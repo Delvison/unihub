@@ -34,8 +34,7 @@ import javax.ejb.EJB;
 @MultipartConfig /* tells servlet to expect requests made up of 
                                  multipart/form-data MIME type*/
 public class FileUploadServlet extends HttpServlet {
-  @EJB
-  ListingObjEJB lis;
+  @EJB ListingObjEJBStateless lis;
 
   private final static Logger LOGGER = 
             Logger.getLogger(FileUploadServlet.class.getCanonicalName());

@@ -10,8 +10,7 @@ import javax.ejb.*;
 
 
 public class IndividualListingTag extends SimpleTagSupport{
-  @EJB
-  ListingObjEJB lis;
+  @EJB ListingObjEJBStateless lis;
   private int itemId;
   
   public void setItemId(String itemId){
