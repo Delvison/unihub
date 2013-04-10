@@ -29,7 +29,7 @@
     </td>
     <td>
       <center><h4>Recieved Messages</h4>
-      <% for(Message m: currentuser.getRecievedMessages()) { %>
+      <% for(Message m: currentuser.getReceivedMessages()) { %>
       <hr>
       <p><%= m.toString() %>
       </p>

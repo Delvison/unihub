@@ -6,10 +6,14 @@ import java.security.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import javax.naming.*;
+import javax.ejb.*;
 
 @WebServlet("/message")
 public class PMessageServlet extends HttpServlet {
 
+@EJB
+MessageBI msg;
 HttpSession session;
 
 @Override
@@ -25,10 +29,10 @@ public void doPost(HttpServletRequest req,
   String fromName  = (String)session.getAttribute("username");
   Dbase ubase = Dbase.create();
   res.setContentType("text/html");
-
-  Message m = new Message(fromName, toName, contents);
-  ubase.getUser(toName).addToRecieved(m);
-  ubase.getUser(fromName).addToSent(m);
+  
+  msg.createMessage(fromName, toName, contents);
+  msg.addToReceived(toName);
+  msg.addToSent(fromName);
 
   res.sendRedirect( "user?u_id=" + ubase.getUser(toName).getId() );
 }
