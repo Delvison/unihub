@@ -41,6 +41,16 @@ public class ListingSessionStateless implements ListingObjEJBStateless {
     }
     return stuff;
   }
+
+  public void removeItem(int id){
+    ListingsObj lis = ListingsObj.create();
+    Stuff a = getStuff(id);
+    for (int i=0; i<lis.stuffs.size(); i++){
+      if (lis.stuffs.get(i).getId() == id){
+        lis.stuffs.remove(i);
+      }
+    }
+  }
   
   @WebMethod       
    public void updateContent(int id, String name, String price, String university, 
