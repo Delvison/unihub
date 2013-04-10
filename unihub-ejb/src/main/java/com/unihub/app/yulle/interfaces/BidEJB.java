@@ -7,5 +7,5 @@ import javax.naming.directory.*;
 
 @Remote
 public interface BidEJB {
-	public void placeBid(int itemId, String user, String bidplaced);
+	public void placeBid(int itemId, String user, String bidPlaced) throws RuntimeException;
 }
