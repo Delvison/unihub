@@ -1,6 +1,6 @@
 <!--This shall be our main home screen -->
 <%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
-				com.unihub.app.EventListHolder, com.unihub.app.Events,
+				com.unihub.app.Events,
 				javax.ejb.*, java.util.ArrayList, javax.naming.InitialContext, 
 				com.unihub.app.EventsBean" %>
 <%! @EJB Events bean; %>
