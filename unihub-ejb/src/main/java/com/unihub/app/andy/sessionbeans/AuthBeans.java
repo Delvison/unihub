@@ -28,15 +28,15 @@ public class AuthBeans implements Authenticate {
 	public boolean authenticate(String userName, String password) 
 		throws NoSuchAlgorithmException, InvalidKeySpecException {
 		
-			//Dbase dbase = Dbase.create();
-			//User user = dbase.getUser(userName);
+			Dbase dbase = Dbase.create();
+			User user = dbase.getUser(userName);
 			/*Temporarily keeping encrypted password here locally
 			to not change too much code until it is necessary
 			since ideally I will have that sent from Auth.java
 			after the Model returns the bytes I stored from
 			the encrypted password*/
-			//byte[] salt = user.getSalt();
-			//byte[] encryptedPassword = user.getEncryptedPassword();
+			byte[] salt = user.getSalt();
+			byte[] encryptedPassword = user.getEncryptedPassword();
 
 			/*looks like whatever is in bytes can be casted to a String
 			with no loss of bits and back*/
@@ -46,7 +46,7 @@ public class AuthBeans implements Authenticate {
 
 
 
-		/*if((userName == null || password == null) || 
+		if((userName == null || password == null) || 
 			(userName.equals("") || password.equals(""))) {
 
 			return false;
@@ -54,10 +54,7 @@ public class AuthBeans implements Authenticate {
 		else {
 			byte[] passwordAttempt = getEncryptedPassword(password, salt);
 			return Arrays.equals(encryptedPassword, passwordAttempt);
-		}*/
-
-		//get rid of this return sinc its here to not mess anything up
-		return false;
+		}
 
 	}//end of authenticate method
 
@@ -69,22 +66,22 @@ public class AuthBeans implements Authenticate {
 	public byte[] getEncryptedPassword(String password, byte[] salt)
 		throws NoSuchAlgorithmException, InvalidKeySpecException {
 
-		//String algorithm = "PBKDF2WithHmacSHA1";
+		String algorithm = "PBKDF2WithHmacSHA1";
 
-		//int keyLength = 160; //needed because SHA1 generates 160 bit hashes :D
+		int keyLength = 160; //needed because SHA1 generates 160 bit hashes :D
 
 		/*
 		iterations are needed because it increases the time
 		taken to hash le password*/
-		//int iterations = 10000;
+		int iterations = 10000;
 
-		//KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 
-		//								iterations, keyLength);
+		KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 
+										iterations, keyLength);
 
-		//SecretKeyFactory f = SecretKeyFactory.getInstance(algorithm);
+		SecretKeyFactory f = SecretKeyFactory.getInstance(algorithm);
 
-		//return f.generateSecret(spec).getEncoded();
-		return null;
+		return f.generateSecret(spec).getEncoded();
+
 
 
 	}//end of getEncryptedPassword
@@ -95,13 +92,12 @@ public class AuthBeans implements Authenticate {
 	or sensitive data in general*/
 	public byte[] generateSalt() throws NoSuchAlgorithmException {
 
-		//SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+		SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
 
-		//byte[] salt = new byte[8];
-		//random.nextBytes(salt);
+		byte[] salt = new byte[8];
+		random.nextBytes(salt);
 
-		//return salt;
-		return null;
+		return salt;
 
 	}//end of generateSalt()
 

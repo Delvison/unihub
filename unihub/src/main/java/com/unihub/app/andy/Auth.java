@@ -34,7 +34,7 @@ public class Auth extends HttpServlet {
 
 		try 
 		{
-			if(AuthUtilities.authenticate(userName, password)) {
+			if(bean.authenticate(userName, password)) {
 				//successfully logged in so create cookie or session
 				//also remove calling path since it served its purpose
 				session.removeAttribute("path_for_login");
