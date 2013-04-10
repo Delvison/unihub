@@ -6,13 +6,10 @@ import javax.naming.*;
 
 
 public class DummyData{
-@EJB
-ListingObjEJB ls;
   public static void generate() throws NamingException{
 
-    InitialContext ctx = new InitialContext();
-    ListingObjEJB lis = (ListingObjEJB) ctx.lookup("ejb:unihub/unihub-ejb/ListingSessionBean!com.unihub.app.ListingObjEJB");
-    //ListingsObj lis = ListingsObj.create();
+    Context context = new InitialContext();
+    ListingObjEJBStateless lis = (ListingObjEJBStateless) context.lookup("ejb:unihub-ear/unihub-ejb//ListingSessionStateless!com.unihub.app.ListingObjEJBStateless");
     
     String user = "User1";
     String university = "SUNY Oswego";

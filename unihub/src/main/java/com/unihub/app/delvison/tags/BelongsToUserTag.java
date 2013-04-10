@@ -12,8 +12,7 @@ import java.io.*;
 import javax.ejb.*;
 
 public class BelongsToUserTag extends SimpleTagSupport{
-  @EJB
-  ListingObjEJB lis;
+  @EJB ListingObjEJBStateless lis;
   private int itemId;
   private String userLoggedIn;
   

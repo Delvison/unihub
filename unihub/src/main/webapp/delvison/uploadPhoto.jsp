@@ -2,14 +2,16 @@
 <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
-<%@ page import="com.unihub.app.ListingsObj, com.unihub.app.Stuff" %>
-
+<%@ page import="com.unihub.app.ListingsObj, com.unihub.app.Stuff,
+javax.ejb.EJB, com.unihub.app.ListingObjEJBStateless, javax.naming.*" %>
+<%! @EJB ListingObjEJBStateless lis; %> 
 <%
+  Context context = new InitialContext();
+  lis = (ListingObjEJBStateless) context.lookup("ejb:unihub-ear/unihub-ejb//ListingSessionStateless!com.unihub.app.ListingObjEJBStateless");
   String id = (String)request.getParameter("id");
   String msg = "";
   msg = (String)request.getParameter("msg");
-  String picAmount = (String)request.getParameter("amnt");
-  int p = Integer.parseInt(picAmount);
+  int picAmount = lis.getPicAmount(Integer.parseInt(id));
 %>
 
 <body>
@@ -57,7 +59,7 @@
         <button class="btn btn-success">Done with photos</button>
       </a>
    </center>
-   <%if (p > 0){ %>
+   <%if (picAmount > 0){ %>
      <center><h2>Current Photos</h2></center>
      <div class="row-fluid">
        <ul class="thumbnails">

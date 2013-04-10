@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.naming.*;
 import javax.naming.directory.*;
+import javax.jws.WebService;
 
 @Remote
 public interface ListingObjEJB {
@@ -27,5 +28,8 @@ public interface ListingObjEJB {
   public String getCategory(int itemId);
   public String getTimePosted(int itemId);
   public String getDir(int itemId);
+  public ArrayList<Stuff> getArrayList();
+  public void setDir(int itemId,String dir);
+  public void setPicAmount(int itemId);
   //public String getActivityLog();
 }

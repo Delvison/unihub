@@ -14,16 +14,11 @@ import javax.naming.*;
 import javax.ejb.*;
 
 public class ListingsServlet extends HttpServlet {
-  @EJB
-  ListingObjEJB lis;
+  @EJB static ListingObjEJBStateless lis;
   HttpSession session;
  
   public void doGet(HttpServletRequest req, HttpServletResponse res)
     throws ServletException, IOException {
-
-    try{
-      InitialContext ctx = new InitialContext();
-     // ListingObjEJB lis = (ListingObjEJB) ctx.lookup("ejb:unihub/unihub-ejb/ListingSessionBean!com.unihub.app.ListingObjInterfaceRemote");
 
       String name = req.getParameter("name"); /* get name of item */
       String price = req.getParameter("price"); /* get price */
@@ -62,8 +57,5 @@ public class ListingsServlet extends HttpServlet {
       lis.updateContent(Integer.parseInt(itemId), name, price, university, loc, cat, desc, bid);
       res.sendRedirect("item?id="+itemId);
       }
-    }catch (NamingException e){
-      System.out.println("notfound");
-    }
   }
 }

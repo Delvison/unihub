@@ -37,4 +37,8 @@ public class CommentObj{
     }
     return comment;
   }
+
+  public ArrayList<Comment> getListOfComments(){
+    return this.comments;
+  }
 }

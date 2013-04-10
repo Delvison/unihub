@@ -28,11 +28,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.ejb.EJB;
 
 @WebServlet(name = "FileUploadServlet", urlPatterns = { "/upload" })
 @MultipartConfig /* tells servlet to expect requests made up of 
                                  multipart/form-data MIME type*/
 public class FileUploadServlet extends HttpServlet {
+  @EJB ListingObjEJBStateless lis;
 
   private final static Logger LOGGER = 
             Logger.getLogger(FileUploadServlet.class.getCanonicalName());
@@ -57,7 +59,7 @@ public class FileUploadServlet extends HttpServlet {
     }
     if (userName == null){
       response.sendRedirect("sorry");
-    }else if(!userName.equals(ListingsObj.create().getStuff(Integer.parseInt(itemId)).getUser())){
+    }else if(!userName.equals(lis.getUser(Integer.parseInt(itemId)))){
       response.sendRedirect("uploadPhoto?id="+itemId+"&msg=error");
     }else{
       //set up image url
@@ -79,11 +81,11 @@ public class FileUploadServlet extends HttpServlet {
       /* CHECK FOR VALIDITY HERE */
         //has to be jpg | png && Listing must have < 4 photos
       if (extension.equals("jpg")||extension.equals("png")){
-        if (ListingsObj.create().getStuff(Integer.parseInt(itemId)).getPicAmount() < 4){
+        if (lis.getPicAmount(Integer.parseInt(itemId)) < 4){
 
           //check if dir already exists
           File chkDir = new File(path);
-          ListingsObj.create().getStuff(Integer.parseInt(itemId)).setDir(path);
+          lis.setDir(Integer.parseInt(itemId),path);
           if (!chkDir.exists()){
             //create dir
             chkDir.mkdir();
@@ -103,7 +105,7 @@ public class FileUploadServlet extends HttpServlet {
             }
             /* ##FILE UPLOAD SUCCESS HERE## */
             // ADD 1 to the item's picture amount upon success
-            ListingsObj.create().getStuff(Integer.parseInt(itemId)).setPicAmount();
+            lis.setPicAmount(Integer.parseInt(itemId));
             LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", new Object[]{fileName, path});
             response.sendRedirect("uploadPhoto?id="+itemId+"&msg=success");
           } catch (FileNotFoundException fne) {

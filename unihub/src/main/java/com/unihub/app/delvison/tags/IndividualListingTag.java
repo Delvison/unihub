@@ -1,7 +1,5 @@
 // @author Delvison
-/*
-allows access to individual 
-*/
+/*allows access to individual*/
 
 package com.unihub.app;
 
@@ -12,8 +10,7 @@ import javax.ejb.*;
 
 
 public class IndividualListingTag extends SimpleTagSupport{
-  @EJB
-  ListingObjEJB lis;
+  @EJB ListingObjEJBStateless lis;
   private int itemId;
   
   public void setItemId(String itemId){

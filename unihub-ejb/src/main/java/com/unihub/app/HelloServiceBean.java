@@ -6,11 +6,10 @@ import javax.jws.WebService;
 
 @Stateless
 @WebService
-public class HelloServiceBean implements Hello {
-    private String message = "Hello, ";
+public class HelloServiceBean {
 
-    @WebMethod
-    public String sayHello(String name) {
-        return message + name + ".";
-    }
+  @WebMethod
+  public String sayHellow(String n){
+    return n;
+  }
 }

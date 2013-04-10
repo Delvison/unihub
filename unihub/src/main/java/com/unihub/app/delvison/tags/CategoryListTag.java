@@ -8,6 +8,7 @@ package com.unihub.app;
 import javax.servlet.jsp.*;
 import javax.servlet.jsp.tagext.*;
 import java.io.*;
+import javax.ejb.*;
 
 public class CategoryListTag extends SimpleTagSupport{
   private String category;
@@ -20,7 +21,6 @@ public class CategoryListTag extends SimpleTagSupport{
   
   public void doTag() throws JspException, IOException{
     JspWriter out = getJspContext().getOut();
-    
     int total = categories.length;
 
     for (int i=0; i<total; i++){

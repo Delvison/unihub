@@ -1,6 +1,7 @@
 package com.unihub.app;
 
-public class ItemActivityObj{
+import java.io.*;
+public class ItemActivityObj implements Serializable{
   private String[] activityLog;
   private int count;
   private int itemId;
