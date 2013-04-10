@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 
 @Stateful (name="ListingObjEJB") //should be stateless
-@Remote
+@Remote(ListingObjEJB.class)
 @WebService
 public class ListingSession implements ListingObjEJB {
   

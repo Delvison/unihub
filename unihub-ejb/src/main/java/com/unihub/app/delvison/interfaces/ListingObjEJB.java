@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.naming.*;
 import javax.naming.directory.*;
 import javax.jws.WebService;
-import javax.ejb.Stateless;
 
 @Remote
 public interface ListingObjEJB {
