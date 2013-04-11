@@ -27,8 +27,9 @@ public class ListingsServlet extends HttpServlet {
       String cat = req.getParameter("category"); /* get category */
       String desc = req.getParameter("description"); /* get description */
       String bid = req.getParameter("bid"); 
+      String rm = req.getParameter("rm");
 
-    /* First, Check if the listing exist */
+      /* First, Check if the listing exist */
       String itemId = req.getParameter("id");
 
       if (itemId == null){
@@ -54,8 +55,13 @@ public class ListingsServlet extends HttpServlet {
         }
       }else{
       /*EDIT THE LISTING */
-      lis.updateContent(Integer.parseInt(itemId), name, price, university, loc, cat, desc, bid);
-      res.sendRedirect("item?id="+itemId);
+        if (rm != null){
+          lis.removeItem(Integer.parseInt(itemId));
+          res.sendRedirect("home");
+        }else{
+          lis.updateContent(Integer.parseInt(itemId), name, price, university, loc, cat, desc, bid);
+          res.sendRedirect("item?id="+itemId);
+        }
       }
   }
 }
