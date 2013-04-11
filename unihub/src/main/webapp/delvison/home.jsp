@@ -32,10 +32,9 @@
             </ul>
           </div><!--/.well -->
           <br>
-                <div class="well sidebar-nav">
-        <h2>Events</h2>
-        <table class="table">
-
+          <div class="well sidebar-nav">
+            <h2>Events</h2>
+              <table class="table">
           <% for(int i = 0; i < holder.numOfEvents(); i++){ %>
 
             <tr>
@@ -77,13 +76,28 @@
       <%@ include file="/delvison/rightTabListingsIncl.jsp" %>
       <br>
       <div class="shadow">
-          <ul class="inline">
-            <li><h3> SUNY Oswego, NY </h3></li>
-            <li><a href="populateUniversities">Change Location</a></li>
-          </ul>
-          <p>
-            Show stuff specific to location here.
-          </p>
+        <div class="container-fluid">
+            <ul class="inline">
+              <li><h3> <%=sc%>, <%=st%></h3></li>
+              <li><a href="populateUniversities">Change Location</a></li>
+            </ul>
+          <div class="row-fluid">
+            <div class="span5">
+              <h3>Weather</h3>
+              <p>
+                Query some service for local weather maybe. just a thought.
+              </p>
+            </div>
+            <div class="span1" style="width:1px;height:160px;background-color:gray;float:left;"></div> 
+            <div class="span6">
+              <h3>Reccommended Spots</h3>
+              <p>
+                Show stuff specific to location here. 
+                Cool idea: query google to find populated public places in the area so that we can recommend these as a meeting spot for exchanges.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
 
