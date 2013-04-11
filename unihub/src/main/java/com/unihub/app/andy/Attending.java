@@ -12,6 +12,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import javax.ejb.*;
 
 @WebServlet("/attend")
 public class Attending extends HttpServlet {

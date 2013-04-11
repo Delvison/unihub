@@ -17,6 +17,8 @@ import javax.jws.WebService;
 @Stateful (name="UserStatefulBI")
 @Remote(UserStatefulBI.class)
 public class UserStatefulBean implements UserStatefulBI {
+  @EJB
+  Authenticate bean;
 
   private Dbase ubase = Dbase.create();
 
@@ -24,8 +26,8 @@ public class UserStatefulBean implements UserStatefulBI {
     byte[] sal = null;
     byte[] encryptedpass = null;
     try {
-      sal = AuthUtilities.generateSalt();
-      encryptedpass = AuthUtilities.getEncryptedPassword(pass, sal);
+      sal = bean.generateSalt();
+      encryptedpass = bean.getEncryptedPassword(pass, sal);
     }
     catch(NoSuchAlgorithmException e) {}
     catch(InvalidKeySpecException e) {}
@@ -80,8 +82,8 @@ public class UserStatefulBean implements UserStatefulBI {
     byte[] sal = null;
     byte[] epass = null;
     try {
-      sal = AuthUtilities.generateSalt();
-      epass = AuthUtilities.getEncryptedPassword(pass, sal);
+      sal = bean.generateSalt();
+      epass = bean.getEncryptedPassword(pass, sal);
     }
     catch(NoSuchAlgorithmException e) {}
     catch(InvalidKeySpecException e) {}

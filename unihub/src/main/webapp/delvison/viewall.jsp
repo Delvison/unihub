@@ -14,7 +14,7 @@
   <div id='content' class='row-fluid'>
 
       <!--Search Pane-->
-      <div class="sidebar span3" id="sidebar" style="background-color:White">
+      <div class="shadow span3" id="sidebar">
         <h2>Search</h2>
         <FORM ACTION="searchServlet" METHOD="GET" >
           <INPUT CLASS="span11" TYPE="text" name="search" placeholder="Search">
@@ -80,7 +80,7 @@
       </div>
       
       <!--Listings Pane -->
-      <div class='span8 main' style="background-color:White">
+      <div class='shadow span8'>
         <h2>Listings</h2>
         <h4><i><%=cat%></i> - <%=sc%></h4>
           <% if (lis.stuffs.size() == 0) {%>

@@ -16,6 +16,7 @@
 <%@ include file="../delvison/header.jsp"%>
 
     <body>
+      <div class="container-fluid">
           <% Dbase ubase = Dbase.create();
            String curruname = (String)session.getAttribute("username");  
            User currentuser = ubase.getUser(curruname);
@@ -90,5 +91,6 @@
           </div>
         </div>
         </div>
+      </div>
     </body>
 </html>
