@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row -fluid">
-      <div class="span4 offset1">
+      <div class="span4 offset1"><br><br><br>
         <a href="#" class="thumbnail">
           <img src="listings/1/1.jpg" alt="">
         </a>
