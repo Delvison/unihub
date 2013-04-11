@@ -36,7 +36,12 @@
     }
   %>
 
-  <!---##############JAVA PORTION END###############################-->
+  <style>
+        .shadow {
+          background-color:#ffffff;
+          box-shadow: 7px 7px 3px #888888;
+        }
+  </style>
   </head>
     
   <%@ include file="nav.jsp" %>
