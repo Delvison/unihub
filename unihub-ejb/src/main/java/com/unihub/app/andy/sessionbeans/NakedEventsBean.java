@@ -5,7 +5,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 
 @Remote
-@Stateful
+@Stateless
 @WebService
 public class NakedEventsBean implements NakedEvents {
 
