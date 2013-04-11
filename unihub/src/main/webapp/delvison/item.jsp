@@ -21,25 +21,36 @@
     %>   
 
 <body>
+  <div class="container-fluid">
   <div id='content' class='row-fluid'>
       
       <!--ITEM INFO PANE -->
-      <div class='span8 main' style="background-color:White">
-              <devjsp:itemInfo itemId="<%=id%>">
-                <center><p>
-                  <h2>${itemName} - $${itemPrice} (${itemUniversity},
-                   ${itemLocation})</h2>
-                </p>
-                </center>
+      <div class='shadow span8'>
+        <devjsp:itemInfo itemId="<%=id%>">
+          <center><p>
+            <h2>${itemName} - $${itemPrice} (${itemUniversity}, ${itemLocation})</h2>
+            </p>
+          </center>
+          <div class="row-fluid">
+            <div class="span8 pull-left">
               </devjsp:itemInfo>
-     <!--         devjsp:upvote itemId="<%=id%>" user="<%=user%>"  -->
               <devjsp:belongsToUser itemId="<%=id%>" user="<%=user%>" />
               <devjsp:itemInfo itemId="<%=id%>">
                 <br>
                 <i>Category:</i> ${itemCategory}<br>
                 <i>Posted ${itemTime} by</i> <a href="profile">${itemUser}</a>
               </devjsp:itemInfo >
-              
+              </div>
+              <div class="span2 pull-right">
+                <br>
+                <ul class="inline pull-right">
+                  <li><devjsp:upvote itemId="<%=id%>" user="<%=user%>" /></li>
+                  <li>
+                    <a  class="pull-right" href="usermessages"/><img width="25px" height="20px" src="design/images/mail.png"></a>
+                  </li>
+                </ul>
+              </div>
+            </div><!--row-->
               <div class="accordion" id="accordion2">
                 <div class="accordion-group">
                   <div class="accordion-heading">
@@ -94,5 +105,6 @@
            <%}%>
   </div>
   </div>
+</div>
 </body>
 </html>

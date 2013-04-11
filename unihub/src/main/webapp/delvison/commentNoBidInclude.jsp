@@ -1,5 +1,5 @@
  <!--COMMENTS PANE-->
-        <div class='span4 sidebar' style="background-color:White">
+        <div class='shadow span4'>
             <center><h2>Comments</h2></center>
               <!--section that displays comments posted-->
               <div name="displayComments">

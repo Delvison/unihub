@@ -72,35 +72,25 @@
               <a class="btn btn-large btn-primary" href="signup">Sign up today</a>
             </div>
           </div>
-        </div>
-
-
-
-        <div class="row-fluid">
-          <div class="container-fluid">
-        <div style="background-color:white">
-        <center>
-        <h2>Classifieds</h2>
-        
-        <% for(int i = 0; i < cats.length; i++) {
-          if(i % 2 == 0) { %>
-
-            <%= 
-            HtmlOutputUtilities.bootStrapRow(cats[i], i+1 < cats.length ? cats[i+1]: null) %>
-        <%
-          }
-
-        } %>
-       </center>
+        </div><br>
+      
+      <%@ include file="/delvison/rightTabListingsIncl.jsp" %>
+      <br>
+      <div class="shadow">
+          <ul class="inline">
+            <li><h3> SUNY Oswego, NY </h3></li>
+            <li><a href="populateUniversities">Change Location</a></li>
+          </ul>
+          <p>
+            Show stuff specific to location here.
+          </p>
       </div>
-      </div><!--/row-->
-    
+
+
       <hr>
-    
       <footer>
-        <p>©UniHub 2013</p>
+        <p>&copy; UniHub</p>
       </footer>
-    
     </div><!--/.fluid-container-->
     
 

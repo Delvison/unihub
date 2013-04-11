@@ -1,6 +1,6 @@
-<div class='span4 sidebar'>
+<div class='span3 sidebar'>
  <!--BID PANE-->
-        <div class='row-fluid' style="background-color:White">
+        <div class='shadow'>
             <center><h2>Bidding</h2>
             <devjsp:itemInfo itemId="<%=id%>">
               <h2><p style="color:green">$${itemPrice}</p></h2>
@@ -52,7 +52,7 @@
 
 
  <!--COMMENTS PANE-->
-        <div class='row-fluid' style="background-color:White">
+        <div class='shadow'>
             <center><h2>Comments</h2></center>
               <!--section that displays comments posted-->
               <div name="displayComments">
