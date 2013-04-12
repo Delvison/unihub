@@ -50,6 +50,11 @@ version="2.0">
   <required>false</required>
   <rtexprvalue>true</rtexprvalue>
 </attribute>
+<attribute>
+  <name>limit</name>
+  <required>false</required>
+  <rtexprvalue>true</rtexprvalue>
+</attribute>
 </tag>
 
 <tag>

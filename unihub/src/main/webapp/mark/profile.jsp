@@ -29,7 +29,7 @@
         <div class="row-fluid">
         <div class="span12">
           <div class="row-fluid">
-          <div class="span8 main" style="background-color:white">
+          <div class="span8 shadow" style="background-color:white">
             <table style="margin:10px" width="100%">
              <tr>
               <td style="padding:10px">
@@ -72,7 +72,7 @@
               </div>
             </div>
           </div>
-          <div class="span4 sidebar" style="background-color:white">
+          <div class="span4 shadow" style="background-color:white">
             <center><h4>My Listings</h4></center>
             <table class="table table-striped">
               <devjsp:forEachListing user="<%=currentuser.getName()%>">

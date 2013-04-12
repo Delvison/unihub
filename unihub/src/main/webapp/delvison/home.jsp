@@ -1,24 +1,39 @@
+<!DOCTYPE html>
 <!--This shall be our main home screen -->
 <%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
         com.unihub.app.EventListHolder" %>
+<%@ include file="/delvison/header.jsp" %>
 <%
   /*
   This will temporarily be here since I will get this info from
   the database when its set up*/
-  String[] cats = new String[] {"Art Supplies", "Books", "Bicycles", "Jobs", 
-                  "Electronics", "Cars", "Cell Phones", "Furniture", 
-                  "Musical Instruments", "Misc."};
+  String[] cats = {"Appliances",
+    "Art Supplies",
+    "Bikes",
+    "Books",
+    "Cars" ,
+    "Cell Phones",
+    "Clothes",
+    "Computers",
+    "Electronics",
+    "Freebies",
+    "Furniture",
+    "Games",
+    "Jobs",
+    "Music",
+    "Musical Instruments",
+    "Movies",
+    "Pets",
+    "Sporting Goods",
+    "Wanted",
+    "Everything Else.."};
 
   EventListHolder holder = EventListHolder.getInstance();
-
+  String user = (String)session.getAttribute("username");
 %>
 
-
-
-<%@ include file="/delvison/header.jsp" %>
-
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" data-spy="scroll" data-target="#events">
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
@@ -32,7 +47,9 @@
             </ul>
           </div><!--/.well -->
           <br>
-          <div class="well sidebar-nav">
+
+          <!--Events-->
+          <div id="events" class="well nav sidebar-nav affix-top">
             <h2>Events</h2>
               <table class="table">
           <% for(int i = 0; i < holder.numOfEvents(); i++){ %>
@@ -60,7 +77,7 @@
 
         </div><!--/span-->
         <div class="span9 jetstrap-highlighted">
- <div id="myCarousel" class="carousel slide" data-pause="remove">
+      <div id="myCarousel" class="carousel slide" data-pause="remove">
       <div class="carousel-inner">
         <div class="item active">
           <img class="" src="design/images/books.jpg">
@@ -73,8 +90,7 @@
           </div>
         </div><br>
       
-      <%@ include file="/delvison/rightTabListingsIncl.jsp" %>
-      <br>
+      <!--Personalized to location-->
       <div class="shadow">
         <div class="container-fluid">
             <ul class="inline">
@@ -99,14 +115,60 @@
           </div>
         </div>
       </div>
+      <br>
 
+      <!--Recent listings Carousel-->
+      <div class="shadow" style="height:450px">
+        <div class="container-fluid">
+          <h3>Recently Posted</h3>
+          <div id="listingsCarousel" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="item active">
+                <%@ include file="/delvison/singleListingInclude.jsp" %>
+              </div>
+              <div class="item">
+                <%@ include file="/delvison/singleListingInclude.jsp" %>
+              </div>
+            </div>
+            <a class="carousel-control left" href="#listingsCarousel" data-slide="prev"></a>
+            <a class="carousel-control right" href="#listingsCarousel" data-slide="next"></a>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <!--My listings-->
+      <% if (user != null){ %>
+      <div class="shadow">
+        <div class="container-fluid">
+          <h3>My Listings</h3>
+          <table class="table table-striped">
+              <devjsp:forEachListing user="<%=user%>">
+              <tr>
+                <td valign="center">
+                  <ul class="inline">
+                    <li><p>
+                    <a href="item?id=${listingId}">
+                       ${listingName} - $${listingPrice} </a>
+                    ${listingUniversity}, ${listingLocation}
+                  </p></li>
+                  <li class="pull-right">${listingDate}</li>
+                </ul>
+                </td>
+              </tr>
+              </devjsp:forEachListing>
+            </table>
+        </div>
+      </div>
+      <%}%>  
 
       <hr>
       <footer>
         <p>&copy; UniHub</p>
       </footer>
     </div><!--/.fluid-container-->
-    
+
+
 
     <style>
       
