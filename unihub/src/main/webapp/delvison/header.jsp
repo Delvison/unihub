@@ -11,6 +11,9 @@
   validation-->
   <%@include file="/andy/auth_headers.jsp" %>
   <%@ page import="com.unihub.app.AuthUtilities, com.unihub.app.Dbase" %>
+  <%@ page isELIgnored="false" %>
+  <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
+
 
 
   <%

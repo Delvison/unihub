@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="design/bootstrap/css/lightbox.css" ></link>
     <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.CommentObj,
     com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*, javax.ejb.EJB,
-     javax.naming.*, com.unihub.app.ListingObjEJBStateless" %>
+     javax.naming.*, com.unihub.app.ListingObjEJBStateless, com.unihub.app.UserStatefulBI, com.unihub.app.UserStatefulBean" %>
               
     <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp" %>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
@@ -13,6 +13,8 @@
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     
     <%! @EJB ListingObjEJBStateless lis; %>
+    <%! //@EJB UserStatefulBI u; %>
+
     <% 
     String user = (String)session.getAttribute("username");
     String id = (String)request.getParameter("id");

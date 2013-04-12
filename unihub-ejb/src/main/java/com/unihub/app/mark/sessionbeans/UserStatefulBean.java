@@ -37,6 +37,10 @@ public class UserStatefulBean implements UserStatefulBI {
   public User getUser(String name) {
     return ubase.getUser(name);
   }
+ 
+  public int getId(String name) {
+    return ubase.getUser(name).getId();
+  }
 
   public String getName(int uId) {
     return ubase.getUser(uId).getName();
@@ -54,6 +58,26 @@ public class UserStatefulBean implements UserStatefulBI {
     return ubase.getUser(uId).getEncryptedPassword();
   }
 
+  /**
+   * Increment the reputation of the user of the given name
+   */
+  public void incRep(String name) {
+    ubase.getUser(name).incRep();
+  }
+
+  /**
+   * Add an item id to a user's "voted" list
+   *
+   * name - the name of the user to use
+   * id - the id of the item being added to the user's voted list
+   */
+  public void addToVoted(String name, int id) {
+    ubase.getUser(name).addToVoted(id);
+  }
+
+  /**
+   * Update a user who has id uId with new information
+   */
   public void updateUser(int uId, String name, String email, String pass, String school) {
     byte[] sal = null;
     byte[] epass = null;
@@ -65,6 +89,18 @@ public class UserStatefulBean implements UserStatefulBI {
     catch(InvalidKeySpecException e) {}
 
     ubase.getUser(uId).update(name, email, epass, school);
+  }
+
+  public boolean isWatching(String watcher, String watchee) {
+    return ubase.getUser(watcher).isWatching(watchee);
+  }
+
+  public void watch(String watcher, String watchee) {
+    ubase.getUser(watcher).watch(watchee);
+  }
+  
+  public void unwatch(String watcher, String watchee) {
+    ubase.getUser(watcher).unwatch(watchee);
   }
 
 }
