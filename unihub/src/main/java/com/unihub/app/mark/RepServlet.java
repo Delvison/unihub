@@ -29,7 +29,6 @@ public class RepServlet extends HttpServlet{
       userName = (String)session.getAttribute("username");
       itemId = Integer.parseInt(req.getParameter("itemId"));
       String itemUserName = lst.getUser(itemId);
-      User user = usr.getUser(userName);
       if (userName.equals(null)){
         res.sendRedirect("validate?where=item?id="+itemId);
       }else{

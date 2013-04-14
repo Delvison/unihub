@@ -16,6 +16,7 @@ import javax.ejb.*;
 
 public class PrintListingsTag extends SimpleTagSupport{
   @EJB ListingObjEJBStateful lis;
+  @EJB UserStatefulBI usr;
   String user;
   String category;
   int limit;
@@ -112,6 +113,7 @@ public class PrintListingsTag extends SimpleTagSupport{
           getJspContext().setAttribute("listingName",c[0]); 
           getJspContext().setAttribute("listingPrice",c[1]); 
           getJspContext().setAttribute("listingUser",c[2]); 
+          getJspContext().setAttribute("itemUserId", usr.getId(c[2]));
           getJspContext().setAttribute("listingUniversity",c[3]); 
           getJspContext().setAttribute("listingLocation",c[4]);   
           getJspContext().setAttribute("listingId",c[5]);
@@ -132,6 +134,7 @@ public class PrintListingsTag extends SimpleTagSupport{
           getJspContext().setAttribute("listingName",c[0]); 
           getJspContext().setAttribute("listingPrice",c[1]); 
           getJspContext().setAttribute("listingUser",c[2]); 
+          getJspContext().setAttribute("itemUserId", usr.getId(c[2]));
           getJspContext().setAttribute("listingUniversity",c[3]); 
           getJspContext().setAttribute("listingLocation",c[4]);   
           getJspContext().setAttribute("listingId",c[5]);
@@ -150,7 +153,8 @@ public class PrintListingsTag extends SimpleTagSupport{
           String[] c = s.getContentArray();
           getJspContext().setAttribute("listingName",c[0]); 
           getJspContext().setAttribute("listingPrice",c[1]); 
-          getJspContext().setAttribute("listingUser",c[2]); 
+          getJspContext().setAttribute("listingUser",c[2]);
+          getJspContext().setAttribute("itemUserId", usr.getId(c[2]));
           getJspContext().setAttribute("listingUniversity",c[3]); 
           getJspContext().setAttribute("listingLocation",c[4]);   
           getJspContext().setAttribute("listingId",c[5]);

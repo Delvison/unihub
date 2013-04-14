@@ -11,6 +11,7 @@ import javax.ejb.*;
 
 public class IndividualListingTag extends SimpleTagSupport{
   @EJB ListingObjEJBStateless lis;
+  @EJB UserStatefulBI usr;
   private int itemId;
   
   public void setItemId(String itemId){
@@ -22,6 +23,7 @@ public class IndividualListingTag extends SimpleTagSupport{
     getJspContext().setAttribute("itemName",lis.getName(itemId)); 
     getJspContext().setAttribute("itemPrice",lis.getPrice(itemId)); 
     getJspContext().setAttribute("itemUser",lis.getUser(itemId));
+    getJspContext().setAttribute("itemUserId", usr.getId(lis.getUser(itemId)));
     getJspContext().setAttribute("itemUniversity",lis.getUniversity(itemId));
     getJspContext().setAttribute("itemLocation",lis.getLocation(itemId));   
     getJspContext().setAttribute("itemCategory",lis.getCategory(itemId));
