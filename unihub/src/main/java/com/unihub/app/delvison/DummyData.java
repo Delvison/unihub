@@ -23,8 +23,8 @@ public class DummyData{
     String item1="Cervelo SLC-SL Carbon Racing";
     lis.addStuff(user, item1, "1500", university, location, "Bicycles", description1, "yes");
     lis.addStuff(user, "PS3", price, university, location, "Electronics", description, bid);
-    lis.addStuff("user2", "Thinkpad", price, university, location, "Electronics", description, bid);
-    lis.addStuff("user3", "Nexus 4", price, university, location, "Cell Phones", description, bid);  
+    lis.addStuff("User2", "Thinkpad", price, university, location, "Electronics", description, bid);
+    lis.addStuff("User3", "Nexus 4", price, university, location, "Cell Phones", description, bid);  
     lis.addStuff(user, "Bike", price, university, location, "Bicycles", description, bid);  
     lis.addStuff(user, "Mouse", price, university, location, "Electronics", description,  bid);  
     lis.addStuff(user, "Keyboard", price, university, location, "Electronics", description, bid);  

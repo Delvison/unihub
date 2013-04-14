@@ -96,7 +96,7 @@
                   <li class="pull-right"><p><i>${listingCategory}</i></p></li>
                 </ul>
                 <ul class="inline">
-                  <li><i>Posted by <a href="profile">${listingUser}</a></i></li>
+                  <li><i>Posted by <a href="user?u_id=${itemUserId}">${listingUser}</a></i></li>
                   <li class="pull-right"><i>${listingDate}</i></li>
                 </ul>
               </td>

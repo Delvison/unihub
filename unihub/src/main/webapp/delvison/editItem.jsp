@@ -17,13 +17,18 @@
     %>   
 
 <body>
-<center>
+<div class="container-fluid">
+
 <div class="row-fluid">
   <div class='span12'>
     
     <!--Listings Pane -->
-    <div style="background-color:White" class="span6">
-      <h2>Edit your Listing</h2>
+    <div class="shadow span6">
+      <br>
+        <a href="createlisting?rm=true&id=<%=id%>"><button class="btn btn-mini btn-danger offset10">Remove Listing</button></a>
+        <br>
+        <center><h2>Edit your Listing</h2></center>
+      <center>
       <div class="span10">
       <devjsp:itemInfo itemId="<%=id%>">
         <form class="form-horizontal" action="createlisting" method="GET">
@@ -75,16 +80,15 @@
           <input type="hidden" name="location" value="${itemLocation}">
           <input type="hidden" name="university" value="${itemUniversity}">
           <input type="hidden" name="id" value="${itemId}">
-          <center><input type="submit" value="Submit Changes" class="btn btn-primary btn-large"></center>
+          <center><input type="submit" value="Submit Changes" class="btn btn-primary btn-large"></center><br>
        </form>
-
       </devjsp:itemInfo >
 
      </div>
       </div>
       
       <!--Image Pane-->
-      <div class='span4 sidebar' style="background-color:White">
+      <div class='span4 shadow'>
         <h2>Photos</h2>
         <center>
           <a href="uploadPhoto?id=<%=id%>">
@@ -106,6 +110,7 @@
       </div>
 
   </div>
+</div>
 </div>
 </center>
 </body>

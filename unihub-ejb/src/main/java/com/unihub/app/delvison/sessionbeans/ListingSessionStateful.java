@@ -33,4 +33,10 @@ public class ListingSessionStateful implements ListingObjEJBStateful {
     ListingsObj lis = ListingsObj.create();
     return lis.stuffs;
   }
+
+  public int getArrayListSize(){
+    ListingsObj lis = ListingsObj.create();
+    return lis.stuffs.size();
+  }
+
 }

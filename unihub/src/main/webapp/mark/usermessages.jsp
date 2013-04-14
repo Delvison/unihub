@@ -11,7 +11,7 @@
                                 javax.servlet.*,
                                 javax.servlet.http.*"
     isELIgnored="false"%>
-<%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
+<%@ taglib uri="/WEB-INF/tlds/markjsp-taglib.tld" prefix="markjsp"%>
 
 <!DOCTYPE html>
 
@@ -24,28 +24,49 @@
 %>   
 
 <body style="background-color:#CCC">
-  <% Dbase ubase = Dbase.create(); %>
-  <% //get the user from the database that matches the current session's user
-     User currentuser = ubase.getUser(usernm); %>
-  <table>
-  <tr>
-    <td>
-      <center><h4>Sent Messages</h4>
-      <% for(Message m: currentuser.getSentMessages()) { %>
-      <hr>
-      <p><%=m.toString()%>
-      </p>
-      <% } %>
-    </td>
-    <td>
-      <center><h4>Recieved Messages</h4>
-      <% for(Message m: currentuser.getReceivedMessages()) { %>
-      <hr>
-      <p><%= m.toString() %>
-      </p>
-      <% } %>
-    </td>
-  </tr>
-  </table>
+
+<!-- A Collapsable Menu BootSnipp -->
+<script>
+    $(document).ready(function () {
+        $('label.tree-toggler').click(function () {
+            $(this).parent().children('ul.tree').toggle(300);
+        });
+    });
+</script>
+
+<div class="row-fluid span12">
+<div class="well span4 offset2" style="padding: 8px 0;">
+  <center><h4>Sent Messages</h4>
+    <div style="overflow-y: hidden; overflow-x: hidden; height: 500px;">
+        <ul class="nav nav-list">
+            <markjsp:listmsgs user="<%=usernm%>" type="sent">
+            <li><label class="tree-toggler nav-header" data-toggle="collapse">To: ${toName}</label>
+                <ul class="nav nav-list tree">
+                    <li>${msgContents}</li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            </markjsp:listmsgs>
+        </ul>
+    </div>
+</div>
+
+<div class="well span4" style="padding: 8px 0;">
+  <center><h4>Received Messages</h4>
+    <div style="overflow-y: hidden; overflow-x: hidden; height: 500px;">
+        <ul class="nav nav-list">
+            <markjsp:listmsgs user="<%=usernm%>" type="received">
+            <li><label class="tree-toggler nav-header" data-toggle="collapse">From: ${fromName}</label>
+                <ul class="nav nav-list tree">
+                    <li>${msgContents}</li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            </markjsp:listmsgs>
+        </ul>
+    </div>
+</div>
+</div>
+
 </body>
 </html>

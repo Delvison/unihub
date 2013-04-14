@@ -31,8 +31,10 @@ ArrayList<Event> holder = bean.getEvents();
 					<tr>
 						<td>
 							<h3><%= event.getTitle() %></h3>
+							<p>on <%= event.getThingy() %> @<%= event.getTime() %></p>
 							<p><%= event.getDes() %></p>
-							<a href="#">Attending</a> | <a href="#">More Info</a>
+							<p><%= event.howManyGoing() %></p>
+							<a href="attend?id=<%=event.getId() %> ">Attending</a>
 						</td>
 					</tr>
 
@@ -58,7 +60,7 @@ ArrayList<Event> holder = bean.getEvents();
 						</div>
 
 						<div class="clearfix">
-							<input type="text" name="date" placeholder="03/18/90">
+							<input type="text" name="date" placeholder="03/18/2013" id="datepicker">
 						</div>
 
 						<div class="clearfix">

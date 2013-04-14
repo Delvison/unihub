@@ -2,8 +2,9 @@
     <script type="text/javascript" src="design/bootstrap/js/lightbox.js"></script>
     <link rel="stylesheet" type="text/css" href="design/bootstrap/css/lightbox.css" ></link>
     <%@ page import="com.unihub.app.ListingsObj, com.unihub.app.CommentObj,
-    com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*, javax.ejb.EJB,
-     javax.naming.*, com.unihub.app.ListingObjEJBStateless" %>
+     com.unihub.app.Comment, com.unihub.app.Stuff, java.util.*, javax.ejb.EJB,
+     javax.naming.*, com.unihub.app.ListingObjEJBStateless, com.unihub.app.UserStatefulBI,
+     com.unihub.app.UserStatefulBean" %>
               
     <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp" %>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
@@ -13,11 +14,14 @@
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     
     <%! @EJB ListingObjEJBStateless lis; %>
+    <%! @EJB UserStatefulBI usr; %>
+
     <% 
     String user = (String)session.getAttribute("username");
     String id = (String)request.getParameter("id");
     Context context = new InitialContext();
     lis = (ListingObjEJBStateless) context.lookup("ejb:unihub-ear/unihub-ejb//ListingSessionStateless!com.unihub.app.ListingObjEJBStateless");
+    usr = (UserStatefulBI) context.lookup("ejb:unihub-ear/unihub-ejb//UserStatefulBI!com.unihub.app.UserStatefulBI?stateful");
     %>   
 
 <body>
@@ -38,15 +42,17 @@
               <devjsp:itemInfo itemId="<%=id%>">
                 <br>
                 <i>Category:</i> ${itemCategory}<br>
-                <i>Posted ${itemTime} by</i> <a href="profile">${itemUser}</a>
+                <i>Posted ${itemTime} by</i> <a href="user?u_id=${itemUserId}">${itemUser}</a>
               </devjsp:itemInfo >
               </div>
               <div class="span2 pull-right">
                 <br>
                 <ul class="inline pull-right">
-                  <li><devjsp:upvote itemId="<%=id%>" user="<%=user%>" /></li>
+                  <li><markjsp:upvote itemId="<%=id%>" user="<%=user%>" /></li>
                   <li>
-                    <a  class="pull-right" href="usermessages"/><img width="25px" height="20px" src="design/images/mail.png"></a>
+                    <a class="pull-right" href="pmessage?name=<%=lis.getUser(Integer.parseInt(id))%>"/>
+                       <img width="25px" height="20px" src="design/images/mail.png">
+                    </a>
                   </li>
                 </ul>
               </div>

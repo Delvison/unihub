@@ -4,30 +4,37 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import javax.naming.*;
+import javax.ejb.*;
 
 @WebServlet("/reputation")
 public class RepServlet extends HttpServlet{
 
+  @EJB
+  UserStatefulBI usr;
+  @EJB
+  ListingObjEJBStateless lst;
   HttpSession session;
+
   @Override
   protected void doGet(HttpServletRequest req,
   HttpServletResponse res) throws ServletException, IOException {
     session = req.getSession(); /* get current session */
     ListingsObj listings = ListingsObj.create();
-    Dbase ubase = Dbase.create();
-      /* get the username */
+  
+    /* get the username */
     String userName="";
+    int itemId = 0;
     try{
       userName = (String)session.getAttribute("username");
-      Stuff currentItem = listings.getStuff(Integer.parseInt(req.getParameter("itemId")));
-      User user = ubase.getUser(userName);
-      User itemUser = ubase.getUser(currentItem.getUser());
+      itemId = Integer.parseInt(req.getParameter("itemId"));
+      String itemUserName = lst.getUser(itemId);
       if (userName.equals(null)){
-        res.sendRedirect("validate?where=item?id="+currentItem.getId());
+        res.sendRedirect("validate?where=item?id="+itemId);
       }else{
-        itemUser.incRep();
-        user.addToVoted((Integer)currentItem.getId()); 
-        res.sendRedirect("item?id="+currentItem.getId());
+        usr.incRep(itemUserName);
+        usr.addToVoted(userName, itemId); 
+        res.sendRedirect("item?id="+itemId);
       }
     }catch(NullPointerException e){
       res.sendRedirect("sorry");

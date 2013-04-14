@@ -6,11 +6,14 @@ import java.security.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-
+import javax.naming.*;
+import javax.ejb.*;
 
 @WebServlet("/user")
 public class UserServlet extends HttpServlet {
 
+@EJB
+UserStatefulBI usr;
 HttpSession session;
 
 @Override
@@ -20,7 +23,6 @@ public void doGet(HttpServletRequest req,
 
   session = req.getSession();
   String u_id = "", address = "", curruname = "";
-  Dbase ubase = Dbase.create();
   res.setContentType("text/html");
   u_id = req.getParameter("u_id");
 
@@ -32,7 +34,7 @@ public void doGet(HttpServletRequest req,
     address = "home";
   }else if( u_id.equals("all") ) {
     address = "mark/allusers.jsp";
-  }else if( ubase.getUser(Integer.parseInt(u_id)).getName().equals(curruname) &&
+  }else if( usr.getName(Integer.parseInt(u_id)).equals(curruname) &&
               (curruname != "") ) {
     address = "profile";
   }else {

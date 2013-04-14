@@ -1,24 +1,43 @@
+<!DOCTYPE html>
 <!--This shall be our main home screen -->
 <%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
-        com.unihub.app.EventListHolder" %>
+        com.unihub.app.EventListHolder, javax.ejb.EJB, javax.naming.*, com.unihub.app.ListingObjEJBStateful" %>
+<%@ include file="/delvison/header.jsp" %>
+<%! @EJB ListingObjEJBStateful lis; %>
+
 <%
   /*
   This will temporarily be here since I will get this info from
   the database when its set up*/
-  String[] cats = new String[] {"Art Supplies", "Books", "Bicycles", "Jobs", 
-                  "Electronics", "Cars", "Cell Phones", "Furniture", 
-                  "Musical Instruments", "Misc."};
+  String[] cats = {"Appliances",
+    "Art Supplies",
+    "Bikes",
+    "Books",
+    "Cars" ,
+    "Cell Phones",
+    "Clothes",
+    "Computers",
+    "Electronics",
+    "Freebies",
+    "Furniture",
+    "Games",
+    "Jobs",
+    "Music",
+    "Musical Instruments",
+    "Movies",
+    "Pets",
+    "Sporting Goods",
+    "Wanted",
+    "Everything Else.."};
 
   EventListHolder holder = EventListHolder.getInstance();
-
+  String user = (String)session.getAttribute("username");
+  Context context = new InitialContext();
+  lis = (ListingObjEJBStateful) context.lookup("ejb:unihub-ear/unihub-ejb//ListingObjEJBStateful!com.unihub.app.ListingObjEJBStateful?stateful");
 %>
 
-
-
-<%@ include file="/delvison/header.jsp" %>
-
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" data-spy="scroll" data-target="#events">
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
@@ -32,10 +51,11 @@
             </ul>
           </div><!--/.well -->
           <br>
-                <div class="well sidebar-nav">
-        <h2>Events</h2>
-        <table class="table">
 
+          <!--Events-->
+          <div id="events" class="well nav sidebar-nav affix-top">
+            <h2>Events</h2>
+              <table class="table">
           <% for(int i = 0; i < holder.numOfEvents(); i++){ %>
 
             <tr>
@@ -61,38 +81,183 @@
 
         </div><!--/span-->
         <div class="span9 jetstrap-highlighted">
- <div id="myCarousel" class="carousel slide" data-pause="remove">
+      <div id="myCarousel" class="carousel slide" data-pause="remove">
       <div class="carousel-inner">
         <div class="item active">
-          <img class="" src="design/images/books.jpg">
+          <img src="design/images/books-sm.jpg">
           <div class="container jetstrap-highlighted">
             <div class="carousel-caption">
-              <h1><p style="color:white">Welcome to UniHub!</p></h1>
-              <p class="lead"> UniHub is an online classified listing service specifically geared towards the college ecosystem. On UniHub, you are able to sell and buy things from fellow members of your university. The stuff you need quick and easy. So go ahead and give it a try!</p>
-              <a class="btn btn-large btn-primary" href="signup">Sign up today</a>
+              <h1><p style="color:white">Welcome to UniHub</p></h1>
+              <p class="lead"> </p>
             </div>
           </div>
         </div><br>
       
-      <%@ include file="/delvison/rightTabListingsIncl.jsp" %>
-      <br>
+      <!--Personalized to location-->
       <div class="shadow">
-          <ul class="inline">
-            <li><h3> SUNY Oswego, NY </h3></li>
-            <li><a href="populateUniversities">Change Location</a></li>
-          </ul>
-          <p>
-            Show stuff specific to location here.
-          </p>
+        <div class="container-fluid">
+            <ul class="inline">
+              <li><h3> <%=sc%>, <%=st%></h3></li>
+              <li><a href="populateUniversities">Change Location</a></li>
+            </ul>
+          <div class="row-fluid">
+            <div class="span5">
+              <h3>Weather</h3>
+              <p>
+                Query some service for local weather maybe. just a thought.
+              </p>
+            </div>
+            <div class="span1" style="width:1px;height:160px;background-color:gray;float:left;"></div> 
+            <div class="span6">
+              <h3>Recommended Meeting Spots</h3>
+              <p>
+                Show stuff specific to location here. 
+                Cool idea: query google to find populated public places in the area so that we can recommend these as a meeting spot for exchanges.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+      <br>
 
+      <!--Recent listings Carousel-->          
+      <% if (lis.getArrayListSize() > 0) { %>
+      <div class="shadow" style="height:450px">
+        <div class="container-fluid">
+          <h3>Recently Posted</h3>
+          <div id="listingsCarousel" class="carousel slide">
+            <div class="carousel-inner">
+              <devjsp:itemInfo itemId="1">
+              <div class="item active">
+                <div class="container-fluid">
+                  <div class="row -fluid">
+                    <div class="span4 offset1"><br><br><br>
+                      <a href="#" class="thumbnail">
+                        <img src="listings/1/1.jpg" alt="">
+                      </a>
+                    </div>
+                    <div class="span6">
+                      <div>
+                        <br><br>
+                        <h4><strong><a href="item?id=${itemId}">${itemName} - $${itemPrice} (${itemUniversity}, ${itemLocation})</a></strong></h4>
+                      </div>
+                      <br><br><br>
+                      <p>
+                        ${itemDescription}
+                      </p>
+                      <p>
+                        <a class="btn" href="item?${itemId}">View Listing</a>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row-fluid">
+                    <div class="span9 offset1">
+                      <p></p>
+                      <p>
+                        <i class="icon-user"></i> by <a href="profile">${itemUser}</a>
+                        | <a href="viewalllistings">${itemCategory}</a>
+                        | <i class="icon-calendar"></i> ${itemTime}
+                        | <i class="icon-comment"></i> <a href="#">3 Comments</a>
+                        | <i class="icon-share"></i> <a href="#">39 Likes</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </devjsp:itemInfo > 
+              <devjsp:forEachListing limit="10">
+              <div class="item">
+                <div class="container-fluid">
+                  <div class="row -fluid">
+                    <div class="span4 offset1"><br><br><br>
+                      <a href="#" class="thumbnail">
+                        <img src="${listingPhoto}" alt="">
+                      </a>
+                    </div>
+                    <div class="span6">
+                      <div>
+                        <br><br>
+                        <h4><strong><a href="item?id=${listingId}">${listingName} - $${listingPrice} (${listingUniversity}, ${listingLocation})</a></strong></h4>
+                      </div>
+                      <br><br><br>
+                      <p>
+                        ${listingDescription}
+                      </p>
+                      <p>
+                        <a class="btn" href="item?${listingId}">View Listing</a>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row-fluid">
+                    <div class="span9 offset1">
+                      <p></p>
+                      <p>
+                        <i class="icon-user"></i> by <a href="#">John</a>
+                        | <a href="viewalllistings">Bikes</a>
+                        | <i class="icon-calendar"></i> Sept 16th, 2012
+                        | <i class="icon-comment"></i> <a href="#">3 Comments</a>
+                        | <i class="icon-share"></i> <a href="#">39 Likes</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </devjsp:forEachListing > 
+            </div>
+             <a class="carousel-control left" href="#listingsCarousel" data-slide="prev">&lsaquo;</a>
+             <a class="carousel-control right" href="#listingsCarousel" data-slide="next">&rsaquo;</a>
+          </div>
+        </div>
+      </div>
+      <% }else{ %>
+        <div class="shadow">
+          <div class="container-fluid">
+          <h3>Recently Posted</h3>
+          <p><i>    Sorry, but no listings exist at the moment. When they do, you'll be able to cycle through
+            recent listings on this panel.</i></p><br><br>
+        </div></div>
+      <%}%>
+
+      <br>
+      <!--My listings-->
+      <% if (user != null){ %>
+      <div class="shadow">
+        <div class="container-fluid">
+          <div class="span6">
+            <h3>My Listings</h3>
+            <table class="table table-striped">
+              <devjsp:forEachListing user="<%=user%>">
+                <tr>
+                  <td valign="center">
+                    <ul class="inline">
+                      <li><p>
+                      <a href="item?id=${listingId}">
+                         ${listingName} - $${listingPrice} 
+                      </a>
+                      ${listingUniversity}, ${listingLocation}
+                      </p></li>
+                      <li class="pull-right">${listingDate}</li>
+                    </ul>
+                  </td>
+                </tr>
+              </devjsp:forEachListing>
+            </table>
+          </div>
+          <div class="span1" style="width:1px;height:160px;background-color:gray;float:left;"></div>           
+          <div class="span5">
+            <h3>Recent Activity</h3>
+          </div>
+        </div>
+      </div>
+      <%}%>  
 
       <hr>
       <footer>
         <p>&copy; UniHub</p>
       </footer>
     </div><!--/.fluid-container-->
-    
+
+
 
     <style>
       
