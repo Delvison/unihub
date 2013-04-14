@@ -41,7 +41,7 @@
 
   <style>
         .shadow {
-          background-color:#ffffff;
+          background-color:#F7f7f7;
           box-shadow: 7px 7px 3px #888888;
         }
   </style>

@@ -11,6 +11,6 @@
     
   <style type='text/css'>
     body {
-      background-color: #CCC;
+      background-color: #FFF;
     }
   </style>
