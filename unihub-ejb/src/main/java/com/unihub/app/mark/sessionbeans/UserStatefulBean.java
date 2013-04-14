@@ -13,6 +13,7 @@ import javax.annotation.*;
 import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import java.util.ArrayList;
 
 @Stateful (name="UserStatefulBI")
 @Remote(UserStatefulBI.class)
@@ -103,4 +104,15 @@ public class UserStatefulBean implements UserStatefulBI {
     ubase.getUser(watcher).unwatch(watchee);
   }
 
+  // DATABASE CODE 
+  // DOES THIS GO IN A SEPARATE BEAN? MAYBE.
+
+  public int getNumUsers() {
+    return ubase.getUsersList().size();
+  }
+
+  public ArrayList<User> getAllUsers() {
+    return ubase.getUsersList();
+  }
+  
 }

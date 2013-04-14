@@ -93,6 +93,10 @@ public class User implements Serializable {
       return "http://www.gravatar.com/avatar/" + hashtext;  
     }
 
+    public String sizedGravatar(int size) throws NoSuchAlgorithmException {
+      return this.gravatar() + "?size=" + size;
+    }
+
     public int getId() {
       return id;
     }
@@ -207,7 +211,7 @@ public class User implements Serializable {
       if(stuffuser.equals(this.name)) return true;
       return false;
     }
-
+ 
     public void update(String name, String email, byte[] pass, String school) {
       this.name = name;
       this.email = email;

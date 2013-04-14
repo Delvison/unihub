@@ -1,5 +1,6 @@
 package com.unihub.app;
 
+import java.util.ArrayList;
 import javax.ejb.*;
 import javax.naming.*;
 import javax.naming.directory.*;
@@ -19,4 +20,7 @@ public interface UserStatefulBI {
   public boolean isWatching(String watcher, String watchee);
   public void watch(String watcher, String watchee);
   public void unwatch(String watcher, String watchee);
+
+  public int getNumUsers();
+  public ArrayList<User> getAllUsers();
 }
