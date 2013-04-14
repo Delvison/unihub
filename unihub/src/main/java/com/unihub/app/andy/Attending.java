@@ -64,7 +64,7 @@ public class Attending extends HttpServlet {
 
 					event.addFollower(user.getId());
 
-					res.sendRedirect("index");
+					res.sendRedirect("events");
 
 				}
 				
