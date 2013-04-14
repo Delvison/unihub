@@ -11,4 +11,5 @@ import javax.jws.WebService;
 public interface ListingObjEJBStateful {
   public ArrayList<Stuff> userSearch(String userSearched);
   public ArrayList<Stuff> getArrayList();
+  public int getArrayListSize();
 }

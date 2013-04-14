@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--This shall be our main home screen -->
 <%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
-        com.unihub.app.EventListHolder" %>
+        com.unihub.app.EventListHolder, javax.ejb.EJB, javax.naming.*, com.unihub.app.ListingObjEJBStateful" %>
 <%@ include file="/delvison/header.jsp" %>
+<%! @EJB ListingObjEJBStateful lis; %>
+
 <%
   /*
   This will temporarily be here since I will get this info from
@@ -30,6 +32,8 @@
 
   EventListHolder holder = EventListHolder.getInstance();
   String user = (String)session.getAttribute("username");
+  Context context = new InitialContext();
+  lis = (ListingObjEJBStateful) context.lookup("ejb:unihub-ear/unihub-ejb//ListingObjEJBStateful!com.unihub.app.ListingObjEJBStateful?stateful");
 %>
 
   <body>
@@ -116,7 +120,8 @@
       </div>
       <br>
 
-      <!--Recent listings Carousel-->
+      <!--Recent listings Carousel-->          
+      <% if (lis.getArrayListSize() > 0) { %>
       <div class="shadow" style="height:450px">
         <div class="container-fluid">
           <h3>Recently Posted</h3>
@@ -204,6 +209,14 @@
           </div>
         </div>
       </div>
+      <% }else{ %>
+        <div class="shadow">
+          <div class="container-fluid">
+          <h3>Recently Posted</h3>
+          <p><i>    Sorry, but no listings exist at the moment. When they do, you'll be able to cycle through
+            recent listings on this panel.</i></p><br><br>
+        </div></div>
+      <%}%>
 
       <br>
       <!--My listings-->
