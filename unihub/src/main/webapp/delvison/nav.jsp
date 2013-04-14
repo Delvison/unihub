@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar"  style="margin-bottom: 0px">
   <div class="navbar-inner">
     <div style="float:left; text-align:left;">
       <a href="index"><img style="width:140px;height:35px"src="design/images/logo.png"></a>

@@ -69,7 +69,7 @@
 								<p>on <%= event.getThingy() %> @<%= event.getTime() %></p>
 								<p><%= event.getDes() %></p>
 								<p><%= event.howManyGoing() %></p>
-								<a href="attend?id=<%=event.getId() %> ">Attending</a> | <a href="#">More Info</a>
+								<a href="attend?id=<%=event.getId() %> ">Attending</a>
 							</td>
 						</tr>
 
