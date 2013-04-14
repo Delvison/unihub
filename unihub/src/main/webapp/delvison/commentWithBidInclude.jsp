@@ -49,8 +49,7 @@
                   </div>  
         </div>
          <br>
-
-
+         
  <!--COMMENTS PANE-->
         <div class='shadow'>
             <center><h2>Comments</h2></center>

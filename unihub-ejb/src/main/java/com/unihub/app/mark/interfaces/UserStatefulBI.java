@@ -14,6 +14,8 @@ public interface UserStatefulBI {
   public String getEmail(int uId);
   public String getSchool(int uId);
   public byte[] getEncryptedPassword(int uId);
+  public ArrayList<Message> getSentMessages(String name);
+  public ArrayList<Message> getReceivedMessages(String name);
   public void incRep(String name);
   public void addToVoted(String name, int id); 
   public void updateUser(int uId, String name, String email, String pass, String school);

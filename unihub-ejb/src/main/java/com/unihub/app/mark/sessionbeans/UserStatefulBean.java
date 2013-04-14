@@ -59,6 +59,14 @@ public class UserStatefulBean implements UserStatefulBI {
     return ubase.getUser(uId).getEncryptedPassword();
   }
 
+  public ArrayList<Message> getSentMessages(String name) {
+    return ubase.getUser(name).getSentMessages();
+  }
+
+  public ArrayList<Message> getReceivedMessages(String name) {
+    return ubase.getUser(name).getReceivedMessages();
+  }
+
   /**
    * Increment the reputation of the user of the given name
    */

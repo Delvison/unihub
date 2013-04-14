@@ -33,4 +33,23 @@ version="2.0">
   <body-content>scriptless</body-content>
 </tag>
 
+<tag>
+  <description>display a user's messages (sent or received)</description>
+  <name>listmsgs</name>
+  <tag-class>com.unihub.app.MessagesTag</tag-class>
+  <body-content>scriptless</body-content>
+
+  <attribute>
+    <name>user</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+
+  <attribute>
+    <name>type</name>
+    <required>true</required>
+    <rtexprvalue>false</rtexprvalue>
+  </attribute>
+</tag>
+
 </taglib>
