@@ -17,9 +17,23 @@
   </style>
 
 <body>
-<center>
   <div class='span8 offset4 main' style="background-color:White">
-        <h2>All Users</h2>
+        <center><h2>All Users</h2></center>
+          <div class="row-fluid" valign="left" style="padding-left:5px">
+               <b>
+               <div class="span3">
+                 #
+               </div>
+               <div class="span3">
+                 Name
+               </div>
+               <div class="span3">
+                 School
+               </div>
+               <div class="span3">
+               </div>
+               </b>
+          </div>
           <% if (usr.getNumUsers() == 0) {%>
             <p><i>No users exist.</i></p>
           <%}%>
@@ -46,6 +60,5 @@
           </markjsp:users>
         </table>
   </div>
-</center>
 </body>
 </html>

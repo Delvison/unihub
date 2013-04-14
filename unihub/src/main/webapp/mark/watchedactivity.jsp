@@ -9,7 +9,7 @@
 <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
 
 <hr>
-<% ArrayList<String> watchedusers = currentuser.getWatched();
+<% ArrayList<String> watchedusers = usr.getWatched(curruname);
    for( String w: watchedusers) {
      ArrayList<Stuff> watchedlistings = ListingsObj.create().userSearch(w);
      for( Stuff stuffy:watchedlistings ) {

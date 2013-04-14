@@ -59,6 +59,10 @@ public class UserStatefulBean implements UserStatefulBI {
     return ubase.getUser(uId).getEncryptedPassword();
   }
 
+  public String getGravatar(String name) throws NoSuchAlgorithmException {
+    return ubase.getUser(name).gravatar();
+  }
+
   public ArrayList<Message> getSentMessages(String name) {
     return ubase.getUser(name).getSentMessages();
   }
@@ -72,6 +76,10 @@ public class UserStatefulBean implements UserStatefulBI {
    */
   public void incRep(String name) {
     ubase.getUser(name).incRep();
+  }
+
+  public int getRep(String name) {
+    return ubase.getUser(name).getReputation();
   }
 
   /**
@@ -110,6 +118,10 @@ public class UserStatefulBean implements UserStatefulBI {
   
   public void unwatch(String watcher, String watchee) {
     ubase.getUser(watcher).unwatch(watchee);
+  }
+
+  public ArrayList<String> getWatched(String name) {
+    return ubase.getUser(name).getWatched();
   }
 
   // DATABASE CODE 
