@@ -35,60 +35,13 @@ public class PrintListingsTag extends SimpleTagSupport{
   public void doTag() throws JspException, IOException{
       ArrayList<Stuff> stuffs = lis.getArrayList();
     if (category != null && !category.equals("All") && !category.equals("search") ){
-      String cat = this.filter(category);
-      for (Stuff s: stuffs){
-        if (s.category.equals(cat)){
-          String[] c = s.getContentArray();
-          getJspContext().setAttribute("listingName",c[0]); 
-          getJspContext().setAttribute("listingPrice",c[1]); 
-          getJspContext().setAttribute("listingUser",c[2]); 
-          getJspContext().setAttribute("listingUniversity",c[3]); 
-          getJspContext().setAttribute("listingLocation",c[4]);   
-          getJspContext().setAttribute("listingId",c[5]);
-          getJspContext().setAttribute("listingCategory",c[6]);
-          DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-          String datePosted = formatter.format(s.timePosted);
-          getJspContext().setAttribute("listingDate",datePosted);
-          getJspBody().invoke(null);
-        }
-      }
+      this.printForCategory(stuffs);
     }else if (user != null){
-      /* print all listings belonging to user passed in */
-      for (Stuff s: stuffs){
-        if (s.user.equals(this.user)){
-          String[] c = s.getContentArray();
-          getJspContext().setAttribute("listingName",c[0]); 
-          getJspContext().setAttribute("listingPrice",c[1]); 
-          getJspContext().setAttribute("listingUser",c[2]); 
-          getJspContext().setAttribute("listingUniversity",c[3]); 
-          getJspContext().setAttribute("listingLocation",c[4]);   
-          getJspContext().setAttribute("listingId",c[5]);
-          getJspContext().setAttribute("listingCategory",c[6]);
-          DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-          String datePosted = formatter.format(s.timePosted);
-          getJspContext().setAttribute("listingDate",datePosted);
-          getJspBody().invoke(null);
-        }
-      }
-    }else if(this.category.equals("search")){
-      /* print listings from search query result */
-    
+      this.printForUser(stuffs);
+    }else if(this.limit != 0){
+      this.printLimited(this.limit);
     }else{
-      /* print all listings */
-      for (Stuff s: stuffs){
-          String[] c = s.getContentArray();
-          getJspContext().setAttribute("listingName",c[0]); 
-          getJspContext().setAttribute("listingPrice",c[1]); 
-          getJspContext().setAttribute("listingUser",c[2]); 
-          getJspContext().setAttribute("listingUniversity",c[3]); 
-          getJspContext().setAttribute("listingLocation",c[4]);   
-          getJspContext().setAttribute("listingId",c[5]);
-          getJspContext().setAttribute("listingCategory",c[6]);
-          DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-          String datePosted = formatter.format(s.timePosted);
-          getJspContext().setAttribute("listingDate",datePosted);
-          getJspBody().invoke(null);
-      }
+      this.printAll(stuffs);
     }  
   }
 
@@ -107,11 +60,12 @@ public class PrintListingsTag extends SimpleTagSupport{
     }
       return properCat;
   }
-/*
+
   private void printLimited(int lim) throws JspException, IOException {
+    ArrayList<Stuff> stuffs = lis.getArrayList();
     ArrayList<Stuff> limitedList= new ArrayList<Stuff>();
-    limitedList.add(stuffs.get(0));
-    for(int i=1;i<lim;i++){
+    limitedList.add(stuffs.get(1));
+    for(int i=2;i<lim;i++){
       limitedList.add(stuffs.get(i));
     }
 
@@ -124,11 +78,87 @@ public class PrintListingsTag extends SimpleTagSupport{
       getJspContext().setAttribute("listingLocation",c[4]);   
       getJspContext().setAttribute("listingId",c[5]);
       getJspContext().setAttribute("listingCategory",c[6]);
+      String desc = c[7];
+      char[] chars = desc.toCharArray();
+      int sz = chars.length;
+      String d="";
+      if(sz > 550){
+        d = String.copyValueOf(chars, 0, 550);
+        d = d+" ...";
+      }else{
+        d = c[7];
+      }
+      getJspContext().setAttribute("listingDescription",d);
       DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
       String datePosted = formatter.format(s.timePosted);
+      String pic="";
+
+      if (c[8].equals("none")){
+        pic = "http://placehold.it/320x200";
+      }else{
+        pic = "listings/"+c[5]+"/"+c[8];
+      }
+      getJspContext().setAttribute("listingPhoto",pic);
       getJspContext().setAttribute("listingDate",datePosted);
       getJspBody().invoke(null);
     }
   }
-  */
+
+  private void printForCategory(ArrayList<Stuff> stuffs) throws JspException, IOException{
+    String cat = this.filter(category);
+      for (Stuff s: stuffs){
+        if (s.category.equals(cat)){
+          String[] c = s.getContentArray();
+          getJspContext().setAttribute("listingName",c[0]); 
+          getJspContext().setAttribute("listingPrice",c[1]); 
+          getJspContext().setAttribute("listingUser",c[2]); 
+          getJspContext().setAttribute("listingUniversity",c[3]); 
+          getJspContext().setAttribute("listingLocation",c[4]);   
+          getJspContext().setAttribute("listingId",c[5]);
+          getJspContext().setAttribute("listingCategory",c[6]);
+          DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+          String datePosted = formatter.format(s.timePosted);
+          getJspContext().setAttribute("listingDate",datePosted);
+          getJspBody().invoke(null);
+        }
+      }
+  }
+
+  private void printForUser(ArrayList<Stuff> stuffs) throws JspException, IOException{
+     /* print all listings belonging to user passed in */
+      for (Stuff s: stuffs){
+        if (s.user.equals(this.user)){
+          String[] c = s.getContentArray();
+          getJspContext().setAttribute("listingName",c[0]); 
+          getJspContext().setAttribute("listingPrice",c[1]); 
+          getJspContext().setAttribute("listingUser",c[2]); 
+          getJspContext().setAttribute("listingUniversity",c[3]); 
+          getJspContext().setAttribute("listingLocation",c[4]);   
+          getJspContext().setAttribute("listingId",c[5]);
+          getJspContext().setAttribute("listingCategory",c[6]);
+          DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+          String datePosted = formatter.format(s.timePosted);
+          getJspContext().setAttribute("listingDate",datePosted);
+          getJspBody().invoke(null);
+        }
+      }
+  }
+
+  private void printAll(ArrayList<Stuff> stuffs) throws JspException, IOException{
+    /* print all listings */
+      for (Stuff s: stuffs){
+          String[] c = s.getContentArray();
+          getJspContext().setAttribute("listingName",c[0]); 
+          getJspContext().setAttribute("listingPrice",c[1]); 
+          getJspContext().setAttribute("listingUser",c[2]); 
+          getJspContext().setAttribute("listingUniversity",c[3]); 
+          getJspContext().setAttribute("listingLocation",c[4]);   
+          getJspContext().setAttribute("listingId",c[5]);
+          getJspContext().setAttribute("listingCategory",c[6]);
+          DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+          String datePosted = formatter.format(s.timePosted);
+          getJspContext().setAttribute("listingDate",datePosted);
+          getJspBody().invoke(null);
+      } 
+  }  
 }
