@@ -13,6 +13,7 @@ import javax.annotation.*;
 import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import java.util.ArrayList;
 
 @Stateful (name="UserStatefulBI")
 @Remote(UserStatefulBI.class)
@@ -58,11 +59,27 @@ public class UserStatefulBean implements UserStatefulBI {
     return ubase.getUser(uId).getEncryptedPassword();
   }
 
+  public String getGravatar(String name) throws NoSuchAlgorithmException {
+    return ubase.getUser(name).gravatar();
+  }
+
+  public ArrayList<Message> getSentMessages(String name) {
+    return ubase.getUser(name).getSentMessages();
+  }
+
+  public ArrayList<Message> getReceivedMessages(String name) {
+    return ubase.getUser(name).getReceivedMessages();
+  }
+
   /**
    * Increment the reputation of the user of the given name
    */
   public void incRep(String name) {
     ubase.getUser(name).incRep();
+  }
+
+  public int getRep(String name) {
+    return ubase.getUser(name).getReputation();
   }
 
   /**
@@ -103,4 +120,19 @@ public class UserStatefulBean implements UserStatefulBI {
     ubase.getUser(watcher).unwatch(watchee);
   }
 
+  public ArrayList<String> getWatched(String name) {
+    return ubase.getUser(name).getWatched();
+  }
+
+  // DATABASE CODE 
+  // DOES THIS GO IN A SEPARATE BEAN? MAYBE.
+
+  public int getNumUsers() {
+    return ubase.getUsersList().size();
+  }
+
+  public ArrayList<User> getAllUsers() {
+    return ubase.getUsersList();
+  }
+  
 }
