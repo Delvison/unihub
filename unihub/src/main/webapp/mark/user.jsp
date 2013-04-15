@@ -4,31 +4,30 @@
     Author     : Mark
 --%>
 
-<%@ page language="java" import="com.unihub.app.User,
-                                 com.unihub.app.Dbase,
-                                 com.unihub.app.ListingsObj,
-                                 com.unihub.app.Stuff,
-                                 com.unihub.app.Message,
-                                java.security.*,
-                                javax.servlet.*,
-                                javax.servlet.http.*"
+<%@ page language="java" import="com.unihub.app.*, java.util.*, java.security.*,
+                                javax.servlet.*, javax.servlet.http.*,
+                                com.unihub.app.UserStatefulBI, javax.ejb.EJB,
+                                javax.naming.*"
     isELIgnored="false"%>
 <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
 
 <!DOCTYPE html>
 
     <%@ include file="../delvison/header.jsp"%>
+    <%! @EJB UserStatefulBI usr; %>
 
     <body style="background-color:#CCC">
-        <% Dbase ubase = Dbase.create(); %>
-        <% ListingsObj lis = ListingsObj.create(); %>
-        <% User currentuser = ubase.getUser(Integer.parseInt(request.getParameter("u_id"))); %>
-        <%  String gravatar = "";
+       
+        <% Context context = new InitialContext();
+           usr = (UserStatefulBI) context.lookup
+                 ("ejb:unihub-ear/unihub-ejb//UserStatefulBI!com.unihub.app.UserStatefulBI?stateful");
+           String curruname = usr.getName(Integer.parseInt(request.getParameter("u_id")));
+           String gravatar = "";
             try {
-              gravatar = currentuser.gravatar(); 
+              gravatar = usr.getGravatar(curruname); 
             } catch(NoSuchAlgorithmException e) {
               out.println("No Such Algorithm Exception");
-            } 
+            }
         %>
         <div class="row">
         <div class="span8 offset2 main" style="background-color:white">
@@ -38,7 +37,7 @@
                <img src=<%=gravatar%> style="float:top"></img>
               </td>
               <td style="padding:10px">
-               <center><h3><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)</h3></center>
+               <center><h3><%=curruname+" "%>(<%=usr.getRep(curruname)%>)</h3></center>
               </td>
                 <% if(session.getAttribute("username") != null) { %>
                 <%@ include file="logged_in_user_page_actions.jsp" %>
@@ -47,8 +46,8 @@
              <tr>
                <td>
                <br/>
-               <p><%=currentuser.getSchool()%>
-               <br><%=currentuser.getEmail()%>
+               <p><%=usr.getSchool(usr.getId(curruname))%>
+               <br><%=usr.getEmail(usr.getId(curruname))%>
                </p>
                </td>
              </tr>
@@ -57,7 +56,7 @@
         <div class="span4 sidebar" style="background-color:white">
           <center><h4>Listings by this User</h4></center>
           <table class="table table-striped">                      
-            <devjsp:forEachListing user="<%=currentuser.getName()%>"> 
+            <devjsp:forEachListing user="<%=curruname%>"> 
             <tr>                                                     
               <td valign="center">                                 
                 <p>                                                
@@ -72,10 +71,10 @@
         </div>
         </div>
 
-    <!--PM Modal -->
-    <% User sessionuser = new User();
-       if ((User)session.getAttribute("user") != null) {
-         sessionuser = (User)session.getAttribute("user");
+    <!--PM Modal  CURRENTLY HIDDEN AND NOT USED -->
+    <% String sessionuser = "";
+       if ((String)session.getAttribute("username") != null) {
+         sessionuser = (String)session.getAttribute("username");
        } %>
     <div id="messageModal" class="modal hide fade" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel" aria-hidden="true">
@@ -86,9 +85,9 @@
       </div>
       <div class="modal-body">
         <form action="validate?where=message" method="GET">
-           <input type="hidden" name="fromName" value="<%=sessionuser.getName()%>">
-           To: <%=currentuser.getName()%><br>
-           <input type="hidden" name="toName" value="<%=currentuser.getName()%>">
+           <input type="hidden" name="fromName" value="<%=sessionuser%>">
+           To: <%=curruname%><br>
+           <input type="hidden" name="toName" value="<%=curruname%>">
            Message: <textarea name="contents"></textarea><br>
       </div>
       <div class="modal-footer">
@@ -96,9 +95,8 @@
            Close</button>
         <input type="submit" class="btn btn-primary" value="Send">
         </form>
+      </div>
     </div>
-</div>
-
 
     </body>
 </html>
