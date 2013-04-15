@@ -46,16 +46,16 @@
         <div class="container-fluid">
           <div class="row-fluid span12" style="padding-top:40px padding-bottom:40px">
            <div class="span4">
-             <img src="design/images/cap.png" height="80px">
-             <h3>Communication</h3>
+             <img src="design/images/cap2.png">
+             <h3>What is Unihub?</h3>
            </div>
            <div class="span4">
-             <img src="design/images/tower.png" height="80px">
-             <h3>Data</h3>
+             <img src="design/images/tower2.png">
+             <h3>Who is it for?</h3>
            </div>
            <div class="span4">
-             <img src="design/images/Book.png" height="80px">
-             <h3>Cloud</h3>
+             <img src="design/images/Book2.png">
+             <h3>Why you'll love it!</h3>
            </div>
           </div>
         </div>
