@@ -151,4 +151,11 @@ public class ListingSessionStateless implements ListingObjEJBStateless {
     Stuff a =lis.getStuff(itemId);
     a.setPicAmount();  
     }
+
+  public void setThumbnail(int itemId, String t){
+    ListingsObj lis = ListingsObj.create();
+    Stuff a =lis.getStuff(itemId);
+    a.setThumbnail(t);
+  }
+
 }

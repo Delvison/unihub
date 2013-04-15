@@ -25,6 +25,7 @@ public class Stuff implements Serializable{
   private String dir;
   private ItemActivityObj activityLog;
   private int picAmount; //amount of pictures uploaded for the item
+  private String thumbnail;
   
   public Stuff(int id, String user, String name, String price, String university,
   String location, String category, String description, Date now, String bid){
@@ -60,7 +61,7 @@ public class Stuff implements Serializable{
   
   //function to return all content
   public String[] getContentArray(){
-    String[] a = new String[7];
+    String[] a = new String[9];
     a[0] = this.name;
     a[1] = this.price;
     a[2] = this.user;
@@ -68,6 +69,10 @@ public class Stuff implements Serializable{
     a[4] = this.location;
     a[5] = Integer.toString(this.id); 
     a[6] = this.category;
+    a[7] = this.description;
+    if (this.thumbnail != null){
+      a[8] = this.thumbnail;
+    }else{ a[8] = "none";}
     return a;       
   }
   
@@ -183,6 +188,10 @@ public class Stuff implements Serializable{
 
   public void setPicAmount(){
     this.picAmount = picAmount +1;
+  }
+
+  public void setThumbnail(String t){
+    this.thumbnail=t;
   }
 
   public String toString(){

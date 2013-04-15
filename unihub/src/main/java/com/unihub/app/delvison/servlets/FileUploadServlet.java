@@ -107,6 +107,7 @@ public class FileUploadServlet extends HttpServlet {
             // ADD 1 to the item's picture amount upon success
             lis.setPicAmount(Integer.parseInt(itemId));
             LOGGER.log(Level.INFO, "File{0}being uploaded to {1}", new Object[]{fileName, path});
+            lis.setThumbnail(Integer.parseInt(itemId), fileName);
             response.sendRedirect("uploadPhoto?id="+itemId+"&msg=success");
           } catch (FileNotFoundException fne) {
             response.sendRedirect("uploadPhoto?id="+itemId+"&msg=error");

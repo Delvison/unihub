@@ -29,5 +29,6 @@ public interface ListingObjEJBStateless {
   public void setDir(int itemId,String dir);
   public void setPicAmount(int itemId);
   public void removeItem(int id);
+  public void setThumbnail(int itemId, String t);
   //public String getActivityLog();
 }
