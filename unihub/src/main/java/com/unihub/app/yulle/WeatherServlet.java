@@ -26,10 +26,10 @@ public class WeatherServlet extends HttpServlet {
     	String ipAddress = req.getRemoteAddr();
     	try{
     		List<String> temp = weather.weatherLookup("13126"); //hardcoded Oswego ZIP code
-    		out.print("Temperature " + temp.get(0));
-      		out.print("   |   Max " + temp.get(1));
-      		out.print("   |   Min " + temp.get(2));
-      		out.print("   |   Condition " + temp.get(3));
+    		out.print("Temperature: " + temp.get(0));
+      		out.print("   |   Max: " + temp.get(1));
+      		out.print("   |   Min: " + temp.get(2));
+      		out.print("   |   Condition: " + temp.get(3));
     	}catch(RuntimeException e){
     		out.print("weatherLookup didn't find a match for the key");
     	}	

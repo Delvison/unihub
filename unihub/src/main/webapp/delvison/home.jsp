@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <!--This shall be our main home screen -->
 <%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
-        com.unihub.app.EventListHolder, javax.ejb.EJB, javax.naming.*, com.unihub.app.ListingObjEJBStateful" %>
+        com.unihub.app.EventListHolder, javax.ejb.EJB, javax.naming.*, java.util.*, com.unihub.app.ListingObjEJBStateful, com.unihub.app.WeatherEJB, com.unihub.app.WeatherSession"%>
 <%@ include file="/delvison/header.jsp" %>
-<%! @EJB ListingObjEJBStateful lis; %>
+<%! @EJB ListingObjEJBStateful lis;
+    @EJB WeatherEJB weather; %>
 
 <%
   /*
@@ -34,6 +35,7 @@
   String user = (String)session.getAttribute("username");
   Context context = new InitialContext();
   lis = (ListingObjEJBStateful) context.lookup("ejb:unihub-ear/unihub-ejb//ListingObjEJBStateful!com.unihub.app.ListingObjEJBStateful?stateful");
+  weather = (WeatherEJB) context.lookup("ejb:unihub-ear/unihub-ejb//WeatherEJB!com.unihub.app.WeatherEJB");
 %>
 
   <body>
@@ -104,7 +106,18 @@
             <div class="span5">
               <h3>Weather</h3>
               <p>
-                Query some service for local weather maybe. just a thought.
+                <% List<String> w = weather.weatherLookup("13126"); %>
+                <ul class="inline">
+                  <li><div>
+                    <img src="<%=w.get(4)%>" alt="some_text">
+                     <font size="9"><%=w.get(0)%> &degF</font><br>
+                      <font size="2">Max: <%=w.get(1)%>&degF</font>
+                      <font size="2">Min: <%=w.get(2)%>&degF</font>
+                    </div>
+                  </li>
+                </ul>
+                 <br>
+                  <font size="5"><%=w.get(3)%></font>
               </p>
             </div>
             <div class="span1" style="width:1px;height:160px;background-color:gray;float:left;"></div> 

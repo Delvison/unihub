@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@Stateless
-@Remote
+@Stateless (name="WeatherEJB")
+@Remote 
 @WebService
 public class WeatherSession implements WeatherEJB {
 	
@@ -26,13 +26,18 @@ public class WeatherSession implements WeatherEJB {
 		final String WWO_KEY = "j9v4a8vxgypbemrwz8bxsb99";
 		String baseLink = "http://api.worldweatheronline.com/free/v1/weather.ashx?";
 		ArrayList<String> result =  new ArrayList<String>();
-		baseLink += "q="+formatSearch(q)+"&";
+		baseLink += "q="+q+"&";
 		baseLink += "format=xml&num_of_days=1&includelocation=yes&";
 		baseLink += "key="+WWO_KEY;
-		result.add(fetch(baseLink, "temp_F")); // 0 temperature
-		result.add(fetch(baseLink, "tempMaxF")); // 1 Max temperature
-		result.add(fetch(baseLink, "tempMinF")); // 2 Min temperature
-		result.add(fetch(baseLink, "weatherDesc")); // 3 Weather Condition
+		try{
+			result.add(fetch(baseLink, "temp_F")); // 0 temperature
+			result.add(fetch(baseLink, "tempMaxF")); // 1 Max temperature
+			result.add(fetch(baseLink, "tempMinF")); // 2 Min temperature
+			result.add(fetch(baseLink, "weatherDesc")); // 3 Weather Condition
+			result.add(fetch(baseLink, "weatherIconUrl")); // 4 Condition image
+		}catch (Exception e){
+			result.add("ERROR:Connection Problem");
+		}	
 		return result;
 	}
 
