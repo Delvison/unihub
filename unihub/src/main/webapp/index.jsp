@@ -8,9 +8,26 @@
 	/*
 	This will temporarily be here since I will get this info from
 	the database when its set up*/
-	String[] cats = new String[] {"Art Supplies", "Books", "Bicycles", "Jobs", 
-									"Electronics", "Cars", "Cell Phones", "Furniture", 
-									"Musical Instruments", "Misc."};
+	String[] cats = {"Appliances",
+    "Art Supplies",
+    "Bikes",
+    "Books",
+    "Cars" ,
+    "Cell Phones",
+    "Clothes",
+    "Computers",
+    "Electronics",
+    "Freebies",
+    "Furniture",
+    "Games",
+    "Jobs",
+    "Music",
+    "Musical Instruments",
+    "Movies",
+    "Pets",
+    "Sporting Goods",
+    "Wanted",
+    "Everything Else.."};
 
 	//EventListHolder holder = EventListHolder.getInstance();
 	InitialContext context = new InitialContext();
@@ -62,22 +79,22 @@
         </center>
 
 		<div class="container-fluid">
-			<div class="span8" style="background-color:white">
-				<h2>Classifieds</h2>
-				
-				<% for(int i = 0; i < cats.length; i++) {
-					if(i % 2 == 0) { %>
 
-						<%= 
-						HtmlOutputUtilities.bootStrapRow(cats[i], i+1 < cats.length ? cats[i+1]: null) %>
-				<%
-					}
-
-				} %>
-
+			<!-- The cool looking  -->
+			<div class="span3">
+				<div class="well sidebar-nav">
+		            <ul class="nav nav-list">
+		              <li class="nav-header">Categories</li>
+		              <% for (int i=0; i < cats.length; i++){ %>
+		                  <li>
+		                    <a href="viewalllistings?cat=<%=cats[i]%>"><%=cats[i]%></a>
+		                  </li>
+		              <%}%>
+		            </ul>
+	          	</div><!--/.well -->
 			</div>
 
-			<div class="span4 scrollable-table" style="background-color:white">
+			<div class="span5 scrollable-table well">
 				<h2>Events</h2>
 				<table class="table">
 

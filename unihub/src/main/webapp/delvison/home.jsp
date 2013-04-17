@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <!--This shall be our main home screen -->
 <%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
-        com.unihub.app.EventListHolder, javax.ejb.EJB, javax.naming.*, java.util.*, com.unihub.app.ListingObjEJBStateful, com.unihub.app.WeatherEJB, com.unihub.app.WeatherSession"%>
+        com.unihub.app.EventListHolder, javax.ejb.EJB, javax.naming.*, java.util.*, com.unihub.app.ListingObjEJBStateful, com.unihub.app.WeatherEJB, com.unihub.app.WeatherSession, com.unihub.app.Event, com.unihub.app.Events, com.unihub.app.EventsBean, java.util.ArrayList"%>
 <%@ include file="/delvison/header.jsp" %>
 <%! @EJB ListingObjEJBStateful lis;
-    @EJB WeatherEJB weather; %>
+    @EJB WeatherEJB weather;
+    @EJB Events bean;
+     %>
 
 <%
   /*
@@ -36,6 +38,9 @@
   Context context = new InitialContext();
   lis = (ListingObjEJBStateful) context.lookup("ejb:unihub-ear/unihub-ejb//ListingObjEJBStateful!com.unihub.app.ListingObjEJBStateful?stateful");
   weather = (WeatherEJB) context.lookup("ejb:unihub-ear/unihub-ejb//WeatherEJB!com.unihub.app.WeatherEJB");
+  bean = (Events) context.lookup("ejb:unihub-ear/unihub-ejb//EventsBean!com.unihub.app.Events");
+  ArrayList<Event> list = bean.getEvents();
+
 %>
 
   <body>
@@ -55,18 +60,21 @@
           <br>
 
           <!--Events-->
-          <div id="events" class="well nav sidebar-nav affix-top">
-            <h2>Events</h2>
+          <div id="events" class="well nav sidebar-nav affix-top scrollable-table">
+            <CENTER>
+              <h3>Events</h3>
+            </CENTER>
               <table class="table">
-          <% for(int i = 0; i < holder.numOfEvents(); i++){ %>
+
+                <% for(Event event : list){ %>
 
             <tr>
               <td>
-                <h3><%= holder.getEvent(i).getTitle() %></h3>
-                <p>on <%= holder.getEvent(i).getThingy() %></p>
-                <p><%= holder.getEvent(i).getDes() %></p>
-                <p><%= holder.getEvent(i).howManyGoing() %></p>
-                <a href="attend?id=<%=holder.getEvent(i).getId() %> ">Attending</a> | <a href="#">More Info</a>
+                <h4><%= event.getTitle() %></h4>
+                <p>on <%= event.getThingy() %> @<%= event.getTime() %></p>
+                <p><%= event.getDes() %></p>
+                <p><%= event.howManyGoing() %></p>
+                <a href="attend?id=<%=event.getId() %> ">Attending</a>
               </td>
             </tr>
 
@@ -74,9 +82,9 @@
           <!--This bottom part is only for linking to viewing all events -->
           <tr>
             <td>
-              <h4><a href="events">View All</a></h3>
+              <CENTER><h4><a href="events">View All</a></h4><CENTER>
             </td>
-          </tr> 
+          </tr>
 
         </table>
       </div>

@@ -17,11 +17,11 @@
   margin-bottom: 10px;
 }
 
-.top-buffer { margin-top:20px; height:150px;}
+.top-buffer { margin-top:20px;}
 
 .cat-title { background-color:gray; margin-top:0px; }
 .scrollable-table {  
-    height: 900px;
+    height: 600px;
     overflow: scroll;
 }​
 

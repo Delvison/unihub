@@ -51,7 +51,7 @@
         	<div class="row-fluid" >
         		<div class="span4">
         			<CENTER>
-	        			<img class="img-circle" src="design/images/what_icon.png" 
+	        			<img class="img-circle" src="design/images/cap2.png" 
 	        			style="width: 140px; height: 140px">
 	        			<h3>What is Unihub?</h3>
 	        			<p style="font-weight: 200; color: #888; font-size: 14px">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
@@ -59,7 +59,7 @@
         		</div>
         		<div class="span4">
         			<CENTER>
-	        			<img class="img-circle" src="design/images/what_icon.png" 
+	        			<img class="img-circle" src="design/images/tower2.png" 
 	        			style="width: 140px; height: 140px">
 	        			<h3>Who is it for?</h3>
 	        			<p style="font-weight: 200; color: #888; font-size: 14px">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
@@ -67,7 +67,7 @@
         		</div>
         		<div class="span4">
         			<CENTER>
-	        			<img class="img-circle" src="design/images/what_icon.png" 
+	        			<img class="img-circle" src="design/images/Book2.png" 
 	        			style="width: 140px; height: 140px">
 	        			<h3>Why you'll love it!</h3>
 	        			<p style="font-weight: 200; color: #888; font-size: 14px">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
