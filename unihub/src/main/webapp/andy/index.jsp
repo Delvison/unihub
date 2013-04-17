@@ -8,7 +8,7 @@
 			<div class="carousel-inner">
 
 					<div class="item active">
-						<img src="design/images/books.jpg">
+						<img src="design/images/blubooks-lg.jpg">
 						<div class="container">
 							<div class="carousel-caption">
 						        <h1 style="color:white">Welcome to UniHub!</h1>
