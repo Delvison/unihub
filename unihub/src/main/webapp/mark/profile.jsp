@@ -6,38 +6,39 @@
 
 <!-- Profile Page for logged in user -->
 
-<%@ page language="java" import="com.unihub.app.*,
-                                java.util.ArrayList,
-                                java.security.*,
-                                javax.servlet.*,
-                                javax.servlet.http.*" 
+<%@ page language="java" import="com.unihub.app.*, java.util.*, java.security.*,
+                                javax.servlet.*, javax.servlet.http.*,
+                                com.unihub.app.UserStatefulBI, javax.ejb.EJB,
+                                javax.naming.*" 
           isELIgnored="false"%>
 <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
 <%@ include file="../delvison/header.jsp"%>
+<%! @EJB UserStatefulBI usr; %>
 
     <body>
       <div class="container-fluid">
-          <% Dbase ubase = Dbase.create();
-           String curruname = (String)session.getAttribute("username");  
-           User currentuser = ubase.getUser(curruname);
+        <% String curruname = (String)session.getAttribute("username");  
+           Context context = new InitialContext();
+           usr = (UserStatefulBI) context.lookup
+                 ("ejb:unihub-ear/unihub-ejb//UserStatefulBI!com.unihub.app.UserStatefulBI?stateful");
            String gravatar = "";
             try {
-              gravatar = currentuser.gravatar(); 
+              gravatar = usr.getGravatar(curruname); 
             } catch(NoSuchAlgorithmException e) {
               out.println("No Such Algorithm Exception");
             } %>
         <div class="row-fluid">
         <div class="span12">
           <div class="row-fluid">
-          <div class="span8 shadow" style="background-color:white">
-            <table style="margin:10px" width="100%">
+          <div class="span8">
+            <table class="shadow" style="margin:10px background-color:white" width="100%">
              <tr>
               <td style="padding:10px">
-               <h4><%=currentuser.getName()+" "%>(<%=currentuser.getReputation()%>)
+               <h4><%=curruname+" "%>(<%=usr.getRep(curruname)%>)
                <a href="usermessages"/><img width="25px" height="20px" src="design/images/mail.png"></a>
                </h4>
-               <p><%=currentuser.getSchool()%>
-               <br><%=currentuser.getEmail()%>
+               <p><%=usr.getSchool(usr.getId(curruname))%>
+               <br><%=usr.getEmail(usr.getId(curruname))%>
                </p>
               </td>
               <td valign="center" colspan="3">
@@ -45,12 +46,9 @@
               <a href="http://gravatar.com">Need a Gravatar?</a>
               <td>
              </tr>
-             <tr>
-              <td>Watched Users: <%= ubase.getUser(currentuser.getName()).getWatched() %></td>
-             </tr>
             </table>
-            <div class="row-fluid">
-              <div class="span6 offset1">
+            <div class="row-fluid" style="padding-top:20px">
+              <div class="span6 offset1 shadow" style="background-color:white">
                 <div class="tabbable">
                 <ul class="nav nav-tabs">
                   <li class="active">
@@ -75,7 +73,7 @@
           <div class="span4 shadow" style="background-color:white">
             <center><h4>My Listings</h4></center>
             <table class="table table-striped">
-              <devjsp:forEachListing user="<%=currentuser.getName()%>">
+              <devjsp:forEachListing user="<%=curruname%>">
               <tr>
                 <td valign="center">
                   <p>
