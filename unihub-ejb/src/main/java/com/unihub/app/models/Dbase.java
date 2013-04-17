@@ -93,7 +93,7 @@ public class Dbase implements Serializable {
                       "avaldez@oswego.edu",
                       "Oswego",
                       salt) );
-    for(int i = 0; i < 3; i++) {
+    for(int i = 0; i < 4; i++) {
     addUser( new User("User"+i,
                       encryptedPassword,
                       "user@example.edu",
