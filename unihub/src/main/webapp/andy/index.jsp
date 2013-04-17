@@ -1,26 +1,4 @@
-<!--This shall be our main home screen -->
-<%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
-				com.unihub.app.Events,
-				javax.ejb.*, java.util.ArrayList, javax.naming.InitialContext, 
-				com.unihub.app.EventsBean" %>
-<%! @EJB Events bean; %>
-<%
-	/*
-	This will temporarily be here since I will get this info from
-	the database when its set up*/
-	String[] cats = new String[] {"Art Supplies", "Books", "Bicycles", "Jobs", 
-									"Electronics", "Cars", "Cell Phones", "Furniture", 
-									"Musical Instruments", "Misc."};
 
-	//EventListHolder holder = EventListHolder.getInstance();
-	InitialContext context = new InitialContext();
-	bean = (Events) context.lookup("ejb:unihub-ear/unihub-ejb//EventsBean!com.unihub.app.Events");
-	ArrayList<Event> list = bean.getEvents();
-%>
-
-
-
-<%@ include file="/delvison/header.jsp" %>
 
 	<body>
 
