@@ -41,7 +41,7 @@ public void doPost(HttpServletRequest req,
   //not yet implemented
   //usr.sendConfirmationEmail();
   out.println( "A User was Created" );
-  res.sendRedirect("home");
+  res.sendRedirect("index");
 
 }
 

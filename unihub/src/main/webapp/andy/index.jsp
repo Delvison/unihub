@@ -57,7 +57,8 @@
 
 
         	<div class="row-fluid bottom-buffer">
-        		<div class="span6" style="height: 300px; background: #000">
+        		<div class="span6" style="height: 300px; background: #fff">
+                                <img src="design/images/ScreenShot1.png" >
 
         		</div>
         		<div class="span6" >
@@ -71,7 +72,8 @@
 	        		<h4>Some title</h4>
 	        		<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
         		</div>
-        		<div class="span6" style="height: 300px; background: #000">
+        		<div class="span6" style="height: 300px; background: #fff">
+                                <img src="design/images/ScreenShot2.png">
 
         		</div>
         	</div>
@@ -79,7 +81,8 @@
 
 
         	<div class="row-fluid bottom-buffer">
-        		<div class="span6" style="height: 300px; background: #000">
+        		<div class="span6" style="height: 300px; background: #fff">
+                                <img src="design/images/image.jpeg" style="height:300px">
         		</div>
         		<div class="span5">
         			<h3>We Are Students. Just like you.</h3>
