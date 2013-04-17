@@ -25,7 +25,7 @@
     <!-- E-mail -->
     <label class="control-label" for="email">E-mail</label>
     <div class="controls">
-    <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+    <input type="text" id="email" name="email" placeholder="" class="input-xlarge">.edu
     <p class="help-block">Please provide a .edu E-mail</p>
     </div>
     </div>
