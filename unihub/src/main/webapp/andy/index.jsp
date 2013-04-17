@@ -61,8 +61,8 @@
 
         		</div>
         		<div class="span6" >
-	        		<h4>Some title</h4>
-	        		<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+	        		<h4>Easy Navigation</h4>
+                                <p>Quickly find exactly what your looking for. At UniHub your homepage is specifically designed for you with helpful suggestions about safe meeting spots and recent listings posted in your area.</p>
         		</div>
         	</div>
 
