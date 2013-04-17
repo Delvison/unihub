@@ -51,7 +51,7 @@
       <div id="myCarousel" class="carousel slide" data-pause="remove">
       <div class="carousel-inner">
         <div class="item active">
-          <img src="design/images/books-sm.jpg">
+          <img src="design/images/blubooks-sm.jpg">
           <div class="container jetstrap-highlighted">
             <div class="carousel-caption">
               <h1><p style="color:white">Welcome to UniHub</p></h1>
