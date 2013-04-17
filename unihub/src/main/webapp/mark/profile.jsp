@@ -15,7 +15,7 @@
 <%@ include file="../delvison/header.jsp"%>
 <%! @EJB UserStatefulBI usr; %>
 
-    <body>
+    <body class="top-buffer"> 
       <div class="container-fluid">
         <% String curruname = (String)session.getAttribute("username");  
            Context context = new InitialContext();

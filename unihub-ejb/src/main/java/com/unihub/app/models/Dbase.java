@@ -73,13 +73,33 @@ public class Dbase implements Serializable {
     catch(NoSuchAlgorithmException e) {}
     catch(InvalidKeySpecException e) {}
 
-    for(int i = 0; i < 10; i++) {
-      addUser( new User("User"+i,
-                         encryptedPassword,
-                         "mwillson@oswego.edu",
-                         "Oswego",
-                         salt) );
-    } 
+    addUser( new User("Mark",
+                      encryptedPassword,
+                      "mwillson@oswego.edu",
+                      "Oswego",
+                      salt) );
+    addUser( new User("Yulle",
+                      encryptedPassword,
+                      "byullegl@oswego.edu",
+                      "Oswego",
+                      salt) );
+    addUser( new User("Delvison",
+                      encryptedPassword,
+                      "castillo@oswego.edu",
+                      "Oswego",
+                      salt) );
+    addUser( new User("Andy",
+                      encryptedPassword,
+                      "avaldez@oswego.edu",
+                      "Oswego",
+                      salt) );
+    for(int i = 0; i < 3; i++) {
+    addUser( new User("User"+i,
+                      encryptedPassword,
+                      "user@example.edu",
+                      "Example University",
+                      salt) );
+    }
   }
 
   public String toString() {
