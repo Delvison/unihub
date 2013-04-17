@@ -1,7 +1,7 @@
     <%@ page import="com.unihub.app.AuthUtilities" %>
 <%@ include file="/delvison/bootstrap.jsp"  %>
 <%@ page language="java" import="com.unihub.app.Dbase" %>
-
+<%@ page errorPage="/error.jsp" %>
 
 <!doctype html>
 <html>

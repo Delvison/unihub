@@ -5,7 +5,7 @@
 --%>
 
 <!-- Profile Page for logged in user -->
-
+<%@ page errorPage="/error.jsp" %>
 <%@ page language="java" import="com.unihub.app.*, java.util.*, java.security.*,
                                 javax.servlet.*, javax.servlet.http.*,
                                 com.unihub.app.UserStatefulBI, javax.ejb.EJB,
