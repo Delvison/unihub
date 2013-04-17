@@ -1,7 +1,6 @@
 
-
   <body>
-    <div class="container-fluid" data-spy="scroll" data-target="#events">
+    <div class="container-fluid top-buffer" data-spy="scroll" data-target="#events">
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
@@ -90,8 +89,11 @@
             <div class="span6">
               <h3>Recommended Meeting Spots</h3>
               <p>
-                Show stuff specific to location here. 
-                Cool idea: query google to find populated public places in the area so that we can recommend these as a meeting spot for exchanges.
+                <ul>
+                  <li> SUNY Oswego Campus Center, Oswego NY <a href="https://plus.google.com/111897804320258544860/about?gl=us&hl=en">view map</a>
+                  <li> Walmart, Oswego NY <a href="https://plus.google.com/111897804320258544860/about?gl=us&hl=en">view map</a>
+                  <li> Fast Trac, Oswego NY <a href="https://plus.google.com/111897804320258544860/about?gl=us&hl=en">view map</a>
+                </ul>
               </p>
             </div>
           </div>
@@ -144,7 +146,7 @@
                 </div>
               </div>
             </devjsp:itemInfo > 
-              <devjsp:forEachListing limit="10">
+              <devjsp:forEachListing limit="6">
               <div class="item">
                 <div class="container-fluid">
                   <div class="row -fluid">
@@ -171,9 +173,9 @@
                     <div class="span9 offset1">
                       <p></p>
                       <p>
-                        <i class="icon-user"></i> by <a href="#">John</a>
-                        | <a href="viewalllistings">Bikes</a>
-                        | <i class="icon-calendar"></i> Sept 16th, 2012
+                        <i class="icon-user"></i> by <a href="#">${listingUser}</a>
+                        | <a href="viewalllistings">${listingCategory}</a>
+                        | <i class="icon-calendar"></i> April 16th, 2013
                         | <i class="icon-comment"></i> <a href="#">3 Comments</a>
                         | <i class="icon-share"></i> <a href="#">39 Likes</a>
                       </p>
@@ -200,7 +202,8 @@
       <br>
       <!--My listings-->
       <% if (user != null){ %>
-      <div class="shadow">
+      <% if (lis.getArrayListSize() > 0) { %>
+      <div class="shadow scrollable-table" style="height:275px">
         <div class="container-fluid">
           <div class="span6">
             <h3>My Listings</h3>
@@ -228,7 +231,7 @@
           </div>
         </div>
       </div>
-      <%}%>  
+      <%}}%>  
 
       <hr>
       <footer>

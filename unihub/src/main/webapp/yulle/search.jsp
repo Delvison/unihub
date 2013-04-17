@@ -1,19 +1,18 @@
-<HTML>
 <%@include file="../delvison/header.jsp" %>
   <%@ page import="java.util.*" %> 
-  <BODY>
-  	<CENTER>
+  <div class ="span8 offset3">
+    <CENTER>
       <H1>Search:</H1>
       <FORM ACTION="/unihub/searchServlet">
         <INPUT TYPE="text" name="search">
         <INPUT TYPE="SUBMIT">        
-        <DIV>
-
-        </DIV>	
       </FORM>	
     </CENTER>
-    <BR />
+  </div>
+    <br>
+      <br>
 
+      <DIV class="span8 offset3">
     <% List<String> amazon = (List<String>)request.getAttribute("amazon"); %>
     <% String[] googleLinks = (String[])request.getAttribute("google"); %>
 
@@ -23,27 +22,21 @@
       <% String title = (String) amazon.get(0); %>
       <% String detail = (String) amazon.get(1); %>
       <% String price = (String) amazon.get(2); %>
-      <DIV ALIGN="left">
     	 <B>Found on Amazon</B>: <A HREF="<%=detail%>"> <%=title%> </A> New from <%=price%> 
-      </DIV>
     <% } %>
-
+    <br>
+    <br>
     <% if ( googleLinks != null ){ %>
-    <DIV ALIGN="left">
-      <BR />
       <B>Other stores found on Google Shop Search:</B>
       <ul>
         <% for(String link : googleLinks) { %>
           <li><%= link %></li>
         <% } %>
       </ul>
+      <A HREF="/unihub/searchHistory">Search History</A> |  
     </DIV>
     <% } %>
-    
-    <DIV ALIGN="right" STYLE="float:right; text-align:right;">
-      <A HREF="/unihub/searchHistory">Search History</A> |  
-    </DIV>  
+    <br>
+    <br>
 
-  </BODY>
 
-</HTML>  	
