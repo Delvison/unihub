@@ -15,8 +15,8 @@
 <%@ include file="../delvison/header.jsp"%>
 <%! @EJB UserStatefulBI usr; %>
 
-    <body class="top-buffer"> 
-      <div class="container-fluid">
+    <body> 
+      <div class="top-buffer container-fluid">
         <% String curruname = (String)session.getAttribute("username");  
            Context context = new InitialContext();
            usr = (UserStatefulBI) context.lookup
@@ -31,7 +31,7 @@
         <div class="span12">
           <div class="row-fluid">
           <div class="span8">
-            <table class="shadow" style="margin:10px background-color:white" width="100%">
+            <table class="shadow" style="margin:10px" width="100%">
              <tr>
               <td style="padding:10px">
                <h4><%=curruname+" "%>(<%=usr.getRep(curruname)%>)
@@ -48,7 +48,7 @@
              </tr>
             </table>
             <div class="row-fluid" style="padding-top:20px">
-              <div class="span6 offset1 shadow" style="background-color:white">
+              <div class="span6 offset1 shadow">
                 <div class="tabbable">
                 <ul class="nav nav-tabs">
                   <li class="active">
@@ -70,7 +70,7 @@
               </div>
             </div>
           </div>
-          <div class="span4 shadow" style="background-color:white">
+          <div class="span4 shadow">
             <center><h4>My Listings</h4></center>
             <table class="table table-striped">
               <devjsp:forEachListing user="<%=curruname%>">
