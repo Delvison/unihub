@@ -29,10 +29,11 @@ public class UpvoteTag extends SimpleTagSupport{
     Dbase ubase = Dbase.create();
     /* find 'Stuff' by id */
     //Stuff stuff = lis.getStuff(itemId);
+    out.println(userLoggedIn);
     if ( userLoggedIn != null &&
          !(ubase.getUser(userLoggedIn).owns(itemId)) &&
          !(ubase.getUser(userLoggedIn).hasVoted((Integer)itemId)) ){
-      out.print("<a href=\"reputation?itemId="+
+      out.println("<a href=\"reputation?itemId="+
          Integer.toString(this.itemId)+"\"><img height=\"20px\" width=\"17px\" src=\"design/images/blue-thumbs-up.png\" title=\"Scholarly!\"></a>");
     }
   }
