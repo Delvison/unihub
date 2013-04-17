@@ -30,7 +30,7 @@ public class Auth extends HttpServlet {
 		String password = req.getParameter("password");
 
 		String servletPath = (session.getAttribute("path_for_login") != null) ?
-			((String)session.getAttribute("path_for_login")).replaceFirst("/", "") : "home";
+			((String)session.getAttribute("path_for_login")).replaceFirst("/", "") : "index";
 
 		try 
 		{

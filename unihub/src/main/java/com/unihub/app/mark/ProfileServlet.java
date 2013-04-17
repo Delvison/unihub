@@ -31,7 +31,7 @@ public void doGet(HttpServletRequest req,
   String address;
   
   if( usr.getUser(uname) == null ) {
-    address = "/login?url=/profile";
+    address = "/login";
   }else {
     address = "mark/profile.jsp";
   }

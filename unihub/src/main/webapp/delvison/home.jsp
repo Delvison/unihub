@@ -19,7 +19,7 @@
           <!--Events-->
           <div id="events" class="well nav sidebar-nav affix-top scrollable-table">
             <CENTER>
-              <h3>Events</h3>
+              <h3 style="color: #999999; margin-top:0px; margin-bottom:0px; " class="le-font">Events</h3>
             </CENTER>
               <table class="table">
 

@@ -11,7 +11,7 @@
                                 com.unihub.app.UserStatefulBI, javax.ejb.EJB,
                                 javax.naming.*" 
           isELIgnored="false"%>
-<%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
+
 <%@ include file="../delvison/header.jsp"%>
 <%! @EJB UserStatefulBI usr; %>
 

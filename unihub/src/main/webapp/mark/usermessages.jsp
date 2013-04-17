@@ -13,8 +13,6 @@
     isELIgnored="false"%>
 <%@ taglib uri="/WEB-INF/tlds/markjsp-taglib.tld" prefix="markjsp"%>
 
-<!DOCTYPE html>
-
 <%@ include file="../delvison/header.jsp"%>
 <%! @EJB UserStatefulBI usr; %>
 <% 
