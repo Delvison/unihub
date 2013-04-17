@@ -33,8 +33,12 @@ public class UpvoteTag extends SimpleTagSupport{
     if ( userLoggedIn != null &&
          !(ubase.getUser(userLoggedIn).owns(itemId)) &&
          !(ubase.getUser(userLoggedIn).hasVoted((Integer)itemId)) ){
-      out.println("<a href=\"reputation?itemId="+
-         Integer.toString(this.itemId)+"\"><img height=\"20px\" width=\"17px\" src=\"design/images/blue-thumbs-up.png\" title=\"Scholarly!\"></a>");
+    
+      getJspContext().setAttribute("itemId", itemId);
+      getJspBody().invoke(null);
+  
+    }else {
+      setJspBody(null); 
     }
   }
 }

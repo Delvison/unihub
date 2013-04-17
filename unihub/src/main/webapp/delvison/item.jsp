@@ -48,7 +48,8 @@
               <div class="span2 pull-right">
                 <br>
                 <ul class="inline pull-right">
-                  <li><markjsp:upvote itemId="<%=id%>" user="<%=user%>" /></li>
+                  <li>
+                  </li>
                   <li>
                     <a class="pull-right" href="pmessage?name=<%=lis.getUser(Integer.parseInt(id))%>"/>
                        <img width="25px" height="20px" src="design/images/mail.png">

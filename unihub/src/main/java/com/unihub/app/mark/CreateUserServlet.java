@@ -22,6 +22,8 @@ public class CreateUserServlet extends HttpServlet {
 
 @EJB
 UserStatefulBI usr;
+@EJB
+Authenticate bean;
 HttpSession session;
 
 @Override
@@ -33,15 +35,29 @@ public void doPost(HttpServletRequest req,
   res.setContentType("text/html");
   PrintWriter out = res.getWriter();
 
-  usr.createUser(req.getParameter("username"),
-                 req.getParameter("password"),
+  String uname = req.getParameter("username");
+  String pass = req.getParameter("password");
+
+  usr.createUser(uname,
+                 pass,
                  req.getParameter("email")+".edu",
                  req.getParameter("school"));
 
+  
   //not yet implemented
   //usr.sendConfirmationEmail();
   out.println( "A User was Created" );
-  res.sendRedirect("index");
+
+  try {
+  if(bean.authenticate(uname, pass)) {
+    session.removeAttribute("path_for_login");
+    session.setAttribute("username", uname);
+    res.sendRedirect("index");
+  }
+  else res.sendRedirect("login"); 
+  } catch(NoSuchAlgorithmException e) {}
+    catch(InvalidKeySpecException e) {}
+  
 
 }
 

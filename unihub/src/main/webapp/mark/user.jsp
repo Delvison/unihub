@@ -29,7 +29,7 @@
               out.println("No Such Algorithm Exception");
             }
         %>
-        <div class="row">
+        <div class="row top-buffer">
         <div class="span8 offset2 main" style="background-color:white">
             <table style="margin:10px">
              <tr>
