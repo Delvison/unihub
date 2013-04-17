@@ -103,19 +103,20 @@
               <li><a href="populateUniversities">Change Location</a></li>
             </ul>
           <div class="row-fluid">
-            <div class="span5">
+            <div class="container-fluid span5">
               <h3>Weather</h3>
               <p>
                 <% List<String> w = weather.weatherLookup("13126"); %>
-                <ul class="inline">
-                  <li><div>
+        
+                  <table>
+                    <tr>
+                      <td>
                     <img src="<%=w.get(4)%>" alt="some_text">
+            </td><td>
                      <font size="9"><%=w.get(0)%> &degF</font><br>
                       <font size="2">Max: <%=w.get(1)%>&degF</font>
                       <font size="2">Min: <%=w.get(2)%>&degF</font>
-                    </div>
-                  </li>
-                </ul>
+  </td></tr></table>
                  <br>
                   <font size="5"><%=w.get(3)%></font>
               </p>

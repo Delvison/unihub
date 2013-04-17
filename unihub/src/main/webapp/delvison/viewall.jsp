@@ -10,7 +10,7 @@
 <body data-spy="scroll" data-target="#sidebar">
 
  <center>
-  <div class="container-fluid">
+  <div class="container-fluid top-buffer">
   <div id='content' class='row-fluid'>
 
       <!--Search Pane-->
@@ -22,13 +22,24 @@
             <select name = "category" class="span11">        
             <option>All</option>
             <option>Art Supplies</option>
+            <option>Bikes</option>
             <option>Books</option>
-            <option>Bicycles</option>
-            <option>Electronics</option>
+            <option>Cars</option>
             <option>Cell Phones</option>
+            <option>Clothes</option>
+            <option>Computers</option>
+            <option>Electronics</option>
+            <option>Freebies</option>
             <option>Furniture</option>
+            <option>Games</option>
+            <option>Jobs</option>
+            <option>Music</option>
             <option>Musical Instruments</option>
-            <option>Misc.</option>
+            <option>Movies</option>
+            <option>Pets</option>
+            <option>Sporting Goods</option>
+            <option>Wanted</option>
+            <option>Everything Else</option>
           </select><br>
           <input type="submit" class="btn btn-primary" value="Search">
         </FORM>
@@ -56,14 +67,25 @@
             <h3>Filter by:</h3>
               <ul class="nav nav-tabs nav-stacked">
                 <li><a href="viewalllistings?cat=All">All</a></li>
-                <li><a href="viewalllistings?cat=Art">Art Supplies</a></li>
-                <li><a href="viewalllistings?cat=Books">Books</a></li>
+                <li><a href="viewalllistings?cat=Art Supplies">Art Supplies</a></li>
                 <li><a href="viewalllistings?cat=Bicycles">Bicycles</a></li>
-                <li><a href="viewalllistings?cat=Phones">Cell Phones</a></li>
+                <li><a href="viewalllistings?cat=Books">Books</a></li>
+                <li><a href="viewalllistings?cat=Cars">Cars</a></li>
+                <li><a href="viewalllistings?cat=Cell Phones">Cell Phones</a></li>
+                <li><a href="viewalllistings?cat=Clothes">Clothes</a></li>
+                <li><a href="viewalllistings?cat=Computers">Computers</a></li>
                 <li><a href="viewalllistings?cat=Electronics">Electronics</a></li>
+                <li><a href="viewalllistings?cat=Freebies">Freebies</a></li>
                 <li><a href="viewalllistings?cat=Furniture">Furniture</a></li>
-                <li><a href="viewalllistings?cat=Musical">Musical Instruments</a></li>
-                <li><a href="viewalllistings?cat=Misc.">Misc.</a></li>
+                <li><a href="viewalllistings?cat=Games">Games</a></li>
+                <li><a href="viewalllistings?cat=Jobs">Jobs</a></li>
+                <li><a href="viewalllistings?cat=Music">Music</a></li>
+                <li><a href="viewalllistings?cat=Musical Instruments">Musical Instruments</a></li>
+                <li><a href="viewalllistings?cat=Movies">Movies</a></li>
+                <li><a href="viewalllistings?cat=Pets">Pets</a></li>
+                <li><a href="viewalllistings?cat=Sporting Goods">Sporting Goods</a></li>
+                <li><a href="viewalllistings?cat=Wanted">Wanted</a></li>
+                <li><a href="viewalllistings?cat=Everything Else">Everything Else</a></li>
               <ul>
           </div>
           <div class="tab-pane" id="sortByTab">

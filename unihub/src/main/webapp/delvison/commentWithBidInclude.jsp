@@ -70,7 +70,7 @@
               <div name="postComments">
                 <FORM ACTION="addcomment" METHOD="get">
                   <center>
-                    <textarea name="comment" style="width:260px;height:70px" 
+                    <textarea name="comment" class="span9"  
                                placeholder="Post Comment"></textarea>
                     <input type="hidden" name="user" value="<%=user%>">
                     <input type="hidden" name="itemId" value="<%=id%>">

@@ -17,7 +17,7 @@
     %>   
 
 <body>
-<div class="container-fluid">
+<div class="container-fluid top-buffer">
 
 <div class="row-fluid">
   <div class='span12'>
@@ -25,7 +25,7 @@
     <!--Listings Pane -->
     <div class="shadow span6">
       <br>
-        <a href="createlisting?rm=true&id=<%=id%>"><button class="btn btn-mini btn-danger offset10">Remove Listing</button></a>
+        <a href="createlisting?rm=true&id=<%=id%>"><button class="btn btn-mini offset10">Remove</button></a>
         <br>
         <center><h2>Edit your Listing</h2></center>
       <center>
@@ -89,7 +89,7 @@
       
       <!--Image Pane-->
       <div class='span4 shadow'>
-        <h2>Photos</h2>
+        <center><h2>Photos</h2></center>
         <center>
           <a href="uploadPhoto?id=<%=id%>">
             <button class="btn btn-primary">Manage Photos</button>

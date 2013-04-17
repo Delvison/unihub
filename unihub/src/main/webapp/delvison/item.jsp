@@ -25,7 +25,7 @@
     %>   
 
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid top-buffer">
   <div id='content' class='row-fluid'>
       
       <!--ITEM INFO PANE -->
