@@ -36,10 +36,12 @@ public class WeatherSession implements WeatherEJB {
 			result.add(fetch(baseLink, "weatherDesc")); // 3 Weather Condition
 			result.add(fetch(baseLink, "weatherIconUrl")); // 4 Condition image
 		}catch (Exception e){
-			result.add("ERROR:Connection Problem");
-            result.add("ERROR:Connection Problem");
-            result.add("ERROR:Connection Problem");
-            result.add("ERROR:Connection Problem");
+	        result.add("");
+            result.add("");
+            result.add("");
+            result.add("");
+            result.add("");
+            result.set(4,"design/images/failure.png"); // failure to get image
 		}	
 		return result;
 	}
