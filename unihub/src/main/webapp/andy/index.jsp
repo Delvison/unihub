@@ -83,7 +83,7 @@
         		</div>
         		<div class="span5">
         			<h3>We Are Students. Just like you.</h3>
-        			<p style="font-weight: 200; color: #888; font-size: 14px">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+        			<p style="font-weight: 200; color: #888; font-size: 14px">We understand the importance of your time and saving money. We too have been there where we wished a $150 textbook could be found used cheaper or when we opted into buying the expensive calculator for math class online just to save money only to find out that it would take weeks to ship. We understand. With UniHub, we hope to help by promoting that items such as these be circulated within your college community. </p>
         		</div>
         	</div>
 
