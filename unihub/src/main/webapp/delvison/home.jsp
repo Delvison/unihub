@@ -1,47 +1,4 @@
-<!DOCTYPE html>
-<!--This shall be our main home screen -->
-<%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
-        com.unihub.app.EventListHolder, javax.ejb.EJB, javax.naming.*, java.util.*, com.unihub.app.ListingObjEJBStateful, com.unihub.app.WeatherEJB, com.unihub.app.WeatherSession, com.unihub.app.Event, com.unihub.app.Events, com.unihub.app.EventsBean, java.util.ArrayList"%>
-<%@ include file="/delvison/header.jsp" %>
-<%! @EJB ListingObjEJBStateful lis;
-    @EJB WeatherEJB weather;
-    @EJB Events bean;
-     %>
 
-<%
-  /*
-  This will temporarily be here since I will get this info from
-  the database when its set up*/
-  String[] cats = {"Appliances",
-    "Art Supplies",
-    "Bikes",
-    "Books",
-    "Cars" ,
-    "Cell Phones",
-    "Clothes",
-    "Computers",
-    "Electronics",
-    "Freebies",
-    "Furniture",
-    "Games",
-    "Jobs",
-    "Music",
-    "Musical Instruments",
-    "Movies",
-    "Pets",
-    "Sporting Goods",
-    "Wanted",
-    "Everything Else.."};
-
-  EventListHolder holder = EventListHolder.getInstance();
-  String user = (String)session.getAttribute("username");
-  Context context = new InitialContext();
-  lis = (ListingObjEJBStateful) context.lookup("ejb:unihub-ear/unihub-ejb//ListingObjEJBStateful!com.unihub.app.ListingObjEJBStateful?stateful");
-  weather = (WeatherEJB) context.lookup("ejb:unihub-ear/unihub-ejb//WeatherEJB!com.unihub.app.WeatherEJB");
-  bean = (Events) context.lookup("ejb:unihub-ear/unihub-ejb//EventsBean!com.unihub.app.Events");
-  ArrayList<Event> list = bean.getEvents();
-
-%>
 
   <body>
     <div class="container-fluid" data-spy="scroll" data-target="#events">
