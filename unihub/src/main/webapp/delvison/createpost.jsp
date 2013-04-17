@@ -6,11 +6,12 @@
 
 <body>
 <center>
+<div class="container-fluid top-buffer">
 <div class="row-fluid">
   <div class='span12'>
     
     <!--Listings Pane -->
-    <div style="background-color:White" class="span10 offset1">
+    <div class=" shadow span8 offset2">
       <h2>Sell Your Stuff!</h2>
       <div class="span10">
         <form class="form-horizontal" action="createlisting" method="GET">
@@ -81,6 +82,7 @@
      </div>
       </div>
   </div>
+</div>
 </div>
 </center>
 </body>

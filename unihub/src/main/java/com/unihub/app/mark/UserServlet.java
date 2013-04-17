@@ -31,7 +31,7 @@ public void doGet(HttpServletRequest req,
   }
 
   if( u_id == null ) {
-    address = "home";
+    address = "index";
   }else if( u_id.equals("all") ) {
     address = "mark/allusers.jsp";
   }else if( usr.getName(Integer.parseInt(u_id)).equals(curruname) &&
@@ -40,7 +40,7 @@ public void doGet(HttpServletRequest req,
   }else {
     address = "mark/user.jsp";
   }
-
+  
   RequestDispatcher dispatcher = req.getRequestDispatcher(address);
   dispatcher.include(req, res);
 }

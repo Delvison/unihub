@@ -21,7 +21,7 @@ public void doGet(HttpServletRequest req,
   res.setContentType("text/html");
 
   if( session.getAttribute("username") == null ) {
-    res.sendRedirect("home");
+    res.sendRedirect("index");
   }else {
     address = "mark/usermessages.jsp";
     RequestDispatcher dispatcher = req.getRequestDispatcher(address);

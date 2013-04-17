@@ -5,13 +5,13 @@
 --%>
 
 <!-- Profile Page for logged in user -->
-
+<%@ page errorPage="/error.jsp" %>
 <%@ page language="java" import="com.unihub.app.*, java.util.*, java.security.*,
                                 javax.servlet.*, javax.servlet.http.*,
                                 com.unihub.app.UserStatefulBI, javax.ejb.EJB,
                                 javax.naming.*" 
           isELIgnored="false"%>
-<%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
+
 <%@ include file="../delvison/header.jsp"%>
 <%! @EJB UserStatefulBI usr; %>
 

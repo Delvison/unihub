@@ -1,50 +1,6 @@
-<!DOCTYPE html>
-<!--This shall be our main home screen -->
-<%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
-        com.unihub.app.EventListHolder, javax.ejb.EJB, javax.naming.*, java.util.*, com.unihub.app.ListingObjEJBStateful, com.unihub.app.WeatherEJB, com.unihub.app.WeatherSession, com.unihub.app.Event, com.unihub.app.Events, com.unihub.app.EventsBean, java.util.ArrayList"%>
-<%@ include file="/delvison/header.jsp" %>
-<%! @EJB ListingObjEJBStateful lis;
-    @EJB WeatherEJB weather;
-    @EJB Events bean;
-     %>
-
-<%
-  /*
-  This will temporarily be here since I will get this info from
-  the database when its set up*/
-  String[] cats = {"Appliances",
-    "Art Supplies",
-    "Bikes",
-    "Books",
-    "Cars" ,
-    "Cell Phones",
-    "Clothes",
-    "Computers",
-    "Electronics",
-    "Freebies",
-    "Furniture",
-    "Games",
-    "Jobs",
-    "Music",
-    "Musical Instruments",
-    "Movies",
-    "Pets",
-    "Sporting Goods",
-    "Wanted",
-    "Everything Else.."};
-
-  EventListHolder holder = EventListHolder.getInstance();
-  String user = (String)session.getAttribute("username");
-  Context context = new InitialContext();
-  lis = (ListingObjEJBStateful) context.lookup("ejb:unihub-ear/unihub-ejb//ListingObjEJBStateful!com.unihub.app.ListingObjEJBStateful?stateful");
-  weather = (WeatherEJB) context.lookup("ejb:unihub-ear/unihub-ejb//WeatherEJB!com.unihub.app.WeatherEJB");
-  bean = (Events) context.lookup("ejb:unihub-ear/unihub-ejb//EventsBean!com.unihub.app.Events");
-  ArrayList<Event> list = bean.getEvents();
-
-%>
 
   <body>
-    <div class="container-fluid" data-spy="scroll" data-target="#events">
+    <div class="container-fluid top-buffer" data-spy="scroll" data-target="#events">
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
@@ -62,7 +18,7 @@
           <!--Events-->
           <div id="events" class="well nav sidebar-nav affix-top scrollable-table">
             <CENTER>
-              <h3>Events</h3>
+              <h3 style="color: #999999; margin-top:0px; margin-bottom:0px; " class="le-font">Events</h3>
             </CENTER>
               <table class="table">
 
@@ -94,7 +50,7 @@
       <div id="myCarousel" class="carousel slide" data-pause="remove">
       <div class="carousel-inner">
         <div class="item active">
-          <img src="design/images/books-sm.jpg">
+          <img src="design/images/blubooks-sm.jpg">
           <div class="container jetstrap-highlighted">
             <div class="carousel-caption">
               <h1><p style="color:white">Welcome to UniHub</p></h1>
@@ -133,8 +89,11 @@
             <div class="span6">
               <h3>Recommended Meeting Spots</h3>
               <p>
-                Show stuff specific to location here. 
-                Cool idea: query google to find populated public places in the area so that we can recommend these as a meeting spot for exchanges.
+                <ul>
+                  <li> SUNY Oswego Campus Center, Oswego NY <a href="https://plus.google.com/111897804320258544860/about?gl=us&hl=en">view map</a>
+                  <li> Walmart, Oswego NY <a href="https://plus.google.com/111897804320258544860/about?gl=us&hl=en">view map</a>
+                  <li> Fast Trac, Oswego NY <a href="https://plus.google.com/111897804320258544860/about?gl=us&hl=en">view map</a>
+                </ul>
               </p>
             </div>
           </div>
@@ -187,7 +146,7 @@
                 </div>
               </div>
             </devjsp:itemInfo > 
-              <devjsp:forEachListing limit="10">
+              <devjsp:forEachListing limit="6">
               <div class="item">
                 <div class="container-fluid">
                   <div class="row -fluid">
@@ -214,9 +173,9 @@
                     <div class="span9 offset1">
                       <p></p>
                       <p>
-                        <i class="icon-user"></i> by <a href="#">John</a>
-                        | <a href="viewalllistings">Bikes</a>
-                        | <i class="icon-calendar"></i> Sept 16th, 2012
+                        <i class="icon-user"></i> by <a href="#">${listingUser}</a>
+                        | <a href="viewalllistings">${listingCategory}</a>
+                        | <i class="icon-calendar"></i> April 16th, 2013
                         | <i class="icon-comment"></i> <a href="#">3 Comments</a>
                         | <i class="icon-share"></i> <a href="#">39 Likes</a>
                       </p>
@@ -243,7 +202,8 @@
       <br>
       <!--My listings-->
       <% if (user != null){ %>
-      <div class="shadow">
+      <% if (lis.getArrayListSize() > 0) { %>
+      <div class="shadow scrollable-table" style="height:275px">
         <div class="container-fluid">
           <div class="span6">
             <h3>My Listings</h3>
@@ -271,7 +231,7 @@
           </div>
         </div>
       </div>
-      <%}%>  
+      <%}}%>  
 
       <hr>
       <footer>

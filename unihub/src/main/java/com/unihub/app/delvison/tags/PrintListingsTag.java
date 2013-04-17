@@ -41,6 +41,8 @@ public class PrintListingsTag extends SimpleTagSupport{
       this.printForUser(stuffs);
     }else if(this.limit != 0){
       this.printLimited(this.limit);
+   // }else if(user != null && this.limit != 0){
+    //  this.printLimitedForUser(this.limit);
     }else{
       this.printAll(stuffs);
     }  
@@ -69,7 +71,7 @@ public class PrintListingsTag extends SimpleTagSupport{
     for(int i=2;i<lim;i++){
       limitedList.add(stuffs.get(i));
     }
-
+    
     for (Stuff s: limitedList){
       String[] c = s.getContentArray();
       getJspContext().setAttribute("listingName",c[0]); 
@@ -95,7 +97,7 @@ public class PrintListingsTag extends SimpleTagSupport{
       String pic="";
 
       if (c[8].equals("none")){
-        pic = "http://placehold.it/320x200";
+        pic = "http://placehold.it/275x225";
       }else{
         pic = "listings/"+c[5]+"/"+c[8];
       }
@@ -103,7 +105,7 @@ public class PrintListingsTag extends SimpleTagSupport{
       getJspContext().setAttribute("listingDate",datePosted);
       getJspBody().invoke(null);
     }
-  }
+    }
 
   private void printForCategory(ArrayList<Stuff> stuffs) throws JspException, IOException{
     String cat = this.filter(category);
@@ -146,7 +148,55 @@ public class PrintListingsTag extends SimpleTagSupport{
         }
       }
   }
+/*
+  private void printLimitedForUser(int lim) throws JspException, IOException{
+    ArrayList<Stuff> stuffs = lis.getArrayList();
+    ArrayList<Stuff> limitedList= new ArrayList<Stuff>();
+    if (stuffs.size()> 0) {
+    limitedList.add(stuffs.get(0));
+    for(int i=1;i<lim;i++){
+      if (stuffs.get(i).user.equals(this.user)){
+        limitedList.add(stuffs.get(i));
+      }
+    }
+    if (limitedList.size() > lim){
+    for (Stuff s: limitedList){
+      String[] c = s.getContentArray();
+      getJspContext().setAttribute("listingName",c[0]); 
+      getJspContext().setAttribute("listingPrice",c[1]); 
+      getJspContext().setAttribute("listingUser",c[2]); 
+      getJspContext().setAttribute("listingUniversity",c[3]); 
+      getJspContext().setAttribute("listingLocation",c[4]);   
+      getJspContext().setAttribute("listingId",c[5]);
+      getJspContext().setAttribute("listingCategory",c[6]);
+      String desc = c[7];
+      char[] chars = desc.toCharArray();
+      int sz = chars.length;
+      String d="";
+      if(sz > 550){
+        d = String.copyValueOf(chars, 0, 550);
+        d = d+" ...";
+      }else{
+        d = c[7];
+      }
+      getJspContext().setAttribute("listingDescription",d);
+      DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+      String datePosted = formatter.format(s.timePosted);
+      String pic="";
 
+      if (c[8].equals("none")){
+        pic = "http://placehold.it/320x250";
+      }else{
+        pic = "listings/"+c[5]+"/"+c[8];
+      }
+      getJspContext().setAttribute("listingPhoto",pic);
+      getJspContext().setAttribute("listingDate",datePosted);
+      getJspBody().invoke(null);
+    }
+  }
+}
+  }
+*/
   private void printAll(ArrayList<Stuff> stuffs) throws JspException, IOException{
     /* print all listings */
       for (Stuff s: stuffs){
