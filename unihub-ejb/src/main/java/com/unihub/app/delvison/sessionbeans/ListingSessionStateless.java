@@ -13,11 +13,17 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
+import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManager;
+
 
 @Stateless
 @Remote
 @WebService
 public class ListingSessionStateless implements ListingObjEJBStateless {
+
+  @PersistenceContext
+  EntityManager em;
 
   @WebMethod
   public void ListingObjEJBStateless(){}
