@@ -11,18 +11,37 @@ import javax.annotation.*;
 import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.persistence.*;
+import javax.transaction.*;
 
 @Stateless
 @Remote(MessageBI.class)
 public class MessageBean implements MessageBI {
 
+    private int id;
     private String fromName, toName, contents;
     private Dbase ubase = Dbase.create();
-
+    @PersistenceContext
+    EntityManagerFactory emf;
+    EntityManager em;
+    @Resource
+    UserTransaction utx;
+     
     public void createMessage(String f, String t, String c) {
       fromName = f;
       toName = t;
       contents = c;
+      id = 0;
+      Message newMessage = new Message(f, t, c);
+    /*  em = emf.createEntityManager();
+      try {
+        utx.begin();
+        em.persist(newMessage);
+        utx.commit();
+      }catch (Exception e){
+        //utx.rollback();
+        System.out.println("bad transaction?");
+      }*/
     }
  
     public String getContents () {
@@ -35,14 +54,6 @@ public class MessageBean implements MessageBI {
 
     public String getFromName () {
       return fromName;
-    }
-
-    public void addToReceived(String tname) {
-      ubase.getUser(tname).addToReceived(new Message(fromName, toName, contents));
-    }
-
-    public void addToSent(String fname) {
-      ubase.getUser(fname).addToSent(new Message(fromName, toName, contents)); 
     }
  
     public String toString() {

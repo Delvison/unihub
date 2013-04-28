@@ -4,6 +4,7 @@ import java.io.*;
 import java.security.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.persistence.*;
 
 /**
  *
@@ -11,14 +12,33 @@ import javax.servlet.http.*;
  * 
  * A message model.
  */
+
+@Entity
 public class Message implements Serializable {
 
-    private String fromName, toName, contents;
+    private String fromName;
+    private String toName;
+    private String contents;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+ 
+    public Message() {
+      fromName = "";
+      toName = "";
+      contents = "";
+      id = 0;
+    }
 
     public Message(String from, String to, String c) {
       fromName = from;
       toName = to;
       contents = c;
+      id = 1;
+    }
+
+    public int getId () {
+      return id;
     }
 
     public String getContents () {

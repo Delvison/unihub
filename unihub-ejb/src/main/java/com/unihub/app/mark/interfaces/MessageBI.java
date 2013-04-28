@@ -3,6 +3,7 @@ package com.unihub.app;
 import javax.ejb.*;
 import javax.naming.*;
 import javax.naming.directory.*;
+import javax.persistence.*;
 
 @Remote
 public interface MessageBI {
@@ -10,7 +11,5 @@ public interface MessageBI {
   public String getContents();
   public String getToName();
   public String getFromName();
-  public void addToReceived(String tname);
-  public void addToSent(String fname);
   public String toString();
 }

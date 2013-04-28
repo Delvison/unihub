@@ -31,8 +31,8 @@ public void doPost(HttpServletRequest req,
   res.setContentType("text/html");
   
   msg.createMessage(fromName, toName, contents);
-  msg.addToReceived(toName);
-  msg.addToSent(fromName);
+//  msg.addToReceived(toName);
+//  msg.addToSent(fromName);
 
   res.sendRedirect( "user?u_id=" + ubase.getUser(toName).getId() );
 }
