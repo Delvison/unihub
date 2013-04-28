@@ -9,8 +9,8 @@ import com.unihub.app.MyEntity;
 
 @WebServlet("/test-entities")
 public class TestServlet extends HttpServlet {
-	@EJB 
-	HelloServiceInterface bean;
+	//@EJB 
+	//HelloServiceInterface bean;
 
 
 
@@ -22,8 +22,8 @@ public class TestServlet extends HttpServlet {
 		PrintWriter out = res.getWriter();
 		//out.println(bean.sayHello());
 
-		MyEntity e = new MyEntity("Hello","en");
-		bean.create(e);
+		//MyEntity e = new MyEntity("Hello","en");
+		//bean.create(e);
 
 
 		out.println("Did yo shit");
