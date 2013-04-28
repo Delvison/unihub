@@ -6,21 +6,23 @@ package com.unihub.app;
 import java.util.Date;
 import java.io.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Stuff implements Serializable{
   static final long serialVersionUID = 1;
-  public String name;
-  public String price;
-  public String user;
-  public String university;
-  public String location;
+  @Id //@GeneratedValue(strategy = GenerationType.IDENTITY)
   public int id;
+  @NotNull public String name;
+  @NotNull public String price;
+  @NotNull public String user;
+  @NotNull public String university;
+  @NotNull public String location;
   // have to add these
-  public String description;
-  public String bidMode; //if true, item to be sold in bidding mode (yes or no)
+  @NotNull public String description;
+  @NotNull public String bidMode; //if true, item to be sold in bidding mode (yes or no)
   public String highBidder; //holds value of the user who ahs the highest bid
-  public String category;
+  @NotNull public String category;
   public Date timePosted;
   private String dir;
   private ItemActivityObj activityLog;

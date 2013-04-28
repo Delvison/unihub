@@ -1,6 +1,14 @@
 <web-app>
   <display-name>Unihub</display-name>
-
+<!--
+<resource-ref>
+        <res-ref-name>MySqlDS</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+        <lookup-name>java:jboss/datasources/MySqlDS</lookup-name>
+</resource-ref>
+-->
   <servlet>
     <servlet-name>error</servlet-name>
     <jsp-file>error.jsp</jsp-file>
