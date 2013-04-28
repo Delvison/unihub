@@ -2,7 +2,7 @@ package com.unihub.app;
 
 import javax.ejb.*;
 import javax.annotation.Resource;
-import java.util.ArrayList;
+import java.util.*;
 import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -39,8 +39,9 @@ public class CommentSession implements CommentEJB {
 	}
 
 	@WebMethod
-	public ArrayList<Comment> getListOfComments(){
-		return null;// coms.getListOfComments();
+	public List<Comment> getListOfComments(){		
+		return em.createQuery("FROM Comment").getResultList();
+		//return coms.getListOfComments();
 	}
 
 }
