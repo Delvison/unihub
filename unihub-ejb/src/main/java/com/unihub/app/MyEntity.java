@@ -16,7 +16,7 @@ public class MyEntity implements Serializable {
 
 	@Column(name="language", nullable=false)
 	private String language;
-	 
+
 	public MyEntity() {}
  
 	public MyEntity(String message, String language) {
