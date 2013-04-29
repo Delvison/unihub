@@ -14,10 +14,14 @@ import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.util.ArrayList;
+import javax.persistence.*;
 
 @Stateful (name="UserStatefulBI")
 @Remote(UserStatefulBI.class)
 public class UserStatefulBean implements UserStatefulBI {
+  @PersistenceContext
+  EntityManager em;
+
   @EJB
   Authenticate bean;
 
@@ -26,13 +30,18 @@ public class UserStatefulBean implements UserStatefulBI {
   public void createUser(String name, String pass, String email, String school) {
     byte[] sal = null;
     byte[] encryptedpass = null;
+    User user = null;
     try {
       sal = bean.generateSalt();
       encryptedpass = bean.getEncryptedPassword(pass, sal);
+      /*This part is to actually persist in the database*/
+      user = new User(name, encryptedpass, email, school, sal);
+      em.persist(user);
     }
     catch(NoSuchAlgorithmException e) {}
     catch(InvalidKeySpecException e) {}
     ubase.addUser(new User(name, encryptedpass, email, school, sal));
+    
   }
 
   public User getUser(String name) {

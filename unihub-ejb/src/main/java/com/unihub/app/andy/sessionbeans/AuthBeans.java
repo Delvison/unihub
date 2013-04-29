@@ -17,10 +17,18 @@ import java.util.Arrays;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+/*
+Just getting the info pertinent to getting users password and salt
+*/
+import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 @Remote
 @Stateless
 public class AuthBeans implements Authenticate {
-
+@PersistenceContext
+EntityManager em;
 
 
 
@@ -28,8 +36,22 @@ public class AuthBeans implements Authenticate {
 	public boolean authenticate(String userName, String password) 
 		throws NoSuchAlgorithmException, InvalidKeySpecException {
 		
+			String query = "SELECT * FROM users WHERE name = ?";
+			Query q = em.createNativeQuery(query, User.class);
+			q.setParameter(1, userName);
+			ArrayList<User> list = (ArrayList<User>)q.getResultList();
+
 			Dbase dbase = Dbase.create();
 			User user = dbase.getUser(userName);
+
+			for(User u : list){
+				if(userName.equals(u.getName())) {
+					user = u;
+					break;
+				}
+				
+			}
+			
 			/*Temporarily keeping encrypted password here locally
 			to not change too much code until it is necessary
 			since ideally I will have that sent from Auth.java

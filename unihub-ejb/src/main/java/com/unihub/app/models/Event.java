@@ -6,20 +6,33 @@ package com.unihub.app;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.persistence.*;
 
+@Entity
+@Table(name="events")
 public class Event implements Serializable{
 
-	int id;
-	String title;
-	String location;
-	String description;
-	Calendar cal = Calendar.getInstance();
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private int id;
+
+	@Column(name="title", nullable=false)
+	private String title;
+	@Column(name="location", nullable=false)
+	private String location;
+	@Column(name="description", nullable=false)
+	private String description;
+	@Column(name="date", nullable=false)
+	private Calendar cal = Calendar.getInstance();
 
 
 	/*the followers array just holds the ID of user following
 	I need to work with Mark to get it correctly show users
 	since I am not sure how he does this*/
+	@Transient
 	ArrayList<Integer> followers = new ArrayList<Integer>();
+
+	public Event(){}
 
 	public Event(int id, String title, String[] date, String time, 
 		String location, String description) {
