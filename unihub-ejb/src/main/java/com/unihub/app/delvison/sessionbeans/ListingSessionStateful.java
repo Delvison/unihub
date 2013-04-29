@@ -8,15 +8,19 @@ import javax.ejb.Stateful;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.List;
 import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
+import javax.persistence.*;
 
 @Stateful (name="ListingObjEJBStateful") //should be stateless
 @Remote
 public class ListingSessionStateful implements ListingObjEJBStateful {
+  @PersistenceContext
+  EntityManager em;
 
   public ArrayList<Stuff> userSearch(String userSearched){
     ListingsObj lis = ListingsObj.create();
@@ -31,12 +35,22 @@ public class ListingSessionStateful implements ListingObjEJBStateful {
   
   public ArrayList<Stuff> getArrayList(){
     ListingsObj lis = ListingsObj.create();
-    return lis.stuffs;
+    return (ArrayList) this.getList();
   }
 
   public int getArrayListSize(){
-    ListingsObj lis = ListingsObj.create();
-    return lis.stuffs.size();
+    int i = 0;
+    String query ="SELECT * FROM Stuff ORDER BY id DESC LIMIT 1;";
+    Query q = em.createNativeQuery(query, Stuff.class);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    Stuff a = p.get(0);
+    if (q != null){ i = a.getId(); }
+    return i;
   }
 
+  public List getList(){
+   String query = "SELECT * FROM Stuff;";
+   Query q = em.createNativeQuery(query, Stuff.class);
+   return q.getResultList(); 
+  }
 }

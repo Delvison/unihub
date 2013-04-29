@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Stuff implements Serializable{
   static final long serialVersionUID = 1;
-  @Id //@GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   public int id;
   @NotNull public String name;
   @NotNull public String price;
@@ -19,24 +19,26 @@ public class Stuff implements Serializable{
   @NotNull public String university;
   @NotNull public String location;
   // have to add these
-  @NotNull public String description;
+  @Column(name="description", nullable=false, length=1000) public String description;
   @NotNull public String bidMode; //if true, item to be sold in bidding mode (yes or no)
   public String highBidder; //holds value of the user who ahs the highest bid
   @NotNull public String category;
   public Date timePosted;
   private String dir;
-  private ItemActivityObj activityLog;
+  @Transient private ItemActivityObj activityLog;
   private int picAmount; //amount of pictures uploaded for the item
   private String thumbnail;
+
+  public Stuff(){}
   
-  public Stuff(int id, String user, String name, String price, String university,
+  public Stuff(String user, String name, String price, String university,
   String location, String category, String description, Date now, String bid){
     this.user = user;
     this.name = name;
     this.price = price;
     this.university = university;
     this.location = location;
-    this.id = id;
+    //this.id = id;
     this.category = category;
     this.description = description;
     this.timePosted = now;

@@ -127,7 +127,7 @@
                         ${itemDescription}
                       </p>
                       <p>
-                        <a class="btn" href="item?${itemId}">View Listing</a>
+                        <a class="btn" href="item?id=${itemId}">View Listing</a>
                       </p>
                     </div>
                   </div>

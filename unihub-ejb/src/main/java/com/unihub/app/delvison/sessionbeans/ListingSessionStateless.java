@@ -13,9 +13,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
-import javax.persistence.PersistenceContext;
-import javax.persistence.EntityManager;
-
+import javax.persistence.*;
 
 @Stateless
 @Remote
@@ -31,21 +29,21 @@ public class ListingSessionStateless implements ListingObjEJBStateless {
  @WebMethod
  public int addStuff(String user, String name, String price, String university,
   String location, String category, String description, String bid) {
-    ListingsObj lis = ListingsObj.create();
+    int i = 0;
     Date now = new Date();
-    int i = lis.addStuff(user, name, price, university, location, category,
-                         description, now, bid);    
+    Stuff as = new Stuff(user, name, price, university, location,
+     category, description, now, bid);
+    em.persist(as);
+    i = as.getId();
     return i;
   }
       
   private Stuff getStuff(int passedId) {
-    ListingsObj lis = ListingsObj.create();
-    Stuff stuff = lis.stuffs.get(0);
-    for (Stuff s: lis.stuffs){
-      if (s.getId() == passedId)
-        stuff = s;
-    }
-    return stuff;
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, passedId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0);
   }
 
   public void removeItem(int id){
@@ -60,46 +58,63 @@ public class ListingSessionStateless implements ListingObjEJBStateless {
   
   @WebMethod       
    public void updateContent(int id, String name, String price, String university, 
-     String location, String category, String description, String bid){
-    ListingsObj lis = ListingsObj.create();
-    Stuff s = lis.getStuff(id);
+                String location, String category, String description, String bid){
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, id);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    Stuff s = p.get(0);
     s.updateContent(name,price,university,location,category,description,bid);
+    em.merge(s);
   }
     @WebMethod    
   public int getPicAmount(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getPicAmount();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    int i = p.get(0).getPicAmount();
+    return i;
   }
    @WebMethod     
   public String getName(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getName();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0).getName();
   }
   @WebMethod      
   public String getPrice(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getPrice();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0).getPrice();
   }
     @WebMethod     
   public String getUser(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getUser();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0).getUser();
   }
     @WebMethod    
   public String getUniversity(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getUniversity();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0).getUniversity();
   }
   
   public String getLocation(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getLocation();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0).getLocation();
   }
   @WebMethod      
   public int getId(int itemId){
@@ -107,43 +122,55 @@ public class ListingSessionStateless implements ListingObjEJBStateless {
     Stuff a = lis.getStuff(itemId);
     return a.getId();
   }
-   @WebMethod     
+  @WebMethod     
   public String getDescription(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getDescription();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0).getDescription();
   }
    @WebMethod     
   public String getBidMode(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getBidMode();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0).getBidMode();
   }
   @WebMethod      
   public String getHighBidder(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getHighBidder();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0).getHighBidder();
   }
   @WebMethod      
   public String getCategory(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getCategory();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0).getCategory();
   }
   @WebMethod      
   public String getTimePosted(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
     DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    String datePosted = formatter.format(a.getTimePosted());
+    String datePosted = formatter.format(p.get(0).getTimePosted());
     return datePosted;
   }
   @WebMethod      
   public String getDir(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    return a.getDir();
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    return p.get(0).getDir();
   }
   @WebMethod      
   public void setDir(int itemId, String dir){

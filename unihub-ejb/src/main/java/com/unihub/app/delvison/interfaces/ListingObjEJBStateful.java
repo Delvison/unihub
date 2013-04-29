@@ -6,10 +6,13 @@ import java.util.Date;
 import javax.naming.*;
 import javax.naming.directory.*;
 import javax.jws.WebService;
+import java.util.List;
 
 @Remote
 public interface ListingObjEJBStateful {
   public ArrayList<Stuff> userSearch(String userSearched);
   public ArrayList<Stuff> getArrayList();
   public int getArrayListSize();
+  public List getList();
+
 }

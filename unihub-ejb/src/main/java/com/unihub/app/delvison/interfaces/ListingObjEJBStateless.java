@@ -30,5 +30,6 @@ public interface ListingObjEJBStateless {
   public void setPicAmount(int itemId);
   public void removeItem(int id);
   public void setThumbnail(int itemId, String t);
+  //public int getId(String user, String name);
   //public String getActivityLog();
 }

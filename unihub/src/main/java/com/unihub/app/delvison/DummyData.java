@@ -10,7 +10,7 @@ public class DummyData{
 
     Context context = new InitialContext();
     ListingObjEJBStateless lis = (ListingObjEJBStateless) context.lookup("ejb:unihub-ear/unihub-ejb//ListingSessionStateless!com.unihub.app.ListingObjEJBStateless");
-    
+
     String user = "User1";
     String university = "SUNY Oswego";
     String location = "NY";    
@@ -29,7 +29,8 @@ public class DummyData{
     lis.addStuff("Mark", "Fender Mustang II amp", "150", university, location, "Musical Instruments", "Essentially brand new Fender Mustang II 1x12 40 watt modeling amp. Has seen very little use, excellent condition. I have no use for it, have upgraded to a larger amp. FEATURES: 40W, 12\" Fender Special Design speaker, All-new authentic amp modeling, 8 amp models, 24 effects from an all-new DSP platform, USB connectivity, 1/8\" headphone jack (doubles as a speaker-emulated line out), 1/8\" aux input, 17.25\"H x 18.25\"W x 8.7\"D, 24 lb.",  "yes");  
     lis.addStuff("Andy", "2010 Honda Civic R1995P LX", "11999", university, location, "Cars", "Body: 2 Dr Coupe, Color: Gray, Transmission: Automatic, Mileage: 79906, Vin: 2HGFG1B60AH505676, Drivetrain: FWD, Interior: Gray, Engine: 4 Cyl., Stock Id: R1995P", bid);  
     lis.addStuff("Yulle", "NY Yankees/Jeter Fan", "125", university, location, "Clothes", "Majestic Derek Jeter Replicia Jersey Size L + Majestic/Cool Base Batting Practice Jersey Size L + Majestic Yankees Zip-Up Jacket Size L. All lightly worn and in excellent condition", bid);  
-
+    
+   
   }
 
 }

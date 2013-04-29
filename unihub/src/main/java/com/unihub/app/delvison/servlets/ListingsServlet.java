@@ -57,7 +57,7 @@ public class ListingsServlet extends HttpServlet {
       /*EDIT THE LISTING */
         if (rm != null){
           lis.removeItem(Integer.parseInt(itemId));
-          res.sendRedirect("home");
+          res.sendRedirect("index");
         }else{
           lis.updateContent(Integer.parseInt(itemId), name, price, university, loc, cat, desc, bid);
           res.sendRedirect("item?id="+itemId);
