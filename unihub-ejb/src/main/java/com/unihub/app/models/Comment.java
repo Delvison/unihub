@@ -3,17 +3,30 @@ This class is a model for comments
 */
 package com.unihub.app;
 import java.io.*;
+import javax.persistence.*;
 
+@Entity
 public class Comment implements Serializable{
+  
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  public int commentId;
+  
+  @Column(name="user", nullable=false)
   String user;
-  int commentId;
+  
+  @Column(name="itemId", nullable=false)
   public int itemId;
+  
+  @Column(name="comment", nullable=true)
   String comment;
   
-  public Comment(String user, String comment, int commentId, int itemId){
+  public Comment(){
+  }
+
+  public Comment(String user, String comment, int itemId){
     this.user = user;
     this.comment = comment;
-    this.commentId = commentId;
     this.itemId = itemId;
   }
   

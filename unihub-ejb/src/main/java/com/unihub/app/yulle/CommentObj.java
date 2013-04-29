@@ -21,7 +21,7 @@ public class CommentObj{
   
   public void addComment(String user, String comment, int itemId){
     id = id+1;
-    Comment a = new Comment(user,comment,id, itemId);
+    Comment a = new Comment(user,comment,itemId);
     comments.add(a);
     /* ADD THE COMMENT TO THE ACTIVITY LOG */
     String activity = user+" has posted a comment";
