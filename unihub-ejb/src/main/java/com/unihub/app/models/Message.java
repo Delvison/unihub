@@ -27,14 +27,12 @@ public class Message implements Serializable {
       fromName = "";
       toName = "";
       contents = "";
-      id = 0;
     }
 
     public Message(String from, String to, String c) {
       fromName = from;
       toName = to;
       contents = c;
-      id = 1;
     }
 
     public int getId () {

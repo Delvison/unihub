@@ -10,10 +10,12 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import javax.ejb.*;
 import javax.annotation.*;
+import javax.persistence.*;
+import javax.transaction.*;
 import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import java.util.ArrayList;
+import java.util.*;
 
 @Stateful (name="UserStatefulBI")
 @Remote(UserStatefulBI.class)
@@ -22,18 +24,8 @@ public class UserStatefulBean implements UserStatefulBI {
   Authenticate bean;
 
   private Dbase ubase = Dbase.create();
-
-  public void createUser(String name, String pass, String email, String school) {
-    byte[] sal = null;
-    byte[] encryptedpass = null;
-    try {
-      sal = bean.generateSalt();
-      encryptedpass = bean.getEncryptedPassword(pass, sal);
-    }
-    catch(NoSuchAlgorithmException e) {}
-    catch(InvalidKeySpecException e) {}
-    ubase.addUser(new User(name, encryptedpass, email, school, sal));
-  }
+  @PersistenceContext
+  EntityManager em;
 
   public User getUser(String name) {
     return ubase.getUser(name);
@@ -44,31 +36,40 @@ public class UserStatefulBean implements UserStatefulBI {
   }
 
   public String getName(int uId) {
-    return ubase.getUser(uId).getName();
+    User u = em.find(User.class, uId);
+    return u.getName();
+    //return ubase.getUser(uId).getName();
   }
 
   public String getEmail(int uId) {
-    return ubase.getUser(uId).getEmail();
+    User u = em.find(User.class, uId);
+    return u.getEmail();
   }
 
   public String getSchool(int uId) {
-    return ubase.getUser(uId).getSchool();
+    User u = em.find(User.class, uId);
+    return u.getSchool();
   }
 
   public byte[] getEncryptedPassword(int uId) {
-    return ubase.getUser(uId).getEncryptedPassword();
+    User u = em.find(User.class, uId);
+    return u.getEncryptedPassword();
   }
 
   public String getGravatar(String name) throws NoSuchAlgorithmException {
     return ubase.getUser(name).gravatar();
   }
 
-  public ArrayList<Message> getSentMessages(String name) {
-    return ubase.getUser(name).getSentMessages();
+  public List<Message> getSentMessages(String name) {
+    String quer = "select * from Message where fromName = \"" + name + "\"";
+    Query q = em.createNativeQuery(quer, Message.class);
+    return q.getResultList();
   }
 
-  public ArrayList<Message> getReceivedMessages(String name) {
-    return ubase.getUser(name).getReceivedMessages();
+  public List<Message> getReceivedMessages(String name) {
+    String quer = "select * from Message where toName = \"" + name + "\"";
+    Query q = em.createNativeQuery(quer, Message.class);
+    return q.getResultList();
   }
 
   /**
@@ -128,11 +129,13 @@ public class UserStatefulBean implements UserStatefulBI {
   // DOES THIS GO IN A SEPARATE BEAN? MAYBE.
 
   public int getNumUsers() {
-    return ubase.getUsersList().size();
+    return getAllUsers().size();
   }
 
-  public ArrayList<User> getAllUsers() {
-    return ubase.getUsersList();
+  public List<User> getAllUsers() {
+    String quer = "select * from User";
+    Query q = em.createNativeQuery(quer, User.class);
+    return q.getResultList();
   }
   
 }

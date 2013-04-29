@@ -29,7 +29,7 @@ public class UsersTag extends SimpleTagSupport{
   }
 
   public void doTag() throws JspException, IOException{
-      ArrayList<User> users = usr.getAllUsers();
+      List<User> users = usr.getAllUsers();
       for(User u: users) {
         getJspContext().setAttribute("userName", u.getName());
         getJspContext().setAttribute("userId", u.getId());

@@ -68,8 +68,8 @@
 
         	<div class="row-fluid bottom-buffer">
         		<div class="span6">
-	        		<h4>Some title</h4>
-	        		<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+	        		<h4>Become an active buyer/seller</h4>
+	        		<p>On a listing page, you are able to quickly get in contact with the seller by leaving a comment. Unlike other services this doesn't require you to give your personal phone number or email for communication. If you are unsure of an asking price you can simply set your item to bid mode and watch the offers take off! </p>
         		</div>
         		<div class="span6" style="height: 300px; background: #000">
 

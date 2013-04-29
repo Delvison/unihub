@@ -6,17 +6,22 @@ import java.util.ArrayList;
 import java.security.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-
+import javax.persistence.*;
 /**
  *
  * @author Mark
  * 
  * A user model.
  */
+@Entity
 public class User implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+  
     private String name, school, email;
-    private int id, reputation;
+    private int reputation;
     private ArrayList<Message> sentMessages, receivedMessages;
     private ArrayList<String> watched;
     private ArrayList<Integer> voted;
@@ -31,7 +36,6 @@ public class User implements Serializable {
     My version for byte[] password incase your code depends on it
     which I feel it does.*/
     public User(String n, byte[] p, String e, String s, byte[] sal) {
-        //id = -1;
         name = n;
         encryptedPassword = p;
         salt = sal;
@@ -50,7 +54,6 @@ public class User implements Serializable {
 
 
     public User(String n, String e, String s) {
-        id = -1;
         name = n;
         email = e;
         school = s;
@@ -62,7 +65,6 @@ public class User implements Serializable {
     }
 
     public User() {
-      id = -1;
       name = "bob";
       email = "bob@bob.com";
       school = "bobU";

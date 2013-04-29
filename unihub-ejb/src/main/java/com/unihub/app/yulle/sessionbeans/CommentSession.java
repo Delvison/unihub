@@ -8,32 +8,39 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
+import javax.persistence.*;
+import javax.transaction.*;
 
 @Stateful
 @Remote(CommentEJB.class)
 @WebService
 public class CommentSession implements CommentEJB {
-	CommentObj coms = CommentObj.create();
+	//CommentObj coms = CommentObj.create();
 
+	@PersistenceContext
+	EntityManager em;
+	
 	@WebMethod
-	public void addComment(String user, String comment, int itemId){
-		coms.addComment(user,comment,itemId);
+	public void addComment(String user, String comment, int itemId){		
+		Comment c = new Comment(user, comment, itemId);
+		em.persist(c);
+		//coms.addComment(user,comment,itemId);
 	}
 
 	@WebMethod
 	public Comment getComment(int passedId){
-		return coms.getComment(passedId);
+		return null;//coms.getComment(passedId);
 	}
 
 	@WebMethod
 	public String[] getContentArray(int passedId){
-		Comment c = coms.getComment(passedId);
-		return c.getContentArray();
+		//Comment c = coms.getComment(passedId);
+		return null;//c.getContentArray();
 	}
 
 	@WebMethod
 	public ArrayList<Comment> getListOfComments(){
-		return coms.getListOfComments();
+		return null;// coms.getListOfComments();
 	}
 
 }

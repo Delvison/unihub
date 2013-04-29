@@ -22,26 +22,15 @@ public class MessageBean implements MessageBI {
     private String fromName, toName, contents;
     private Dbase ubase = Dbase.create();
     @PersistenceContext
-    EntityManagerFactory emf;
     EntityManager em;
-    @Resource
-    UserTransaction utx;
      
     public void createMessage(String f, String t, String c) {
       fromName = f;
       toName = t;
       contents = c;
       id = 0;
-      Message newMessage = new Message(f, t, c);
-    /*  em = emf.createEntityManager();
-      try {
-        utx.begin();
-        em.persist(newMessage);
-        utx.commit();
-      }catch (Exception e){
-        //utx.rollback();
-        System.out.println("bad transaction?");
-      }*/
+      Message m = new Message(f, t, c);
+      em.persist(m);
     }
  
     public String getContents () {

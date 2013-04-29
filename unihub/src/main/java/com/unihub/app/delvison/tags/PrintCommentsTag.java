@@ -21,7 +21,7 @@ public class PrintCommentsTag extends SimpleTagSupport{
   }
   
   public void doTag() throws JspException, IOException{
-    ArrayList<Comment> cmt = coms.getListOfComments();
+    /*ArrayList<Comment> cmt = coms.getListOfComments();
     for (Comment c: cmt){
       if (c.itemId == itemId){
         String[] co = c.getContentArray();
@@ -29,7 +29,7 @@ public class PrintCommentsTag extends SimpleTagSupport{
         getJspContext().setAttribute("theComment",co[1]); //theComment
         getJspBody().invoke(null);
       }
-    }
+    }*/
   }
 }
 

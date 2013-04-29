@@ -6,8 +6,13 @@ import java.util.Date;
 import javax.ejb.*;
 import java.io.*;
 import javax.persistence.*;
+import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManager;
 
 public class ListingsObj implements Serializable{
+  @PersistenceContext
+  EntityManager em;
+
   public ArrayList<Stuff> stuffs;
   int id;
   
@@ -23,6 +28,7 @@ public class ListingsObj implements Serializable{
     Stuff a = new Stuff(id, user, name, price, university, location, category,
                          description, now, bid);
     stuffs.add(a);
+    //em.persist(a);
     return id;
   }
   

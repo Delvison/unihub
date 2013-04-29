@@ -14,6 +14,8 @@ public class UserServlet extends HttpServlet {
 
 @EJB
 UserStatefulBI usr;
+@EJB
+UserStatelessBI usrsl;
 HttpSession session;
 
 @Override
@@ -33,6 +35,7 @@ public void doGet(HttpServletRequest req,
   if( u_id == null ) {
     address = "index";
   }else if( u_id.equals("all") ) {
+    populate();
     address = "mark/allusers.jsp";
   }else if( usr.getName(Integer.parseInt(u_id)).equals(curruname) &&
               (curruname != "") ) {
@@ -44,5 +47,38 @@ public void doGet(HttpServletRequest req,
   RequestDispatcher dispatcher = req.getRequestDispatcher(address);
   dispatcher.include(req, res);
 }
+
+  /**
+   * populates the db arraylist with some dummy data
+   */
+  public void populate() {
+    Dbase ubase = Dbase.create();
+    if(ubase.getUsersList().size() == 0) {
+    usrsl.createUser("Mark",
+                  "pass",
+                  "mwillson@oswego.edu",
+                  "Oswego");
+    usrsl.createUser("Yulle",
+                  "pass",
+                  "byullegl@oswego.edu",
+                  "Oswego");
+    usrsl.createUser("Delvison",
+                  "pass",
+                  "castillo@oswego.edu",
+                  "Oswego");
+    usrsl.createUser("Andy",
+                  "pass",
+                  "avaldez@oswego.edu",
+                  "Oswego");
+    for(int i = 0; i < 4; i++) {
+    usrsl.createUser("User"+i,
+                  "pass",
+                  "user@example.edu",
+                  "Example University");
+    }
+    }
+  }
+
+
 
 }
