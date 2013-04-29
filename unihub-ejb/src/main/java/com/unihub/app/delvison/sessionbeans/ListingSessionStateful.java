@@ -21,36 +21,51 @@ import javax.persistence.*;
 public class ListingSessionStateful implements ListingObjEJBStateful {
   @PersistenceContext
   EntityManager em;
-
+  
+  //get an arraylist of 'Stuff' posted by a particular user
   public ArrayList<Stuff> userSearch(String userSearched){
-    ListingsObj lis = ListingsObj.create();
-    ArrayList<Stuff> listingsByTheUser = new ArrayList<Stuff>();
-    for (Stuff s: lis.stuffs){
-      if(s.getUser().equals(userSearched)){
-        listingsByTheUser.add(s);
-      }
-    }
-    return listingsByTheUser; 
+    String query ="SELECT * FROM Stuff WHERE user=\'"+userSearched+"\' ORDER BY"+
+             " timePosted DESC;";
+    Query q = em.createNativeQuery(query, Stuff.class);
+    return (ArrayList)q.getResultList();
   }
   
+  //get an arraylist of all listings
   public ArrayList<Stuff> getArrayList(){
     ListingsObj lis = ListingsObj.create();
     return (ArrayList) this.getList();
   }
 
+  //verifies that the Database is not empty
   public int getArrayListSize(){
     int i = 0;
-    String query ="SELECT * FROM Stuff ORDER BY id DESC LIMIT 1;";
+    String query ="SELECT * FROM Stuff ORDER BY id DESC LIMIT 7;";
     Query q = em.createNativeQuery(query, Stuff.class);
     ArrayList<Stuff> p = (ArrayList)q.getResultList();
-    Stuff a = p.get(0);
-    if (q != null){ i = a.getId(); }
+    if (q != null && p.size()>1){
+      i = p.size(); 
+    }
     return i;
   }
 
+  //get a list of all 'Stuff' objects
   public List getList(){
    String query = "SELECT * FROM Stuff;";
    Query q = em.createNativeQuery(query, Stuff.class);
    return q.getResultList(); 
+  }
+
+  // return an arraylist of 'Stuff' belonging to a user
+  public ArrayList<Stuff> getListForUser(int limit, String user){
+    String query = " ";
+    if (limit > 1){
+      query ="SELECT * FROM Stuff WHERE user=\'"+user+"\' ORDER BY"+
+             " timePosted DESC LIMIT "+limit+";";
+    } else {
+      query ="SELECT * FROM Stuff WHERE user=\'"+user+"\' ORDER BY"+
+             " timePosted DESC;";
+    }
+    Query q = em.createNativeQuery(query, Stuff.class);
+    return (ArrayList)q.getResultList();
   }
 }

@@ -14,5 +14,7 @@ public interface ListingObjEJBStateful {
   public ArrayList<Stuff> getArrayList();
   public int getArrayListSize();
   public List getList();
+  public ArrayList<Stuff> getListForUser(int limit, String user);
+
 
 }
