@@ -14,22 +14,37 @@ import javax.persistence.*;
  * A user model.
  */
 @Entity
+@Table(name="users")
 public class User implements Serializable {
     
+    @Column(name="name", nullable=false) 
+    private String name;
+    @Column(name="school", nullable=false)
+    private String school;
+    @Column(name="email", nullable=false)
+    private String email;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-  
-    private String name, school, email;
+    @Transient    
     private int reputation;
-    private ArrayList<Message> sentMessages, receivedMessages;
+
+    @Transient
+    private ArrayList<Message> sentMessages;
+    @Transient
+    private ArrayList<Message> receivedMessages;
+    @Transient
     private ArrayList<String> watched;
+    @Transient
     private ArrayList<Integer> voted;
 
     /*
     The byte[] array will be the hashed password
     */
+    @Column(name="password", nullable=false)
     byte[] encryptedPassword;
+    @Column(name="salt", nullable=false)
     byte[] salt;
 
     /*
@@ -65,6 +80,7 @@ public class User implements Serializable {
     }
 
     public User() {
+      /*
       name = "bob";
       email = "bob@bob.com";
       school = "bobU";
@@ -73,6 +89,7 @@ public class User implements Serializable {
       receivedMessages = new ArrayList<Message>();
       watched = new ArrayList<String>();
       voted = new ArrayList<Integer>();
+      */
     }
 
     public boolean isLoggedIn(HttpSession session) {
