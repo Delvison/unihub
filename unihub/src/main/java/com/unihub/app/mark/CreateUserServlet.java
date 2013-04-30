@@ -47,6 +47,7 @@ public void doPost(HttpServletRequest req,
   //not yet implemented
   //usr.sendConfirmationEmail();
   out.println( "A User was Created" );
+
   try {
   if(bean.authenticate(uname, pass)) {
     session.removeAttribute("path_for_login");
@@ -57,6 +58,7 @@ public void doPost(HttpServletRequest req,
   } catch(NoSuchAlgorithmException e) {}
     catch(InvalidKeySpecException e) {}
   
+
 }
 
 }

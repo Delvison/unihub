@@ -57,7 +57,8 @@
 
 
         	<div class="row-fluid bottom-buffer">
-        		<div class="span6" style="height: 300px; background: #000">
+        		<div class="span6" style="height: 300px; background: #fff">
+                                <img src="design/images/ScreenShot1.png" >
 
         		</div>
         		<div class="span6" >
@@ -71,7 +72,8 @@
 	        		<h4>Become an active buyer/seller</h4>
 	        		<p>On a listing page, you are able to quickly get in contact with the seller by leaving a comment. Unlike other services this doesn't require you to give your personal phone number or email for communication. If you are unsure of an asking price you can simply set your item to bid mode and watch the offers take off! </p>
         		</div>
-        		<div class="span6" style="height: 300px; background: #000">
+        		<div class="span6" style="height: 300px; background: #fff">
+                                <img src="design/images/ScreenShot2.png">
 
         		</div>
         	</div>
@@ -79,7 +81,8 @@
 
 
         	<div class="row-fluid bottom-buffer">
-        		<div class="span6" style="height: 300px; background: #000">
+        		<div class="span6" style="height: 300px; background: #fff">
+                                <img src="design/images/image.jpeg" style="height:300px">
         		</div>
         		<div class="span5">
         			<h3>We Are Students. Just like you.</h3>

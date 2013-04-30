@@ -7,6 +7,7 @@ import java.security.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.persistence.*;
+
 /**
  *
  * @author Mark
@@ -17,7 +18,7 @@ import javax.persistence.*;
 @Table(name="users")
 public class User implements Serializable {
     
-    @Column(name="name", nullable=false) 
+    @Column(name="name", nullable=false)
     private String name;
     @Column(name="school", nullable=false)
     private String school;
@@ -27,7 +28,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Transient    
+    @Transient
     private int reputation;
 
     @Transient
@@ -81,6 +82,7 @@ public class User implements Serializable {
 
     public User() {
       /*
+      id = -1;
       name = "bob";
       email = "bob@bob.com";
       school = "bobU";

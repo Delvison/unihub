@@ -16,16 +16,17 @@ import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.util.*;
+import javax.persistence.*;
 
 @Stateful (name="UserStatefulBI")
 @Remote(UserStatefulBI.class)
 public class UserStatefulBean implements UserStatefulBI {
-  @EJB
-  Authenticate bean;
 
-  private Dbase ubase = Dbase.create();
   @PersistenceContext
   EntityManager em;
+  @EJB
+  Authenticate bean;
+  private Dbase ubase = Dbase.create();
 
   public User getUser(String name) {
     return ubase.getUser(name);
@@ -133,7 +134,7 @@ public class UserStatefulBean implements UserStatefulBI {
   }
 
   public List<User> getAllUsers() {
-    String quer = "select * from User";
+    String quer = "select * from users";
     Query q = em.createNativeQuery(quer, User.class);
     return q.getResultList();
   }

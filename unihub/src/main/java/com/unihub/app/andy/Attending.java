@@ -16,6 +16,8 @@ import javax.ejb.*;
 
 @WebServlet("/attend")
 public class Attending extends HttpServlet {
+	@EJB
+	Events bean;
 
 	public void doGet(HttpServletRequest req, 
 				HttpServletResponse res) throws ServletException, IOException{
@@ -49,8 +51,12 @@ public class Attending extends HttpServlet {
 				res.sendRedirect("login");
 
 			} else {
+				/*Will need to use */
 				Dbase dbase = Dbase.create();
 				User user = dbase.getUser(userName);
+
+				/*Does nothing for now since I need user*/
+				boolean result = bean.attemptAttending(id, userName);
 
 				EventListHolder holder = EventListHolder.getInstance();
 				Event event = holder.findEventWithId(id);
