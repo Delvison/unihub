@@ -18,10 +18,6 @@ public class EventsBean implements Events {
 	public void addEvent(String title, String[] date, String time, 
 		String location, String description) {
 
-		//EventListHolder holder = EventListHolder.getInstance();
-
-		//holder.addEvent(title, date, time, location, description);
-
 		/*
 		Just creating this to test addition of my events entity to database*/
 		Event event = new Event(0, title, date, time, location, description);
@@ -40,13 +36,35 @@ public class EventsBean implements Events {
 
 	}//end of getEvents
 
-	public boolean attemptAttending(int eventId, String userName){
+	public Event getEvent(int eventId) {
+
+		String query = "SELECT * FROM events WHERE id = ?";
+		Query q = em.createNativeQuery(query, Event.class);
+		q.setParameter(1, eventId);
+
+		return (Event)q.getSingleResult();
+	}//end of getEvent(String)
+
+	public boolean attemptAttending(Event event, String userName){
 		//this will return true if attempt succeeded and I know user has not followed
 		//false if user has followed already
-		/*
-		I honestly cannot do much without Marks stuff yet
-		*/
-		return false;
+		User u = null;
+		
+
+			try {
+				String query = "SELECT * FROM users WHERE name = ?";
+				Query q = em.createNativeQuery(query, User.class);
+				q.setParameter(1, userName);
+				u = (User)q.getSingleResult();
+			}
+			catch(Exception ex) {
+				return false;
+			}
+
+			event.getFollowers().add(u);
+			em.merge(event);
+
+		return true;
 
 	}//end of attemptAttend()
 
