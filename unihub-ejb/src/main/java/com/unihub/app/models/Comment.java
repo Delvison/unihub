@@ -21,6 +21,9 @@ public class Comment implements Serializable{
   @Column(name="comment", nullable=true)
   String comment;
   
+  public Comment(){
+  }
+
   public Comment(String user, String comment, int itemId){
     this.user = user;
     this.comment = comment;

@@ -127,7 +127,7 @@
                         ${itemDescription}
                       </p>
                       <p>
-                        <a class="btn" href="item?${itemId}">View Listing</a>
+                        <a class="btn" href="item?id=${itemId}">View Listing</a>
                       </p>
                     </div>
                   </div>
@@ -200,15 +200,18 @@
       <%}%>
 
       <br>
-      <!--My listings-->
+      <!--My listings portion-->
       <% if (user != null){ %>
       <% if (lis.getArrayListSize() > 0) { %>
-      <div class="shadow scrollable-table" style="height:275px">
+      <div class="shadow" style="height:290px">
         <div class="container-fluid">
           <div class="span6">
-            <h3>My Listings</h3>
+            <ul class="inline">
+              <li><h3>My Listings</h3></li>
+              <li><a href="#">View all</a></li>
+            </ul>
             <table class="table table-striped">
-              <devjsp:forEachListing user="<%=user%>">
+              <devjsp:forEachListing user="<%=user%>" limit="4">
                 <tr>
                   <td valign="center">
                     <ul class="inline">

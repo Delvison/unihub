@@ -25,7 +25,7 @@ public class ListingsObj implements Serializable{
  public int addStuff(String user, String name, String price, String university,
   String location, String category, String description, Date now, String bid){
     id = id+1;
-    Stuff a = new Stuff(id, user, name, price, university, location, category,
+    Stuff a = new Stuff(user, name, price, university, location, category,
                          description, now, bid);
     stuffs.add(a);
     //em.persist(a);
