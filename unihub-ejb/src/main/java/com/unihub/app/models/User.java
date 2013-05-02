@@ -3,6 +3,7 @@ package com.unihub.app;
 import java.math.BigInteger;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.security.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -47,6 +48,28 @@ public class User implements Serializable {
     byte[] encryptedPassword;
     @Column(name="salt", nullable=false)
     byte[] salt;
+
+    /*
+    DO NOT DELETE!
+    */
+    //@ManyToMany(mappedBy="followers")
+        @ManyToMany(
+        cascade={CascadeType.ALL},
+        mappedBy="followers",
+        targetEntity=Event.class
+    )
+    private List<Event> followedEvents = new ArrayList<Event>();
+
+
+    public List<Event> getEventList(){
+      return followedEvents;
+    }
+    public void setEventList(List<Event> list){
+      followedEvents = list;
+    }
+    /*
+    End of DO NOT DELETE
+    */
 
     /*
     My version for byte[] password incase your code depends on it

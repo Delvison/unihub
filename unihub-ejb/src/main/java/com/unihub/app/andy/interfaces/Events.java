@@ -13,7 +13,9 @@ public interface Events {
 
 	public ArrayList<Event> getEvents();
 
-	public boolean attemptAttending(int eventId, String userName);
+	public Event getEvent(int eventId);
+
+	public boolean attemptAttending(Event event, String userName);
 
 	
 

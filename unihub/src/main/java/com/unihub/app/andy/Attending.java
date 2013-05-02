@@ -51,16 +51,19 @@ public class Attending extends HttpServlet {
 				res.sendRedirect("login");
 
 			} else {
-				/*Will need to use */
-				Dbase dbase = Dbase.create();
-				User user = dbase.getUser(userName);
+				/*This will be deleted once mark finishes his thing */
+				
+				Event e = bean.getEvent(id);
+				boolean alreadyVoted = false;
+				for(User user : e.getFollowers()) {
+					if(user.getName().equals(userName))
+						alreadyVoted = true;
+				}
 
 				/*Does nothing for now since I need user*/
-				boolean result = bean.attemptAttending(id, userName);
-
-				EventListHolder holder = EventListHolder.getInstance();
-				Event event = holder.findEventWithId(id);
-				if(event.isAlreadyFollowing(user.getId())) {
+				
+				
+				if(alreadyVoted) {
 					/*
 					Already attending so don't add follower
 					I'll just redirect wherever they came from*/
@@ -68,8 +71,9 @@ public class Attending extends HttpServlet {
 
 				} else {
 
-					event.addFollower(user.getId());
-
+					//event.addFollower(null);
+					//event.setFollowers(user);
+					boolean result = bean.attemptAttending(e, userName);
 					res.sendRedirect("events");
 
 				}
