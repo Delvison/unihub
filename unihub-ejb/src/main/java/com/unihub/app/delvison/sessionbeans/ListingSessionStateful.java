@@ -68,4 +68,38 @@ public class ListingSessionStateful implements ListingObjEJBStateful {
     Query q = em.createNativeQuery(query, Stuff.class);
     return (ArrayList)q.getResultList();
   }
+  
+  
+  /* returns an arraylist of Activity objects for the item whose id is 
+  passed in. 'byWhat' can be a university or a user */
+  /*
+  public ArrayList<Activity> printActivities(String byWhat, int itemId){
+    ArrayList<Activity> results = new ArrayList<Activity>();
+    ArrayList<Stuff> stuffObjects = new ArrayList<Stuff>();
+    String query = " ";
+    if (byWhat.equals("university")){
+      query ="SELECT * FROM Stuff WHERE university=\'"+byWhat+"\' ORDER BY"+
+             " timePosted DESC LIMIT "+limit+";";
+      Query q = em.createNativeQuery(query, Stuff.class); 
+      stuffObjects = (ArrayList)q.getResultList();
+    
+    //else, get all Activity objects that belong to a user
+    } else {
+      query ="SELECT * FROM Stuff WHERE user=\'"+byWhat+"\' ORDER BY"+
+             " timePosted DESC LIMIT "+limit+";";
+      Query q = em.createNativeQuery(query, Stuff.class); 
+      //get all stuff belonging to the university
+      stuffObjects = (ArrayList)q.getResultList();
+    }
+    //loop thru 'stuffObjects' and add each corresponding Activty obj to 'results'
+    for (Stuff s : p) {
+      query ="SELECT * FROM Activity WHERE itemId=\'"+itemId+"\' ORDER BY"+
+             " timePosted DESC LIMIT "+limit+";";
+      q = em.createNativeQuery(query, Activity.class);
+      ArrayList<Activity> temp = q.getResultList();
+      results.add(temp(0));
+    }
+    return results;
+  }
+  */
 }

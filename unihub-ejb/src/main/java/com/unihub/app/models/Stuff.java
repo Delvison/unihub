@@ -12,17 +12,17 @@ import javax.validation.constraints.NotNull;
 public class Stuff implements Serializable{
   static final long serialVersionUID = 1;
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public int id;
-  @NotNull public String name;
-  @NotNull public String price;
-  @NotNull public String user;
-  @NotNull public String university;
-  @NotNull public String location;
+  public int id; //id of listing
+  @NotNull public String name; //name of the listing
+  @NotNull public String price; //price of the listing
+  @NotNull public String user; //user who posted the listing
+  @NotNull public String university; //university where listing was posted
+  @NotNull public String location; //location of where the listing was posted
   // have to add these
   @Column(name="description", nullable=false, length=1000) public String description;
   @NotNull public String bidMode; //if true, item to be sold in bidding mode (yes or no)
   public String highBidder; //holds value of the user who ahs the highest bid
-  @NotNull public String category;
+  @NotNull public String category; 
   public Date timePosted;
   private String dir;
   @Transient private ItemActivityObj activityLog;

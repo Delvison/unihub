@@ -41,4 +41,9 @@ public class ItemActivityTag extends SimpleTagSupport{
       out.println();
     }
   }
+  
+  // prints all of the activity belonging to a user
+  public void printUserActivity(String user){
+    
+  }
 }
