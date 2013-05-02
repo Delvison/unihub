@@ -48,6 +48,12 @@ public class ListingSessionStateful implements ListingObjEJBStateful {
     return i;
   }
 
+  public List<Stuff> searchListing(String keywords){
+    String query = "SELECT * FROM Stuff WHERE name LIKE \'%"+keywords+"%\';";
+    Query q = em.createNativeQuery(query, Stuff.class);
+    return q.getResultList();
+  }
+
   //get a list of all 'Stuff' objects
   public List getList(){
    String query = "SELECT * FROM Stuff;";

@@ -11,11 +11,13 @@
   </div>
     <br>
       <br>
-
       <DIV class="span8 offset3">
     <% List<String> amazon = (List<String>)request.getAttribute("amazon"); %>
     <% String[] googleLinks = (String[])request.getAttribute("google"); %>
-
+    <% String local = (String)request.getAttribute("local"); %>
+    <% if (local!=null){ %>
+      <%=local%>
+    <% } %>  
     <% if ( amazon != null ){ %>
       <CENTER> <B>There is no match for your search in our databases. Consider checking our suggestions:</B> </CENTER>
       <BR /><BR />      
