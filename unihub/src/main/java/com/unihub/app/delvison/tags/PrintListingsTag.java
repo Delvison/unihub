@@ -40,16 +40,17 @@ public class PrintListingsTag extends SimpleTagSupport{
 
   public void doTag() throws JspException, IOException{
       ArrayList<Stuff> stuffs = lis.getArrayList();
-    if (this.searchTerm != null){
+    if (!this.searchTerm.equals("null")){
       this.printSearched();
     }  
-    else if (category != null && !category.equals("All") && !category.equals("search") ){
+    else if (category != null && !category.equals("All") && !category.equals("search") 
+      && searchTerm.equals("null")){
       this.printForCategory(stuffs);
-    }else if(user != null && this.limit != 0){
+    }else if(user != null && this.limit != 0 && searchTerm.equals("null")){
       this.printLimitedForUser(this.limit);
-    }else if (user != null && limit == 0){
+    }else if (user != null && limit == 0 && searchTerm.equals("null")){
       this.printForUser(stuffs);
-    }else if(this.limit != 0 && user == null){
+    }else if(this.limit != 0 && user == null && searchTerm.equals("null")){
       this.printLimited(this.limit);
     }else{
       this.printAll(stuffs);
@@ -73,7 +74,7 @@ public class PrintListingsTag extends SimpleTagSupport{
   }
 
   private void printSearched() throws JspException, IOException {
-    ArrayList<Stuff> stuffs = lis.searchListing(searchTerm);
+    ArrayList<Stuff> stuffs = (ArrayList) lis.searchListing(searchTerm);
     if (!stuffs.isEmpty()){
       for (Stuff s: stuffs){
         String[] c = s.getContentArray();
