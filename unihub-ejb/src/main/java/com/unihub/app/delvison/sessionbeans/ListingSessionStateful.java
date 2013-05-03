@@ -73,7 +73,7 @@ public class ListingSessionStateful implements ListingObjEJBStateful {
   /* returns an arraylist of Activity objects for the item whose id is 
   passed in. 'byWhat' can be a university or a user */
   /*
-  public ArrayList<Activity> printActivities(String byWhat, int itemId){
+  public ArrayList<Activity> getActivities(String byWhat, int itemId){
     ArrayList<Activity> results = new ArrayList<Activity>();
     ArrayList<Stuff> stuffObjects = new ArrayList<Stuff>();
     String query = " ";
