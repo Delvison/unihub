@@ -19,15 +19,23 @@ import javax.ejb.*;
 public class SearchServlet extends HttpServlet {
     @EJB
     SearchEJB search;
+    @EJB
+    ListingObjEJBStateful listing;
     static HttpSession session;
 
 	public void doGet(HttpServletRequest req,
 		              HttpServletResponse res) throws ServletException, IOException {
 		String keywords = req.getParameter("search");
+        String result = "";
         keepSearchHistory(req, keywords);
-
-        if(false){ //verifies if there is any results for the search in the local database.
-
+        List<Stuff> l = listing.searchListing(keywords);
+        if(!l.isEmpty()){ //verifies if there is any results for the search in the local database.
+            for(Stuff st : l){
+                result += "<A HREF=item?id="+st.getId()+">"+st.getName()+"</A> for "+st.getPrice()+" USD <BR></BR>";
+            }
+            req.setAttribute("local",result);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("gsearch");
+            dispatcher.forward(req, res);
         }else{ //if nothing was found in the local database, search in the "third parties".
         	/*-------------AmazonSearch----------------*/
         	try{

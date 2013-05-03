@@ -15,6 +15,5 @@ public interface ListingObjEJBStateful {
   public int getArrayListSize();
   public List getList();
   public ArrayList<Stuff> getListForUser(int limit, String user);
-
-
+  public List<Stuff> searchListing(String keywords);
 }
