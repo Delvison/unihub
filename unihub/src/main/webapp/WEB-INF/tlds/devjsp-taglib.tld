@@ -46,6 +46,12 @@ version="2.0">
 </attribute>
 
 <attribute>
+  <name>searchTerm</name>
+  <required>false</required>
+  <rtexprvalue>true</rtexprvalue>
+</attribute>
+
+<attribute>
   <name>category</name>
   <required>false</required>
   <rtexprvalue>true</rtexprvalue>

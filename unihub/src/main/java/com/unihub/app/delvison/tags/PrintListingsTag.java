@@ -20,6 +20,7 @@ public class PrintListingsTag extends SimpleTagSupport{
   String user;
   String category;
   int limit;
+  String searchTerm;
 
   public void setUser(String user){
     this.user = user;
@@ -32,10 +33,17 @@ public class PrintListingsTag extends SimpleTagSupport{
   public void setLimit(String lim){
     this.limit = Integer.parseInt(lim);
   }
+  
+  public void setSearchTerm(String searchTerm){
+    this.searchTerm = searchTerm;
+  }
 
   public void doTag() throws JspException, IOException{
       ArrayList<Stuff> stuffs = lis.getArrayList();
-    if (category != null && !category.equals("All") && !category.equals("search") ){
+    if (this.searchTerm != null){
+      this.printSearched();
+    }  
+    else if (category != null && !category.equals("All") && !category.equals("search") ){
       this.printForCategory(stuffs);
     }else if(user != null && this.limit != 0){
       this.printLimitedForUser(this.limit);
@@ -62,6 +70,27 @@ public class PrintListingsTag extends SimpleTagSupport{
       }
     }
       return properCat;
+  }
+
+  private void printSearched() throws JspException, IOException {
+    ArrayList<Stuff> stuffs = lis.searchListing(searchTerm);
+    if (!stuffs.isEmpty()){
+      for (Stuff s: stuffs){
+        String[] c = s.getContentArray();
+        getJspContext().setAttribute("listingName",c[0]); 
+        getJspContext().setAttribute("listingPrice",c[1]); 
+        getJspContext().setAttribute("listingUser",c[2]);
+        getJspContext().setAttribute("itemUserId", usr.getId(c[2]));
+        getJspContext().setAttribute("listingUniversity",c[3]); 
+        getJspContext().setAttribute("listingLocation",c[4]);   
+        getJspContext().setAttribute("listingId",c[5]);
+        getJspContext().setAttribute("listingCategory",c[6]);
+        DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        String datePosted = formatter.format(s.timePosted);
+        getJspContext().setAttribute("listingDate",datePosted);
+        getJspBody().invoke(null);
+      } 
+    }
   }
 
   private void printLimited(int lim) throws JspException, IOException {
