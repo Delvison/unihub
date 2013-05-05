@@ -17,7 +17,9 @@
   </style>
 
 <body>
-  <div class='span8 offset4 main' style="background-color:White">
+  <div class='top-buffer span8 offset4 main' style="background-color:White">
+    <body>
+      <div class="container-fluid">
         <center><h2>All Users</h2></center>
           <div class="row-fluid" valign="left" style="padding-left:5px">
                <b>

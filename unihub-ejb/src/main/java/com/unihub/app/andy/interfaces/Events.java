@@ -13,6 +13,10 @@ public interface Events {
 
 	public ArrayList<Event> getEvents();
 
+	public Event getEvent(int eventId);
+
+	public boolean attemptAttending(Event event, String userName);
+
 	
 
 }

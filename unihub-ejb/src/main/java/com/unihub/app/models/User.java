@@ -3,9 +3,11 @@ package com.unihub.app;
 import java.math.BigInteger;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.security.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.persistence.*;
 
 /**
  *
@@ -13,19 +15,61 @@ import javax.servlet.http.*;
  * 
  * A user model.
  */
+@Entity
+@Table(name="users")
 public class User implements Serializable {
     
-    private String name, school, email;
-    private int id, reputation;
-    private ArrayList<Message> sentMessages, receivedMessages;
+    @Column(name="name", nullable=false)
+    private String name;
+    @Column(name="school", nullable=false)
+    private String school;
+    @Column(name="email", nullable=false)
+    private String email;
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private int id;
+    @Transient
+    private int reputation;
+
+    @Transient
+    private ArrayList<Message> sentMessages;
+    @Transient
+    private ArrayList<Message> receivedMessages;
+    @Transient
     private ArrayList<String> watched;
+    @Transient
     private ArrayList<Integer> voted;
 
     /*
     The byte[] array will be the hashed password
     */
+    @Column(name="password", nullable=false)
     byte[] encryptedPassword;
+    @Column(name="salt", nullable=false)
     byte[] salt;
+
+    /*
+    DO NOT DELETE!
+    */
+    //@ManyToMany(mappedBy="followers")
+        @ManyToMany(
+        cascade={CascadeType.ALL},
+        mappedBy="followers",
+        targetEntity=Event.class
+    )
+    private List<Event> followedEvents = new ArrayList<Event>();
+
+
+    public List<Event> getEventList(){
+      return followedEvents;
+    }
+    public void setEventList(List<Event> list){
+      followedEvents = list;
+    }
+    /*
+    End of DO NOT DELETE
+    */
 
     /*
     My version for byte[] password incase your code depends on it
@@ -62,6 +106,7 @@ public class User implements Serializable {
     }
 
     public User() {
+      /*
       id = -1;
       name = "bob";
       email = "bob@bob.com";
@@ -71,6 +116,7 @@ public class User implements Serializable {
       receivedMessages = new ArrayList<Message>();
       watched = new ArrayList<String>();
       voted = new ArrayList<Integer>();
+      */
     }
 
     public boolean isLoggedIn(HttpSession session) {

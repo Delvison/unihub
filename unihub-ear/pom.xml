@@ -50,7 +50,13 @@
             <version>0.0.1-SNAPSHOT</version>
             <type>ejb</type>
          </dependency>
-        
+
+        <!-- Mysql driver is being connected through this dependency  -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+        </dependency>
         
     </dependencies>
 
