@@ -5,7 +5,8 @@
   <%@ taglib uri="/WEB-INF/tlds/devjsp-taglib.tld" prefix="devjsp"%>
   <%ListingsObj lis = ListingsObj.create();%>
   <%String cat = (String)request.getParameter("cat");%>
-
+  <%String searchQuery = (String)request.getParameter("q");%>
+  <% if (searchQuery == null) { searchQuery = "null"; } %>
 
 <body data-spy="scroll" data-target="#sidebar">
 
@@ -109,7 +110,7 @@
             <p><i>No listings exist.</i></p>
           <%}%>
         <table class="table table-striped">
-          <devjsp:forEachListing category="<%=cat%>" >
+          <devjsp:forEachListing category="<%=cat%>" searchTerm="<%=searchQuery%>">
             <tr>
               <td valign="center">
                 <ul class="inline">

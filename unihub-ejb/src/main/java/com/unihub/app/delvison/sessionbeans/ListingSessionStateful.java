@@ -29,6 +29,12 @@ public class ListingSessionStateful implements ListingObjEJBStateful {
     Query q = em.createNativeQuery(query, Stuff.class);
     return (ArrayList)q.getResultList();
   }
+
+  public List<Stuff> searchListing(String keywords){
+    String query = "SELECT * FROM Stuff WHERE name LIKE \'%"+keywords+"%\';";
+    Query q = em.createNativeQuery(query, Stuff.class);
+    return q.getResultList();
+  }
   
   //get an arraylist of all listings
   public ArrayList<Stuff> getArrayList(){
@@ -50,9 +56,9 @@ public class ListingSessionStateful implements ListingObjEJBStateful {
 
   //get a list of all 'Stuff' objects
   public List getList(){
-   String query = "SELECT * FROM Stuff;";
-   Query q = em.createNativeQuery(query, Stuff.class);
-   return q.getResultList(); 
+    String query = "SELECT * FROM Stuff;";
+    Query q = em.createNativeQuery(query, Stuff.class);
+    return q.getResultList(); 
   }
 
   // return an arraylist of 'Stuff' belonging to a user
@@ -73,7 +79,7 @@ public class ListingSessionStateful implements ListingObjEJBStateful {
   /* returns an arraylist of Activity objects for the item whose id is 
   passed in. 'byWhat' can be a university or a user */
   /*
-  public ArrayList<Activity> printActivities(String byWhat, int itemId){
+  public ArrayList<Activity> getActivities(String byWhat, int itemId){
     ArrayList<Activity> results = new ArrayList<Activity>();
     ArrayList<Stuff> stuffObjects = new ArrayList<Stuff>();
     String query = " ";
