@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Remote
 public interface MessageBI {
-  public void createMessage(String f, String t, String c);
+  public void createMessage(User u, String f, String t, String c);
   public String getContents();
   public String getToName();
   public String getFromName();

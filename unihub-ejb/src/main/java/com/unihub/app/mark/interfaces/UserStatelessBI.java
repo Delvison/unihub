@@ -9,6 +9,11 @@ import java.security.*;
 @Remote
 public interface UserStatelessBI {
  
-  public void createUser(String name, String pass, String email, String school);
-
+  public User createUser(String name, String pass, String email, String school);
+  public User getUser(String name);
+  public int getId(String name);
+  public String getName(int uId);
+  public String getEmail(int uId);
+  public String getSchool(int uId);
+  
 }

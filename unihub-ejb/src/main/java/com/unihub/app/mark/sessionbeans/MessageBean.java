@@ -19,17 +19,17 @@ import javax.transaction.*;
 public class MessageBean implements MessageBI {
 
     private int id;
+    private User owner;
     private String fromName, toName, contents;
-    private Dbase ubase = Dbase.create();
     @PersistenceContext
     EntityManager em;
      
-    public void createMessage(String f, String t, String c) {
+    public void createMessage(User u, String f, String t, String c) {
+      owner = u;
       fromName = f;
       toName = t;
       contents = c;
-      id = 0;
-      Message m = new Message(f, t, c);
+      Message m = new Message(u, f, t, c);
       em.persist(m);
     }
  

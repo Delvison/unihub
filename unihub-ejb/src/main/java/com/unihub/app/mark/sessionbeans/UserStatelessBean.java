@@ -14,6 +14,7 @@ import java.security.spec.InvalidKeySpecException;
 
 @Stateless
 @Remote(UserStatelessBI.class)
+@WebService
 public class UserStatelessBean implements UserStatelessBI {
 
   Dbase ubase = Dbase.create();
@@ -22,7 +23,8 @@ public class UserStatelessBean implements UserStatelessBI {
   @EJB
   Authenticate bean;
 
-  public void createUser(String name, String pass, String email, String school) {
+  @WebMethod
+  public User createUser(String name, String pass, String email, String school) {
     byte[] sal = null;
     byte[] encryptedpass = null;
     try {
@@ -34,6 +36,38 @@ public class UserStatelessBean implements UserStatelessBI {
     User u = new User(name, encryptedpass, email, school, sal);
     em.persist(u);
     ubase.addUser(u);
+    return u;
+  }
+
+  public User getUser(String name) {
+    String quer = "select * from users where name = \"" + name + "\"";
+    Query q = em.createNativeQuery(quer, User.class);
+    List<User> userslist = q.getResultList();
+    if(userslist.size() == 0) return new User();
+    else return userslist.get(0);
+  }
+
+  @WebMethod
+  public int getId(String name) {
+    return getUser(name).getId();
+  }
+
+  @WebMethod
+  public String getName(int uId) {
+    User u = em.find(User.class, uId);
+    return u.getName();
+  }
+
+  @WebMethod
+  public String getEmail(int uId) {
+    User u = em.find(User.class, uId);
+    return u.getEmail();
+  }
+
+  @WebMethod
+  public String getSchool(int uId) {
+    User u = em.find(User.class, uId);
+    return u.getSchool();
   }
 
 }

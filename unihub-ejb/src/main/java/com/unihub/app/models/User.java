@@ -32,10 +32,10 @@ public class User implements Serializable {
     @Transient
     private int reputation;
 
-    @Transient
-    private ArrayList<Message> sentMessages;
-    @Transient
-    private ArrayList<Message> receivedMessages;
+    @OneToMany(cascade={CascadeType.ALL},
+               mappedBy="owner",
+               targetEntity=Message.class)
+    private List<Message> messages;
     @Transient
     private ArrayList<String> watched;
     @Transient
@@ -81,8 +81,7 @@ public class User implements Serializable {
         email = e;
         school = s;
         reputation = 0;
-        sentMessages = new ArrayList<Message>();
-        receivedMessages = new ArrayList<Message>();
+        messages = new ArrayList<Message>();
         watched = new ArrayList<String>();
         voted = new ArrayList<Integer>();
     }
@@ -97,8 +96,7 @@ public class User implements Serializable {
         email = e;
         school = s;
         reputation = 0;
-        sentMessages = new ArrayList<Message>();
-        receivedMessages = new ArrayList<Message>();
+        messages = new ArrayList<Message>();
         watched = new ArrayList<String>();
         voted = new ArrayList<Integer>();
     }
@@ -207,20 +205,16 @@ public class User implements Serializable {
       return salt;
     }//end of getSalt()
 
-    public void addToSent(Message m) {
-      sentMessages.add(m);
+    public void addToMessages(Message m) {
+      messages.add(m);
     }
 
-    public void addToReceived(Message m) {
-      receivedMessages.add(m);
-    }
-
-    public ArrayList<Message> getSentMessages() {
-      return sentMessages;
+    public List<Message> getMessages() {
+      return messages;
     }
     
-    public ArrayList<Message> getReceivedMessages() {
-      return receivedMessages;
+    public void setMessages(List<Message> msgs) {
+      messages = msgs;
     }
  
     public ArrayList<String> getWatched() {

@@ -53,7 +53,7 @@ public void doGet(HttpServletRequest req,
    */
   public void populate() {
     Dbase ubase = Dbase.create();
-    if(ubase.getUsersList().size() == 0) {
+    if(ubase.getUsersList().size() <= 10) {
     usrsl.createUser("Mark",
                   "pass",
                   "mwillson@oswego.edu",

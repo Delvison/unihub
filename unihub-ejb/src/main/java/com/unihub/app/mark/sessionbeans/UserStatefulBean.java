@@ -29,11 +29,15 @@ public class UserStatefulBean implements UserStatefulBI {
   private Dbase ubase = Dbase.create();
 
   public User getUser(String name) {
-    return ubase.getUser(name);
+    String quer = "select * from users where name = \"" + name + "\"";
+    Query q = em.createNativeQuery(quer, User.class);
+    List<User> userslist = q.getResultList();
+    if(userslist.size() == 0) return new User();
+    else return userslist.get(0);
   }
  
   public int getId(String name) {
-    return ubase.getUser(name).getId();
+    return getUser(name).getId();
   }
 
   public String getName(int uId) {
@@ -58,7 +62,7 @@ public class UserStatefulBean implements UserStatefulBI {
   }
 
   public String getGravatar(String name) throws NoSuchAlgorithmException {
-    return ubase.getUser(name).gravatar();
+    return getUser(name).gravatar();
   }
 
   public List<Message> getSentMessages(String name) {
@@ -77,11 +81,11 @@ public class UserStatefulBean implements UserStatefulBI {
    * Increment the reputation of the user of the given name
    */
   public void incRep(String name) {
-    ubase.getUser(name).incRep();
+    getUser(name).incRep();
   }
 
   public int getRep(String name) {
-    return ubase.getUser(name).getReputation();
+    return getUser(name).getReputation();
   }
 
   /**
@@ -91,7 +95,7 @@ public class UserStatefulBean implements UserStatefulBI {
    * id - the id of the item being added to the user's voted list
    */
   public void addToVoted(String name, int id) {
-    ubase.getUser(name).addToVoted(id);
+    getUser(name).addToVoted(id);
   }
 
   /**
