@@ -23,7 +23,7 @@ public class MessagesTag extends SimpleTagSupport{
   }
 
   public void doTag() throws JspException, IOException{
-    ArrayList<Message> msgs;
+    List<Message> msgs;
     if(type.equals("sent")) {
       msgs =  usr.getSentMessages(user);
     } else if(type.equals("received")) {

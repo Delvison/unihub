@@ -13,5 +13,7 @@
         </properties>
         <!--CLASSES HERE-->
         <class>com.unihub.app.Stuff</class>
+        <class>com.unihub.app.Message</class>
+        <class>com.unihub.app.User</class>
     </persistence-unit>
 </persistence>

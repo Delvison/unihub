@@ -13,6 +13,8 @@ import javax.ejb.*;
 public class PMessageServlet extends HttpServlet {
 
 @EJB
+UserStatelessBI usr;
+@EJB
 MessageBI msg;
 HttpSession session;
 
@@ -29,10 +31,10 @@ public void doPost(HttpServletRequest req,
   String fromName  = (String)session.getAttribute("username");
   Dbase ubase = Dbase.create();
   res.setContentType("text/html");
-  
-  msg.createMessage(fromName, toName, contents);
-  msg.addToReceived(toName);
-  msg.addToSent(fromName);
+  User ownr = usr.getUser(fromName);
+  msg.createMessage(ownr, fromName, toName, contents);
+//  msg.addToReceived(toName);
+//  msg.addToSent(fromName);
 
   res.sendRedirect( "user?u_id=" + ubase.getUser(toName).getId() );
 }

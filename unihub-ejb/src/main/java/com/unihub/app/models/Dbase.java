@@ -2,10 +2,14 @@
 // Currently houses an arraylist of users and a static instance of itself.
 package com.unihub.app;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.io.*;
+import javax.annotation.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import javax.persistence.*;
+import javax.naming.*;
+import javax.ejb.*;
 
 public class Dbase implements Serializable {
 
@@ -18,7 +22,6 @@ public class Dbase implements Serializable {
    */
   private Dbase() {
     userslist = new ArrayList<User>();
-    populate();
   } 
 
   public ArrayList<User> getUsersList() {
@@ -31,7 +34,6 @@ public class Dbase implements Serializable {
    */
   public void addUser(User user) {
     userslist.add(user);
-    user.setId(userslist.indexOf(user));
   }
 
   private static Dbase getInstance() {
@@ -60,47 +62,35 @@ public class Dbase implements Serializable {
     return null;
   }
 
-  /**
-   * populates the arraylist with some dummy data
-   */
+  /*
+    populates the arraylist with some dummy data
+   
   public void populate() {
-    byte[] salt = null;
-    byte[] encryptedPassword = null;
-    try {
-      salt = AuthUtilities.generateSalt();
-      encryptedPassword = AuthUtilities.getEncryptedPassword("pass", salt);
-    }
-    catch(NoSuchAlgorithmException e) {}
-    catch(InvalidKeySpecException e) {}
+    String pass = "pass";
 
-    addUser( new User("Mark",
-                      encryptedPassword,
-                      "mwillson@oswego.edu",
-                      "Oswego",
-                      salt) );
-    addUser( new User("Yulle",
-                      encryptedPassword,
-                      "byullegl@oswego.edu",
-                      "Oswego",
-                      salt) );
-    addUser( new User("Delvison",
-                      encryptedPassword,
-                      "castillo@oswego.edu",
-                      "Oswego",
-                      salt) );
-    addUser( new User("Andy",
-                      encryptedPassword,
-                      "avaldez@oswego.edu",
-                      "Oswego",
-                      salt) );
+    usr.createUser("Mark",
+                  "pass",
+                  "mwillson@oswego.edu",
+                  "Oswego");
+    usr.createUser("Yulle",
+                  "pass",
+                  "byullegl@oswego.edu",
+                  "Oswego");
+    usr.createUser("Delvison",
+                  "pass",
+                  "castillo@oswego.edu",
+                  "Oswego");
+    usr.createUser("Andy",
+                  "pass",
+                  "avaldez@oswego.edu",
+                  "Oswego");
     for(int i = 0; i < 4; i++) {
-    addUser( new User("User"+i,
-                      encryptedPassword,
-                      "user@example.edu",
-                      "Example University",
-                      salt) );
+    usr.createUser("User"+i,
+                  "pass",
+                  "user@example.edu",
+                  "Example University");
     }
-  }
+  }*/
 
   public String toString() {
     return userslist.toString();

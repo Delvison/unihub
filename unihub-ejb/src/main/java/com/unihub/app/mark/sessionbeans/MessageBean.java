@@ -11,18 +11,26 @@ import javax.annotation.*;
 import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.persistence.*;
+import javax.transaction.*;
 
 @Stateless
 @Remote(MessageBI.class)
 public class MessageBean implements MessageBI {
 
+    private int id;
+    private User owner;
     private String fromName, toName, contents;
-    private Dbase ubase = Dbase.create();
-
-    public void createMessage(String f, String t, String c) {
+    @PersistenceContext
+    EntityManager em;
+     
+    public void createMessage(User u, String f, String t, String c) {
+      owner = u;
       fromName = f;
       toName = t;
       contents = c;
+      Message m = new Message(u, f, t, c);
+      em.persist(m);
     }
  
     public String getContents () {
@@ -35,14 +43,6 @@ public class MessageBean implements MessageBI {
 
     public String getFromName () {
       return fromName;
-    }
-
-    public void addToReceived(String tname) {
-      ubase.getUser(tname).addToReceived(new Message(fromName, toName, contents));
-    }
-
-    public void addToSent(String fname) {
-      ubase.getUser(fname).addToSent(new Message(fromName, toName, contents)); 
     }
  
     public String toString() {

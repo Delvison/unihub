@@ -10,85 +10,82 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import javax.ejb.*;
 import javax.annotation.*;
+import javax.persistence.*;
+import javax.transaction.*;
 import javax.naming.*;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import java.util.ArrayList;
+import java.util.*;
 import javax.persistence.*;
 
 @Stateful (name="UserStatefulBI")
 @Remote(UserStatefulBI.class)
 public class UserStatefulBean implements UserStatefulBI {
+
   @PersistenceContext
   EntityManager em;
-
   @EJB
   Authenticate bean;
-
   private Dbase ubase = Dbase.create();
 
-  public void createUser(String name, String pass, String email, String school) {
-    byte[] sal = null;
-    byte[] encryptedpass = null;
-    User user = null;
-    try {
-      sal = bean.generateSalt();
-      encryptedpass = bean.getEncryptedPassword(pass, sal);
-      /*This part is to actually persist in the database*/
-      user = new User(name, encryptedpass, email, school, sal);
-      em.persist(user);
-    }
-    catch(NoSuchAlgorithmException e) {}
-    catch(InvalidKeySpecException e) {}
-    ubase.addUser(new User(name, encryptedpass, email, school, sal));
-    
-  }
-
   public User getUser(String name) {
-    return ubase.getUser(name);
+    String quer = "select * from users where name = \"" + name + "\"";
+    Query q = em.createNativeQuery(quer, User.class);
+    List<User> userslist = q.getResultList();
+    if(userslist.size() == 0) return new User();
+    else return userslist.get(0);
   }
  
   public int getId(String name) {
-    return ubase.getUser(name).getId();
+    return getUser(name).getId();
   }
 
   public String getName(int uId) {
-    return ubase.getUser(uId).getName();
+    User u = em.find(User.class, uId);
+    return u.getName();
+    //return ubase.getUser(uId).getName();
   }
 
   public String getEmail(int uId) {
-    return ubase.getUser(uId).getEmail();
+    User u = em.find(User.class, uId);
+    return u.getEmail();
   }
 
   public String getSchool(int uId) {
-    return ubase.getUser(uId).getSchool();
+    User u = em.find(User.class, uId);
+    return u.getSchool();
   }
 
   public byte[] getEncryptedPassword(int uId) {
-    return ubase.getUser(uId).getEncryptedPassword();
+    User u = em.find(User.class, uId);
+    return u.getEncryptedPassword();
   }
 
   public String getGravatar(String name) throws NoSuchAlgorithmException {
-    return ubase.getUser(name).gravatar();
+    return getUser(name).gravatar();
   }
 
-  public ArrayList<Message> getSentMessages(String name) {
-    return ubase.getUser(name).getSentMessages();
+  public List<Message> getSentMessages(String name) {
+    String quer = "select * from Message where fromName = \"" + name + "\"";
+    Query q = em.createNativeQuery(quer, Message.class);
+    return q.getResultList();
   }
 
-  public ArrayList<Message> getReceivedMessages(String name) {
-    return ubase.getUser(name).getReceivedMessages();
+  public List<Message> getReceivedMessages(String name) {
+    String quer = "select * from Message where toName = \"" + name + "\"";
+    Query q = em.createNativeQuery(quer, Message.class);
+    return q.getResultList();
   }
 
   /**
    * Increment the reputation of the user of the given name
    */
   public void incRep(String name) {
-    ubase.getUser(name).incRep();
+    getUser(name).incRep();
   }
 
   public int getRep(String name) {
-    return ubase.getUser(name).getReputation();
+    return getUser(name).getReputation();
   }
 
   /**
@@ -98,7 +95,7 @@ public class UserStatefulBean implements UserStatefulBI {
    * id - the id of the item being added to the user's voted list
    */
   public void addToVoted(String name, int id) {
-    ubase.getUser(name).addToVoted(id);
+    getUser(name).addToVoted(id);
   }
 
   /**
@@ -137,11 +134,13 @@ public class UserStatefulBean implements UserStatefulBI {
   // DOES THIS GO IN A SEPARATE BEAN? MAYBE.
 
   public int getNumUsers() {
-    return ubase.getUsersList().size();
+    return getAllUsers().size();
   }
 
-  public ArrayList<User> getAllUsers() {
-    return ubase.getUsersList();
+  public List<User> getAllUsers() {
+    String quer = "select * from users";
+    Query q = em.createNativeQuery(quer, User.class);
+    return q.getResultList();
   }
   
 }

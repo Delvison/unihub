@@ -21,7 +21,7 @@ import java.security.spec.InvalidKeySpecException;
 public class CreateUserServlet extends HttpServlet {
 
 @EJB
-UserStatefulBI usr;
+UserStatelessBI usr;
 @EJB
 Authenticate bean;
 HttpSession session;
