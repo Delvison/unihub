@@ -12,8 +12,9 @@ import javax.jws.WebService;
 @WebService
 public class BidSession implements BidEJB {
 	ListingsObj lis = ListingsObj.create();;
-	String oldPrice;	
-
+	String oldPrice;
+    @EJB ActivityEJB activityManager;
+	
 	@WebMethod
 	public void placeBid(int itemId, String user, String bidPlaced) throws RuntimeException{
     	oldPrice = lis.getStuff(itemId).getPrice();
@@ -27,6 +28,7 @@ public class BidSession implements BidEJB {
         }
         else{
         	throw new RuntimeException();
-        }	
+        }
+        //activityManager.createActivity(itemId, user, 2);
 	}
 }
