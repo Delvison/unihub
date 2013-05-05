@@ -25,6 +25,7 @@ public class BidSession implements BidEJB {
         (Integer.parseInt(bidPlaced) > Integer.parseInt(oldPrice))){
         	//place the bid (Stuff.bid(user,bidprice))
         	lis.getStuff(itemId).bid(user, bidPlaced);
+            activityManager.createActivity(itemId, user, 2);
         }
         else{
         	throw new RuntimeException();

@@ -22,25 +22,10 @@ public class Activity implements Serializable{
   public Activity(){}
 
   /* action can be 'comment' , 'bid' , 'comment' */
-  public Activity(int itemId, String user, int action){
-  	String finalAction = " ";
-    switch (action){
-      //if a user comments
-      case 1:  	finalAction = user+" commented on ";
-      			break;
-      //if a user bids
-      case 2:   finalAction = user+" bidded on ";
-      			break;
-      default:  break;
-    }
+  public Activity(int itemId, String user, String action){
     this.itemId = itemId;
     this.user = user;
-    String query ="SELECT * FROM Stuff WHERE id=?;";
-    Query q = em.createNativeQuery(query, Stuff.class);
-    q.setParameter(1, itemId);
-    ArrayList<Stuff> b = (ArrayList<Stuff>)q.getResultList();
-    Stuff a = b.get(0);
-    this.actualActivity = finalAction + a.getName();
+    this.actualActivity = action;
   }
 
   public String getUser(){
