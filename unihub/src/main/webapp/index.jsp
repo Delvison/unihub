@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <!--This shall be our main home screen -->
-<%@ page errorPage="/error.jsp" %>
 <%@ page import="com.unihub.app.HtmlOutputUtilities, com.unihub.app.Event, 
         com.unihub.app.EventListHolder, javax.ejb.EJB, javax.naming.*, java.util.*, com.unihub.app.ListingObjEJBStateful, com.unihub.app.WeatherEJB, com.unihub.app.WeatherSession, com.unihub.app.Event, com.unihub.app.Events, com.unihub.app.EventsBean, java.util.ArrayList"%>
 

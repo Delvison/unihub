@@ -146,7 +146,7 @@
                 </div>
               </div>
             </devjsp:itemInfo > 
-              <devjsp:forEachListing limit="6">
+              <devjsp:forEachListing limit="6" searchTerm="null">
               <div class="item">
                 <div class="container-fluid">
                   <div class="row -fluid">
@@ -211,7 +211,7 @@
               <li><a href="#">View all</a></li>
             </ul>
             <table class="table table-striped">
-              <devjsp:forEachListing user="<%=user%>" limit="4">
+              <devjsp:forEachListing user="<%=user%>" limit="4" searchTerm="null">
                 <tr>
                   <td valign="center">
                     <ul class="inline">

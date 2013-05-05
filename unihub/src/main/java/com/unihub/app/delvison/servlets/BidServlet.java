@@ -23,7 +23,7 @@ public class BidServlet extends HttpServlet {
       if (userName.equals("null") || userName == null){
         res.sendRedirect("sorry");    
       } else {
-        b.placeBid(Integer.parseInt(currentItem),userName,bidPrice);
+        //b.placeBid(Integer.parseInt(currentItem),userName,bidPrice);
         res.sendRedirect("item?id="+currentItem);
       }
     }catch(NumberFormatException e){
