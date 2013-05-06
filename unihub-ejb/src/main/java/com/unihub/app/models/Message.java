@@ -2,8 +2,11 @@ package com.unihub.app;
 
 import java.io.*;
 import java.security.*;
+import javax.ejb.*;
+import javax.annotation.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.persistence.*;
 
 /**
  *
@@ -11,14 +14,35 @@ import javax.servlet.http.*;
  * 
  * A message model.
  */
+
+@Entity
 public class Message implements Serializable {
 
-    private String fromName, toName, contents;
+    @ManyToOne(targetEntity=User.class)
+    private User owner;
+    private String fromName;
+    private String toName;
+    private String contents;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+ 
+    public Message() {
+    }
 
-    public Message(String from, String to, String c) {
+    public Message(User u, String from, String to, String c) {
+      owner = u;
       fromName = from;
       toName = to;
       contents = c;
+    }
+
+    public int getId () {
+      return id;
+    }
+
+    public User getOwner() {
+      return owner;
     }
 
     public String getContents () {

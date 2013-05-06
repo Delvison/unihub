@@ -16,6 +16,8 @@ import javax.ejb.*;
 
 @WebServlet("/attend")
 public class Attending extends HttpServlet {
+	@EJB
+	Events bean;
 
 	public void doGet(HttpServletRequest req, 
 				HttpServletResponse res) throws ServletException, IOException{
@@ -49,12 +51,19 @@ public class Attending extends HttpServlet {
 				res.sendRedirect("login");
 
 			} else {
-				Dbase dbase = Dbase.create();
-				User user = dbase.getUser(userName);
+				/*This will be deleted once mark finishes his thing */
+				
+				Event e = bean.getEvent(id);
+				boolean alreadyVoted = false;
+				for(User user : e.getFollowers()) {
+					if(user.getName().equals(userName))
+						alreadyVoted = true;
+				}
 
-				EventListHolder holder = EventListHolder.getInstance();
-				Event event = holder.findEventWithId(id);
-				if(event.isAlreadyFollowing(user.getId())) {
+				/*Does nothing for now since I need user*/
+				
+				
+				if(alreadyVoted) {
 					/*
 					Already attending so don't add follower
 					I'll just redirect wherever they came from*/
@@ -62,8 +71,9 @@ public class Attending extends HttpServlet {
 
 				} else {
 
-					event.addFollower(user.getId());
-
+					//event.addFollower(null);
+					//event.setFollowers(user);
+					boolean result = bean.attemptAttending(e, userName);
 					res.sendRedirect("events");
 
 				}

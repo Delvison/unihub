@@ -7,6 +7,8 @@ package com.unihub.app;
 
 import java.util.ArrayList;
 import java.io.*;
+import javax.persistence.*;
+
 
 
 public class EventListHolder implements Serializable{

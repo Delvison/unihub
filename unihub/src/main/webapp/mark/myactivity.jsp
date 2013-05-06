@@ -13,6 +13,9 @@
 
 <hr> 
 <% ArrayList<Stuff> mylistings = lis.userSearch(curruname); %>
+<% if( mylistings.size() == 0) { %>
+   <i>No Activity to Display</i>
+<% } %>
 <% for( Stuff s:mylistings ) {
    String id = Integer.toString(s.getId()); %>
    <devjsp:printActivities itemId="<%=id%>">

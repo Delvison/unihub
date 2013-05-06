@@ -16,4 +16,7 @@ public interface ListingObjEJBStateful {
   public List getList();
   public ArrayList<Stuff> getListForUser(int limit, String user);
   public List<Stuff> searchListing(String keywords);
+  public ArrayList<Activity> getActivities();
+  public ArrayList<Activity> getActivitiesByUniversity(String uni, int limit);
+  public ArrayList<Activity> getActivitiesByUser(String user, int limit);
 }

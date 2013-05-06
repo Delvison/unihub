@@ -9,41 +9,55 @@ import javax.servlet.jsp.*;
 import javax.servlet.jsp.tagext.*;
 import java.io.*;
 import javax.ejb.*;
+import java.util.ArrayList;
 
 public class ItemActivityTag extends SimpleTagSupport{
+  @EJB 
+  ListingObjEJBStateful listingManager;
   private String itemId;
+  private String byWhat;
+  private int limit;
   
   public void setItemId(String itemId){
     this.itemId = itemId;  
   }
+   
+  public void setByWhat(String byWhat){
+    this.byWhat = byWhat;  
+  }
+
+  public void setLimit(String limit){
+    this.limit = Integer.parseInt(limit);  
+  }
   
   public void doTag() throws JspException, IOException{
-    JspWriter out = getJspContext().getOut();
-    
-    ListingsObj lis = ListingsObj.create();
-    /* find 'Stuff' by id */
-    Stuff stuff = lis.getStuff(Integer.parseInt(itemId));
-    String[] activities = stuff.getActivityObj().getActivityArray();
-    getJspContext().setAttribute("itemId",itemId);
-
-    if (activities[0] != null){
-      for (int i=0; i<activities.length; i++){
-        if (activities[i] != null){
-          getJspContext().setAttribute("itemActivity",activities[i]);
-          getJspContext().setAttribute("itemName",stuff.getName());
-          getJspBody().invoke(null);
-        }
-      }
+    ArrayList<Activity> activities = listingManager.getActivities();
+    if (activities.isEmpty()){
+      getJspContext().setAttribute("itemActivity","No activity exists.");
+      getJspBody().invoke(null);
     }else{
-      //getJspContext().setAttribute("itemActivity","");
-      //getJspContext().setAttribute("itemName","");
-      //getJspBody().invoke(null);
-      out.println();
+      for (Activity a : activities){
+        getJspContext().setAttribute("itemActivity",a.getActualActivity());
+        getJspBody().invoke(null);
+      }
     }
   }
   
   // prints all of the activity belonging to a user
   public void printUserActivity(String user){
     
+  }
+
+  public void printActivities(String byWhat, int limit) throws JspException, IOException {
+    ArrayList<Activity> activities = listingManager.getActivities();
+    if (activities.get(0) == null){
+      getJspContext().setAttribute("itemActivity","No activity exists.");
+      getJspBody().invoke(null);
+    }else{
+      for (Activity a : activities){
+        getJspContext().setAttribute("itemActivity",a.getActualActivity());
+        getJspBody().invoke(null);
+      }
+    }
   }
 }

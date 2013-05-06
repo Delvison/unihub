@@ -15,7 +15,19 @@ version="2.0">
   
   <attribute>
     <name>itemId</name>
-    <required>true</required>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+
+  <attribute>
+    <name>byWhat</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+  </attribute>
+
+  <attribute>
+    <name>limit</name>
+    <required>false</required>
     <rtexprvalue>true</rtexprvalue>
   </attribute>
 </tag>

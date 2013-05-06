@@ -14,8 +14,23 @@ public class ActivitySession implements ActivityEJB {
   EntityManager em;
   
   public void createActivity(int itemId, String user, int action){
-  	Activity a = new Activity(itemId, user, action);
-  	em.persist(a);
+  	String finalAction = " ";
+    switch (action){
+      //if a user comments
+      case 1:  	finalAction = user+" commented on ";
+      			break;
+      //if a user bids
+      case 2:   finalAction = user+" bidded on ";
+      			break;
+      default:  break;
+    }
+    String query ="SELECT * FROM Stuff WHERE id=\'"+itemId+"\';";
+    Query q = em.createNativeQuery(query, Stuff.class);
+    ArrayList<Stuff> b = (ArrayList)q.getResultList();
+    Stuff a = b.get(0);
+    finalAction = finalAction+a.getName();
+  	Activity act = new Activity(itemId, user, finalAction);
+  	em.persist(act);
   }
 
   public String getActivityById(int id){
