@@ -19,20 +19,15 @@ public class BidServlet extends HttpServlet {
       String bidPrice = req.getParameter("bidPrice"); 
       String currentItem = req.getParameter("itemId"); 
 
-      //if the username = null, display error. redirect to login.
-      if (userName.equals("null") || userName == null){
-        res.sendRedirect("sorry");    
-      } else {
-        //b.placeBid(Integer.parseInt(currentItem),userName,bidPrice);
-        res.sendRedirect("item?id="+currentItem);
-      }
+      b.placeBid(Integer.parseInt(currentItem),userName,bidPrice);
+      res.sendRedirect("item?id="+currentItem);
     }catch(NumberFormatException e){
       PrintWriter out = res.getWriter();
       out.print("DEBUG:::: Invalid bid. Either null or it wasn't numbers.");      
-    }catch (RuntimeException ex){
+    }/*catch (RuntimeException ex){
       //DISPLAY AN ERROR PAGE (STILL NEED ONE)
       PrintWriter out = res.getWriter();
       out.print("DEBUG:::: bid lower than current price or owner of item attempting to bid");
-    }
+    }*/
   }
 }

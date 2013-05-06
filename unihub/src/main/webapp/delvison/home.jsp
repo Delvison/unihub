@@ -265,6 +265,9 @@
           <div class="span1" style="width:1px;height:160px;background-color:gray;float:left;"></div>           
           <div class="span5">
             <h3>Recent Activity</h3>
+            <devjsp:printActivities byWhat="university" limit="4" >
+              <li><i>${itemActivity}</i></li>
+            </devjsp:printActivities>
           </div>
         </div>
       </div>

@@ -35,6 +35,3 @@ public class PicturesTag extends SimpleTagSupport{
     }    
   }
 }
-
-//Iterator it = FileUtils.iterateFiles(new File(path),null, false)
-// while it.hasNext()...

@@ -94,8 +94,6 @@ public class Stuff implements Serializable{
   public void bid(String bidder, String newPrice){
     this.updatePrice(newPrice);
     this.highBidder = bidder;
-    String activity = bidder+" has placed a bid of $"+newPrice;
-    this.addActivity(activity);
   }
 
   public void addActivity(String someActivity){
