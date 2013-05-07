@@ -56,7 +56,7 @@
         <div class="span4 sidebar" style="background-color:white">
           <center><h4>Listings by this User</h4></center>
           <table class="table table-striped">                      
-            <devjsp:forEachListing user="<%=curruname%>"> 
+            <devjsp:forEachListing user="<%=curruname%>" limit="0" category="All" searchTerm="null"> 
             <tr>                                                     
               <td valign="center">                                 
                 <p>                                                

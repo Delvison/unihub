@@ -73,7 +73,7 @@
           <div class="span4 shadow">
             <center><h4>My Listings</h4></center>
             <table class="table table-striped">
-              <devjsp:forEachListing user="<%=curruname%>">
+              <devjsp:forEachListing user="<%=curruname%>" limit="0" searchTerm="null" category="All">
               <tr>
                 <td valign="center">
                   <p>
