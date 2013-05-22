@@ -1,3 +1,31 @@
+<% 
+
+  String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/xml?key=AIzaSyAdUWvd01fA0X3wvtEdGACC9Vk4FMX5ytM&location=43.45267,-76.543722&radius=2000&sensor=true";
+  String[] smallList = null;
+
+  try {
+  DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+  DocumentBuilder build = dbf.newDocumentBuilder();
+  Document doc = build.parse(url);
+  NodeList linkNodeList = doc.getElementsByTagName("name");
+  smallList = new String[3];
+  smallList[0] = linkNodeList.item(1).getTextContent();
+  smallList[1] = linkNodeList.item(2).getTextContent();
+  smallList[2] = linkNodeList.item(3).getTextContent();
+
+  } catch (Exception e) {
+    //Then just hardcode for now like dev does
+    smallList = new String[3];
+    smallList[0] = "SUNY Oswego Campus Center";
+    smallList[1] = "Walmart, Oswego NY";
+    smallList[2] = "Fast Trac, Oswego NY";
+  }       
+
+
+
+
+%>
+
 
   <body>
     <div class="container-fluid top-buffer" data-spy="scroll" data-target="#events">
@@ -90,9 +118,15 @@
               <h3>Recommended Meeting Spots</h3>
               <p>
                 <ul>
-                  <li> SUNY Oswego Campus Center, Oswego NY <a href="https://plus.google.com/111897804320258544860/about?gl=us&hl=en">view map</a>
-                  <li> Walmart, Oswego NY <a href="https://plus.google.com/111897804320258544860/about?gl=us&hl=en">view map</a>
-                  <li> Fast Trac, Oswego NY <a href="https://plus.google.com/111897804320258544860/about?gl=us&hl=en">view map</a>
+
+                  <% for(String le : smallList) { %>
+
+                    <li><%= le %> 
+                      <a href="https://maps.google.com/?q=<%= le %>">View Map</a> 
+                    </li>
+
+                  <% } %>
+
                 </ul>
               </p>
             </div>
@@ -146,7 +180,7 @@
                 </div>
               </div>
             </devjsp:itemInfo > 
-              <devjsp:forEachListing limit="6">
+              <devjsp:forEachListing limit="6" searchTerm="null">
               <div class="item">
                 <div class="container-fluid">
                   <div class="row -fluid">
@@ -211,7 +245,7 @@
               <li><a href="#">View all</a></li>
             </ul>
             <table class="table table-striped">
-              <devjsp:forEachListing user="<%=user%>" limit="4">
+              <devjsp:forEachListing user="<%=user%>" limit="4" searchTerm="null">
                 <tr>
                   <td valign="center">
                     <ul class="inline">
@@ -231,6 +265,9 @@
           <div class="span1" style="width:1px;height:160px;background-color:gray;float:left;"></div>           
           <div class="span5">
             <h3>Recent Activity</h3>
+            <devjsp:printActivities byWhat="university" limit="4" >
+              <li><i>${itemActivity}</i></li>
+            </devjsp:printActivities>
           </div>
         </div>
       </div>

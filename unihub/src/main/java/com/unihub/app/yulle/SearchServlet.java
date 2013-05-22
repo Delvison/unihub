@@ -33,9 +33,10 @@ public class SearchServlet extends HttpServlet {
             for(Stuff st : l){
                 result += "<A HREF=item?id="+st.getId()+">"+st.getName()+"</A> for "+st.getPrice()+" USD <BR></BR>";
             }
-            req.setAttribute("local",result);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("gsearch");
-            dispatcher.forward(req, res);
+            res.sendRedirect("/unihub/viewalllistings?q="+formatSearch(keywords));
+            //req.setAttribute("local",result);
+            //RequestDispatcher dispatcher = req.getRequestDispatcher("gsearch");
+            //dispatcher.forward(req, res);
         }else{ //if nothing was found in the local database, search in the "third parties".
         	/*-------------AmazonSearch----------------*/
         	try{
@@ -68,5 +69,21 @@ public class SearchServlet extends HttpServlet {
             klist.add(keywords);
             session.setAttribute("keywords", klist);
         }    
+    }
+
+    public String formatSearch(String userSearch){
+        if ( userSearch.contains(" ") ){
+            String[] holder = userSearch.split(" ");
+            String appendies = "";
+
+            for(int i = 0; i < holder.length; i++) {
+                appendies+=holder[i];
+                if(i != holder.length-1)
+                    appendies+="%20";
+            }
+
+            return appendies;
+        }else
+            return userSearch;    
     }
 }

@@ -17,13 +17,14 @@ import javax.transaction.*;
 public class CommentSession implements CommentEJB {
 	//CommentObj coms = CommentObj.create();
 
-	@PersistenceContext
-	EntityManager em;
+	@PersistenceContext EntityManager em;
+	@EJB ActivityEJB activityManager;
 	
 	@WebMethod
 	public void addComment(String user, String comment, int itemId){		
 		Comment c = new Comment(user, comment, itemId);
 		em.persist(c);
+		activityManager.createActivity(itemId, user, 1);
 		//coms.addComment(user,comment,itemId);
 	}
 

@@ -12,9 +12,12 @@ import javax.servlet.http.*;
 import javax.ejb.*;
 
 public class CommentServlet extends HttpServlet{ 
-  @EJB
+  @EJB 
   CommentEJB coms;
   HttpSession session;
+  @EJB 
+  ActivityEJB activityManager;
+
   
   protected void doGet(HttpServletRequest req,
   HttpServletResponse res) throws ServletException, IOException {
@@ -35,6 +38,7 @@ public class CommentServlet extends HttpServlet{
       }else{
         //add comment and redirect to same listing
         coms.addComment(userName,comment,Integer.parseInt(currentItem));
+        //activityManager.createActivity(Integer.parseInt(currentItem), userName, 1);
         res.sendRedirect("item?id="+currentItem);
       }
     }catch(NullPointerException e){
