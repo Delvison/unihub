@@ -174,20 +174,28 @@ public class ListingSessionStateless implements ListingObjEJBStateless {
   }
   @WebMethod      
   public void setDir(int itemId, String dir){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a = lis.getStuff(itemId);
-    a.setDir(dir);
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    p.get(0).setDir(dir);
   }
   
+  @WebMethod
   public void setPicAmount(int itemId){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a =lis.getStuff(itemId);
-    a.setPicAmount();  
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    p.get(0).setPicAmount();
     }
 
+  @WebMethod
   public void setThumbnail(int itemId, String t){
-    ListingsObj lis = ListingsObj.create();
-    Stuff a =lis.getStuff(itemId);
-    a.setThumbnail(t);
+    String query = "SELECT * FROM Stuff WHERE id=?;" ;
+    Query q = em.createNativeQuery(query, Stuff.class);
+    q.setParameter(1, itemId);
+    ArrayList<Stuff> p = (ArrayList)q.getResultList();
+    p.get(0).setThumbnail(t);
   }
 }
